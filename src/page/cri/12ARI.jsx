@@ -17,7 +17,7 @@ export function Header() {
   );
 }
 
-export default function 12ARIPage({ onBack }) {
+export default function Page12ARIPage({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

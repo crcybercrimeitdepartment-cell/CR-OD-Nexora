@@ -17,7 +17,7 @@ export function Header() {
   );
 }
 
-export default function 80GRIPage({ onBack }) {
+export default function Page80GRIPage({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
