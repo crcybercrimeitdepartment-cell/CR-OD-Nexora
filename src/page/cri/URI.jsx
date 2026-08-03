@@ -8,9 +8,7 @@ export function Header() {
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
             <span>Udyam Registration Intelligence</span>
           </h1>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analytics and data records for Udyam Registration Intelligence.
-          </p>
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">Analytics and data records for Udyam Registration Intelligence.</p>
         </div>
       </div>
     </header>

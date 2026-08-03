@@ -28,12 +28,12 @@ export function Header() {
 }
 
 const KYC_TOOLS = [
-  { id: 'ebi', name: 'EBI', desc: 'Election Bureau Intelligence - Analyze voter profiles, constituency logs & election fraud detection', icon: (p) => <Landmark {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { id: 'ebi', name: 'EBI', desc: 'Electricity Bill Intelligence - Analyze voter profiles, constituency logs & election fraud detection', icon: (p) => <Landmark {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
   { id: 'lpgri', name: 'LPGRI', desc: 'LPG Record Intelligence - Monitor gas subsidy records, consumer logs & distribution audits', icon: (p) => <Flame {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
   { id: 'pim', name: 'PIM', desc: 'Passport Intelligence Module - Track passport issuance, travel logs & visa immigration history', icon: (p) => <Plane {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
-  { id: 'pani', name: 'PANI', desc: 'PAN Card Intelligence - Verify PAN details, tax defaults & linked corporate entities', icon: (p) => <CreditCard {...p} />, color: 'text-green-600', bg: 'bg-green-100' },
+  { id: 'pani', name: 'PANI', desc: 'PAN Intelligence - Verify PAN details, tax defaults & linked corporate entities', icon: (p) => <CreditCard {...p} />, color: 'text-green-600', bg: 'bg-green-100' },
   { id: 'vii', name: 'VII', desc: 'Voter ID Intelligence - Audit voter ID registrations, duplicate records & electoral rolls', icon: (p) => <UserCheck {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
-  { id: 'rci', name: 'RCI', desc: 'Ration Card Intelligence - Verify ration card benefits, family trees & civil supplies logs', icon: (p) => <ShoppingCart {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
+  { id: 'rci', name: 'RCI', desc: 'Residence Certificate Intelligence - Verify ration card benefits, family trees & civil supplies logs', icon: (p) => <ShoppingCart {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
   { id: 'bci', name: 'BCI', desc: 'Birth Certificate Intelligence - Access municipal birth records, parentage audits & registry logs', icon: (p) => <Baby {...p} />, color: 'text-cyan-600', bg: 'bg-cyan-100' },
   { id: 'cci', name: 'CCI', desc: 'Caste Certificate Intelligence - Validate caste certificate issuance, validity & reservation benefits', icon: (p) => <FileText {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
 ];

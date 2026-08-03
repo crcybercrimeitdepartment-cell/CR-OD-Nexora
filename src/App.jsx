@@ -116,11 +116,10 @@ export default function App() {
           <img
             src="/image.png"
             alt="Ashok Stambh Watermark"
-            className={`w-auto max-w-[92vw] object-contain opacity-[0.10] filter drop-shadow-sm transition-all duration-500 ${
-              selectedPage === 'KYCDI'
-                ? 'h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px]'
-                : 'h-[580px] sm:h-[780px] md:h-[950px] lg:h-[1100px]'
-            }`}
+            className={`w-auto max-w-[92vw] object-contain opacity-[0.10] filter drop-shadow-sm transition-all duration-500 ${selectedPage === 'KYCDI'
+              ? 'h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px]'
+              : 'h-[580px] sm:h-[780px] md:h-[950px] lg:h-[1100px]'
+              }`}
           />
         </div>
 

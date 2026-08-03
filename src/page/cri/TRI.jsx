@@ -6,11 +6,9 @@ export function Header() {
       <div className="flex items-center justify-center w-full relative z-20">
         <div className="flex-1 text-center flex flex-col items-center justify-center min-w-0 pt-1 sm:pt-2 md:pt-3 px-2">
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
-            <span>Trademark Registration Intelligence</span>
+            <span>Trust Registration Intelligence</span>
           </h1>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analytics and data records for Trademark Registration Intelligence.
-          </p>
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">Analytics and data records for Trust Registration Intelligence.</p>
         </div>
       </div>
     </header>
@@ -46,7 +44,7 @@ export default function TRIPage({ onBack }) {
               Coming Soon
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-slate-500 font-medium text-center max-w-lg leading-relaxed">
-              We are actively developing powerful new analytics tools for Trademark Registration Intelligence. These features will be available in the next major update.
+              We are actively developing powerful new analytics tools for Trust Registration Intelligence. These features will be available in the next major update.
             </p>
             <style jsx>{`
               @keyframes fadeIn {
