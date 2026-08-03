@@ -1,5 +1,14 @@
 import React from 'react';
 
+/**
+ * Header Component.
+ * Renders the title and a brief description of the page's purpose.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {string} [props.title] - Optional override for the title.
+ * @param {string} [props.description] - Optional override for the description.
+ * @returns {JSX.Element} The rendered header component.
+ */
 export function Header() {
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">
@@ -17,6 +26,14 @@ export function Header() {
   );
 }
 
+/**
+ * Main Page Component.
+ * Handles the display, routing, and user interactions for this specific intelligence record.
+ * 
+ * @param {Object} props - Component properties.
+ * @param {Function} props.onBack - Callback function triggered when the user clicks the "Back" button to return to the parent dashboard.
+ * @returns {JSX.Element} The rendered page layout.
+ */
 export default function ContactUsPage({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);

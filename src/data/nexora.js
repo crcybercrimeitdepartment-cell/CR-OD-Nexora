@@ -52,7 +52,7 @@ export const NEXORA_MODULES = [
   {
     id: 'cdr',
     name: 'CDR',
-    description: 'Call Detail Record - Call logs, tower locations, duration & IMEI history',
+    description: 'Call Detail Record - Advanced analytics for call logs, cell tower locations, and IMEI history tracking.',
     icon: CDRIcon,
     bgColor: 'bg-[#FFECEC]',
     iconColor: 'text-[#EF4444]'
@@ -60,7 +60,7 @@ export const NEXORA_MODULES = [
   {
     id: 'sdr',
     name: 'SDR',
-    description: 'Subscriber Detail Record - SIM CAF registration & subscriber identity audit',
+    description: 'Subscriber Detail Record - Verify SIM registration, CAF details, and subscriber identity.',
     icon: SDRIcon,
     bgColor: 'bg-[#E3F2FD]',
     iconColor: 'text-[#3B82F6]'
@@ -68,7 +68,7 @@ export const NEXORA_MODULES = [
   {
     id: 'tdr',
     name: 'TDR',
-    description: 'Tower Dump Record - Cell site BTS tower logs & co-location analysis',
+    description: 'Tower Dump Record - Analyze cellular tower logs to uncover co-located numbers and patterns.',
     icon: TDRIcon,
     bgColor: 'bg-[#E0F7FA]',
     iconColor: 'text-[#06B6D4]'
@@ -76,7 +76,7 @@ export const NEXORA_MODULES = [
   {
     id: 'ild',
     name: 'ILD',
-    description: 'International Long Distance - VOIP gateway, roaming & overseas call logs',
+    description: 'International Long Distance - Track VOIP gateways, roaming records, and overseas communication logs.',
     icon: ILDIcon,
     bgColor: 'bg-[#ECFDF5]',
     iconColor: 'text-[#10B981]'
@@ -84,7 +84,7 @@ export const NEXORA_MODULES = [
   {
     id: 'itdr',
     name: 'ITDR',
-    description: 'Internet Traffic Detail Record - Session logs & bandwidth consumption analysis',
+    description: 'Internet Traffic Detail Record - Monitor session logs, bandwidth consumption, and digital activity.',
     icon: ITDRIcon,
     bgColor: 'bg-[#F3E5F5]',
     iconColor: 'text-[#A855F7]'
@@ -92,7 +92,7 @@ export const NEXORA_MODULES = [
   {
     id: 'ipdr',
     name: 'IPDR',
-    description: 'Internet Protocol Detail Record - IP allocation, NAT logs & host connection tracking',
+    description: 'Internet Protocol Detail Record - Trace IP allocations, NAT logs, and host connection histories.',
     icon: IPDRIcon,
     bgColor: 'bg-[#FFF3E0]',
     iconColor: 'text-[#F97316]'
@@ -100,7 +100,7 @@ export const NEXORA_MODULES = [
   {
     id: 'idr',
     name: 'IDR',
-    description: 'Internet Data Record - Domain requests, web activity & digital footprint trails',
+    description: 'Internet Data Record - Analyze domain requests, web activity, and digital footprints.',
     icon: IDRIcon,
     bgColor: 'bg-[#FCE4EC]',
     iconColor: 'text-[#EC4899]'
@@ -108,7 +108,7 @@ export const NEXORA_MODULES = [
   {
     id: 'lar',
     name: 'LAR',
-    description: 'Location Analysis Record - Geo-triangulation, movement history & spatial tracking',
+    description: 'Location Analysis Record - Triangulate geolocation and map spatial movement tracking.',
     icon: LARIcon,
     bgColor: 'bg-[#F5F3FF]',
     iconColor: 'text-[#7C3AED]'
@@ -116,7 +116,7 @@ export const NEXORA_MODULES = [
   {
     id: 'osint',
     name: 'OSINT',
-    description: 'Open Source Intelligence - Digital footprinting, WHOIS & web archive lookup',
+    description: 'Open Source Intelligence - Investigate public footprints, WHOIS records, and open web data.',
     icon: OSINTIcon,
     bgColor: 'bg-[#E0F2FE]',
     iconColor: 'text-[#0284C7]'
@@ -124,7 +124,7 @@ export const NEXORA_MODULES = [
   {
     id: 'smi',
     name: 'SMI',
-    description: 'Social Media Intelligence - Profile correlation & social graph mapping',
+    description: 'Social Media Intelligence - Correlate profiles and map social graphs across platforms.',
     icon: SMIIcon,
     bgColor: 'bg-[#FEF3C7]',
     iconColor: 'text-[#D97706]'
@@ -132,7 +132,7 @@ export const NEXORA_MODULES = [
   {
     id: 'cti',
     name: 'CTI',
-    description: 'Cyber Threat Intelligence - Threat vector analysis & dark web IOC monitoring',
+    description: 'Cyber Threat Intelligence - Monitor threat vectors, IOCs, and dark web activity.',
     icon: CTIIcon,
     bgColor: 'bg-[#FEF2F2]',
     iconColor: 'text-[#DC2626]'
@@ -140,7 +140,7 @@ export const NEXORA_MODULES = [
   {
     id: 'bsar',
     name: 'BSAR',
-    description: 'Bank Statement Analysis Report - Credit/debit audits & transaction profiling',
+    description: 'Bank Statement Analysis Report - Audit credit/debit statements and profile financial transactions.',
     icon: BSARIcon,
     bgColor: 'bg-[#EFF6FF]',
     iconColor: 'text-[#2563EB]'
@@ -148,7 +148,7 @@ export const NEXORA_MODULES = [
   {
     id: 'bri',
     name: 'BRI',
-    description: 'Bank Record Intelligence - Account details, IFSC mapping & transaction trails',
+    description: 'Bank Record Intelligence - Examine account details, IFSC mapping, and banking trails.',
     icon: BRIIcon,
     bgColor: 'bg-[#EEF2FF]',
     iconColor: 'text-[#4F46E5]'
@@ -156,7 +156,7 @@ export const NEXORA_MODULES = [
   {
     id: 'rtoi',
     name: 'RTOI',
-    description: 'Regional Transport Office Intelligence - Vehicle registration & owner history',
+    description: 'Regional Transport Office Intelligence - Lookup vehicle registrations, owner history, and RTO logs.',
     icon: RTOIIcon,
     bgColor: 'bg-[#F1F5F9]',
     iconColor: 'text-[#475569]'
@@ -164,7 +164,7 @@ export const NEXORA_MODULES = [
   {
     id: 'pri',
     name: 'PRI',
-    description: 'Passport Record Intelligence - Passport validation & travel immigration logs',
+    description: 'Prison Record Intelligence - Track inmate databases, visitor logs, and correctional facility records.',
     icon: PRIIcon,
     bgColor: 'bg-[#F0FDF4]',
     iconColor: 'text-[#16A34A]'
@@ -172,7 +172,7 @@ export const NEXORA_MODULES = [
   {
     id: 'lih',
     name: 'LIH',
-    description: 'Location & IP History - Historical IP logs & geo-location movement timeline',
+    description: 'Law Intelligence Hub - Access centralized legal databases and judicial archives.',
     icon: LIHIcon,
     bgColor: 'bg-[#F5F3FF]',
     iconColor: 'text-[#6D28D9]'
@@ -180,7 +180,7 @@ export const NEXORA_MODULES = [
   {
     id: 'bi',
     name: 'BI',
-    description: 'Business Intelligence - Corporate audit, financial indicators & company profiles',
+    description: 'Biometric Intelligence - Analyze biometric logs and identity verification systems.',
     icon: BIIcon,
     bgColor: 'bg-[#ECFDF5]',
     iconColor: 'text-[#059669]'
@@ -188,7 +188,7 @@ export const NEXORA_MODULES = [
   {
     id: 'fri',
     name: 'FRI',
-    description: 'Financial Record Intelligence - Monetary transaction trails & forex transfer audits',
+    description: 'Facial Recognition Intelligence - Cross-reference facial logs and visual surveillance matches.',
     icon: FRIIcon,
     bgColor: 'bg-[#FEF3C7]',
     iconColor: 'text-[#B45309]'
@@ -196,7 +196,7 @@ export const NEXORA_MODULES = [
   {
     id: 'cctvi',
     name: 'CCTVI',
-    description: 'CCTV Surveillance Intelligence - Camera feed timestamps & facial log analysis',
+    description: 'CCTV Intelligence - Analyze camera feeds, timestamps, and surveillance logs.',
     icon: CCTVIIcon,
     bgColor: 'bg-[#E0F2FE]',
     iconColor: 'text-[#0284C7]'
@@ -204,7 +204,7 @@ export const NEXORA_MODULES = [
   {
     id: 'lri',
     name: 'LRI',
-    description: 'Land Record Intelligence - Property ownership, land revenue & deed registration',
+    description: 'Land Record Intelligence - Verify property ownership, land revenue, and deed registrations.',
     icon: LRIIcon,
     bgColor: 'bg-[#FDF2F8]',
     iconColor: 'text-[#DB2777]'
@@ -212,7 +212,7 @@ export const NEXORA_MODULES = [
   {
     id: 'eri',
     name: 'ERI',
-    description: 'Education Record Intelligence - Academic degree verification & university records',
+    description: 'Education Record Intelligence - Authenticate academic degrees and university records.',
     icon: ERIIcon,
     bgColor: 'bg-[#FCE4EC]',
     iconColor: 'text-[#E11D48]'
@@ -220,7 +220,7 @@ export const NEXORA_MODULES = [
   {
     id: 'kycdi',
     name: 'KYCDI',
-    description: 'KYC Data Intelligence - Identity verification, Aadhaar/PAN audit & KYC records',
+    description: 'KYC Document Intelligence - Verify identity documents, Aadhaar/PAN audits, and KYC records.',
     icon: KYCDIIcon,
     bgColor: 'bg-[#E3F2FD]',
     iconColor: 'text-[#2563EB]'
@@ -228,7 +228,7 @@ export const NEXORA_MODULES = [
   {
     id: 'psri',
     name: 'PSRI',
-    description: 'Police Station Record Intelligence - FIR database, crime history & station logs',
+    description: 'Police Station Record Intelligence - Search FIR databases, crime history, and station logs.',
     icon: PSRIIcon,
     bgColor: 'bg-[#FFF3E0]',
     iconColor: 'text-[#D97706]'
@@ -236,7 +236,7 @@ export const NEXORA_MODULES = [
   {
     id: 'cori',
     name: 'CoRI',
-    description: 'Company Registration Intelligence - MCA corporate records & director DIN lookup',
+    description: 'Court Record Intelligence - Access case status, court judgements, and judicial history.',
     icon: CoRIIcon,
     bgColor: 'bg-[#FDF4FF]',
     iconColor: 'text-[#C026D3]'
@@ -244,7 +244,7 @@ export const NEXORA_MODULES = [
   {
     id: 'pori',
     name: 'PORI',
-    description: 'Post Office Record Intelligence - Postal tracking & regional post office logs',
+    description: 'Post Office Record Intelligence - Track postal deliveries, addresses, and regional post office logs.',
     icon: PORIIcon,
     bgColor: 'bg-[#FFF7ED]',
     iconColor: 'text-[#EA580C]'
@@ -252,7 +252,7 @@ export const NEXORA_MODULES = [
   {
     id: 'csri',
     name: 'CSRI',
-    description: 'Courier Service Record Intelligence - Logistics manifest & consignment trails',
+    description: 'Courier Service Record Intelligence - Trace logistics manifests and consignment delivery trails.',
     icon: CSRIIcon,
     bgColor: 'bg-[#FEF2F2]',
     iconColor: 'text-[#DC2626]'
@@ -260,7 +260,7 @@ export const NEXORA_MODULES = [
   {
     id: 'tgri',
     name: 'TGRI',
-    description: 'Toll Gate Record Intelligence - FASTag toll logs & ANPR camera vehicle captures',
+    description: 'Toll Gate Record Intelligence - Analyze FASTag toll logs and ANPR vehicle captures.',
     icon: TGRIIcon,
     bgColor: 'bg-[#F5F3FF]',
     iconColor: 'text-[#6D28D9]'
@@ -268,7 +268,7 @@ export const NEXORA_MODULES = [
   {
     id: 'ghlri',
     name: 'GHLRI',
-    description: 'Guest House & Lodge Record Intelligence - Hotel check-in registers & visitor logs',
+    description: 'Guest House & Lodge Record Intelligence - Review hotel check-in registers and visitor logs.',
     icon: GHLRIIcon,
     bgColor: 'bg-[#ECFDF5]',
     iconColor: 'text-[#059669]'
@@ -276,7 +276,7 @@ export const NEXORA_MODULES = [
   {
     id: 'ppri',
     name: 'PPRI',
-    description: 'Petrol Pump Record Intelligence - Fuel transaction logs & CCTV timestamp matching',
+    description: 'Petrol Pump Record Intelligence - Match fuel transaction logs with CCTV timestamps.',
     icon: PPRIIcon,
     bgColor: 'bg-[#FEF3C7]',
     iconColor: 'text-[#B45309]'
@@ -284,7 +284,7 @@ export const NEXORA_MODULES = [
   {
     id: 'rii',
     name: 'RII',
-    description: 'Railway Information Intelligence - PNR travel logs & train passenger manifests',
+    description: 'Railway Information Intelligence - Analyze PNR travel logs and train passenger manifests.',
     icon: RIIIcon,
     bgColor: 'bg-[#E3F2FD]',
     iconColor: 'text-[#1D4ED8]'
@@ -292,7 +292,7 @@ export const NEXORA_MODULES = [
   {
     id: 'pcri',
     name: 'PCRI',
-    description: 'Prison & Custody Record Intelligence - Inmate database & correctional facility logs',
+    description: 'PIN Code Record Intelligence - Map demographic and geographic intelligence by postal codes.',
     icon: PCRIIcon,
     bgColor: 'bg-[#EFF6FF]',
     iconColor: 'text-[#3B82F6]'
@@ -300,7 +300,7 @@ export const NEXORA_MODULES = [
   {
     id: 'cri',
     name: 'CRI',
-    description: 'Criminal Record Intelligence - Offender history, warrant registry & crime analytics',
+    description: 'Company Registration Intelligence - Audit corporate records, regulatory registrations, and business intelligence.',
     icon: CRIIcon,
     bgColor: 'bg-[#FEF2F2]',
     iconColor: 'text-[#B91C1C]'
@@ -308,7 +308,7 @@ export const NEXORA_MODULES = [
   {
     id: 'mii',
     name: 'MII',
-    description: 'Military & Defense Intelligence - Security clearance logs & defense strategic data',
+    description: 'Minister Information Intelligence - Track public sector profiles, portfolios, and political affiliations.',
     icon: MIIIcon,
     bgColor: 'bg-[#F1F5F9]',
     iconColor: 'text-[#334155]'
@@ -316,7 +316,7 @@ export const NEXORA_MODULES = [
   {
     id: 'minfi',
     name: 'MInfI',
-    description: 'Media & Information Intelligence - News archive correlation & media monitoring',
+    description: 'Media Information Intelligence - Correlate news archives and monitor broadcast media.',
     icon: MInfIIcon,
     bgColor: 'bg-[#E0F2FE]',
     iconColor: 'text-[#0369A1]'
@@ -324,7 +324,7 @@ export const NEXORA_MODULES = [
   {
     id: 'mdri',
     name: 'MDRI',
-    description: 'Medical Data Record Intelligence - Hospital admission logs & health registry data',
+    description: 'Medical Data Record Intelligence - Analyze hospital admission logs and health registry data.',
     icon: MDRIIcon,
     bgColor: 'bg-[#E0F2FE]',
     iconColor: 'text-[#0284C7]'
@@ -332,7 +332,7 @@ export const NEXORA_MODULES = [
   {
     id: 'tii',
     name: 'TII',
-    description: 'Telecom Infrastructure Intelligence - Cell tower topology & fiber line mapping',
+    description: 'Temple Information Intelligence - Review religious trust records and administrative logs.',
     icon: TIIIcon,
     bgColor: 'bg-[#F3E5F5]',
     iconColor: 'text-[#7E22CE]'
@@ -340,7 +340,7 @@ export const NEXORA_MODULES = [
   {
     id: 'tdi',
     name: 'TDI',
-    description: 'Tower Dump Intelligence - Cell site dump analytics & subscriber overlap discovery',
+    description: 'Telephone Directory Intelligence - Search public telecom directories and historic phonebooks.',
     icon: TDIIcon,
     bgColor: 'bg-[#E0F7FA]',
     iconColor: 'text-[#0891B2]'
