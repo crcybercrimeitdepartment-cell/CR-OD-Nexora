@@ -71,11 +71,41 @@ export default function LIHPage({ onBack }) {
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state && event.state.subPage) {
+        setSelectedSubPage(event.state.subPage);
+      } else {
+        setSelectedSubPage(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    
+    // Check initial state if navigated directly via search
+    if (window.history.state && window.history.state.subPage) {
+      setSelectedSubPage(window.history.state.subPage);
+    }
+    
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedSubPage]);
 
+  const handleSubPageSelect = (toolId) => {
+    window.history.pushState({ page: 'LIH', subPage: toolId }, '', `#LIH/${toolId}`);
+    setSelectedSubPage(toolId);
+  };
+
   const handleSubPageBack = () => {
-    setSelectedSubPage(null);
+    // If we have history state for this subpage, go back natively to pop the state
+    if (window.history.state && window.history.state.subPage) {
+      window.history.back();
+    } else {
+      setSelectedSubPage(null);
+      // Clean up URL if needed, though window.history.back() is preferred if it was pushed
+      window.history.replaceState({ page: 'LIH' }, '', '#LIH');
+    }
   };
 
   if (selectedSubPage === 'bnsi') return <BNSIPage onBack={handleSubPageBack} />;
@@ -120,7 +150,7 @@ export default function LIHPage({ onBack }) {
                 key={tool.id}
                 tool={{ ...tool, description: tool.desc }}
                 index={index}
-                onClick={(t) => setSelectedSubPage(t.id)}
+                onClick={(t) => handleSubPageSelect(t.id)}
               />
             ))}
           </div>

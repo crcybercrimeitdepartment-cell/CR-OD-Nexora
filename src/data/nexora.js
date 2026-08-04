@@ -129,14 +129,7 @@ export const NEXORA_MODULES = [
     bgColor: 'bg-[#FEF3C7]',
     iconColor: 'text-[#D97706]'
   },
-  {
-    id: 'cti',
-    name: 'CTI',
-    description: 'Cyber Threat Intelligence - Monitor threat vectors, IOCs, and dark web activity.',
-    icon: CTIIcon,
-    bgColor: 'bg-[#FEF2F2]',
-    iconColor: 'text-[#DC2626]'
-  },
+
   {
     id: 'bsar',
     name: 'BSAR',
@@ -193,14 +186,7 @@ export const NEXORA_MODULES = [
     bgColor: 'bg-[#FEF3C7]',
     iconColor: 'text-[#B45309]'
   },
-  {
-    id: 'cctvi',
-    name: 'CCTVI',
-    description: 'CCTV Intelligence - Analyze camera feeds, timestamps, and surveillance logs.',
-    icon: CCTVIIcon,
-    bgColor: 'bg-[#E0F2FE]',
-    iconColor: 'text-[#0284C7]'
-  },
+
   {
     id: 'lri',
     name: 'LRI',
@@ -249,14 +235,7 @@ export const NEXORA_MODULES = [
     bgColor: 'bg-[#FFF7ED]',
     iconColor: 'text-[#EA580C]'
   },
-  {
-    id: 'csri',
-    name: 'CSRI',
-    description: 'Courier Service Record Intelligence - Trace logistics manifests and consignment delivery trails.',
-    icon: CSRIIcon,
-    bgColor: 'bg-[#FEF2F2]',
-    iconColor: 'text-[#DC2626]'
-  },
+
   {
     id: 'tgri',
     name: 'TGRI',
@@ -305,22 +284,7 @@ export const NEXORA_MODULES = [
     bgColor: 'bg-[#FEF2F2]',
     iconColor: 'text-[#B91C1C]'
   },
-  {
-    id: 'mii',
-    name: 'MII',
-    description: 'Minister Information Intelligence - Track public sector profiles, portfolios, and political affiliations.',
-    icon: MIIIcon,
-    bgColor: 'bg-[#F1F5F9]',
-    iconColor: 'text-[#334155]'
-  },
-  {
-    id: 'minfi',
-    name: 'MInfI',
-    description: 'Media Information Intelligence - Correlate news archives and monitor broadcast media.',
-    icon: MInfIIcon,
-    bgColor: 'bg-[#E0F2FE]',
-    iconColor: 'text-[#0369A1]'
-  },
+
   {
     id: 'mdri',
     name: 'MDRI',
@@ -329,30 +293,7 @@ export const NEXORA_MODULES = [
     bgColor: 'bg-[#E0F2FE]',
     iconColor: 'text-[#0284C7]'
   },
-  {
-    id: 'tii',
-    name: 'TII',
-    description: 'Temple Information Intelligence - Review religious trust records and administrative logs.',
-    icon: TIIIcon,
-    bgColor: 'bg-[#F3E5F5]',
-    iconColor: 'text-[#7E22CE]'
-  },
-  {
-    id: 'tdi',
-    name: 'TDI',
-    description: 'Telephone Directory Intelligence - Search public telecom directories and historic phonebooks.',
-    icon: TDIIcon,
-    bgColor: 'bg-[#E0F7FA]',
-    iconColor: 'text-[#0891B2]'
-  },
-  {
-    id: 'intelligence-modules',
-    name: 'Intelligence Modules',
-    description: 'Modular intelligence toolkits, specialized analytics & integration suites',
-    icon: IntelligenceModulesIcon,
-    bgColor: 'bg-[#EEF2FF]',
-    iconColor: 'text-[#4338CA]'
-  },
+
   {
     id: 'about-us',
     name: 'About Us',

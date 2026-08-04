@@ -24,7 +24,6 @@ import IDRPage from "./page/IDR-InternetDataRecord";
 import LARPage from "./page/LAR-LocationAnalysisRecord";
 import OSINTPage from "./page/OSINT-OpenSourceIntelligence";
 import SMIPage from "./page/SMI-SocialMediaIntelligence";
-import CTIPage from "./page/CTI-CyberThreatIntelligence";
 import BSARPage from "./page/BSAR-BankStatementAnalysisReport";
 import BRIPage from "./page/BRI-BankRecordIntelligence";
 import RTOIPage from "./page/RTOI-RegionalTransportOfficeIntelligence";
@@ -32,26 +31,19 @@ import PRIPage from "./page/PRI-PrisonRecordIntelligence";
 import LIHPage from "./page/LIH-LawIntelligenceHub";
 import BIPage from "./page/BI-BiometricIntelligence";
 import FRIPage from "./page/FRI-FacialRecognitionIntelligence";
-import CCTVIPage from "./page/CCTVI-CCTVIntelligence";
 import LRIPage from "./page/LRI-LandRecordIntelligence";
 import ERIPage from "./page/ERI-EducationRecordIntelligence";
 import KYCDIPage from "./page/KYCDI-KYCDocumentIntelligence";
 import PSRIPage from "./page/PSRI-PoliceStationRecordIntelligence";
 import CoRIPage from "./page/CoRI-CourtRecordIntelligence";
 import PORIPage from "./page/PORI-PostOfficeRecordIntelligence";
-import CSRIPage from "./page/CSRI-CourierServiceRecordIntelligence";
 import TGRIPage from "./page/TGRI-TollGateRecordIntelligence";
 import GHLRIPage from "./page/GHLRI-GuestHouse&LodgeRecordIntelligence";
 import PPRIPage from "./page/PPRI-PetrolPumpRecordIntelligence";
 import RIIPage from "./page/RII-RailwayInformationIntelligence";
 import PCRIPage from "./page/PCRI-PINCodeRecordIntelligence";
 import CRIPage from "./page/CRI-CompanyRegistrationIntelligence";
-import MIIPage from "./page/MII-MinisterInformationIntelligence";
-import MInfIPage from "./page/MInfI-MediaInformationIntelligence";
 import MDRIPage from "./page/MDRI-MedicalDataRecordIntelligence";
-import TIIPage from "./page/TII-TempleInformationIntelligence";
-import TDIPage from "./page/TDI-TelephoneDirectoryIntelligence";
-import IntelligenceModulesPage from "./page/IntelligenceModules";
 import AboutUsPage from "./page/AboutUs";
 import ContactUsPage from "./page/ContactUs";
 
@@ -196,7 +188,6 @@ export default function App() {
                         : selectedPage === "LAR" ? <LARPage onBack={handleBack} searchQuery={searchQuery} />
                           : selectedPage === "OSINT" ? <OSINTPage onBack={handleBack} searchQuery={searchQuery} />
                             : selectedPage === "SMI" ? <SMIPage onBack={handleBack} searchQuery={searchQuery} />
-                              : selectedPage === "CTI" ? <CTIPage onBack={handleBack} searchQuery={searchQuery} />
                                 : selectedPage === "BSAR" ? <BSARPage onBack={handleBack} searchQuery={searchQuery} />
                                   : selectedPage === "BRI" ? <BRIPage onBack={handleBack} searchQuery={searchQuery} />
                                     : selectedPage === "RTOI" ? <RTOIPage onBack={handleBack} searchQuery={searchQuery} />
@@ -204,26 +195,19 @@ export default function App() {
                                         : selectedPage === "LIH" ? <LIHPage onBack={handleBack} searchQuery={searchQuery} />
                                           : selectedPage === "BI" ? <BIPage onBack={handleBack} searchQuery={searchQuery} />
                                             : selectedPage === "FRI" ? <FRIPage onBack={handleBack} searchQuery={searchQuery} />
-                                              : selectedPage === "CCTVI" ? <CCTVIPage onBack={handleBack} searchQuery={searchQuery} />
                                                 : selectedPage === "LRI" ? <LRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                   : selectedPage === "ERI" ? <ERIPage onBack={handleBack} searchQuery={searchQuery} />
                                                     : selectedPage === "KYCDI" ? <KYCDIPage onBack={handleBack} searchQuery={searchQuery} />
                                                       : selectedPage === "PSRI" ? <PSRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                         : selectedPage === "CoRI" ? <CoRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                           : selectedPage === "PORI" ? <PORIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                            : selectedPage === "CSRI" ? <CSRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                               : selectedPage === "TGRI" ? <TGRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                 : selectedPage === "GHLRI" ? <GHLRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                   : selectedPage === "PPRI" ? <PPRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                     : selectedPage === "RII" ? <RIIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                       : selectedPage === "PCRI" ? <PCRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                         : selectedPage === "CRI" ? <CRIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                          : selectedPage === "MII" ? <MIIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                            : selectedPage === "MInfI" ? <MInfIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                               : selectedPage === "MDRI" ? <MDRIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                                : selectedPage === "TII" ? <TIIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                                  : selectedPage === "TDI" ? <TDIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                                    : selectedPage === "IntelligenceModules" ? <IntelligenceModulesPage onBack={handleBack} searchQuery={searchQuery} />
                                                                                       : selectedPage === "AboutUs" ? <AboutUsPage onBack={handleBack} searchQuery={searchQuery} />
                                                                                         : selectedPage === "ContactUs" ? <ContactUsPage onBack={handleBack} searchQuery={searchQuery} />
                                                                                           : query !== "" ? (

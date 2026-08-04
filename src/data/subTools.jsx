@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, UserCheck, MessageCircle, Share2, Camera, Hash, Briefcase, Send, MessageSquare, Smartphone, PlaySquare, Globe, Heart, PhoneCall, AtSign, FileText, Video, Train, Activity, Key, Shield, FileSignature, MapPin, Car, TrendingUp, GitMerge, Clock, Grid, AlertTriangle, BarChart, FileCheck, Book, Scale, Gavel, Landmark, FileSearch, AlertCircle, Bookmark, Scroll, Search, Folder, Database, Lock, Info, BookOpen, Flame, Plane, CreditCard, ShoppingCart, Baby, Building2, Award, Rocket, Copyright, Lightbulb, Ship, Utensils, Pill, Factory, Store, Wine, PiggyBank, Layers, Handshake, ScanLine, Wind, CheckCircle, Fuel, Home, Target } from 'lucide-react';
+import { Users, UserCheck, MessageCircle, Share2, Camera, Hash, Briefcase, Send, MessageSquare, Smartphone, PlaySquare, Globe, Heart, PhoneCall, AtSign, FileText, Video, Train, Activity, Key, Shield, FileSignature, MapPin, Car, TrendingUp, GitMerge, Clock, Grid, AlertTriangle, BarChart, FileCheck, Book, Scale, Gavel, Landmark, FileSearch, AlertCircle, Bookmark, Scroll, Search, Folder, Database, Lock, Info, BookOpen, Flame, Plane, CreditCard, ShoppingCart, Baby, Building2, Award, Rocket, Copyright, Lightbulb, Ship, Utensils, Pill, Factory, Store, Wine, PiggyBank, Layers, Handshake, ScanLine, Wind, CheckCircle, Fuel, Home, Target, Shuffle, Filter, Scissors, Map, ClipboardList, LineChart, Calendar, UserPlus, UserMinus, UserX, Moon, History, PlayCircle, Network, SplitSquareHorizontal, ShieldAlert, MonitorPlay } from 'lucide-react';
 
 export const SMI_TOOLS = [
 
@@ -150,8 +150,8 @@ export const BSAR_TOOLS = [
 export const PRI_TOOLS = [
   { parentId: 'PRI', id: 'phi', name: 'PHI', desc: 'Prisoner History Intelligence - Monitor and track prisoner details.', icon: (p) => <Users {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
   { parentId: 'PRI', id: 'jhi', name: 'JHI', desc: 'Jail History Intelligence - Manage jail records and intelligence.', icon: (p) => <Database {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
-  { parentId: 'PRI', id: 'demo1', name: 'PrisonDEMO1', desc: 'Prison DEMO 1 - Coming soon.', icon: (p) => <Lock {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
-  { parentId: 'PRI', id: 'demo2', name: 'PrisonDEMO2', desc: 'Prison DEMO 2 - Coming soon.', icon: (p) => <Search {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' }
+  { parentId: 'PRI', id: 'demo1', name: 'PrisonDEMO1', desc: 'Prison DEMO 1 - Coming soon.', icon: (p) => <PlayCircle {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'PRI', id: 'demo2', name: 'PrisonDEMO2', desc: 'Prison DEMO 2 - Coming soon.', icon: (p) => <PlayCircle {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' }
 ];
 
 export const LRI_TOOLS = [
@@ -228,6 +228,89 @@ export const CORI_TOOLS = [
   { parentId: 'CoRI', id: 'srol', name: 'SROL', desc: 'Sub-Registrar Office List - Property and marriage registration records.', icon: (p) => <FileSignature {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' }
 ];
 
+export const PPRI_TOOLS = [
+  { parentId: 'PPRI', id: 'ppl', name: 'PPL', desc: 'Petrol Pump List - comprehensive database of registered petrol pumps.', icon: (p) => <Fuel {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'PPRI', id: 'ppri', name: 'PPRI', desc: 'Petrol Pump Registration Information - owner and license details.', icon: (p) => <FileText {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'PPRI', id: 'rppi', name: 'RPPI', desc: 'Route Petrol Pump Intelligence - map and analyze fuel stations along a route.', icon: (p) => <MapPin {...p} />, color: 'text-green-500', bg: 'bg-green-50' },
+  { parentId: 'PPRI', id: 'pprid', name: 'PPRID', desc: 'PPRI Demo - Interactive demonstration of fuel analytics.', icon: (p) => <PlaySquare {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' }
+];
+
+export const ILD_TOOLS = [
+  { parentId: 'ILD', id: 'imp', name: 'Import', desc: 'Import international long distance call records.', icon: (p) => <Database {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'ILD', id: 'gr', name: 'General Report', desc: 'View summary of long distance communications.', icon: (p) => <FileText {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { parentId: 'ILD', id: 'mr', name: 'Mapping Report', desc: 'Analyze geographical mapping of international calls.', icon: (p) => <Map {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'ILD', id: 'ar', name: 'Analysis Report', desc: 'Detailed analytics of call patterns and durations.', icon: (p) => <LineChart {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'ILD', id: 'mc', name: 'Mixed Calls', desc: 'Analyze interleaved domestic and international traffic.', icon: (p) => <Shuffle {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'ILD', id: 'nn', name: 'New Numbers', desc: 'Identify newly activated international numbers.', icon: (p) => <UserPlus {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { parentId: 'ILD', id: 'cn', name: 'Common Numbers', desc: 'Identify frequently contacted international numbers.', icon: (p) => <Users {...p} />, color: 'text-pink-500', bg: 'bg-pink-50' },
+  { parentId: 'ILD', id: 'cwsm', name: 'Compare with Suspect', desc: 'Cross reference with watchlists.', icon: (p) => <UserX {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'ILD', id: 'ildd1', name: 'ILD-DEMO_1', desc: 'ILD Demo 1 - Interactive demonstration module 1.', icon: (p) => <PlayCircle {...p} />, color: 'text-sky-500', bg: 'bg-sky-50' },
+  { parentId: 'ILD', id: 'ildd2', name: 'ILD-DEMO_2', desc: 'ILD Demo 2 - Interactive demonstration module 2.', icon: (p) => <PlayCircle {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { parentId: 'ILD', id: 'ildd3', name: 'ILD-DEMO_3', desc: 'ILD Demo 3 - Interactive demonstration module 3.', icon: (p) => <PlayCircle {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { parentId: 'ILD', id: 'ildd4', name: 'ILD-DEMO_4', desc: 'ILD Demo 4 - Interactive demonstration module 4.', icon: (p) => <PlayCircle {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' }
+];
+
+export const TDR_TOOLS = [
+  { parentId: 'TDR', id: 'imp', name: 'Import', desc: 'Import tower dump records.', icon: (p) => <Database {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'TDR', id: 'df', name: 'Dynamic Filters', desc: 'Apply dynamic filters to narrow down search criteria.', icon: (p) => <Filter {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { parentId: 'TDR', id: 'sum', name: 'Summary', desc: 'View summary of tower dump records.', icon: (p) => <ClipboardList {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'TDR', id: 'cn', name: 'Common Numbers', desc: 'Identify common numbers across multiple dumps.', icon: (p) => <Users {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'TDR', id: 'ucmmin', name: 'Un-Common / Missing Mobile / IMEI Numbers', desc: 'Identify missing or uncommon devices.', icon: (p) => <UserMinus {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'TDR', id: 'aucmin', name: 'Advanced Un-Common Mobile / IMEI Numbers', desc: 'Advanced analytics for uncommon devices.', icon: (p) => <UserMinus {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { parentId: 'TDR', id: 'sa', name: 'Split Analysis', desc: 'Perform split analysis on cellular data.', icon: (p) => <Scissors {...p} />, color: 'text-pink-500', bg: 'bg-pink-50' },
+  { parentId: 'TDR', id: 'cwsmicg', name: 'Compare with Suspect Mobile No. / IMEI / Cell IDs Group', desc: 'Cross-reference with known suspect entities.', icon: (p) => <UserX {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'TDR', id: 'nabtc', name: 'Numbers Activated Before the Crime (Result Based on SDR)', desc: 'Identify newly activated numbers before an incident.', icon: (p) => <Clock {...p} />, color: 'text-sky-500', bg: 'bg-sky-50' },
+  { parentId: 'TDR', id: 'tdrd1', name: 'TDR-DEMO_1', desc: 'Interactive demonstration module 1.', icon: (p) => <PlayCircle {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { parentId: 'TDR', id: 'tdrd2', name: 'TDR-DEMO_2', desc: 'Interactive demonstration module 2.', icon: (p) => <PlayCircle {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { parentId: 'TDR', id: 'tdrd3', name: 'TDR-DEMO_3', desc: 'Interactive demonstration module 3.', icon: (p) => <PlayCircle {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
+  { parentId: 'TDR', id: 'tdrd4', name: 'TDR-DEMO_4', desc: 'Interactive demonstration module 4.', icon: (p) => <PlayCircle {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'TDR', id: 'tdrd5', name: 'TDR-DEMO_5', desc: 'Interactive demonstration module 5.', icon: (p) => <PlayCircle {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'TDR', id: 'tdrd6', name: 'TDR-DEMO_6', desc: 'Interactive demonstration module 6.', icon: (p) => <PlayCircle {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'TDR', id: 'tdrd7', name: 'TDR-DEMO_7', desc: 'Interactive demonstration module 7.', icon: (p) => <PlayCircle {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' }
+];
+
+export const CDR_TOOLS = [
+  { parentId: 'CDR', id: 'icrd', name: 'Input CDR Raw Data', desc: 'Upload and parse raw call records.', icon: (p) => <Database {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'CDR', id: 'gr', name: 'General Report', desc: 'View summary of communication activity.', icon: (p) => <FileText {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { parentId: 'CDR', id: 'mr', name: 'Mapping Report', desc: 'Analyze geographical mapping of calls.', icon: (p) => <Map {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'CDR', id: 'ar', name: 'Analysis Report', desc: 'Detailed analytics of call patterns.', icon: (p) => <LineChart {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'CDR', id: 'pr', name: 'Periodic Report', desc: 'Analyze communications over time periods.', icon: (p) => <Calendar {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { parentId: 'CDR', id: 'adr', name: 'Additional Report', desc: 'Extra insights and custom metrics.', icon: (p) => <FileText {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { parentId: 'CDR', id: 'ga', name: 'Geo Analysis', desc: 'Advanced spatial tracking and visualization.', icon: (p) => <Globe {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { parentId: 'CDR', id: 'mc', name: 'Mixed Calls', desc: 'Analyze cross-network or cross-region traffic.', icon: (p) => <Shuffle {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'CDR', id: 'fsd', name: 'Filter / Split Data', desc: 'Segregate data based on advanced criteria.', icon: (p) => <Filter {...p} />, color: 'text-sky-500', bg: 'bg-sky-50' },
+  { parentId: 'CDR', id: 'oup', name: 'Off / Unused Period', desc: 'Identify periods of inactivity.', icon: (p) => <Moon {...p} />, color: 'text-slate-500', bg: 'bg-slate-50' },
+  { parentId: 'CDR', id: 'nmn', name: 'New / Missing Numbers', desc: 'Identify anomalies in call logs.', icon: (p) => <UserMinus {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'CDR', id: 'cn', name: 'Common Numbers', desc: 'Highlight frequently contacted entities.', icon: (p) => <Users {...p} />, color: 'text-pink-500', bg: 'bg-pink-50' },
+  { parentId: 'CDR', id: 'cdrtocdrcell', name: 'CDR to CDR Cells (X–Y Axis Reports)', desc: 'Visual intersection metrics.', icon: (p) => <FileText {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
+  { parentId: 'CDR', id: 'cdrtoweripdrild', name: 'CDR, Tower Dump, IPDR & ILD Common Numbers', desc: 'Multi-source correlation.', icon: (p) => <Users {...p} />, color: 'text-lime-500', bg: 'bg-lime-50' },
+  { parentId: 'CDR', id: 'crs', name: 'CDR Report Summary', desc: 'Overarching dashboard of call intelligence.', icon: (p) => <ClipboardList {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'CDR', id: 'cwsm', name: 'Compare with Suspect Mobile Numbers / IMEI / Cell IDs Groups', desc: 'Compare with Suspect Mobile Numbers / IMEI / Cell IDs Groups.', icon: (p) => <UserX {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'CDR', id: 'cpa', name: 'CDR Pattern Analysis', desc: 'Behavioral tracking of suspects.', icon: (p) => <TrendingUp {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'CDR', id: 'clma', name: 'CDR Last Month Analysis', desc: '30-day historical overview.', icon: (p) => <Calendar {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'CDR', id: 'csa', name: 'CDR Split Analysis', desc: 'Granular segregation of raw records.', icon: (p) => <Scissors {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { parentId: 'CDR', id: 'cdrd1', name: 'CDR-DEMO_1', desc: 'Interactive demonstration module 1.', icon: (p) => <PlayCircle {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { parentId: 'CDR', id: 'cdrd2', name: 'CDR-DEMO_2', desc: 'Interactive demonstration module 2.', icon: (p) => <PlayCircle {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { parentId: 'CDR', id: 'cdrd3', name: 'CDR-DEMO_3', desc: 'Interactive demonstration module 3.', icon: (p) => <PlayCircle {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
+  { parentId: 'CDR', id: 'cdrd4', name: 'CDR-DEMO_4', desc: 'Interactive demonstration module 4.', icon: (p) => <PlayCircle {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { parentId: 'CDR', id: 'cdrd5', name: 'CDR-DEMO_5', desc: 'Interactive demonstration module 5.', icon: (p) => <PlayCircle {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' }
+];
+
+export const IPDR_TOOLS = [
+  { parentId: 'IPDR', id: 'imp', name: 'Import', desc: 'Import internet protocol detail records.', icon: (p) => <Database {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'IPDR', id: 'ipdrm', name: 'IPDR Mapping', desc: 'Correlate IP assignments with providers.', icon: (p) => <Map {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { parentId: 'IPDR', id: 'ga', name: 'Geo Analysis', desc: 'Track geographical origins of IP addresses.', icon: (p) => <Globe {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'IPDR', id: 'cmn', name: 'Common Mobile Numbers / IMEI / Cell IDs / Destination IP / Destination Port', desc: 'Identify shared entities and ports across IP records.', icon: (p) => <Users {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'IPDR', id: 'cwsm', name: 'Compare with Suspect Mobile Numbers / IMEI / Cell IDs / Destination IP Group', desc: 'Cross-reference with suspect IP and mobile groups.', icon: (p) => <UserX {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'IPDR', id: 'ibpn', name: 'Identify B Party Numbers', desc: 'Trace secondary contacts.', icon: (p) => <Search {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { parentId: 'IPDR', id: 'ipdrr', name: 'IPDR Requisition', desc: 'Request official logs from ISPs.', icon: (p) => <FileText {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'IPDR', id: 'cwip', name: 'Country-wise IPs', desc: 'Breakdown IP assignments globally.', icon: (p) => <Globe {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { parentId: 'IPDR', id: 'umn', name: 'Uncommon / Missing Numbers', desc: 'Detect anomalous IPs or ports.', icon: (p) => <UserMinus {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { parentId: 'IPDR', id: 'sa', name: 'Split Analysis', desc: 'Detailed granular analysis of traffic.', icon: (p) => <Scissors {...p} />, color: 'text-sky-500', bg: 'bg-sky-50' },
+  { parentId: 'IPDR', id: 'ipdrd1', name: 'IPDR-DEMO_1', desc: 'Interactive demonstration module 1.', icon: (p) => <PlayCircle {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
+  { parentId: 'IPDR', id: 'ipdrd2', name: 'IPDR-DEMO_2', desc: 'Interactive demonstration module 2.', icon: (p) => <PlayCircle {...p} />, color: 'text-pink-500', bg: 'bg-pink-50' }
+];
+
 export const ALL_SUB_TOOLS = [
   ...SMI_TOOLS,
   ...RII_TOOLS,
@@ -241,5 +324,10 @@ export const ALL_SUB_TOOLS = [
   ...LRI_TOOLS,
   ...ERI_TOOLS,
   ...PSRI_TOOLS,
-  ...CORI_TOOLS
+  ...CORI_TOOLS,
+  ...PPRI_TOOLS,
+  ...ILD_TOOLS,
+  ...TDR_TOOLS,
+  ...CDR_TOOLS,
+  ...IPDR_TOOLS
 ];

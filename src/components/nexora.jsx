@@ -95,7 +95,7 @@ const nexoraLogoFooter = '/nexora logo.png';
  * @param {Function} [props.onClick]  - Callback invoked with the tool object when the card is clicked
  * @returns {JSX.Element} A clickable card with icon, name, and description
  */
-export default function ToolCard({ tool, index = 0, onClick }) {
+export default function ToolCard({ tool, index = 0, onClick, customHeight }) {
   const IconComponent = tool.icon;
   const isElement = React.isValidElement(tool.icon); // True if icon is already a JSX element
   const toolName = tool.name || tool.title;           // Support both `name` and legacy `title` keys
@@ -109,11 +109,13 @@ export default function ToolCard({ tool, index = 0, onClick }) {
   // Alternate slide direction: even rows from left, odd rows from right
   const slideAnimation = rowIndex % 2 === 0 ? 'animate-card-slide-left' : 'animate-card-slide-right';
 
+  const cardHeight = customHeight || 'h-[84px] sm:h-[96px]';
+
   return (
     <div
       onClick={() => onClick && onClick(tool)}
       style={{ animationDelay: `${delayMs}ms` }}
-      className={`${slideAnimation} bg-white rounded-[14px] sm:rounded-[18px] p-2.5 sm:p-3.5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-250 ease-out cursor-pointer flex items-center gap-2.5 sm:gap-4 group select-none relative overflow-hidden h-[84px] sm:h-[96px]`}
+      className={`${slideAnimation} bg-white rounded-[14px] sm:rounded-[18px] p-2.5 sm:p-3.5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-250 ease-out cursor-pointer flex items-center gap-2.5 sm:gap-4 group select-none relative overflow-hidden ${cardHeight}`}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
@@ -150,10 +152,10 @@ export default function ToolCard({ tool, index = 0, onClick }) {
 
       {/* Right Text Stack */}
       <div className="flex flex-col text-left min-w-0 relative z-0">
-        <h3 className="text-[11px] sm:text-[14px] font-bold text-slate-900 line-clamp-2 leading-snug group-hover:text-red-600 transition-colors">
+        <h3 className="text-[11px] sm:text-[14px] font-bold text-slate-900 leading-snug line-clamp-3 group-hover:text-red-600 transition-colors">
           {toolName}
         </h3>
-        <p className="text-[9.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight line-clamp-2 mt-0.5 sm:mt-1">
+        <p className="text-[9.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight line-clamp-1 sm:line-clamp-2 mt-0.5 sm:mt-1">
           {tool.description}
         </p>
       </div>
@@ -434,7 +436,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
       <div className="w-full relative select-none mb-6 lg:mb-8">
         {/* Grey Road Track */}
         <div className="h-6 sm:h-8 w-full bg-[#71767E] border-y border-[#595E66] relative flex items-center shadow-inner">
-          
+
           {/* Static White Dashed Center Line */}
           <div className="w-full h-[2px] sm:h-[3px] bg-[repeating-linear-gradient(90deg,#FFFFFF_0px,#FFFFFF_24px,transparent_24px,transparent_48px)] opacity-90 absolute top-1/2 -translate-y-1/2 left-0 pointer-events-none"></div>
 
@@ -444,7 +446,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
               <RunningManCanvas />
             </div>
           </div>
-          
+
           {/* USER'S EXACT ANIMATED CSS CAR DRIVING ON THE GREY LINE */}
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ animation: 'driveAcross 10s linear infinite', willChange: 'transform' }}>
             <div className="css-car-wrapper">
