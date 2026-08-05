@@ -130,25 +130,14 @@ export default function TDRPage({ onBack }) {
         <main className="flex-1 pt-1 pb-4">
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
             {TDR_TOOLS.map((tool, index) => (
-              <div 
+              <ToolCard 
                 key={tool.id} 
-                className="opacity-0"
-                style={{ animation: 'fadeInUp 0.5s ease-out forwards', animationDelay: `${0.1 + index * 0.05}s` }}
-              >
-                <ToolCard 
-                  tool={{ ...tool, description: tool.desc }} 
-                  onClick={() => handleSelectSubPage(tool.id)} 
-                />
-              </div>
+                tool={{ ...tool, description: tool.desc }} 
+                index={index}
+                onClick={() => handleSelectSubPage(tool.id)} 
+              />
             ))}
           </div>
-          
-          <style jsx>{`
-            @keyframes fadeInUp {
-              from { opacity: 0; transform: translateY(10px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-          `}</style>
         </main>
       </div>
     </div>

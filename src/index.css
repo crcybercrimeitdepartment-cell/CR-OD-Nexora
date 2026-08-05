@@ -5,6 +5,11 @@
     overflow-x: hidden;
     width: 100%;
     scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: auto;
+    /* Enables momentum scroll & native back swipe gesture */
+    -webkit-overflow-scrolling: touch;
+    /* Enables momentum scroll on iOS */
   }
 
   body {
@@ -21,6 +26,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
 
 /* Custom transparent scrollbar */
 ::-webkit-scrollbar {
@@ -245,6 +251,49 @@
   display: inline-block;
   opacity: 0;
   animation: slideInChar 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   PAGE HEADING SMOOTH REVEAL ANIMATION
+   Applies a premium, incredibly smooth fade-up with a subtle blur reveal.
+   ========================================================================== */
+@keyframes smoothHeadingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    filter: blur(6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideUpFadeSubtle {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header h1 {
+  animation: smoothHeadingReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: inline-block;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+}
+
+header p {
+  opacity: 0;
+  animation: slideUpFadeSubtle 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  will-change: transform, opacity;
 }
 
 /* ==========================================================================
@@ -558,6 +607,7 @@
   0% {
     transform: translateX(-130px);
   }
+
   100% {
     transform: translateX(calc(110vw + 190px));
   }
@@ -588,6 +638,7 @@
   .thief-wrapper {
     transform: translateY(-74%) scale(0.48) translateZ(0);
   }
+
   .css-car-wrapper {
     transform: translateY(-65%) scale(0.38) translateZ(0);
   }

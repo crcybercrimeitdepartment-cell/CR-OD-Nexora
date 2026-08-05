@@ -1,4 +1,27 @@
-import React from 'react';
+import { OSINT_TOOLS } from '../data/subTools';
+import React, { useState, useEffect } from 'react';
+import ToolCard from '../components/nexora';
+
+import IIPage from "./OSINT-OpenSourceIntelligence/II-IdentityIntelligence";
+import ITIPage from "./OSINT-OpenSourceIntelligence/ITI-InternetIntelligence";
+import IMIPage from "./OSINT-OpenSourceIntelligence/IMI-ImageIntelligence";
+import DIPage from "./OSINT-OpenSourceIntelligence/DI-DocumentIntelligence";
+import CIPage from "./OSINT-OpenSourceIntelligence/CI-CryptocurrencyIntelligence";
+import DWIPage from "./OSINT-OpenSourceIntelligence/DWI-DarkWebIntelligence";
+import GSIPage from "./OSINT-OpenSourceIntelligence/GSI-GeospatialIntelligence";
+import EIPage from "./OSINT-OpenSourceIntelligence/EI-EntityIntelligence";
+import RIPage from "./OSINT-OpenSourceIntelligence/RI-RelationshipIntelligence";
+import TIPage from "./OSINT-OpenSourceIntelligence/TI-ThreatIntelligence";
+import RSIPage from "./OSINT-OpenSourceIntelligence/RSI-RiskIntelligence";
+import MIPage from "./OSINT-OpenSourceIntelligence/MI-MonitoringIntelligence";
+import EVIPage from "./OSINT-OpenSourceIntelligence/EVI-EvidenceIntelligence";
+import AIPage from "./OSINT-OpenSourceIntelligence/AI-AnalyticsIntelligence";
+import VIPage from "./OSINT-OpenSourceIntelligence/VI-VisualizationIntelligence";
+import UPIIPage from "./OSINT-OpenSourceIntelligence/UPII-UPIIntelligence";
+import LIPage from "./OSINT-OpenSourceIntelligence/LI-LandlineIntelligence";
+import OSWPage from "./OSINT-OpenSourceIntelligence/OSW-OpenSourceWebsites";
+import DBIPage from "./OSINT-OpenSourceIntelligence/DBI-DataBreachIntelligence";
+import ICCIPage from "./OSINT-OpenSourceIntelligence/ICCI-InternationalCallingCodeIntelligence";
 
 /**
  * Header Component.
@@ -9,16 +32,19 @@ import React from 'react';
  * @param {string} [props.description] - Optional override for the description.
  * @returns {JSX.Element} The rendered header component.
  */
-export function Header() {
+export function Header({ title, description }) {
+  const displayTitle = title || "Open Source Intelligence";
+  const displayDesc = description || "Gather and analyze publicly available data from diverse sources.";
+
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">
       <div className="flex items-center justify-center w-full relative z-20">
         <div className="flex-1 text-center flex flex-col items-center justify-center min-w-0 pt-1 sm:pt-2 md:pt-3 px-2">
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
-            <span>Open Source Intelligence</span>
+            <span>{displayTitle}</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Investigate public footprints, WHOIS records, and open web data.
+            {displayDesc}
           </p>
         </div>
       </div>
@@ -35,9 +61,58 @@ export function Header() {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function OSINTPage({ onBack }) {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
+  const [selectedSubPage, setSelectedSubPage] = useState(null);
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (event.state && event.state.page === 'OSINT' && event.state.subPage) {
+        setSelectedSubPage(event.state.subPage);
+      } else {
+        setSelectedSubPage(null);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    
+    if (window.history.state && window.history.state.subPage) {
+      setSelectedSubPage(window.history.state.subPage);
+    }
+    
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
+
+  const handleSelectSubPage = (id) => {
+    window.history.pushState({ page: 'OSINT', subPage: id }, '', '#OSINT-' + id);
+    setSelectedSubPage(id);
+  };
+
+  const handleSubPageBack = () => {
+    if (window.history.state && window.history.state.subPage) {
+      window.history.back();
+    } else {
+      setSelectedSubPage(null);
+    }
+  };
+
+  if (selectedSubPage === 'ii') return <IIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'iti') return <ITIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'imi') return <IMIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'di') return <DIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ci') return <CIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'dwi') return <DWIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'gsi') return <GSIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ei') return <EIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ri') return <RIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ti') return <TIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'rsi') return <RSIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'mi') return <MIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'evi') return <EVIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ai') return <AIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'vi') return <VIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'upii') return <UPIIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'li') return <LIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'osw') return <OSWPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'dbi') return <DBIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'icci') return <ICCIPage onBack={handleSubPageBack} />;
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">
@@ -54,24 +129,15 @@ export default function OSINTPage({ onBack }) {
       <Header />
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
         <main className="flex-1 pt-1 pb-4">
-          <div className="flex flex-col items-center justify-center py-12 sm:py-20 px-4 opacity-0 animate-fade-in" style={{ animation: 'fadeIn 0.5s ease-out forwards', animationDelay: '0.2s' }}>
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-full flex items-center justify-center mb-6 shadow-[0_8px_30px_rgba(37,99,235,0.12)] border border-blue-200/50">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#1e2a52] to-blue-800 mb-3 sm:mb-4 tracking-tight drop-shadow-sm text-center">
-              Coming Soon
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base text-slate-500 font-medium text-center max-w-lg leading-relaxed">
-              We are actively developing powerful new analytics tools for Open Source Intelligence. These features will be available in the next major update.
-            </p>
-            <style jsx>{`
-              @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-              }
-            `}</style>
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
+            {OSINT_TOOLS.map((tool, index) => (
+              <ToolCard
+                key={tool.id}
+                tool={{ ...tool, description: tool.desc }}
+                index={index}
+                onClick={() => handleSelectSubPage(tool.id)}
+              />
+            ))}
           </div>
         </main>
       </div>

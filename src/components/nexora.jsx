@@ -14,6 +14,7 @@
  *  - All components are fully responsive (mobile-first Tailwind breakpoints).
  */
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   PhoneCall,
   UserCheck,
@@ -61,7 +62,8 @@ import {
   AlertTriangle,
   Shield,
   Newspaper,
-  Wifi
+  Wifi,
+  Settings
 } from 'lucide-react';
 
 const cyberCrimeLogo = 'https://res.cloudinary.com/dlhmkbijh/image/upload/v1785473583/Logo_mswjel.png';
@@ -95,7 +97,7 @@ const nexoraLogoFooter = '/nexora logo.png';
  * @param {Function} [props.onClick]  - Callback invoked with the tool object when the card is clicked
  * @returns {JSX.Element} A clickable card with icon, name, and description
  */
-export default function ToolCard({ tool, index = 0, onClick, customHeight }) {
+export default function ToolCard({ tool, index = 0, onClick, customHeight, disableCssAnimation = false }) {
   const IconComponent = tool.icon;
   const isElement = React.isValidElement(tool.icon); // True if icon is already a JSX element
   const toolName = tool.name || tool.title;           // Support both `name` and legacy `title` keys
@@ -107,14 +109,14 @@ export default function ToolCard({ tool, index = 0, onClick, customHeight }) {
   // Stagger delay: each row pair is delayed 120ms later than the one above it
   const delayMs = rowIndex * 120;
   // Alternate slide direction: even rows from left, odd rows from right
-  const slideAnimation = rowIndex % 2 === 0 ? 'animate-card-slide-left' : 'animate-card-slide-right';
+  const slideAnimation = disableCssAnimation ? '' : (rowIndex % 2 === 0 ? 'animate-card-slide-left' : 'animate-card-slide-right');
 
   const cardHeight = customHeight || 'h-[84px] sm:h-[96px]';
 
   return (
     <div
       onClick={() => onClick && onClick(tool)}
-      style={{ animationDelay: `${delayMs}ms` }}
+      style={disableCssAnimation ? {} : { animationDelay: `${delayMs}ms` }}
       className={`${slideAnimation} bg-white rounded-[14px] sm:rounded-[18px] p-2.5 sm:p-3.5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-250 ease-out cursor-pointer flex items-center gap-2.5 sm:gap-4 group select-none relative overflow-hidden ${cardHeight}`}
       role="button"
       tabIndex={0}
@@ -156,7 +158,7 @@ export default function ToolCard({ tool, index = 0, onClick, customHeight }) {
           {toolName}
         </h3>
         <p className="text-[9.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight line-clamp-1 sm:line-clamp-2 mt-0.5 sm:mt-1">
-          {tool.description}
+          {tool.description || tool.desc}
         </p>
       </div>
     </div>
@@ -212,7 +214,7 @@ export function TIIIcon({ className = "w-8 h-8" }) { return <Wifi className={cla
 export function TDIIcon({ className = "w-8 h-8" }) { return <Radio className={className} />; }
 export function IntelligenceModulesIcon({ className = "w-8 h-8" }) { return <Cpu className={className} />; }
 export function AboutUsIcon({ className = "w-8 h-8" }) { return <Info className={className} />; }
-export function ContactUsIcon({ className = "w-8 h-8" }) { return <Phone className={className} />; }
+export function AccountSettingIcon({ className = "w-8 h-8" }) { return <Settings className={className} />; }
 
 
 
@@ -235,19 +237,32 @@ export function ContactUsIcon({ className = "w-8 h-8" }) { return <Phone classNa
  * @returns {JSX.Element} A full-width <header> element
  */
 export function Header({ searchQuery = "", onSearchChange = () => { } }) {
+  const { scrollY } = useScroll();
+
+  const logoY = useTransform(scrollY, [0, 150], [0, -20]);
+  const logoRotate = useTransform(scrollY, [0, 150], [0, -5]);
+  const rightLogoRotate = useTransform(scrollY, [0, 150], [0, 5]);
+  const logoOpacity = useTransform(scrollY, [0, 150], [1, 0]);
+
+  const searchScale = useTransform(scrollY, [0, 150], [1, 0.95]);
+  const shadowOpacity = useTransform(scrollY, [0, 150], [0.12, 0]);
+
   return (
     <header className="w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Header Row: Left Logo | Center Title & Subtitle | Right Logo */}
         <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 w-full">
           {/* LEFT LOGO: Nexora */}
-          <div className="shrink-0 flex items-center justify-start">
+          <motion.div
+            style={{ y: logoY, rotate: logoRotate, opacity: logoOpacity }}
+            className="shrink-0 flex items-center justify-start"
+          >
             <img
               src={nexoraLogoHeader}
               alt="Nexora Logo"
               className="h-20 sm:h-28 md:h-36 lg:h-44 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-200"
             />
-          </div>
+          </motion.div>
 
           {/* CENTER: Page Title & Subtitle & Search */}
           <div className="flex-1 text-center flex flex-col items-center justify-center px-1 sm:px-2 min-w-0">
@@ -263,35 +278,42 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
               <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#b0b8d6] to-transparent opacity-70"></div>
             </div>
 
-            {/* Search Bar & Follow Button */}
-            <div className="flex items-center justify-center gap-2 sm:gap-3.5 w-full max-w-xl mx-auto">
+            <motion.div
+              style={{ scale: searchScale }}
+              className="flex items-center justify-center gap-2 sm:gap-3.5 w-full max-w-xl mx-auto"
+            >
               <div className="relative flex-1 group">
                 <svg className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1e2a52] transition-colors pointer-events-none z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
-                <input
+                <motion.input
                   type="text"
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
-                  className="w-full bg-white border-2 border-[#1e2a52]/40 hover:border-[#1e2a52] rounded-full py-1.5 sm:py-2.5 pl-9 sm:pl-11 pr-3 sm:pr-4 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-[#1e2a52]/20 focus:border-[#1e2a52] transition-all shadow-[0_4px_16px_rgba(30,42,82,0.12)] text-[#1e2a52] placeholder-[#1e2a52]/60"
+                  style={{ boxShadow: useTransform(shadowOpacity, v => `0 4px 16px rgba(30,42,82,${v})`) }}
+                  className="w-full bg-white border-2 border-[#1e2a52]/40 hover:border-[#1e2a52] rounded-full py-1.5 sm:py-2.5 pl-9 sm:pl-11 pr-3 sm:pr-4 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-[#1e2a52]/20 focus:border-[#1e2a52] transition-all text-[#1e2a52] placeholder-[#1e2a52]/60"
                 />
               </div>
-              <button aria-label="Follow Nexora updates" className="flex items-center justify-center gap-1.5 bg-[#1e2a52] hover:bg-[#16203e] text-white p-2.5 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md hover:shadow-lg active:scale-95 whitespace-nowrap group cursor-pointer shrink-0">
-                <UserPlus className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+              <button className="flex items-center justify-center gap-1.5 sm:gap-2 bg-[#1e2a52] hover:bg-[#121c3b] text-white font-bold py-1.5 sm:py-2.5 px-3 sm:px-6 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-[0_4px_12px_rgba(30,42,82,0.3)] hover:shadow-[0_6px_16px_rgba(30,42,82,0.4)] hover:-translate-y-0.5 shrink-0">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                </svg>
                 <span className="hidden sm:inline">Follow</span>
               </button>
-            </div>
+            </motion.div>
           </div>
 
-          {/* RIGHT LOGO: CR Cyber Crime Foundation Logo */}
-          <div className="shrink-0 flex items-center justify-end">
+          <motion.div
+            style={{ y: logoY, rotate: rightLogoRotate, opacity: logoOpacity }}
+            className="shrink-0 flex items-center justify-end"
+          >
             <img
               src={cyberCrimeLogo}
               alt="CR Cyber Crime Foundation"
               className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 object-contain drop-shadow-md hover:scale-105 transition-transform duration-200"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </header>

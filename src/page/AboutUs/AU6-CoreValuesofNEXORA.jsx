@@ -15,10 +15,10 @@ export function Header() {
       <div className="flex items-center justify-center w-full relative z-20">
         <div className="flex-1 text-center flex flex-col items-center justify-center min-w-0 pt-1 sm:pt-2 md:pt-3 px-2">
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
-            <span>Contact Us</span>
+            <span>Core Values of NEXORA</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Get in touch with our team for support, enterprise integration & general queries.
+            Analytics and data records for Core Values of NEXORA.
           </p>
         </div>
       </div>
@@ -34,7 +34,7 @@ export function Header() {
  * @param {Function} props.onBack - Callback function triggered when the user clicks the "Back" button to return to the parent dashboard.
  * @returns {JSX.Element} The rendered page layout.
  */
-export default function ContactUsPage({ onBack }) {
+export default function AU6Page({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -43,8 +43,7 @@ export default function ContactUsPage({ onBack }) {
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">
       {onBack && (
         <button onClick={onBack}
-          className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm"
-        >
+          className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm">
           <svg className="w-4 h-4 text-[#1e2a52]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
           </svg>
@@ -64,7 +63,7 @@ export default function ContactUsPage({ onBack }) {
               Coming Soon
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-slate-500 font-medium text-center max-w-lg leading-relaxed">
-              We are actively developing powerful new analytics tools for Contact Us. These features will be available in the next major update.
+              We are actively developing powerful new analytics tools for Core Values of NEXORA. These features will be available in the next major update.
             </p>
             <style jsx>{`
               @keyframes fadeIn {
