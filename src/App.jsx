@@ -221,11 +221,31 @@ export default function App() {
       anticipatePin: 1,
     });
 
-    if (selectedPage === null) {
-      // 2. Animate cards dynamically on main page
+    // 2. Symmetric butter-smooth card shrink & fade animation for ALL pages EXCEPT AccountSetting
+    if (selectedPage !== 'AccountSetting') {
       const cards = gsap.utils.toArray('.tool-card-gsap');
-      if (cards.length > 0) {
-        gsap.fromTo(cards,
+      cards.forEach((card) => {
+        gsap.to(card, {
+          opacity: 0,
+          scale: 0.6,
+          y: -15,
+          transformOrigin: "center top",
+          ease: "sine.inOut", // Symmetric easing curve for fluid motion in both directions!
+          scrollTrigger: {
+            trigger: card,
+            start: "top 50px",  // Starts shrinking near header boundary
+            end: "top -30px",   // Fully disappears under top header
+            scrub: 0.5,         // 0.5s Physics inertia cushion for smooth direction reversal
+          }
+        });
+      });
+    }
+
+    if (selectedPage === null) {
+      // 3. Animate cards entry dynamically on main page
+      const mainCards = gsap.utils.toArray('.tool-card-gsap');
+      if (mainCards.length > 0) {
+        gsap.fromTo(mainCards,
           {
             x: (index) => {
               const row = Math.floor(index / 4);
@@ -244,7 +264,6 @@ export default function App() {
             stagger: 0.05,
             ease: "expo.out",
             force3D: true,
-            clearProps: "transform",
             scrollTrigger: {
               trigger: "#cards-container",
               start: "top 80%",
