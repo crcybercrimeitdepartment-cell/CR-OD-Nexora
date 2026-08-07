@@ -6,6 +6,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useStickyNavAnimation } from './components/useStickyNavAnimation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,6 +56,29 @@ import AccountSettingPage from "./page/AccountSetting";
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPage, setSelectedPage] = useState(null);
+
+  const getColsForWidth = (w) => {
+    if (w < 768) return 2;
+    if (w < 1024) return 3;
+    return 4;
+  };
+
+  const [layoutConfig, setLayoutConfig] = useState(() => ({
+    cols: typeof window !== 'undefined' ? getColsForWidth(window.innerWidth) : 4,
+    chunkSize: 16
+  }));
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currentCols = getColsForWidth(window.innerWidth);
+      setLayoutConfig(prev => prev.cols === currentCols ? prev : { ...prev, cols: currentCols });
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const mainRef = React.useRef(null);
 
   const query = searchQuery.trim().toLowerCase();
 
@@ -206,80 +230,91 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [searchQuery, selectedPage]);
 
-  useGSAP(() => {
-    // Revert existing scroll triggers before creating new ones to prevent duplication on re-renders
-    ScrollTrigger.getAll().forEach(t => t.kill());
-
-    // 1. Pin the background watermark for ALL pages (Main Page & Sub-pages like CDR, SDR, etc.)
-    ScrollTrigger.create({
-      trigger: "#cards-container",
-      pin: "#watermark-bg",
-      start: "top top",
-      end: "bottom bottom",
-      pinSpacing: false,
-      pinType: "fixed",
-      anticipatePin: 1,
-    });
-
-    // 2. Symmetric butter-smooth card shrink & fade animation for ALL pages EXCEPT AccountSetting
-    if (selectedPage !== 'AccountSetting') {
-      const cards = gsap.utils.toArray('.tool-card-gsap');
-      cards.forEach((card) => {
-        gsap.to(card, {
-          opacity: 0,
-          scale: 0.6,
-          y: -15,
-          transformOrigin: "center top",
-          ease: "sine.inOut", // Symmetric easing curve for fluid motion in both directions!
-          scrollTrigger: {
-            trigger: card,
-            start: "top 50px",  // Starts shrinking near header boundary
-            end: "top -30px",   // Fully disappears under top header
-            scrub: 0.5,         // 0.5s Physics inertia cushion for smooth direction reversal
-          }
-        });
-      });
-    }
-
-    if (selectedPage === null) {
-      // 3. Animate cards entry dynamically on main page
-      const mainCards = gsap.utils.toArray('.tool-card-gsap');
-      if (mainCards.length > 0) {
-        gsap.fromTo(mainCards,
-          {
-            x: (index) => {
-              const row = Math.floor(index / 4);
-              return row % 2 === 0 ? -120 : 120;
-            },
-            y: 0,
-            opacity: 0,
-            scale: 0.96
-          },
-          {
-            x: 0,
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.7,
-            stagger: 0.05,
-            ease: "expo.out",
-            force3D: true,
-            scrollTrigger: {
-              trigger: "#cards-container",
-              start: "top 80%",
-              end: "bottom top",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      }
-    }
-  }, { dependencies: [selectedPage, query] }); // hook depends on route and search query changes
+  useStickyNavAnimation({
+    selectedPage,
+    layoutConfig,
+    query: searchQuery,
+    scopeRef: mainRef
+  });
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-slate-900 selection:text-white bg-[#f0f6ff] w-full max-w-full">
+    <div ref={mainRef} className="min-h-screen flex flex-col font-sans selection:bg-slate-900 selection:text-white bg-[#f0f6ff] w-full max-w-full">
       {/* GLOBAL HEADER */}
       <GlobalHeader searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+
+      {/* STICKY ICON NAV (Populated row by row as cards fly into it) */}
+      <div id="sticky-icon-nav" className="fixed top-0 left-0 w-full bg-transparent border-b border-transparent z-40 pointer-events-none transition-colors duration-300">
+        <div className="w-full max-h-[140px] sm:max-h-[170px] overflow-hidden">
+          <div id="sticky-icon-nav-scroll" className="relative flex justify-between items-center px-2 sm:px-6 py-2 w-full min-h-[60px] sm:min-h-[80px]">
+            {(() => {
+              const { cols } = layoutConfig;
+              const tools = NEXORA_MODULES.slice(0, -cols);
+
+              const leftSideCards = [];
+              const rightSideCards = [];
+
+              for (let i = 0; i < tools.length; i += cols) {
+                const rowCards = tools.slice(i, i + cols);
+                const mid = Math.ceil(rowCards.length / 2);
+
+                const leftPart = rowCards.slice(0, mid);
+                leftPart.reverse().forEach((tool, idx) => {
+                  leftSideCards.push({ tool, originalIdx: i + (mid - 1 - idx) });
+                });
+
+                const rightPart = rowCards.slice(mid);
+                rightPart.forEach((tool, idx) => {
+                  rightSideCards.push({ tool, originalIdx: i + mid + idx });
+                });
+              }
+
+              return (
+                <>
+                  {/* LEFT SIDE QUEUE - CDR at far left, then SDR, etc. */}
+                  <div className="flex flex-row-reverse justify-end items-center w-1/2 overflow-hidden" style={{ gap: 0 }}>
+                    {leftSideCards.map(({ tool, originalIdx }) => {
+                      const IconComp = tool.icon;
+                      const isElement = React.isValidElement(tool.icon);
+                      return (
+                        <div key={`left-${originalIdx}`} id={`sticky-wrapper-${originalIdx}`} className="max-w-0 opacity-0 overflow-hidden shrink-0 flex items-center justify-center">
+                          <div className="px-1 sm:px-2 flex items-center justify-center">
+                            <div id={`sticky-icon-${originalIdx}`} className="flex flex-col items-center gap-1 min-w-[44px] sm:min-w-[50px] cursor-pointer group scale-50" onClick={() => handleToolClick(tool)}>
+                              <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center ${tool.bgColor || 'bg-slate-100'} ${tool.iconColor || 'text-slate-600'} transition-transform group-hover:scale-110 shadow-sm border border-slate-200/50`}>
+                                {isElement ? tool.icon : typeof IconComp === 'function' ? <IconComp className="w-4 h-4 sm:w-5 sm:h-5" /> : null}
+                              </div>
+                              <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* RIGHT SIDE QUEUE - ILD at far right, then TDR, etc. */}
+                  <div className="flex flex-row justify-end items-center w-1/2 overflow-hidden" style={{ gap: 0 }}>
+                    {rightSideCards.map(({ tool, originalIdx }) => {
+                      const IconComp = tool.icon;
+                      const isElement = React.isValidElement(tool.icon);
+                      return (
+                        <div key={`right-${originalIdx}`} id={`sticky-wrapper-${originalIdx}`} className="max-w-0 opacity-0 overflow-hidden shrink-0 flex items-center justify-center">
+                          <div className="px-1 sm:px-2 flex items-center justify-center">
+                            <div id={`sticky-icon-${originalIdx}`} className="flex flex-col items-center gap-1 min-w-[44px] sm:min-w-[50px] cursor-pointer group scale-50" onClick={() => handleToolClick(tool)}>
+                              <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center ${tool.bgColor || 'bg-slate-100'} ${tool.iconColor || 'text-slate-600'} transition-transform group-hover:scale-110 shadow-sm border border-slate-200/50`}>
+                                {isElement ? tool.icon : typeof IconComp === 'function' ? <IconComp className="w-4 h-4 sm:w-5 sm:h-5" /> : null}
+                              </div>
+                              <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      </div>
 
       {/* MAIN CONTENT AREA WITH ASHOK STAMBH WATERMARK */}
       <div id="cards-container" className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null ? 'min-h-[125vh]' : ''}`}>
@@ -298,7 +333,7 @@ export default function App() {
         </div>
 
         <div className="relative z-10 flex-1 flex flex-col w-full">
-          <main className="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 sm:py-8 lg:py-10 flex flex-col min-h-[calc(100vh-160px)]">
+          <main className="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-3 pt-6 sm:pt-8 lg:pt-10 flex flex-col min-h-[calc(100vh-130px)]">
             {selectedPage === null ? (
               query && filteredMainTools.length === 0 && filteredSubTools.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20 opacity-0 animate-fade-in flex-1" style={{ animation: 'fadeIn 0.4s ease-out forwards' }}>

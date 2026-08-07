@@ -2,12 +2,6 @@ import React from 'react';
 
 /**
  * Header Component.
- * Renders the title and a brief description of the page's purpose.
- * 
- * @param {Object} props - Component properties.
- * @param {string} [props.title] - Optional override for the title.
- * @param {string} [props.description] - Optional override for the description.
- * @returns {JSX.Element} The rendered header component.
  */
 export function Header() {
   return (
@@ -15,10 +9,10 @@ export function Header() {
       <div className="flex items-center justify-center w-full relative z-20">
         <div className="flex-1 text-center flex flex-col items-center justify-center min-w-0 pt-1 sm:pt-2 md:pt-3 px-2">
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
-            <span>Core Intelligence Modules of NEXORA</span>
+            <span>About Us demo 1</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analytics and data records for Core Intelligence Modules of NEXORA.
+            Analytics and data records for About Us demo 1.
           </p>
         </div>
       </div>
@@ -28,13 +22,8 @@ export function Header() {
 
 /**
  * Main Page Component.
- * Handles the display, routing, and user interactions for this specific intelligence record.
- * 
- * @param {Object} props - Component properties.
- * @param {Function} props.onBack - Callback function triggered when the user clicks the "Back" button to return to the parent dashboard.
- * @returns {JSX.Element} The rendered page layout.
  */
-export default function AU9Page({ onBack }) {
+export default function AU31Page({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -52,7 +41,7 @@ export default function AU9Page({ onBack }) {
       )}
       <Header />
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
-        <main className="flex-1 pt-1 pb-4">
+        <main className="flex-1 pt-1 pb-4 bg-transparent">
           <div className="flex flex-col items-center justify-center py-12 sm:py-20 px-4 opacity-0 animate-fade-in" style={{ animation: 'fadeIn 0.5s ease-out forwards', animationDelay: '0.2s' }}>
             <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-full flex items-center justify-center mb-6 shadow-[0_8px_30px_rgba(37,99,235,0.12)] border border-blue-200/50">
               <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +52,7 @@ export default function AU9Page({ onBack }) {
               Coming Soon
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-slate-500 font-medium text-center max-w-lg leading-relaxed">
-              We are actively developing powerful new analytics tools for Core Intelligence Modules of NEXORA. These features will be available in the next major update.
+              We are actively developing powerful new analytics tools for About Us demo 1. These features will be available in the next major update.
             </p>
             <style jsx>{`
               @keyframes fadeIn {
