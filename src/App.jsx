@@ -248,7 +248,7 @@ export default function App() {
           <div id="sticky-icon-nav-scroll" className="relative flex justify-between items-center px-2 sm:px-6 py-2 w-full min-h-[60px] sm:min-h-[80px]">
             {(() => {
               const { cols } = layoutConfig;
-              const tools = NEXORA_MODULES.slice(0, -cols);
+              const tools = NEXORA_MODULES;
 
               const leftSideCards = [];
               const rightSideCards = [];
@@ -333,7 +333,7 @@ export default function App() {
         </div>
 
         <div className="relative z-10 flex-1 flex flex-col w-full">
-          <main className="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-3 pt-6 sm:pt-8 lg:pt-10 flex flex-col min-h-[calc(100vh-130px)]">
+          <main className="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 pt-16 sm:pt-20 lg:pt-24 flex flex-col min-h-[calc(100vh-160px)]">
             {selectedPage === null ? (
               query && filteredMainTools.length === 0 && filteredSubTools.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20 opacity-0 animate-fade-in flex-1" style={{ animation: 'fadeIn 0.4s ease-out forwards' }}>

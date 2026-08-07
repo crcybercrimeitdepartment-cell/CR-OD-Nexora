@@ -81,10 +81,8 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
         const staggerDelay = 0;
 
         const isMobile = window.innerWidth < 768;
-        const isRowZero = index < layoutConfig.cols;
-
-        // Row 0 starts morphing when scroll begins (startOffset = 15px) so icons don't sit at top on page load
-        const startOffset = isRowZero ? 15 : (isMobile ? 80 : 120);
+        // Animation starts ONLY AFTER the header section has scrolled up (startOffset = 35px mobile / 45px desktop)
+        const startOffset = isMobile ? 35 : 45;
         const endOffset = 5;
 
         const getDynamicStart = () => {
@@ -105,7 +103,7 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
             trigger: card,
             start: getDynamicStart,
             end: getDynamicEnd,
-            scrub: true, // 100% manual scroll control - zero auto-scrolling
+            scrub: true,
           }
         });
 
@@ -179,10 +177,10 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
             let finalTargetCenterX = 0;
 
             if (isLeftSide) {
-              const queueIdx = isMobile ? 0 : gridCol;
+              const queueIdx = isMobile ? (row % 4) : gridCol;
               finalTargetCenterX = queueRect.left + (queueIdx * wrapperWidth) + (wrapperWidth / 2);
             } else {
-              const distFromEdge = isMobile ? 0 : ((cols - 1) - gridCol);
+              const distFromEdge = isMobile ? (row % 4) : ((cols - 1) - gridCol);
               finalTargetCenterX = queueRect.right - (distFromEdge * wrapperWidth) - (wrapperWidth / 2);
             }
 
