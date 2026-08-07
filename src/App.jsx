@@ -7,6 +7,10 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useStickyNavAnimation } from './components/useStickyNavAnimation';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
+import laptopWatermark from './assets/WaterMark.png';
+import phoneWatermark from './assets/PhoneWaterMark.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,7 +63,6 @@ export default function App() {
 
   const getColsForWidth = (w) => {
     if (w < 768) return 2;
-    if (w < 1024) return 3;
     return 4;
   };
 
@@ -77,6 +80,31 @@ export default function App() {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Initialize Lenis for smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const updateLenis = (time) => {
+      lenis.raf(time * 1000);
+    };
+
+    gsap.ticker.add(updateLenis);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove(updateLenis);
+    };
   }, []);
   const mainRef = React.useRef(null);
 
@@ -130,9 +158,7 @@ export default function App() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    if (window.history.state && window.history.state.page) {
-      window.history.back();
-    } else if (window.location.hash) {
+    if (window.history.length > 1 && (window.history.state?.page || window.location.hash)) {
       window.history.back();
     } else {
       setSelectedPage(null);
@@ -147,18 +173,22 @@ export default function App() {
       document.documentElement.scrollTop = 0;
     };
 
+    const getPageFromHash = (hashString) => {
+      const hash = hashString.replace('#', '');
+      if (!hash) return null;
+      let pageId = hash.split('/')[0];
+      if (pageId.startsWith('AboutUs-')) {
+        return 'AboutUs';
+      }
+      return pageId;
+    };
+
     const handlePopState = (event) => {
       scrollToTop();
       if (event.state && event.state.page) {
         setSelectedPage(event.state.page);
       } else {
-        const hash = window.location.hash.replace('#', '');
-        if (hash) {
-          const parts = hash.split('/');
-          setSelectedPage(parts[0]);
-        } else {
-          setSelectedPage(null);
-        }
+        setSelectedPage(getPageFromHash(window.location.hash));
       }
     };
 
@@ -167,11 +197,7 @@ export default function App() {
     };
 
     // Check initial location hash on mount
-    const initialHash = window.location.hash.replace('#', '');
-    if (initialHash) {
-      const parts = initialHash.split('/');
-      setSelectedPage(parts[0]);
-    }
+    setSelectedPage(getPageFromHash(window.location.hash));
 
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('hashchange', handleHashChange);
@@ -239,6 +265,24 @@ export default function App() {
 
   return (
     <div ref={mainRef} className="min-h-screen flex flex-col font-sans selection:bg-slate-900 selection:text-white bg-[#f0f6ff] w-full max-w-full">
+      {/* Ashok Stambh Global Watermark */}
+      <div id="watermark-bg" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none select-none">
+        <div className="w-full h-full overflow-hidden">
+          {/* Desktop Watermark */}
+          <img
+            src={laptopWatermark}
+            alt="Global Background Desktop"
+            className="hidden md:block w-full h-full object-cover opacity-20 filter drop-shadow-sm"
+          />
+          {/* Mobile Watermark */}
+          <img
+            src={phoneWatermark}
+            alt="Global Background Mobile"
+            className="block md:hidden w-full h-full object-cover opacity-20 filter drop-shadow-sm"
+          />
+        </div>
+      </div>
+
       {/* GLOBAL HEADER */}
       <GlobalHeader searchQuery={searchQuery} onSearchChange={handleSearchChange} />
 
@@ -271,7 +315,7 @@ export default function App() {
               return (
                 <>
                   {/* LEFT SIDE QUEUE - CDR at far left, then SDR, etc. */}
-                  <div className="flex flex-row-reverse justify-end items-center w-1/2 overflow-hidden" style={{ gap: 0 }}>
+                  <div className="flex flex-row-reverse justify-end items-center w-1/2 overflow-hidden" style={{ gap: 0, WebkitMaskImage: 'linear-gradient(to right, black 96%, transparent 100%)', maskImage: 'linear-gradient(to right, black 96%, transparent 100%)' }}>
                     {leftSideCards.map(({ tool, originalIdx }) => {
                       const IconComp = tool.icon;
                       const isElement = React.isValidElement(tool.icon);
@@ -291,7 +335,7 @@ export default function App() {
                   </div>
 
                   {/* RIGHT SIDE QUEUE - ILD at far right, then TDR, etc. */}
-                  <div className="flex flex-row justify-end items-center w-1/2 overflow-hidden" style={{ gap: 0 }}>
+                  <div className="flex flex-row justify-end items-center w-1/2 overflow-hidden" style={{ gap: 0, WebkitMaskImage: 'linear-gradient(to left, black 96%, transparent 100%)', maskImage: 'linear-gradient(to left, black 96%, transparent 100%)' }}>
                     {rightSideCards.map(({ tool, originalIdx }) => {
                       const IconComp = tool.icon;
                       const isElement = React.isValidElement(tool.icon);
@@ -316,24 +360,10 @@ export default function App() {
         </div>
       </div>
 
-      {/* MAIN CONTENT AREA WITH ASHOK STAMBH WATERMARK */}
+      {/* MAIN CONTENT AREA */}
       <div id="cards-container" className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null ? 'min-h-[125vh]' : ''}`}>
-        {/* Ashok Stambh Watermark - GPU Accelerated */}
-        <div id="watermark-bg" className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none select-none flex items-start justify-center" style={{ willChange: 'transform' }}>
-          <div className="h-screen w-full flex items-center justify-center p-4 sm:p-8 overflow-hidden">
-            <img
-              src="/image.png"
-              alt="Ashok Stambh Watermark"
-              className={`w-auto max-w-[92vw] object-contain opacity-[0.15] filter drop-shadow-sm transition-[max-height] duration-500 ${selectedPage === 'KYCDI'
-                ? 'h-full max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[550px]'
-                : 'h-full max-h-[580px] sm:max-h-[780px] md:max-h-[950px] lg:max-h-[1100px]'
-                }`}
-            />
-          </div>
-        </div>
-
         <div className="relative z-10 flex-1 flex flex-col w-full">
-          <main className="flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 pt-16 sm:pt-20 lg:pt-24 flex flex-col min-h-[calc(100vh-160px)]">
+          <main className={`flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 flex flex-col min-h-[calc(100vh-160px)] ${selectedPage === null ? 'pt-16 sm:pt-20 lg:pt-24 pb-10 md:pb-16' : 'pt-2 sm:pt-4'}`}>
             {selectedPage === null ? (
               query && filteredMainTools.length === 0 && filteredSubTools.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20 opacity-0 animate-fade-in flex-1" style={{ animation: 'fadeIn 0.4s ease-out forwards' }}>
@@ -349,7 +379,7 @@ export default function App() {
                   {(!query || filteredMainTools.length > 0) && (
                     <div>
                       {query && <h2 className="text-xl font-bold text-[#1e2a52] mb-4">Main Categories</h2>}
-                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
                         {filteredMainTools.map((tool, index) => (
                           <div className="tool-card-gsap" key={tool.name}>
                             <ToolCard tool={tool} index={index} onClick={handleToolClick} disableCssAnimation={true} />
@@ -363,7 +393,7 @@ export default function App() {
                   {query && filteredSubTools.length > 0 && (
                     <div className="mt-4 pt-6 border-t border-slate-200">
                       <h2 className="text-xl font-bold text-[#1e2a52] mb-4">Inner Intelligence Tools</h2>
-                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
                         {filteredSubTools.map((tool, index) => (
                           <div className="tool-card-gsap" key={`${tool.parentId}-${tool.id}`}>
                             <ToolCard tool={tool} index={index} onClick={handleToolClick} disableCssAnimation={true} />

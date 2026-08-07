@@ -248,7 +248,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
   const shadowOpacity = useTransform(scrollY, [0, 150], [0.12, 0]);
 
   return (
-    <header className="w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8">
+    <header className="w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8 relative z-10">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Header Row: Left Logo | Center Title & Subtitle | Right Logo */}
         <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 w-full">
@@ -453,7 +453,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
   };
 
   return (
-    <footer className="w-full bg-[#cbe6ff] text-[#1e2a52] font-sans border-t border-[#b5d7fb] pt-0 pb-6 mt-14 sm:mt-20 lg:mt-24">
+    <footer className="w-full bg-[#cbe6ff] text-[#1e2a52] font-sans border-t border-[#b5d7fb] pt-0 pb-6 mt-14 sm:mt-20 lg:mt-24 relative z-10">
       {/* TOP GREY LINE STRIP WITH ANIMATED CSS CAR */}
       <div className="w-full relative select-none mb-6 lg:mb-8">
         {/* Grey Road Track */}

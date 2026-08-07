@@ -9,16 +9,6 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
   useGSAP(() => {
     ScrollTrigger.getAll().forEach(t => t.kill());
 
-    ScrollTrigger.create({
-      trigger: "#cards-container",
-      pin: "#watermark-bg",
-      start: "top top",
-      end: "bottom bottom",
-      pinSpacing: false,
-      pinType: "fixed",
-      anticipatePin: 1,
-    });
-
     if (selectedPage !== 'AccountSetting') {
       // 1. Enable interactions on Sticky Nav exactly when Header leaves screen
       gsap.to('#sticky-icon-nav', {

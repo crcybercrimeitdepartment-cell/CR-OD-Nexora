@@ -1,47 +1,26 @@
 import { ABOUTUS_TOOLS } from '../data/subTools';
 import React, { useState, useEffect } from 'react';
 import ToolCard from '../components/nexora';
-import AU1Page from './AboutUs/IntroductiontoNEXORA';
-import AU2Page from './AboutUs/PurposeofNEXORA';
-import AU3Page from './AboutUs/ObjectivesofNEXORA';
-import AU4Page from './AboutUs/VisionofNEXORA';
-import AU5Page from './AboutUs/MissionofNEXORA';
-import AU6Page from './AboutUs/KeyFeaturesofNEXORA';
-import AU7Page from './AboutUs/InvestigationCapabilitiesofNEXORA';
-import AU8Page from './AboutUs/TechnologySecurityofNEXORA';
-import AU9Page from './AboutUs/BenefitsofNEXORA';
-import AU10Page from './AboutUs/TargetUsersofNEXORA';
-import AU11Page from './AboutUs/WhyChooseNEXORA';
-import AU12Page from './AboutUs/OurCommitment';
-import AU13Page from './AboutUs/SupportServices';
-import AU14Page from './AboutUs/FutureRoadmapofNEXORA';
-import AU15Page from './AboutUs/ContactNEXORA';
-import AU16Page from './AboutUs/PrivacyPolicy';
-import AU17Page from './AboutUs/TermsConditions';
-import AU18Page from './AboutUs/DataProtectionPolicy';
-import AU19Page from './AboutUs/InformationSecurityPolicy';
-import AU20Page from './AboutUs/UserAccessAuthorizationPolicy';
-import AU21Page from './AboutUs/DataRetentionDisposalPolicy';
-import AU22Page from './AboutUs/DataClassificationPolicy';
-import AU23Page from './AboutUs/DataSharingDisclosurePolicy';
-import AU24Page from './AboutUs/LawfulAccessInvestigationPolicy';
-import AU25Page from './AboutUs/AcceptableUsePolicy';
-import AU26Page from './AboutUs/ITActDPDPActCompliance';
-import AU27Page from './AboutUs/CopyrightIntellectualPropertyPolicy';
-import AU28Page from './AboutUs/AuditLoggingPolicy';
-import AU29Page from './AboutUs/IncidentResponsePolicy';
-import AU30Page from './AboutUs/Disclaimer';
-import AU31Page from './AboutUs/AboutUsdemo1';
-import AU32Page from './AboutUs/AboutUsdemo2';
+
+// The 14 Integrated Pages
+import IntroductionPage from './AboutUs/IntroductionPage';
+import PurposePage from './AboutUs/PurposePage';
+import ObjectivePage from './AboutUs/ObjectivePage';
+import VisionPage from './AboutUs/VisionPage';
+import MissionPage from './AboutUs/MissionPage';
+import CapabilitiesPage from './AboutUs/CapabilitiesPage';
+import TechnologyPage from './AboutUs/TechnologyPage';
+import BenefitsPage from './AboutUs/BenefitsPage';
+import TargetUserPage from './AboutUs/TargetUserPage';
+import WhyChoosePage from './AboutUs/WhyChoosePage';
+import CommitmentPage from './AboutUs/CommitmentPage';
+import SupportPage from './AboutUs/SupportPage';
+import RoadmapPage from './AboutUs/RoadmapPage';
+import ContactPage from './AboutUs/ContactPage';
 
 /**
  * Header Component.
  * Renders the title and a brief description of the page's purpose.
- * 
- * @param {Object} props - Component properties.
- * @param {string} [props.title] - Optional override for the title.
- * @param {string} [props.description] - Optional override for the description.
- * @returns {JSX.Element} The rendered header component.
  */
 export function Header({ title, description }) {
   const displayTitle = title || "About Us";
@@ -64,12 +43,49 @@ export function Header({ title, description }) {
 }
 
 /**
+ * Generic Placeholder Component for unimplemented pages
+ */
+function ComingSoonPage({ onBack, id }) {
+  const tool = ABOUTUS_TOOLS.find(t => t.id === id);
+  const title = tool ? tool.name : 'Coming Soon';
+  
+  React.useEffect(() => { window.scrollTo(0, 0); }, []);
+  
+  return (
+    <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">
+      {onBack && (
+        <button onClick={onBack}
+          className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm">
+          <svg className="w-4 h-4 text-[#1e2a52]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          <span>Back</span>
+        </button>
+      )}
+      <Header title={title} description={`Analytics and data records for ${title}.`} />
+      <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
+        <main className="flex-1 pt-1 pb-4 bg-transparent">
+          <div className="flex flex-col items-center justify-center py-12 sm:py-20 px-4 opacity-0 animate-fade-in" style={{ animation: 'fadeIn 0.5s ease-out forwards', animationDelay: '0.2s' }}>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-full flex items-center justify-center mb-6 shadow-[0_8px_30px_rgba(37,99,235,0.12)] border border-blue-200/50">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#1e2a52] to-blue-800 mb-3 sm:mb-4 tracking-tight drop-shadow-sm text-center">
+              Coming Soon
+            </h2>
+            <p className="text-xs sm:text-sm md:text-base text-slate-500 font-medium text-center max-w-lg leading-relaxed">
+              We are actively developing powerful new analytics tools for {title}. These features will be available in the next major update.
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+/**
  * Main Page Component.
- * Handles the display, routing, and user interactions for this specific intelligence record.
- * 
- * @param {Object} props - Component properties.
- * @param {Function} props.onBack - Callback function triggered when the user clicks the "Back" button to return to the parent dashboard.
- * @returns {JSX.Element} The rendered page layout.
  */
 export default function AboutUsPage({ onBack }) {
 
@@ -78,68 +94,67 @@ export default function AboutUsPage({ onBack }) {
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    const getSubPageFromHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('AboutUs-')) {
+        return hash.replace('AboutUs-', '');
+      } else if (hash.startsWith('AboutUs/')) {
+        return hash.split('/')[1];
+      }
+      return null;
+    };
+
     const handlePopState = (event) => {
       if (event.state && event.state.subPage) {
         setSelectedSubPage(event.state.subPage);
       } else {
-        setSelectedSubPage(null);
+        setSelectedSubPage(getSubPageFromHash());
       }
     };
     window.addEventListener('popstate', handlePopState);
     
     if (window.history.state && window.history.state.subPage) {
       setSelectedSubPage(window.history.state.subPage);
+    } else {
+      setSelectedSubPage(getSubPageFromHash());
     }
     
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleSelectSubPage = (id) => {
-    window.history.pushState({ page: 'AboutUs', subPage: id }, '', '#AboutUs-' + id);
+    window.history.pushState({ page: 'AboutUs', subPage: id }, '', '#AboutUs/' + id);
     setSelectedSubPage(id);
   };
 
   const handleSubPageBack = () => {
-    if (window.history.state && window.history.state.subPage) {
+    if (window.history.length > 1 && window.history.state && window.history.state.subPage) {
       window.history.back();
     } else {
+      window.history.pushState({ page: 'AboutUs' }, '', '#AboutUs');
       setSelectedSubPage(null);
     }
   };
 
 
-  if (selectedSubPage === 'au1') return <AU1Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au2') return <AU2Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au3') return <AU3Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au4') return <AU4Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au5') return <AU5Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au6') return <AU6Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au7') return <AU7Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au8') return <AU8Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au9') return <AU9Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au10') return <AU10Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au11') return <AU11Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au12') return <AU12Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au13') return <AU13Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au14') return <AU14Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au15') return <AU15Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au16') return <AU16Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au17') return <AU17Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au18') return <AU18Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au19') return <AU19Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au20') return <AU20Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au21') return <AU21Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au22') return <AU22Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au23') return <AU23Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au24') return <AU24Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au25') return <AU25Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au26') return <AU26Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au27') return <AU27Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au28') return <AU28Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au29') return <AU29Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au30') return <AU30Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au31') return <AU31Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'au32') return <AU32Page onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au1') return <IntroductionPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au3') return <PurposePage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au4') return <ObjectivePage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au5') return <VisionPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au6') return <MissionPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au12') return <CapabilitiesPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au13') return <TechnologyPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au18') return <BenefitsPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au21') return <TargetUserPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au22') return <WhyChoosePage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au23') return <CommitmentPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au24') return <SupportPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au25') return <RoadmapPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au26') return <ContactPage onBack={handleSubPageBack} />;
+
+  if (selectedSubPage && selectedSubPage.startsWith('au')) {
+    return <ComingSoonPage onBack={handleSubPageBack} id={selectedSubPage} />;
+  }
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">
