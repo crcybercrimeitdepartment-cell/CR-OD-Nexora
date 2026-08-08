@@ -453,9 +453,9 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
   };
 
   return (
-    <footer className="w-full bg-[#cbe6ff] text-[#1e2a52] font-sans border-t border-[#b5d7fb] pt-0 pb-6 mt-14 sm:mt-20 lg:mt-24 relative z-10">
+    <footer className="w-full bg-[#cbe6ff] text-[#1e2a52] font-sans border-t border-[#b5d7fb] pt-0 pb-10 lg:pb-12 mt-14 sm:mt-20 lg:mt-24 relative z-10">
       {/* TOP GREY LINE STRIP WITH ANIMATED CSS CAR */}
-      <div className="w-full relative select-none mb-6 lg:mb-8">
+      <div className="w-full relative select-none mb-10 lg:mb-16">
         {/* Grey Road Track */}
         <div className="h-6 sm:h-8 w-full bg-[#71767E] border-y border-[#595E66] relative flex items-center shadow-inner">
 
@@ -534,7 +534,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
       <div className="w-full max-w-[1500px] mx-auto px-4 lg:px-8">
 
         {/* TOP SECTION: 5 Columns */}
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 pb-6 lg:pb-12 border-b border-[#b5d7fb]">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 pb-10 lg:pb-16 border-b border-[#b5d7fb]">
 
           {/* Column 1: Brand & Socials (takes 4 cols space on lg screens) */}
           <div className="flex flex-col space-y-4 lg:space-y-6 lg:col-span-4">
@@ -617,7 +617,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
         </div>
 
         {/* BOTTOM SECTION: Left (Date/Time) | Center (Copyright) | Right (Feedback & Help) */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-5 lg:pt-6 pb-2 gap-4 text-xs sm:text-sm text-[#4b5563] font-medium">
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 lg:pt-14 pb-2 gap-4 text-xs sm:text-sm text-[#4b5563] font-medium">
 
           {/* Left Side: Live Date & Time Badge */}
           <div className="flex items-center gap-2 bg-[#bcdcfa]/60 hover:bg-[#b0d8fc]/80 border border-[#9ecaf7] rounded-lg px-3 py-1.5 text-[#1e2a52] text-xs sm:text-[13px] font-medium transition-colors shadow-2xs">

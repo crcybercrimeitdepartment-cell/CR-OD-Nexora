@@ -91,6 +91,7 @@ export default function App() {
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
+    lenisRef.current = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -102,11 +103,15 @@ export default function App() {
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      lenisRef.current = null;
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
     };
   }, []);
   const mainRef = React.useRef(null);
+  const scrollPositions = React.useRef({});
+  const isNavigatingBack = React.useRef(false);
+  const lenisRef = React.useRef(null);
 
   const query = searchQuery.trim().toLowerCase();
 
@@ -138,9 +143,10 @@ export default function App() {
   };
 
   const handleToolClick = (tool) => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    // Save current scroll position before navigating
+    scrollPositions.current[selectedPage || 'home'] = lenisRef.current?.scroll || window.scrollY || document.documentElement.scrollTop;
+    isNavigatingBack.current = false;
+    
     setSearchQuery(''); // clear search on navigation
     if (tool.parentId) {
       // It's an inner card!
@@ -155,23 +161,19 @@ export default function App() {
   };
 
   const handleBack = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
     if (window.history.length > 1 && (window.history.state?.page || window.location.hash)) {
       window.history.back();
     } else {
+      isNavigatingBack.current = true;
       setSelectedPage(null);
       window.history.pushState(null, '', window.location.pathname);
     }
   };
 
   useEffect(() => {
-    const scrollToTop = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    };
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
 
     const getPageFromHash = (hashString) => {
       const hash = hashString.replace('#', '');
@@ -184,7 +186,7 @@ export default function App() {
     };
 
     const handlePopState = (event) => {
-      scrollToTop();
+      isNavigatingBack.current = true;
       if (event.state && event.state.page) {
         setSelectedPage(event.state.page);
       } else {
@@ -193,7 +195,7 @@ export default function App() {
     };
 
     const handleHashChange = () => {
-      scrollToTop();
+      // Handled primarily by popstate
     };
 
     // Check initial location hash on mount
@@ -245,16 +247,56 @@ export default function App() {
   }, [selectedPage]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }, 20);
-    return () => clearTimeout(timer);
-  }, [searchQuery, selectedPage]);
+    const handleForceScroll = (e) => {
+      const targetScroll = e.detail || 0;
+      const setScroll = () => {
+        if (lenisRef.current) {
+          lenisRef.current.scrollTo(targetScroll, { immediate: true });
+        } else {
+          window.scrollTo({ top: targetScroll, left: 0, behavior: 'instant' });
+        }
+      };
+      setScroll();
+      setTimeout(setScroll, 20);
+      setTimeout(setScroll, 100);
+    };
+    window.addEventListener('app:forceScroll', handleForceScroll);
+    return () => window.removeEventListener('app:forceScroll', handleForceScroll);
+  }, []);
+
+  useEffect(() => {
+    // If returning to the home page (selectedPage is null), always scroll to the top.
+    const targetScroll = (isNavigatingBack.current && selectedPage) ? (scrollPositions.current[selectedPage] || 0) : 0;
+    
+    const setScroll = () => {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(targetScroll, { immediate: true });
+      } else {
+        window.scrollTo({ top: targetScroll, left: 0, behavior: 'instant' });
+      }
+    };
+
+    setScroll();
+    
+    const timer = setTimeout(setScroll, 20);
+    const timer2 = setTimeout(setScroll, 100);
+    
+    isNavigatingBack.current = false;
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
+  }, [selectedPage]);
+
+  useEffect(() => {
+    if (searchQuery) {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+    }
+  }, [searchQuery]);
 
   useStickyNavAnimation({
     selectedPage,

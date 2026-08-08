@@ -9,6 +9,10 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
   useGSAP(() => {
     ScrollTrigger.getAll().forEach(t => t.kill());
 
+    // CRITICAL FIX: Clear all leftover inline styles from previous mid-flight animations
+    // This prevents cards from getting "stuck" when navigating back to the home page
+    gsap.set('.tool-card-gsap, .tool-card-gsap div[role="button"], .tool-card-gsap .flex-col, .tool-card-gsap .shrink-0, [id^="sticky-wrapper-"], [id^="sticky-icon-"], #sticky-icon-nav-scroll, #sticky-icon-nav', { clearProps: 'all' });
+
     if (selectedPage !== 'AccountSetting') {
       // 1. Enable interactions on Sticky Nav exactly when Header leaves screen
       gsap.to('#sticky-icon-nav', {

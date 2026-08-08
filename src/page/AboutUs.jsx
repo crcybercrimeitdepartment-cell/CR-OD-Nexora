@@ -90,10 +90,10 @@ function ComingSoonPage({ onBack, id }) {
 export default function AboutUsPage({ onBack }) {
 
   const [selectedSubPage, setSelectedSubPage] = useState(null);
+  const scrollPosRef = React.useRef(0);
+  const isNavigatingBack = React.useRef(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     const getSubPageFromHash = () => {
       const hash = window.location.hash.replace('#', '');
       if (hash.startsWith('AboutUs-')) {
@@ -105,6 +105,7 @@ export default function AboutUsPage({ onBack }) {
     };
 
     const handlePopState = (event) => {
+      isNavigatingBack.current = true;
       if (event.state && event.state.subPage) {
         setSelectedSubPage(event.state.subPage);
       } else {
@@ -122,12 +123,28 @@ export default function AboutUsPage({ onBack }) {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  useEffect(() => {
+    if (isNavigatingBack.current) {
+      if (selectedSubPage === null) {
+        window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: scrollPosRef.current }));
+      } else {
+        window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: 0 }));
+      }
+    } else {
+      window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: 0 }));
+    }
+    isNavigatingBack.current = false;
+  }, [selectedSubPage]);
+
   const handleSelectSubPage = (id) => {
+    scrollPosRef.current = window.scrollY || document.documentElement.scrollTop;
+    isNavigatingBack.current = false;
     window.history.pushState({ page: 'AboutUs', subPage: id }, '', '#AboutUs/' + id);
     setSelectedSubPage(id);
   };
 
   const handleSubPageBack = () => {
+    isNavigatingBack.current = true;
     if (window.history.length > 1 && window.history.state && window.history.state.subPage) {
       window.history.back();
     } else {
