@@ -287,7 +287,7 @@ export default function App() {
       <GlobalHeader searchQuery={searchQuery} onSearchChange={handleSearchChange} />
 
       {/* STICKY ICON NAV (Populated row by row as cards fly into it) */}
-      <div id="sticky-icon-nav" className="fixed top-0 left-0 w-full bg-transparent border-b border-transparent z-40 pointer-events-none transition-colors duration-300">
+      <div id="sticky-icon-nav" className={`fixed top-0 left-0 w-full bg-transparent border-b border-transparent z-40 pointer-events-none transition-colors duration-300 ${selectedPage !== null ? 'hidden' : ''}`}>
         <div className="w-full max-h-[140px] sm:max-h-[170px] overflow-hidden">
           <div id="sticky-icon-nav-scroll" className="relative flex justify-between items-center px-2 sm:px-6 py-2 w-full min-h-[60px] sm:min-h-[80px]">
             {(() => {
