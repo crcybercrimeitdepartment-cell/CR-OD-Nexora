@@ -66,7 +66,7 @@ export default function LanguageSetting({ onBack }) {
       )}
 
       {/* Main Container Card matching screenshot */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative overflow-hidden">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] relative">
 
         {/* Save Toast Notification */}
         {savedToast && (
