@@ -124,7 +124,10 @@ export default function LanguageSetting({ onBack }) {
 
             {/* Dropdown Menu */}
             {isOpen && (
-              <div className="absolute top-full left-0 w-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl z-50 py-1 max-h-[250px] overflow-y-auto overscroll-contain">
+              <div 
+                data-lenis-prevent="true"
+                className="absolute top-full left-0 w-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl z-50 py-1 max-h-[250px] overflow-y-auto overscroll-contain"
+              >
                 {LANGUAGES.map((lang, idx) => (
                   <div
                     key={`${lang.code}-${idx}`}
