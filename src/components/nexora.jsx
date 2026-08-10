@@ -63,7 +63,11 @@ import {
   Shield,
   Newspaper,
   Wifi,
-  Settings
+  Settings,
+  Bell,
+  LayoutDashboard,
+  Box,
+  Layers
 } from 'lucide-react';
 
 const cyberCrimeLogo = 'https://res.cloudinary.com/dlhmkbijh/image/upload/v1785473583/Logo_mswjel.png';
@@ -236,7 +240,7 @@ export function AccountSettingIcon({ className = "w-8 h-8" }) { return <Settings
  * @param {Function} [props.onSearchChange] - Callback fired on every keystroke with the new value
  * @returns {JSX.Element} A full-width <header> element
  */
-export function Header({ searchQuery = "", onSearchChange = () => { } }) {
+export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderIconClick = () => {}, selectedPage = null, disableScrollAnimation = false, onHomeClick = () => {} }) {
   const { scrollY } = useScroll();
 
   const logoY = useTransform(scrollY, [0, 150], [0, -20]);
@@ -247,6 +251,25 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
   const searchScale = useTransform(scrollY, [0, 150], [1, 0.95]);
   const shadowOpacity = useTransform(scrollY, [0, 150], [0.12, 0]);
 
+  const HeaderIcon = ({ id, Icon, label }) => {
+    const isActive = id === selectedPage;
+    return (
+      <div 
+        onClick={() => id && onHeaderIconClick(id)}
+        className="flex flex-col items-center justify-start cursor-pointer group w-[50px] md:w-[70px] shrink-0"
+      >
+        <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700' : 'text-[#1e2a52] group-hover:scale-110 group-hover:text-blue-700'}`}>
+          <Icon className="w-5 h-5 md:w-5 md:h-5" strokeWidth={1.5} />
+        </div>
+        <span className="text-[6px] md:text-[7.5px] font-bold text-[#1e2a52] text-center leading-tight uppercase tracking-wide mt-1 relative pb-1">
+          {label}
+          {/* Interactive Glow Line */}
+          <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)] transition-all duration-300 ${isActive ? 'w-[80%]' : 'w-0 group-hover:w-[80%]'}`}></span>
+        </span>
+      </div>
+    );
+  };
+
   return (
     <header className="w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8 relative z-10">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10">
@@ -254,19 +277,30 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
         <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 w-full">
           {/* LEFT LOGO: Nexora */}
           <motion.div
-            style={{ y: logoY, rotate: logoRotate, opacity: logoOpacity }}
-            className="shrink-0 flex items-center justify-start"
+            onClick={onHomeClick}
+            style={disableScrollAnimation ? {} : { y: logoY, rotate: logoRotate, opacity: logoOpacity }}
+            className="shrink-0 flex items-center justify-start cursor-pointer"
           >
             <img
               src={nexoraLogoHeader}
               alt="Nexora Logo"
-              className="h-20 sm:h-28 md:h-36 lg:h-44 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-200"
+              className="h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain drop-shadow-md hover:scale-105 transition-transform duration-200"
             />
           </motion.div>
 
+          {/* LEFT ICONS (Hidden on very small screens) */}
+          <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
+            <HeaderIcon id="PlatformSettings" Icon={Settings} label="Platform Settings" />
+            <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
+            <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
+          </div>
+
           {/* CENTER: Page Title & Subtitle & Search */}
-          <div className="flex-1 text-center flex flex-col items-center justify-center px-1 sm:px-2 min-w-0">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
+          <div className="flex-1 text-center flex flex-col items-center justify-center px-2 md:px-6 xl:px-12 min-w-0">
+            <h1 
+              onClick={onHomeClick}
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1 cursor-pointer hover:text-blue-700 transition-colors"
+            >
               NEXORA
             </h1>
 
@@ -279,7 +313,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
             </div>
 
             <motion.div
-              style={{ scale: searchScale }}
+              style={disableScrollAnimation ? {} : { scale: searchScale }}
               className="flex items-center justify-center gap-2 sm:gap-3.5 w-full max-w-xl mx-auto"
             >
               <div className="relative flex-1 group">
@@ -291,7 +325,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
-                  style={{ boxShadow: useTransform(shadowOpacity, v => `0 4px 16px rgba(30,42,82,${v})`) }}
+                  style={disableScrollAnimation ? { boxShadow: '0 4px 16px rgba(30,42,82,0.12)' } : { boxShadow: useTransform(shadowOpacity, v => `0 4px 16px rgba(30,42,82,${v})`) }}
                   className="w-full bg-white border-2 border-[#1e2a52]/40 hover:border-[#1e2a52] rounded-full py-1.5 sm:py-2.5 pl-9 sm:pl-11 pr-3 sm:pr-4 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-[#1e2a52]/20 focus:border-[#1e2a52] transition-all text-[#1e2a52] placeholder-[#1e2a52]/60"
                 />
               </div>
@@ -304,16 +338,34 @@ export function Header({ searchQuery = "", onSearchChange = () => { } }) {
             </motion.div>
           </div>
 
+          {/* RIGHT ICONS (Hidden on very small screens) */}
+          <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
+            <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
+            <HeaderIcon id="Dummy1" Icon={Box} label="Dummy 1" />
+            <HeaderIcon id="Dummy2" Icon={Layers} label="Dummy 2" />
+          </div>
+
           <motion.div
-            style={{ y: logoY, rotate: rightLogoRotate, opacity: logoOpacity }}
-            className="shrink-0 flex items-center justify-end"
+            onClick={onHomeClick}
+            style={disableScrollAnimation ? {} : { y: logoY, rotate: rightLogoRotate, opacity: logoOpacity }}
+            className="shrink-0 flex items-center justify-end cursor-pointer"
           >
             <img
               src={cyberCrimeLogo}
               alt="CR Cyber Crime Foundation"
-              className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 lg:w-44 lg:h-44 object-contain drop-shadow-md hover:scale-105 transition-transform duration-200"
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 object-contain drop-shadow-md hover:scale-105 transition-transform duration-200"
             />
           </motion.div>
+        </div>
+
+        {/* MOBILE ICONS (Hidden on Desktop XL) - Shown in a single row below the main header */}
+        <div className="flex xl:hidden items-start justify-center gap-1 sm:gap-2 mt-4 w-full px-1">
+          <HeaderIcon id="PlatformSettings" Icon={Settings} label="Platform Settings" />
+          <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
+          <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
+          <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
+          <HeaderIcon id="Dummy1" Icon={Box} label="Dummy 1" />
+          <HeaderIcon id="Dummy2" Icon={Layers} label="Dummy 2" />
         </div>
       </div>
     </header>

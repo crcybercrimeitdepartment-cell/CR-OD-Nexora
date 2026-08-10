@@ -5,8 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scopeRef }) {
+export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scopeRef, isAuthenticated }) {
   useGSAP(() => {
+    if (!isAuthenticated) return;
+    
     ScrollTrigger.getAll().forEach(t => t.kill());
 
     // CRITICAL FIX: Clear all leftover inline styles from previous mid-flight animations
@@ -239,20 +241,7 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
       });
     }
 
-    if (selectedPage === null) {
-      const mainCards = gsap.utils.toArray('.tool-card-gsap');
-      if (mainCards.length > 0) {
-        gsap.fromTo(mainCards,
-          { x: (i) => Math.floor(i / 4) % 2 === 0 ? -120 : 120, y: 0, opacity: 0, scale: 0.96 },
-          {
-            x: 0, y: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.05, ease: "expo.out", force3D: true,
-            scrollTrigger: { trigger: "#cards-container", start: "top 80%", end: "bottom top", toggleActions: "play none none reverse" }
-          }
-        );
-      }
-    }
-
     // Refresh ScrollTrigger to calculate exact start/end positions after layout render
     ScrollTrigger.refresh();
-  }, { scope: scopeRef, dependencies: [selectedPage, query, layoutConfig.cols] });
+  }, { scope: scopeRef, dependencies: [selectedPage, query, layoutConfig.cols, isAuthenticated] });
 }

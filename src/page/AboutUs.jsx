@@ -18,6 +18,18 @@ import SupportPage from './AboutUs/SupportPage';
 import RoadmapPage from './AboutUs/RoadmapPage';
 import ContactPage from './AboutUs/ContactPage';
 
+// The 10 New Integrated Pages
+import WhoWeArePage from './AboutUs/WhoWeArePage';
+import OurCoreValuesPage from './AboutUs/OurCoreValuesPage';
+import AIInnovationPage from './AboutUs/AIInnovationPage';
+import WorkFlowAutomationPage from './AboutUs/WorkFlowAutomationPage';
+import ResearchDevelopmentPage from './AboutUs/ResearchDevelopmentPage';
+import QualityAssurancePage from './AboutUs/QualityAssurancePage';
+import PerformanceReliabilityPage from './AboutUs/PerformanceReliabilityPage';
+import DataProtectionPage from './AboutUs/DataProtectionPage';
+import ProductStatisticPage from './AboutUs/ProductStatisticPage';
+import GlobalPresencePage from './AboutUs/GlobalPresencePage';
+
 /**
  * Header Component.
  * Renders the title and a brief description of the page's purpose.
@@ -155,13 +167,23 @@ export default function AboutUsPage({ onBack }) {
 
 
   if (selectedSubPage === 'au1') return <IntroductionPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au2') return <WhoWeArePage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au3') return <PurposePage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au4') return <ObjectivePage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au5') return <VisionPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au6') return <MissionPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au7') return <OurCoreValuesPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au10') return <AIInnovationPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au11') return <WorkFlowAutomationPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au12') return <CapabilitiesPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au13') return <TechnologyPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au14') return <ResearchDevelopmentPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au15') return <QualityAssurancePage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au16') return <PerformanceReliabilityPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au17') return <DataProtectionPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au18') return <BenefitsPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au19') return <ProductStatisticPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'au20') return <GlobalPresencePage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au21') return <TargetUserPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au22') return <WhyChoosePage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'au23') return <CommitmentPage onBack={handleSubPageBack} />;

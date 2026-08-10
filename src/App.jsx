@@ -24,6 +24,7 @@ import ToolCard, { Header as GlobalHeader, Footer as GlobalFooter } from './comp
 /* -------------------------------------------------------------------------- */
 import { NEXORA_MODULES } from './data/nexora';  // 40 top-level category cards
 import { ALL_SUB_TOOLS } from './data/subTools'; // All extracted sub-category cards
+import PlatformSettingsPage from './page/PlatformSettingsPage';
 import CDRPage from "./page/CDR-CallDetailRecord";
 import SDRPage from "./page/SDR-SubscriberDetailRecord";
 import TDRPage from "./page/TDR-TowerDumpRecord";
@@ -56,8 +57,13 @@ import CRIPage from "./page/CRI-CompanyRegistrationIntelligence";
 import MDRIPage from "./page/MDRI-MedicalDataRecordIntelligence";
 import AboutUsPage from "./page/AboutUs";
 import AccountSettingPage from "./page/AccountSetting";
+import LoginPage from "./page/LoginPage";
+import { motion } from 'framer-motion';
 
 export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem('isAuthenticated') === 'true';
+  });
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPage, setSelectedPage] = useState(null);
 
@@ -138,7 +144,7 @@ export default function App() {
     // If the user starts typing, immediately switch to the global Home Dashboard
     if (val.trim().length > 0 && selectedPage !== null) {
       setSelectedPage(null);
-      window.history.pushState(null, '', window.location.pathname);
+      window.history.pushState(null, '', '#Home');
     }
   };
 
@@ -160,15 +166,32 @@ export default function App() {
     }
   };
 
+  const handleHeaderIconClick = (id) => {
+    scrollPositions.current[selectedPage || 'home'] = lenisRef.current?.scroll || window.scrollY || document.documentElement.scrollTop;
+    isNavigatingBack.current = false;
+    setSearchQuery('');
+    window.history.pushState({ page: id }, '', `#${id}`);
+    setSelectedPage(id);
+  };
+
   const handleBack = () => {
     if (window.history.length > 1 && (window.history.state?.page || window.location.hash)) {
       window.history.back();
     } else {
       isNavigatingBack.current = true;
       setSelectedPage(null);
-      window.history.pushState(null, '', window.location.pathname);
+      window.history.pushState(null, '', '#Home');
     }
   };
+
+  useEffect(() => {
+    if (selectedPage) {
+      const pageName = selectedPage.replace(/([A-Z])/g, ' $1').trim();
+      document.title = `${pageName} - NEXORA Intelligence`;
+    } else {
+      document.title = "NEXORA — Advanced Intelligence & Investigation Records Platform";
+    }
+  }, [selectedPage]);
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -177,7 +200,7 @@ export default function App() {
 
     const getPageFromHash = (hashString) => {
       const hash = hashString.replace('#', '');
-      if (!hash) return null;
+      if (!hash || hash === 'Home') return null;
       let pageId = hash.split('/')[0];
       if (pageId.startsWith('AboutUs-')) {
         return 'AboutUs';
@@ -199,7 +222,11 @@ export default function App() {
     };
 
     // Check initial location hash on mount
-    setSelectedPage(getPageFromHash(window.location.hash));
+    const initialPage = getPageFromHash(window.location.hash);
+    if (!initialPage && window.location.hash !== '#Home') {
+      window.history.replaceState(null, '', '#Home');
+    }
+    setSelectedPage(initialPage);
 
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('hashchange', handleHashChange);
@@ -302,11 +329,27 @@ export default function App() {
     selectedPage,
     layoutConfig,
     query: searchQuery,
-    scopeRef: mainRef
+    scopeRef: mainRef,
+    isAuthenticated
   });
 
+  const handleLoginSuccess = () => {
+    sessionStorage.setItem('isAuthenticated', 'true');
+    setIsAuthenticated(true);
+  };
+
+  if (!isAuthenticated) {
+    return <LoginPage onLoginSuccess={handleLoginSuccess} />;
+  }
+
   return (
-    <div ref={mainRef} className="min-h-screen flex flex-col font-sans selection:bg-slate-900 selection:text-white bg-[#f0f6ff] w-full max-w-full">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      ref={mainRef} 
+      className="min-h-screen flex flex-col font-sans selection:bg-slate-900 selection:text-white bg-[#f0f6ff] w-full max-w-full"
+    >
       {/* Ashok Stambh Global Watermark */}
       <div id="watermark-bg" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none select-none">
         <div className="w-full h-full overflow-hidden">
@@ -326,7 +369,16 @@ export default function App() {
       </div>
 
       {/* GLOBAL HEADER */}
-      <GlobalHeader searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+      <GlobalHeader
+        searchQuery={searchQuery}
+        onSearchChange={handleSearchChange}
+        onHeaderIconClick={handleHeaderIconClick}
+        selectedPage={selectedPage}
+        onHomeClick={() => {
+          setSelectedPage(null);
+          window.history.pushState(null, '', '#Home');
+        }}
+      />
 
       {/* STICKY ICON NAV (Populated row by row as cards fly into it) */}
       <div id="sticky-icon-nav" className={`fixed top-0 left-0 w-full bg-transparent border-b border-transparent z-40 pointer-events-none transition-colors duration-300 ${selectedPage !== null ? 'hidden' : ''}`}>
@@ -446,7 +498,8 @@ export default function App() {
                   )}
                 </div>
               )
-            ) : selectedPage === "CDR" ? <CDRPage onBack={handleBack} searchQuery={searchQuery} />
+            ) : selectedPage === "PlatformSettings" ? <PlatformSettingsPage onBack={handleBack} />
+              : selectedPage === "CDR" ? <CDRPage onBack={handleBack} searchQuery={searchQuery} />
               : selectedPage === "SDR" ? <SDRPage onBack={handleBack} searchQuery={searchQuery} />
                 : selectedPage === "TDR" ? <TDRPage onBack={handleBack} searchQuery={searchQuery} />
                   : selectedPage === "ILD" ? <ILDPage onBack={handleBack} searchQuery={searchQuery} />
@@ -486,6 +539,6 @@ export default function App() {
 
       {/* GLOBAL FOOTER */}
       <GlobalFooter pageName="NEXORA INTELLIGENCE" audience="Law Enforcement & Security Agencies" />
-    </div>
+    </motion.div>
   );
 }
