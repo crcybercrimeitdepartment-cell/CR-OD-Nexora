@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 const translations = {
   en: {
+    platformSettings: { title: "Platform Settings", subtitle: "Configure your personal preferences and platform behavior." },
     languageSetting: { title: "Language Settings", subtitle: "Select your preferred language for the Nexora dashboard.", available: "Available Languages", current: "Current System Language", setAsDefault: "Set as Default", saveChanges: "Save Changes", successMessage: "Language updated successfully!", back: "Back" },
     modules: {
       "language-setting": { name: "Language Setting", description: "Select system languages, regional formats, and localized dialect preferences." },
@@ -23,6 +24,7 @@ const translations = {
     notificationSetting: { title: "Notification Settings", subtitle: "Control notification behavior, sounds, alerts, duration, and notification preferences.", saveChanges: "Save Changes", back: "Back", behavior: "Notification Behavior", behaviorDesc: "Control how notifications appear and behave.", enable: "Enable Notifications", enableDesc: "Turn all notifications on or off", desktop: "Show on Desktop", desktopDesc: "Display browser/desktop notifications", position: "Notification Position", positionDesc: "Choose where notifications appear" }
   },
   hi: {
+    platformSettings: { title: "प्लेटफ़ॉर्म सेटिंग्स", subtitle: "अपनी व्यक्तिगत प्राथमिकताओं और प्लेटफ़ॉर्म व्यवहार को कॉन्फ़िगर करें।" },
     languageSetting: { title: "भाषा सेटिंग्स", subtitle: "नेक्सोरा डैशबोर्ड के लिए अपनी पसंदीदा भाषा चुनें।", available: "उपलब्ध भाषाएँ", current: "वर्तमान सिस्टम भाषा", setAsDefault: "डिफ़ॉल्ट के रूप में सेट करें", saveChanges: "परिवर्तन सहेजें", successMessage: "भाषा सफलतापूर्वक अपडेट की गई!", back: "वापस" },
     modules: {
       "language-setting": { name: "भाषा सेटिंग", description: "सिस्टम भाषाएँ, क्षेत्रीय प्रारूप और स्थानीय बोलियाँ चुनें।" },
@@ -42,6 +44,7 @@ const translations = {
     notificationSetting: { title: "अधिसूचना सेटिंग्स", subtitle: "अधिसूचना व्यवहार, ध्वनि, अलर्ट, अवधि और प्राथमिकताएं नियंत्रित करें।", saveChanges: "परिवर्तन सहेजें", back: "वापस", behavior: "अधिसूचना व्यवहार", behaviorDesc: "नियंत्रित करें कि सूचनाएं कैसे दिखाई देती हैं और व्यवहार करती हैं।", enable: "सूचनाएं सक्षम करें", enableDesc: "सभी सूचनाएं चालू या बंद करें", desktop: "डेस्कटॉप पर दिखाएं", desktopDesc: "ब्राउज़र/डेस्कटॉप सूचनाएं प्रदर्शित करें", position: "अधिसूचना स्थिति", positionDesc: "चुनें कि सूचनाएं कहां दिखाई दें" }
   },
   es: {
+    platformSettings: { title: "Configuración de Plataforma", subtitle: "Configure sus preferencias personales y el comportamiento de la plataforma." },
     languageSetting: { title: "Configuración de Idioma", subtitle: "Seleccione su idioma preferido para el panel.", available: "Idiomas Disponibles", current: "Idioma Actual", setAsDefault: "Establecer por Defecto", saveChanges: "Guardar Cambios", successMessage: "¡Idioma actualizado!", back: "Atrás" },
     modules: {
       "language-setting": { name: "Configuración de Idioma", description: "Seleccione el idioma del sistema y los formatos regionales." },
