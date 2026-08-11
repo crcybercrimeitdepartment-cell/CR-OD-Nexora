@@ -18,8 +18,9 @@ import {
   LayoutDashboard,
   HelpCircle,
   Bell,
-  Box,
-  Layers
+  BookOpen,
+  Layers,
+  LogOut
 } from 'lucide-react';
 import ToolCard, { Header as GlobalHeader, Footer as GlobalFooter } from '../components/nexora';
 import { NEXORA_MODULES } from '../data/nexora';
@@ -253,8 +254,11 @@ export default function LoginPage({ onLoginSuccess }) {
     );
   };
 
-  const HeaderIcon = ({ Icon, label }) => (
-    <div className="flex flex-col items-center justify-start group w-[50px] md:w-[70px] shrink-0">
+  const HeaderIcon = ({ Icon, label, onClick }) => (
+    <div 
+      className="flex flex-col items-center justify-start cursor-pointer group w-[50px] md:w-[70px] shrink-0"
+      onClick={onClick}
+    >
       <div className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 text-[#1e2a52]">
         <Icon className="w-5 h-5 md:w-5 md:h-5" strokeWidth={1.5} />
       </div>
@@ -344,8 +348,8 @@ export default function LoginPage({ onLoginSuccess }) {
           {view === 'morphing' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.6 }} className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
               <HeaderIcon Icon={Bell} label="Notification" />
-              <HeaderIcon Icon={Box} label="Dummy 1" />
-              <HeaderIcon Icon={Layers} label="Dummy 2" />
+              <HeaderIcon Icon={BookOpen} label="Case Study" />
+              <HeaderIcon Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
             </motion.div>
           )}
 
@@ -365,8 +369,8 @@ export default function LoginPage({ onLoginSuccess }) {
             <HeaderIcon Icon={LayoutDashboard} label="Dashboard Settings" />
             <HeaderIcon Icon={HelpCircle} label="Help" />
             <HeaderIcon Icon={Bell} label="Notification" />
-            <HeaderIcon Icon={Box} label="Dummy 1" />
-            <HeaderIcon Icon={Layers} label="Dummy 2" />
+            <HeaderIcon Icon={BookOpen} label="Case Study" />
+            <HeaderIcon Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
           </motion.div>
         )}
 

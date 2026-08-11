@@ -1,6 +1,7 @@
 import { ACCOUNTSETTING_TOOLS } from '../data/subTools';
 import React, { useState, useEffect } from 'react';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 
 import AS1Page from './AccountSetting/Profile';
 import AS2Page from './AccountSetting/PersonalInformation';
@@ -69,6 +70,7 @@ export function Header({ title, description }) {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function AccountSettingPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('account-setting', ACCOUNTSETTING_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   useEffect(() => {
@@ -145,8 +147,8 @@ export default function AccountSettingPage({ onBack }) {
       <Header />
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
         <main className="flex-1 pt-1 pb-4">
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-            {ACCOUNTSETTING_TOOLS.map((tool, index) => (
+          <div className={`grid ${dynamicGridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+            {displayTools.map((tool, index) => (
               <div key={tool.id}>
                 <ToolCard
                   tool={{ ...tool, description: tool.desc }}

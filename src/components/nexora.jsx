@@ -66,8 +66,9 @@ import {
   Settings,
   Bell,
   LayoutDashboard,
-  Box,
-  Layers
+  BookOpen,
+  Layers,
+  LogOut
 } from 'lucide-react';
 
 const cyberCrimeLogo = 'https://res.cloudinary.com/dlhmkbijh/image/upload/v1785473583/Logo_mswjel.png';
@@ -251,11 +252,14 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
   const searchScale = useTransform(scrollY, [0, 150], [1, 0.95]);
   const shadowOpacity = useTransform(scrollY, [0, 150], [0.12, 0]);
 
-  const HeaderIcon = ({ id, Icon, label }) => {
+  const HeaderIcon = ({ id, Icon, label, onClick }) => {
     const isActive = id === selectedPage;
     return (
       <div 
-        onClick={() => id && onHeaderIconClick(id)}
+        onClick={(e) => {
+          if (onClick) onClick(e);
+          else if (id) onHeaderIconClick(id);
+        }}
         className="flex flex-col items-center justify-start cursor-pointer group w-[50px] md:w-[70px] shrink-0"
       >
         <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700' : 'text-[#1e2a52] group-hover:scale-110 group-hover:text-blue-700'}`}>
@@ -271,7 +275,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
   };
 
   return (
-    <header className="w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8 relative z-10">
+    <header className="global-header w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8 relative z-10">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Header Row: Left Logo | Center Title & Subtitle | Right Logo */}
         <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 w-full">
@@ -341,8 +345,8 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           {/* RIGHT ICONS (Hidden on very small screens) */}
           <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
             <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
-            <HeaderIcon id="Dummy1" Icon={Box} label="Dummy 1" />
-            <HeaderIcon id="Dummy2" Icon={Layers} label="Dummy 2" />
+            <HeaderIcon id="CaseStudy" Icon={BookOpen} label="Case Study" />
+            <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
           </div>
 
           <motion.div
@@ -364,8 +368,8 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
           <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
           <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
-          <HeaderIcon id="Dummy1" Icon={Box} label="Dummy 1" />
-          <HeaderIcon id="Dummy2" Icon={Layers} label="Dummy 2" />
+          <HeaderIcon id="CaseStudy" Icon={BookOpen} label="Case Study" />
+          <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
         </div>
       </div>
     </header>
@@ -420,19 +424,24 @@ const RunningManCanvas = () => {
         const imgData = offCtx.getImageData(0, 0, w, h);
         const data = imgData.data;
 
-        // Fast character pixel isolation
+        // Fast character pixel isolation (Chroma Key)
+        // Assume the top-left pixel represents the background color to remove
+        const bgR = data[0];
+        const bgG = data[1];
+        const bgB = data[2];
+        
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i];
           const g = data[i + 1];
           const b = data[i + 2];
 
-          const isSkin = (r > 180 && g > 120 && r > b + 25);
-          const isShortsOrHair = (r < 75 && g < 75 && b < 75);
-          const isWhiteShoe = (r > 210 && g > 210 && b > 210);
-          const isBlueSweater = (b > 175 && r < 145 && g < 188 && b > r + 40);
-
-          if (!(isSkin || isShortsOrHair || isWhiteShoe || isBlueSweater)) {
-            data[i + 3] = 0; // Make 100% transparent
+          // Calculate color distance from background
+          const diffR = Math.abs(r - bgR);
+          const diffG = Math.abs(g - bgG);
+          const diffB = Math.abs(b - bgB);
+          
+          if (diffR < 35 && diffG < 35 && diffB < 35) {
+            data[i + 3] = 0; // Make background transparent
           }
         }
 
@@ -475,7 +484,7 @@ const RunningManCanvas = () => {
   );
 };
 
-export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enforcement & Security Agencies", onSelectLink }) {
+export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enforcement & Security Agencies", onSelectLink, hideAnimation = false }) {
   const [time, setTime] = React.useState(new Date());
 
   React.useEffect(() => {
@@ -505,7 +514,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
   };
 
   return (
-    <footer className="w-full bg-[#cbe6ff] text-[#1e2a52] font-sans border-t border-[#b5d7fb] pt-0 pb-10 lg:pb-12 mt-14 sm:mt-20 lg:mt-24 relative z-10">
+    <footer className="global-footer w-full bg-[#cbe6ff] text-[#1e2a52] font-sans border-t border-[#b5d7fb] pt-0 pb-10 lg:pb-12 mt-14 sm:mt-20 lg:mt-24 relative z-10">
       {/* TOP GREY LINE STRIP WITH ANIMATED CSS CAR */}
       <div className="w-full relative select-none mb-10 lg:mb-16">
         {/* Grey Road Track */}
@@ -515,16 +524,19 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
           <div className="w-full h-[2px] sm:h-[3px] bg-[repeating-linear-gradient(90deg,#FFFFFF_0px,#FFFFFF_24px,transparent_24px,transparent_48px)] opacity-90 absolute top-1/2 -translate-y-1/2 left-0 pointer-events-none"></div>
 
           {/* USER'S EXACT RUNNING ANIMATION VIDEO (CHROMA-KEYED CANVASES) */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ animation: 'thiefRunAcross 10s linear infinite', willChange: 'transform' }}>
-            <div className="thief-wrapper">
-              <RunningManCanvas />
+          {!hideAnimation && (
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ animation: 'thiefRunAcross 10s linear infinite', willChange: 'transform' }}>
+              <div className="thief-wrapper">
+                <RunningManCanvas />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* USER'S EXACT ANIMATED CSS CAR DRIVING ON THE GREY LINE */}
-          <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ animation: 'driveAcross 10s linear infinite', willChange: 'transform' }}>
-            <div className="css-car-wrapper">
-              <div className="car-container">
+          {!hideAnimation && (
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ animation: 'driveAcross 10s linear infinite', willChange: 'transform' }}>
+              <div className="css-car-wrapper">
+                <div className="car-container">
                 <div className="car"></div>
                 {/* Police Emergency Beacon Siren Light */}
                 <div className="police-siren-light">
@@ -579,7 +591,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
               </div>
             </div>
           </div>
-
+          )}
         </div>
       </div>
 

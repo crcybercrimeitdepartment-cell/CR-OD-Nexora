@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
 @layer base {
   html {
@@ -24,6 +25,34 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+}
+
+/* Hide Google Translate Toolbar & Popups */
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+.skiptranslate > iframe.goog-te-banner-frame {
+  display: none !important;
+}
+.goog-te-gadget-icon,
+.goog-te-gadget-simple,
+.goog-te-spinner-pos {
+  display: none !important;
+}
+
+body, html {
+  top: 0px !important;
+  position: static !important;
+}
+
+/* Hide Google Translate tooltip */
+#goog-gt-tt, .goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
 }
 
 
@@ -693,7 +722,7 @@ header p {
   height: 18px;
   background: radial-gradient(ellipse at center, #60A5FA 0%, #1D4ED8 60%, #1E40AF 100%);
   border-radius: 50%;
-  border: 1.5 solid #1D4ED8;
+  border: 1.5px solid #1D4ED8;
   box-shadow:
     0 0 14px #3B82F6,
     0 0 28px #2563EB,
@@ -1544,4 +1573,118 @@ header p {
   45% {
     transform: translateY(0px);
   }
+}
+/* =========================================
+   GLOBAL THEME OVERRIDES (Dark & Custom)
+   These rules apply to the entire project when 
+   .dark-mode-active or .custom-color-theme are active
+   ========================================= */
+
+/* Dark Mode Overrides */
+.dark-mode-active,
+.dark-mode-active .min-h-screen {
+  background-color: #020617 !important; /* slate-950 */
+  color: #f8fafc !important; /* slate-50 */
+}
+
+.dark-mode-active .global-header,
+.dark-mode-active .global-footer {
+  background-color: #0f172a !important; /* slate-900 */
+  border-color: #1e293b !important;
+}
+
+.dark-mode-active .global-header h1,
+.dark-mode-active h2,
+.dark-mode-active h3 {
+  color: #e2e8f0 !important; /* slate-200 */
+}
+
+.dark-mode-active .global-header p,
+.dark-mode-active .global-footer p,
+.dark-mode-active .global-footer span,
+.dark-mode-active .global-footer div,
+.dark-mode-active .global-footer h3 {
+  color: #cbd5e1 !important;
+}
+
+.dark-mode-active .global-header input {
+  background-color: #1e293b !important;
+  border-color: transparent !important;
+  color: #f8fafc !important;
+}
+
+.dark-mode-active .bg-white {
+  background-color: #0f172a !important; /* slate-900 */
+  border-color: #1e293b !important;
+}
+
+.dark-mode-active .text-slate-800,
+.dark-mode-active .text-slate-700,
+.dark-mode-active .text-slate-600 {
+  color: #cbd5e1 !important; /* slate-300 */
+}
+
+.dark-mode-active .text-\[\#1e2a52\] {
+  color: #e2e8f0 !important;
+}
+
+.dark-mode-active .global-header button.bg-\[\#1e2a52\] {
+  background-color: #2563eb !important;
+  color: white !important;
+}
+
+/* Custom Color Theme Overrides */
+html:not(.dark) .custom-color-theme,
+html:not(.dark) .custom-color-theme .min-h-screen {
+  background-color: rgba(var(--primary-theme-color-rgb), 0.02) !important;
+}
+
+/* Header and Nav Bar Overrides */
+html:not(.dark) .custom-color-theme .global-header,
+html:not(.dark) .custom-color-theme .global-footer {
+  background-color: rgba(var(--primary-theme-color-rgb), 0.08) !important;
+  border-color: rgba(var(--primary-theme-color-rgb), 0.15) !important;
+}
+
+html.dark .custom-color-theme .global-header,
+html.dark .custom-color-theme .global-footer {
+  border-color: rgba(var(--primary-theme-color-rgb), 0.3) !important;
+}
+
+.custom-color-theme .global-header h1 {
+  background: linear-gradient(135deg, var(--primary-theme-color) 0%, rgba(var(--primary-theme-color-rgb), 0.7) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: var(--primary-theme-color) !important;
+  filter: drop-shadow(0 2px 8px rgba(var(--primary-theme-color-rgb), 0.2));
+}
+
+html:not(.dark) .custom-color-theme .global-header p,
+html:not(.dark) .custom-color-theme .global-footer p,
+html:not(.dark) .custom-color-theme .global-footer span,
+html:not(.dark) .custom-color-theme .global-footer div,
+html:not(.dark) .custom-color-theme .global-footer h3 {
+  color: rgba(var(--primary-theme-color-rgb), 0.85) !important;
+}
+
+/* Subtly tint white cards in custom light mode */
+html:not(.dark) .custom-color-theme .bg-white,
+html:not(.dark) .custom-color-theme .bg-slate-100 {
+  background-color: white !important;
+  border-color: rgba(var(--primary-theme-color-rgb), 0.15) !important;
+  box-shadow: 0 4px 20px rgba(var(--primary-theme-color-rgb), 0.06) !important;
+}
+
+html:not(.dark) .custom-color-theme .text-slate-800,
+html:not(.dark) .custom-color-theme .text-slate-700,
+html:not(.dark) .custom-color-theme .text-slate-600 {
+  color: rgba(var(--primary-theme-color-rgb), 0.9) !important;
+}
+
+.theme-colored-text {
+  color: var(--primary-theme-color) !important;
+}
+
+.theme-colored-bg {
+  background-color: var(--primary-theme-color) !important;
 }

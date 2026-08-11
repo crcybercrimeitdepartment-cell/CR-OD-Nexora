@@ -45,6 +45,14 @@ export default function LanguageSetting({ onBack }) {
       // Save permanently to localStorage so changes fix/persist across page re-opens
       localStorage.setItem(SAVED_LANG_KEY, selectedLanguageObj.code);
       i18n.changeLanguage(selectedLanguageObj.code);
+
+      // Trigger Google Translate for the entire project DOM
+      document.cookie = `googtrans=/en/${selectedLanguageObj.code}; path=/; domain=${window.location.hostname}`;
+      document.cookie = `googtrans=/en/${selectedLanguageObj.code}; path=/`; // Fallback for local testing
+      
+      // Reload the page to apply the translation everywhere instantly
+      window.location.reload();
+      return; 
     } catch (e) {
       console.warn('Failed to save language in localStorage:', e);
     }

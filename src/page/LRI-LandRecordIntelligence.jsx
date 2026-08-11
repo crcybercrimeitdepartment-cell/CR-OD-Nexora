@@ -1,6 +1,7 @@
 import { LRI_TOOLS } from '../data/subTools';
 import React, { useState, useEffect } from 'react';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 import { Search } from 'lucide-react';
 
 import SFHPage from "./LRI-LandRecordIntelligence/SFH-SearchFlatHistory";
@@ -48,6 +49,7 @@ export function Header({ title, description }) {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function LRIPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('lri', LRI_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -139,7 +141,7 @@ export default function LRIPage({ onBack }) {
                 }}
               >
                 <option value="" disabled hidden>Select a Category...</option>
-                {LRI_TOOLS.map(tool => (
+                {displayTools.map(tool => (
                   <option key={tool.id} value={tool.id}>
                     {tool.desc.split(' - ')[0]}
                   </option>

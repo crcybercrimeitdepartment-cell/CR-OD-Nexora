@@ -9,6 +9,18 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
   useGSAP(() => {
     if (!isAuthenticated) return;
     
+    // Check global animation settings
+    let animationsEnabled = true;
+    try {
+      const savedAnim = localStorage.getItem('nexora_animation_settings_v1');
+      if (savedAnim) {
+        const animSettings = JSON.parse(savedAnim);
+        if (animSettings.enableAnimations === false) {
+          animationsEnabled = false;
+        }
+      }
+    } catch (e) {}
+
     ScrollTrigger.getAll().forEach(t => t.kill());
 
     // CRITICAL FIX: Clear all leftover inline styles from previous mid-flight animations
@@ -16,6 +28,13 @@ export function useStickyNavAnimation({ selectedPage, layoutConfig, query, scope
     gsap.set('.tool-card-gsap, .tool-card-gsap div[role="button"], .tool-card-gsap .flex-col, .tool-card-gsap .shrink-0, [id^="sticky-wrapper-"], [id^="sticky-icon-"], #sticky-icon-nav-scroll, #sticky-icon-nav', { clearProps: 'all' });
 
     if (selectedPage !== 'AccountSetting') {
+      if (!animationsEnabled) {
+        // Reduced motion: Completely disable the cinematic sticky nav feature
+        // as it relies entirely on complex GSAP layout math and flight paths.
+        gsap.set('#sticky-icon-nav', { display: 'none', opacity: 0 });
+        return; // Skip all GSAP setup
+      }
+
       // 1. Enable interactions on Sticky Nav exactly when Header leaves screen
       gsap.to('#sticky-icon-nav', {
         pointerEvents: "auto",

@@ -6,6 +6,7 @@ import {
   Folder, Database, Globe, Lock, Info, BookOpen
 } from 'lucide-react';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 
 import BNSIPage from "./LIH-LawIntelligenceHub/BNSI-BharatiyaNyayaSanhitaIntelligence";
 import BNSSIPage from "./LIH-LawIntelligenceHub/BNSSI-BharatiyaNagarikSurakshaSanhitaIntelligence";
@@ -68,6 +69,7 @@ export function Header({ title, description }) {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function LIHPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('lih', LIH_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   useEffect(() => {
@@ -144,8 +146,8 @@ export default function LIHPage({ onBack }) {
       <Header />
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
         <main className="flex-1 pt-1 pb-4">
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-            {LIH_TOOLS.map((tool, index) => (
+          <div className={`grid ${dynamicGridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+            {displayTools.map((tool, index) => (
               <ToolCard
                 key={tool.id}
                 tool={{ ...tool, description: tool.desc }}

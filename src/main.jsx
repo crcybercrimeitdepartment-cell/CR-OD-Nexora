@@ -12,10 +12,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'     // Global Tailwind CSS + custom animation styles
 import App from './App.jsx' // Root application component
 import './i18n'          // i18n configuration for translations
+import { ActivityTrackerProvider } from './context/ActivityTrackerContext.jsx' // Global Activity & Camera Tracking
 
 // Mount the React component tree into the HTML root element
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ActivityTrackerProvider>
+      <App />
+    </ActivityTrackerProvider>
   </StrictMode>,
 )

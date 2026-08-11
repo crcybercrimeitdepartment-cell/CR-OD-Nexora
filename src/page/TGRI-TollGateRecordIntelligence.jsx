@@ -2,6 +2,7 @@ import { TGRI_TOOLS } from '../data/subTools';
 import React, { useState, useEffect } from 'react';
 import { Car, FileText, Activity, MapPin, TrendingUp, GitMerge, Clock, Grid, AlertTriangle, Users, BarChart, FileCheck } from 'lucide-react';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 import TTIPage from "./TGRI-TollGateRecordIntelligence/TTI-TollTransactionIntelligence";
 import VIPage from "./TGRI-TollGateRecordIntelligence/VI-VehicleIntelligence";
 import FTIPage from "./TGRI-TollGateRecordIntelligence/FTI-FASTagIntelligence";
@@ -55,6 +56,7 @@ export function Header({ title, description }) {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function TGRIPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('tgri', TGRI_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   useEffect(() => {
@@ -119,8 +121,8 @@ export default function TGRIPage({ onBack }) {
       <Header />
       
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 overflow-x-hidden">
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-          {TGRI_TOOLS.map((tool, idx) => (
+        <div className={`grid ${dynamicGridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+          {displayTools.map((tool, idx) => (
             <ToolCard 
               key={tool.id} 
               tool={{ ...tool, description: tool.desc }} 

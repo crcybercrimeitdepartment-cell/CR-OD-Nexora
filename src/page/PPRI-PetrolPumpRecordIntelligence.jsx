@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PPRI_TOOLS } from '../data/subTools';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 
 // Import sub-components
 import PPLPage from './PPRI-PetrolPumpRecordIntelligence/PPL-PetrolPumpList';
@@ -46,6 +47,7 @@ export function Header({ title, description }) {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function PPRIPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('ppri', PPRI_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   useEffect(() => {
@@ -104,8 +106,8 @@ export default function PPRIPage({ onBack }) {
       
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
         <main className="flex-1 pt-1 pb-4">
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-            {PPRI_TOOLS.map((tool, index) => (
+          <div className={`grid ${dynamicGridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+            {displayTools.map((tool, index) => (
               <div 
                 key={tool.id} 
                 className="opacity-0"

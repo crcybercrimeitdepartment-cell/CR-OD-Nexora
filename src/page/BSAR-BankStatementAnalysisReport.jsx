@@ -1,6 +1,7 @@
 import { BSAR_TOOLS } from '../data/subTools';
 import React, { useState, useEffect } from 'react';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 
 import USPage from "./BSAR-BankStatementAnalysisReport/US-UploadStatement";
 import VARPage from "./BSAR-BankStatementAnalysisReport/VAR-ViewAnalysisReport";
@@ -45,6 +46,7 @@ export function Header({ title, description }) {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function BSARPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('bsar', BSAR_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   useEffect(() => {
@@ -101,8 +103,8 @@ export default function BSARPage({ onBack }) {
       <Header />
       
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 overflow-x-hidden">
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-          {BSAR_TOOLS.map((tool, idx) => (
+        <div className={`grid ${dynamicGridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+          {displayTools.map((tool, idx) => (
             <ToolCard 
               key={tool.id} 
               tool={{ ...tool, description: tool.desc }} 

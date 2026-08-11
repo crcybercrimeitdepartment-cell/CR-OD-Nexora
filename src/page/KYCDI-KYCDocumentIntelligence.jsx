@@ -10,6 +10,7 @@ import RCIPage from './KYCDI-KYCDocumentIntelligence/RCI-ResidenceCertificateInt
 import BCIPage from './KYCDI-KYCDocumentIntelligence/BCI-BirthCertificateIntelligence';
 import CCIPage from './KYCDI-KYCDocumentIntelligence/CCI-CasteCertificateIntelligence';
 import ToolCard from '../components/nexora';
+import { usePageLayout } from '../components/usePageLayout';
 
 /**
  * Header Component.
@@ -48,6 +49,7 @@ export function Header() {
  * @returns {JSX.Element} The rendered page layout.
  */
 export default function KYCDIPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('kycdi', KYC_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
   React.useEffect(() => {
@@ -109,8 +111,8 @@ export default function KYCDIPage({ onBack }) {
       <Header />
       
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 overflow-x-hidden">
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-          {KYC_TOOLS.map((tool, idx) => (
+        <div className={`grid ${dynamicGridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+          {displayTools.map((tool, idx) => (
             <ToolCard 
               key={tool.id} 
               tool={{ ...tool, description: tool.desc }} 

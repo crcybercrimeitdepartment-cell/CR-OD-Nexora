@@ -11,6 +11,7 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import laptopWatermark from './assets/WaterMark.png';
 import phoneWatermark from './assets/PhoneWaterMark.png';
+import { useActivityTracker } from './context/ActivityTrackerContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,14 +60,281 @@ import AboutUsPage from "./page/AboutUs";
 import AccountSettingPage from "./page/AccountSetting";
 import LoginPage from "./page/LoginPage";
 import { motion } from 'framer-motion';
+import { VoiceProvider } from './page/PlatformSettings/VoiceAssistantPage';
+import { Lock, AlertTriangle, Key, ArrowRight } from 'lucide-react';
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     return sessionStorage.getItem('isAuthenticated') === 'true';
   });
+
+  const [globalLayoutSettings, setGlobalLayoutSettings] = useState(null);
+
+  // Module Lock State
+  const [moduleLockConfig, setModuleLockConfig] = useState(null);
+  const [unlockedModules, setUnlockedModules] = useState([]);
+
+  useEffect(() => {
+    const loadLocks = () => {
+      try {
+        const saved = localStorage.getItem('nexora_module_lock_v1');
+        if (saved) setModuleLockConfig(JSON.parse(saved));
+        else setModuleLockConfig(null);
+      } catch (e) {}
+    };
+    loadLocks();
+    window.addEventListener('storage', loadLocks);
+    window.addEventListener('securityUpdate', loadLocks);
+    return () => {
+      window.removeEventListener('storage', loadLocks);
+      window.removeEventListener('securityUpdate', loadLocks);
+    };
+  }, []);
+
+  const getLockedPageId = (pageId, subPageId) => {
+    if (!moduleLockConfig?.globalLockEnabled) return false;
+    
+    if (subPageId && !unlockedModules.includes(subPageId) && moduleLockConfig.lockedModules?.[subPageId]?.locked) {
+      return subPageId;
+    }
+    
+    if (pageId && !unlockedModules.includes(pageId) && moduleLockConfig.lockedModules?.[pageId]?.locked) {
+      return pageId;
+    }
+    
+    return false;
+  };
+
+  const LockScreen = ({ pageId, onUnlock }) => {
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const lockData = moduleLockConfig.lockedModules[pageId];
+      const expectedPassword = (lockData && !lockData.useDefault) ? lockData.customPassword : moduleLockConfig.defaultPassword;
+      
+      if (password === expectedPassword) {
+        onUnlock(pageId);
+      } else {
+        setError('Incorrect password. Access denied.');
+        setPassword('');
+      }
+    };
+
+    return (
+      <div className="flex-1 flex flex-col items-center justify-start sm:justify-center pt-8 sm:pt-20 pb-16 sm:pb-32 px-4">
+        <div className="bg-white/80 backdrop-blur-xl border border-slate-200/60 p-8 sm:p-12 rounded-3xl shadow-2xl max-w-md w-full animate-fade-in text-center relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-2 bg-rose-500"></div>
+          <div className="w-20 h-20 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-rose-100">
+            <Lock className="w-10 h-10" />
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">Access Restricted</h2>
+          <p className="text-sm text-slate-500 font-medium mb-8">
+            The <strong className="text-slate-800">{pageId}</strong> module is locked. Please enter the required password to gain access to this section.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Key className="w-5 h-5 text-slate-400" />
+              </div>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); setError(''); }}
+                placeholder="Enter password..."
+                autoFocus
+                className="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-300 hover:border-slate-400 focus:border-rose-500 focus:ring-4 focus:ring-rose-500/20 rounded-xl text-sm font-bold text-slate-900 placeholder:text-slate-400 transition-all outline-none"
+              />
+            </div>
+
+            {error && (
+              <p className="text-xs font-bold text-rose-500 flex items-center justify-center gap-1.5 animate-shake">
+                <AlertTriangle className="w-4 h-4" />
+                {error}
+              </p>
+            )}
+
+            <button type="submit" className="w-full flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
+              <span>Unlock Module</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  };
+
+  useEffect(() => {
+    const loadLayout = () => {
+      try {
+        const saved = localStorage.getItem('nexora_layout_settings_v1_Dashboard');
+        if (saved) {
+          setGlobalLayoutSettings(JSON.parse(saved));
+        } else {
+          setGlobalLayoutSettings(null);
+        }
+      } catch (e) {}
+    };
+    
+    loadLayout();
+    window.addEventListener('storage', loadLayout);
+    window.addEventListener('layoutUpdate', loadLayout);
+    return () => {
+      window.removeEventListener('storage', loadLayout);
+      window.removeEventListener('layoutUpdate', loadLayout);
+    };
+  }, []);
+
+  // Initialize Global Accessibility Settings
+  useEffect(() => {
+    const applyAccessibility = () => {
+      try {
+        const saved = localStorage.getItem('nexora_accessibility_settings_v1');
+        if (saved) {
+          const settings = JSON.parse(saved);
+          const root = document.documentElement;
+          
+          const isEnabled = settings.visualDisplayEnabled ?? true;
+
+          if (!isEnabled) {
+            root.style.fontSize = '16px';
+            root.style.letterSpacing = 'normal';
+            root.style.filter = 'none';
+          } else {
+            if (settings.textSize === 'Small') root.style.fontSize = '14px';
+            else if (settings.textSize === 'Large') root.style.fontSize = '18px';
+            else if (settings.textSize === 'Extra Large') root.style.fontSize = '20px';
+            else root.style.fontSize = '16px'; // Medium
+
+            if (settings.letterSpacing === 'Wide') root.style.letterSpacing = '0.05em';
+            else if (settings.letterSpacing === 'Extra Wide') root.style.letterSpacing = '0.1em';
+            else root.style.letterSpacing = 'normal'; // Normal
+
+            if (settings.highContrast) root.style.filter = 'contrast(125%) saturate(1.1)';
+            else root.style.filter = 'none';
+          }
+        }
+      } catch (e) {}
+    };
+
+    applyAccessibility();
+    window.addEventListener('storage', applyAccessibility);
+    window.addEventListener('accessibilityUpdate', applyAccessibility);
+    return () => {
+      window.removeEventListener('storage', applyAccessibility);
+      window.removeEventListener('accessibilityUpdate', applyAccessibility);
+    };
+  }, []);
+
+  // Initialize Global Animation Settings
+  useEffect(() => {
+    const applyAnimationSettings = () => {
+      try {
+        const saved = localStorage.getItem('nexora_animation_settings_v1');
+        let styleTag = document.getElementById('nexora-animation-overrides');
+        
+        if (!styleTag) {
+          styleTag = document.createElement('style');
+          styleTag.id = 'nexora-animation-overrides';
+          document.head.appendChild(styleTag);
+        }
+
+        if (saved) {
+          const settings = JSON.parse(saved);
+          let cssRules = '';
+          
+          if (settings.enableAnimations === false) {
+            cssRules += `
+              *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-delay: 0s !important;
+              }
+            `;
+          }
+          
+          if (settings.enableTransitions === false) {
+            cssRules += `
+              *, *::before, *::after {
+                transition-duration: 0.001ms !important;
+                transition-delay: 0s !important;
+              }
+            `;
+          }
+          
+          if (settings.enableHoverEffects === false) {
+            cssRules += `
+              [class*="hover:"]:hover {
+                transform: none !important;
+                box-shadow: none !important;
+              }
+            `;
+          }
+          
+          styleTag.innerHTML = cssRules;
+        } else {
+          styleTag.innerHTML = '';
+        }
+      } catch (e) {
+        console.warn('Failed to apply animation settings:', e);
+      }
+    };
+
+    applyAnimationSettings();
+    window.addEventListener('storage', applyAnimationSettings);
+    window.addEventListener('animationUpdate', applyAnimationSettings);
+    return () => {
+      window.removeEventListener('storage', applyAnimationSettings);
+      window.removeEventListener('animationUpdate', applyAnimationSettings);
+    };
+  }, []);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPage, setSelectedPage] = useState(null);
+  const [activeSubPage, setActiveSubPage] = useState(null);
 
+  // Intercept pushState so App.jsx knows when inner pages navigate
+  useEffect(() => {
+    const originalPushState = window.history.pushState;
+    window.history.pushState = function(state, title, url) {
+      originalPushState.apply(this, arguments);
+      if (state && state.page) {
+        setSelectedPage(state.page);
+        setActiveSubPage(state.subPage || null);
+      }
+    };
+    
+    const handlePopState = (event) => {
+      if (event.state && event.state.page) {
+        setSelectedPage(event.state.page);
+        setActiveSubPage(event.state.subPage || null);
+      } else {
+        setSelectedPage(null);
+        setActiveSubPage(null);
+      }
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.history.pushState = originalPushState;
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
+  const { trackLocation, stopMainSession } = useActivityTracker();
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    
+    trackLocation(selectedPage, activeSubPage);
+    
+    return () => {
+      stopMainSession();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedPage, activeSubPage, isAuthenticated]);
   const getColsForWidth = (w) => {
     if (w < 768) return 2;
     return 4;
@@ -144,6 +412,7 @@ export default function App() {
     // If the user starts typing, immediately switch to the global Home Dashboard
     if (val.trim().length > 0 && selectedPage !== null) {
       setSelectedPage(null);
+      setActiveSubPage(null);
       window.history.pushState(null, '', '#Home');
     }
   };
@@ -158,11 +427,13 @@ export default function App() {
       // It's an inner card!
       window.history.pushState({ page: tool.parentId, subPage: tool.id }, '', `#${tool.parentId}/${tool.id}`);
       setSelectedPage(tool.parentId);
+      setActiveSubPage(tool.id);
     } else {
       // It's a main module
       const pageId = tool.name === "Intelligence Modules" ? "IntelligenceModules" : tool.name === "About Us" ? "AboutUs" : tool.name === "Account Setting" ? "AccountSetting" : tool.name;
-      window.history.pushState({ page: pageId }, '', `#${pageId}`);
+      window.history.pushState({ page: pageId, subPage: null }, '', `#${pageId}`);
       setSelectedPage(pageId);
+      setActiveSubPage(null);
     }
   };
 
@@ -170,8 +441,17 @@ export default function App() {
     scrollPositions.current[selectedPage || 'home'] = lenisRef.current?.scroll || window.scrollY || document.documentElement.scrollTop;
     isNavigatingBack.current = false;
     setSearchQuery('');
-    window.history.pushState({ page: id }, '', `#${id}`);
+    
+    if (id === 'DashboardSettings') {
+      window.history.pushState({ page: 'PlatformSettings', subPage: 'layout' }, '', '#PlatformSettings/layout');
+      setSelectedPage('PlatformSettings');
+      setActiveSubPage('layout');
+      return;
+    }
+
+    window.history.pushState({ page: id, subPage: null }, '', `#${id}`);
     setSelectedPage(id);
+    setActiveSubPage(null);
   };
 
   const handleBack = () => {
@@ -212,8 +492,11 @@ export default function App() {
       isNavigatingBack.current = true;
       if (event.state && event.state.page) {
         setSelectedPage(event.state.page);
+        setActiveSubPage(event.state.subPage || null);
       } else {
+        const hashStr = window.location.hash.replace('#', '');
         setSelectedPage(getPageFromHash(window.location.hash));
+        setActiveSubPage(hashStr.split('/')[1] || null);
       }
     };
 
@@ -223,10 +506,13 @@ export default function App() {
 
     // Check initial location hash on mount
     const initialPage = getPageFromHash(window.location.hash);
+    const initialHash = window.location.hash.replace('#', '');
+    const initialSubPage = initialHash.split('/')[1] || null;
     if (!initialPage && window.location.hash !== '#Home') {
       window.history.replaceState(null, '', '#Home');
     }
     setSelectedPage(initialPage);
+    setActiveSubPage(initialSubPage);
 
     window.addEventListener('popstate', handlePopState);
     window.addEventListener('hashchange', handleHashChange);
@@ -343,6 +629,7 @@ export default function App() {
   }
 
   return (
+    <VoiceProvider>
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -455,7 +742,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div id="cards-container" className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null ? 'min-h-[125vh]' : ''}`}>
+      <div id="cards-container" className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null && !getLockedPageId(selectedPage, activeSubPage) ? 'min-h-[125vh]' : ''}`}>
         <div className="relative z-10 flex-1 flex flex-col w-full">
           <main className={`flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 flex flex-col min-h-[calc(100vh-160px)] ${selectedPage === null ? 'pt-16 sm:pt-20 lg:pt-24 pb-10 md:pb-16' : 'pt-2 sm:pt-4'}`}>
             {selectedPage === null ? (
@@ -473,13 +760,47 @@ export default function App() {
                   {(!query || filteredMainTools.length > 0) && (
                     <div>
                       {query && <h2 className="text-xl font-bold text-[#1e2a52] mb-4">Main Categories</h2>}
-                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-                        {filteredMainTools.map((tool, index) => (
+                      {(() => {
+                        let dynamicGridClass = 'grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4';
+                        let displayTools = [...filteredMainTools];
+                        
+                        if (globalLayoutSettings) {
+                          if (globalLayoutSettings.arrangement === 'List') {
+                            dynamicGridClass = 'grid-cols-1';
+                          } else {
+                            const cols = globalLayoutSettings.gridColumns || 4;
+                            if (cols === 2) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2';
+                            else if (cols === 3) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+                            else if (cols === 4) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+                          }
+                          
+                          // Reorder based on layout settings
+                          if (globalLayoutSettings.cards && Array.isArray(globalLayoutSettings.cards)) {
+                            const savedCardIds = globalLayoutSettings.cards.map(c => c.id);
+                            displayTools.sort((a, b) => {
+                              const aId = a.id || a.name;
+                              const bId = b.id || b.name;
+                              const aIndex = savedCardIds.indexOf(aId);
+                              const bIndex = savedCardIds.indexOf(bId);
+                              
+                              if (aIndex === -1 && bIndex === -1) return 0;
+                              if (aIndex === -1) return 1;
+                              if (bIndex === -1) return -1;
+                              return aIndex - bIndex;
+                            });
+                          }
+                        }
+                        
+                        return (
+                          <div className={`grid ${dynamicGridClass} gap-3 sm:gap-4 md:gap-5`}>
+                            {displayTools.map((tool, index) => (
                           <div className="tool-card-gsap" key={tool.name}>
                             <ToolCard tool={tool} index={index} onClick={handleToolClick} disableCssAnimation={true} />
                           </div>
                         ))}
-                      </div>
+                          </div>
+                        );
+                      })()}
                     </div>
                   )}
 
@@ -487,17 +808,34 @@ export default function App() {
                   {query && filteredSubTools.length > 0 && (
                     <div className="mt-4 pt-6 border-t border-slate-200">
                       <h2 className="text-xl font-bold text-[#1e2a52] mb-4">Inner Intelligence Tools</h2>
-                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
-                        {filteredSubTools.map((tool, index) => (
+                      {(() => {
+                        let dynamicGridClass = 'grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4';
+                        if (globalLayoutSettings) {
+                          if (globalLayoutSettings.arrangement === 'List') {
+                            dynamicGridClass = 'grid-cols-1';
+                          } else {
+                            const cols = globalLayoutSettings.gridColumns || 4;
+                            if (cols === 2) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2';
+                            else if (cols === 3) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+                            else if (cols === 4) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+                          }
+                        }
+                        return (
+                          <div className={`grid ${dynamicGridClass} gap-3 sm:gap-4 md:gap-5`}>
+                            {filteredSubTools.map((tool, index) => (
                           <div className="tool-card-gsap" key={`${tool.parentId}-${tool.id}`}>
                             <ToolCard tool={tool} index={index} onClick={handleToolClick} disableCssAnimation={true} />
                           </div>
                         ))}
-                      </div>
+                          </div>
+                        );
+                      })()}
                     </div>
                   )}
                 </div>
               )
+            ) : getLockedPageId(selectedPage, activeSubPage) ? (
+               <LockScreen pageId={getLockedPageId(selectedPage, activeSubPage)} onUnlock={(id) => setUnlockedModules(prev => [...prev, id])} />
             ) : selectedPage === "PlatformSettings" ? <PlatformSettingsPage onBack={handleBack} />
               : selectedPage === "CDR" ? <CDRPage onBack={handleBack} searchQuery={searchQuery} />
               : selectedPage === "SDR" ? <SDRPage onBack={handleBack} searchQuery={searchQuery} />
@@ -540,5 +878,6 @@ export default function App() {
       {/* GLOBAL FOOTER */}
       <GlobalFooter pageName="NEXORA INTELLIGENCE" audience="Law Enforcement & Security Agencies" />
     </motion.div>
+    </VoiceProvider>
   );
 }

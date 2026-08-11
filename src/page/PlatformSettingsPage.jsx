@@ -34,6 +34,30 @@ const SETTINGS_CARDS = [
 export default function PlatformSettingsPage({ onBack }) {
   const { t } = useTranslation();
   const [selectedSubPage, setSelectedSubPage] = useState(null);
+  const [layoutSettings, setLayoutSettings] = useState(null);
+
+  // Load layout configuration
+  useEffect(() => {
+    const loadLayout = () => {
+      try {
+        const saved = localStorage.getItem('nexora_layout_settings_v1');
+        if (saved) {
+          setLayoutSettings(JSON.parse(saved));
+        } else {
+          setLayoutSettings(null);
+        }
+      } catch (e) {}
+    };
+    
+    loadLayout();
+    // Optional: listen to storage events if changed in another tab
+    window.addEventListener('storage', loadLayout);
+    window.addEventListener('layoutUpdate', loadLayout);
+    return () => {
+      window.removeEventListener('storage', loadLayout);
+      window.removeEventListener('layoutUpdate', loadLayout);
+    };
+  }, [selectedSubPage]);
 
   useEffect(() => {
     // Scroll to top automatically when navigating to this page
@@ -113,8 +137,57 @@ export default function PlatformSettingsPage({ onBack }) {
 
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
         <main className="flex-1 pt-1 pb-4">
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 sm:gap-4 md:gap-5">
-            {SETTINGS_CARDS.map((tool, index) => {
+          {(() => {
+            // Apply Layout Settings
+            let displayCards = [...SETTINGS_CARDS];
+            let gridClass = 'grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+
+            if (layoutSettings) {
+              // 1. Reorder
+              if (layoutSettings.cards && Array.isArray(layoutSettings.cards)) {
+                const shortIdMap = {
+                  'language-setting': 'lang',
+                  'customise-theme': 'theme',
+                  'accessibility-setting': 'access',
+                  'layout-setting': 'layout',
+                  'notification-setting': 'notif',
+                  'animation-setting': 'anim',
+                  'zoom-controls': 'zoom',
+                  'voice-assistant': 'voice',
+                  'user-activity-log': 'log',
+                  'platform-security-setting': 'sec',
+                  'web-camera-setting': 'cam',
+                  '2-factor-authentication': '2fa'
+                };
+                
+                const reordered = [];
+                layoutSettings.cards.forEach(savedCard => {
+                  const shortId = shortIdMap[savedCard.id];
+                  const originalCard = SETTINGS_CARDS.find(c => c.id === shortId);
+                  if (originalCard) reordered.push(originalCard);
+                });
+                
+                // Add any missing cards to the end
+                SETTINGS_CARDS.forEach(c => {
+                  if (!reordered.find(rc => rc.id === c.id)) reordered.push(c);
+                });
+                displayCards = reordered;
+              }
+
+              // 2. Arrangement & Columns
+              if (layoutSettings.arrangement === 'List') {
+                gridClass = 'grid-cols-1';
+              } else {
+                const cols = layoutSettings.gridColumns || 4;
+                if (cols === 2) gridClass = 'grid-cols-1 sm:grid-cols-2';
+                else if (cols === 3) gridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+                else if (cols === 4) gridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+              }
+            }
+
+            return (
+              <div className={`grid ${gridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+                {displayCards.map((tool, index) => {
               const translationKeyBase = tool.id === 'lang' ? 'language-setting' :
                                          tool.id === 'theme' ? 'customise-theme' :
                                          tool.id === 'access' ? 'accessibility-setting' :
@@ -143,7 +216,9 @@ export default function PlatformSettingsPage({ onBack }) {
                 />
               );
             })}
-          </div>
+            </div>
+            );
+          })()}
         </main>
       </div>
     </div>
