@@ -35,6 +35,8 @@ export default function PlatformSettingsPage({ onBack }) {
   const { t } = useTranslation();
   const [selectedSubPage, setSelectedSubPage] = useState(null);
   const [layoutSettings, setLayoutSettings] = useState(null);
+  const scrollPosRef = React.useRef(0);
+  const isNavigatingBack = React.useRef(false);
 
   // Load layout configuration
   useEffect(() => {
@@ -60,13 +62,21 @@ export default function PlatformSettingsPage({ onBack }) {
   }, [selectedSubPage]);
 
   useEffect(() => {
-    // Scroll to top automatically when navigating to this page
-    window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: 0 }));
-    window.scrollTo(0, 0);
-  }, []);
+    if (isNavigatingBack.current) {
+      if (selectedSubPage === null) {
+        window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: scrollPosRef.current }));
+      } else {
+        window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: 0 }));
+      }
+    } else {
+      window.dispatchEvent(new CustomEvent('app:forceScroll', { detail: 0 }));
+    }
+    isNavigatingBack.current = false;
+  }, [selectedSubPage]);
 
   useEffect(() => {
     const handlePopState = (event) => {
+      isNavigatingBack.current = true;
       if (event.state && event.state.page === 'PlatformSettings' && event.state.subPage) {
         setSelectedSubPage(event.state.subPage);
       } else {
@@ -83,11 +93,14 @@ export default function PlatformSettingsPage({ onBack }) {
   }, []);
 
   const handleSelectSubPage = (id) => {
+    scrollPosRef.current = window.scrollY || document.documentElement.scrollTop;
+    isNavigatingBack.current = false;
     window.history.pushState({ page: 'PlatformSettings', subPage: id }, '', '#PlatformSettings/' + id);
     setSelectedSubPage(id);
   };
 
   const handleSubPageBack = () => {
+    isNavigatingBack.current = true;
     if (window.history.state && window.history.state.subPage) {
       window.history.back();
     } else {

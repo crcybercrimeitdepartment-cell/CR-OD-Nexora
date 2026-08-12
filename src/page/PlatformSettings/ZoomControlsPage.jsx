@@ -9,8 +9,10 @@ import {
   Check,
   RotateCcw,
   Search,
-  Layout
+  Layout,
+  Radio
 } from 'lucide-react';
+import ToolCard from '../../components/nexora';
 
 const SAVED_ZOOM_KEY = 'nexora_zoom_settings_v1';
 
@@ -49,9 +51,7 @@ export default function ZoomControlsPage({ onBack }) {
 
     try {
       localStorage.setItem(SAVED_ZOOM_KEY, JSON.stringify(updatedSettings));
-      
-      // Apply zoom to document if desired (optional: document.body.style.zoom = `${zoomLevel}%`)
-      // document.documentElement.style.setProperty('--global-zoom', `${zoomLevel / 100}`);
+      window.dispatchEvent(new Event('zoomUpdate'));
     } catch (e) {
       console.warn('Failed to save zoom settings to localStorage:', e);
     }
@@ -67,7 +67,7 @@ export default function ZoomControlsPage({ onBack }) {
 
     try {
       localStorage.removeItem(SAVED_ZOOM_KEY);
-      // document.documentElement.style.removeProperty('--global-zoom');
+      window.dispatchEvent(new Event('zoomUpdate'));
     } catch (e) {
       console.warn('Failed to clear localStorage on reset:', e);
     }
@@ -227,28 +227,19 @@ export default function ZoomControlsPage({ onBack }) {
               
               {/* Scaled Preview Item */}
               <div 
-                className="bg-white p-5 rounded-2xl shadow-lg border border-slate-200/60 w-64 transition-transform duration-300 origin-center flex flex-col gap-3"
+                className="w-full max-w-[320px] sm:max-w-[380px] transition-transform duration-300 origin-center"
                 style={{ transform: `scale(${zoomLevel / 100})` }}
               >
-                <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-black">
-                    N
-                  </div>
-                  <div>
-                    <div className="text-sm font-black text-slate-800 leading-tight">NEXORA</div>
-                    <div className="text-[10px] font-medium text-slate-500">Intelligence Platform</div>
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="h-2 bg-slate-100 rounded-full w-full"></div>
-                  <div className="h-2 bg-slate-100 rounded-full w-4/5"></div>
-                  <div className="h-2 bg-slate-100 rounded-full w-5/6"></div>
-                </div>
-                
-                <button className="mt-2 w-full py-2 bg-blue-600 text-white rounded-lg text-xs font-bold shadow-sm">
-                  Apply Action
-                </button>
+                <ToolCard 
+                  tool={{
+                    name: 'TDR',
+                    description: 'Tower Dump Record - Analyze cellular tower logs to uncover criminal networks.',
+                    icon: () => <Radio className="w-5 h-5" />,
+                    bgColor: 'bg-rose-50',
+                    iconColor: 'text-rose-600'
+                  }} 
+                  disableCssAnimation={true}
+                />
               </div>
 
               {/* Grid Background Pattern */}

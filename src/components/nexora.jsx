@@ -67,6 +67,7 @@ import {
   Bell,
   LayoutDashboard,
   BookOpen,
+  Calculator,
   Layers,
   LogOut
 } from 'lucide-react';
@@ -345,7 +346,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           {/* RIGHT ICONS (Hidden on very small screens) */}
           <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
             <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
-            <HeaderIcon id="CaseStudy" Icon={BookOpen} label="Case Study" />
+            <HeaderIcon id="CaseCalculator" Icon={Calculator} label="Case Calculator" />
             <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
           </div>
 
@@ -368,7 +369,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
           <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
           <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
-          <HeaderIcon id="CaseStudy" Icon={BookOpen} label="Case Study" />
+          <HeaderIcon id="CaseCalculator" Icon={Calculator} label="Case Calculator" />
           <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
         </div>
       </div>

@@ -74,6 +74,14 @@ export default function App() {
   const [moduleLockConfig, setModuleLockConfig] = useState(null);
   const [unlockedModules, setUnlockedModules] = useState([]);
 
+  // Zoom State
+  const [zoomSettings, setZoomSettings] = useState(() => {
+    try {
+      const saved = localStorage.getItem('nexora_zoom_settings_v1');
+      return saved ? JSON.parse(saved) : { zoomLevel: 100, autoScaling: true };
+    } catch (e) { return { zoomLevel: 100, autoScaling: true }; }
+  });
+
   useEffect(() => {
     const loadLocks = () => {
       try {
@@ -82,12 +90,25 @@ export default function App() {
         else setModuleLockConfig(null);
       } catch (e) {}
     };
+    const loadZoom = () => {
+      try {
+        const saved = localStorage.getItem('nexora_zoom_settings_v1');
+        if (saved) setZoomSettings(JSON.parse(saved));
+        else setZoomSettings({ zoomLevel: 100, autoScaling: true });
+      } catch (e) {}
+    };
+
     loadLocks();
+    loadZoom();
     window.addEventListener('storage', loadLocks);
     window.addEventListener('securityUpdate', loadLocks);
+    window.addEventListener('storage', loadZoom);
+    window.addEventListener('zoomUpdate', loadZoom);
     return () => {
       window.removeEventListener('storage', loadLocks);
       window.removeEventListener('securityUpdate', loadLocks);
+      window.removeEventListener('storage', loadZoom);
+      window.removeEventListener('zoomUpdate', loadZoom);
     };
   }, []);
 
@@ -376,7 +397,14 @@ export default function App() {
     gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    resizeObserver.observe(document.body);
+    resizeObserver.observe(document.documentElement);
+
     return () => {
+      resizeObserver.disconnect();
       lenisRef.current = null;
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
@@ -485,6 +513,9 @@ export default function App() {
       if (pageId.startsWith('AboutUs-')) {
         return 'AboutUs';
       }
+      if (pageId.startsWith('AccountSetting-')) {
+        return 'AccountSetting';
+      }
       return pageId;
     };
 
@@ -578,8 +609,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // If returning to the home page (selectedPage is null), always scroll to the top.
-    const targetScroll = (isNavigatingBack.current && selectedPage) ? (scrollPositions.current[selectedPage] || 0) : 0;
+    // Restore scroll position when navigating back, including for the home page.
+    const targetScroll = isNavigatingBack.current ? (scrollPositions.current[selectedPage || 'home'] || 0) : 0;
     
     const setScroll = () => {
       if (lenisRef.current) {
@@ -742,7 +773,7 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div id="cards-container" className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null && !getLockedPageId(selectedPage, activeSubPage) ? 'min-h-[125vh]' : ''}`}>
+      <div id="cards-container" style={{ zoom: `${zoomSettings.zoomLevel}%` }} className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null && !getLockedPageId(selectedPage, activeSubPage) ? 'min-h-[125vh]' : ''}`}>
         <div className="relative z-10 flex-1 flex flex-col w-full">
           <main className={`flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 flex flex-col min-h-[calc(100vh-160px)] ${selectedPage === null ? 'pt-16 sm:pt-20 lg:pt-24 pb-10 md:pb-16' : 'pt-2 sm:pt-4'}`}>
             {selectedPage === null ? (

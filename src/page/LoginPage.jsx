@@ -19,6 +19,7 @@ import {
   HelpCircle,
   Bell,
   BookOpen,
+  Calculator,
   Layers,
   LogOut
 } from 'lucide-react';
@@ -348,7 +349,7 @@ export default function LoginPage({ onLoginSuccess }) {
           {view === 'morphing' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.6 }} className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
               <HeaderIcon Icon={Bell} label="Notification" />
-              <HeaderIcon Icon={BookOpen} label="Case Study" />
+              <HeaderIcon Icon={Calculator} label="Case Calculator" />
               <HeaderIcon Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
             </motion.div>
           )}
@@ -369,7 +370,7 @@ export default function LoginPage({ onLoginSuccess }) {
             <HeaderIcon Icon={LayoutDashboard} label="Dashboard Settings" />
             <HeaderIcon Icon={HelpCircle} label="Help" />
             <HeaderIcon Icon={Bell} label="Notification" />
-            <HeaderIcon Icon={BookOpen} label="Case Study" />
+            <HeaderIcon Icon={Calculator} label="Case Calculator" />
             <HeaderIcon Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
           </motion.div>
         )}
