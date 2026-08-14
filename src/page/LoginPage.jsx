@@ -235,7 +235,7 @@ export default function LoginPage({ onLoginSuccess }) {
           return (
             <React.Fragment key={step.name}>
               <div className="flex items-center gap-1.5">
-                <span className={`text-[10px] font-semibold tracking-wider uppercase ${
+                <span className={`text-[calc(10px*var(--text-scale,1))] font-semibold tracking-wider uppercase ${
                   status === 'done' ? 'text-blue-600' : 
                   status === 'active' ? 'text-slate-900' : 'text-slate-400'
                 }`}>
@@ -263,7 +263,7 @@ export default function LoginPage({ onLoginSuccess }) {
       <div className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 text-[#1e2a52]">
         <Icon className="w-5 h-5 md:w-5 md:h-5" strokeWidth={1.5} />
       </div>
-      <span className="text-[6px] md:text-[7.5px] font-bold text-[#1e2a52] text-center leading-tight uppercase tracking-wide mt-1 relative pb-1">
+      <span className="text-[calc(6px*var(--text-scale,1))] md:text-[calc(7.5px*var(--text-scale,1))] font-bold text-[#1e2a52] text-center leading-tight uppercase tracking-wide mt-1 relative pb-1">
         {label}
       </span>
     </div>
@@ -308,7 +308,7 @@ export default function LoginPage({ onLoginSuccess }) {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.6 }} className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
               <HeaderIcon Icon={Settings} label="Platform Settings" />
               <HeaderIcon Icon={LayoutDashboard} label="Dashboard Settings" />
-              <HeaderIcon Icon={HelpCircle} label="Help" />
+              <HeaderIcon Icon={User} label="Account Setting" />
             </motion.div>
           )}
 
@@ -333,7 +333,7 @@ export default function LoginPage({ onLoginSuccess }) {
               >
                 <div className="flex items-center justify-center w-full">
                   <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#b0b8d6] to-transparent opacity-70"></div>
-                  <p className="px-1.5 sm:px-3 md:px-4 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[15px] font-medium text-[#4b5563] text-center leading-snug xl:whitespace-nowrap">
+                  <p className="px-1.5 sm:px-3 md:px-4 text-[calc(10px*var(--text-scale,1))] sm:text-[calc(12px*var(--text-scale,1))] md:text-[calc(14px*var(--text-scale,1))] lg:text-[calc(15px*var(--text-scale,1))] font-medium text-[#4b5563] text-center leading-snug xl:whitespace-nowrap">
                     One Secure Platform for <br className="block lg:hidden" /> Advanced Intelligence & Investigation Records
                   </p>
                   <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#b0b8d6] to-transparent opacity-70"></div>
@@ -349,7 +349,7 @@ export default function LoginPage({ onLoginSuccess }) {
           {view === 'morphing' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.6 }} className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
               <HeaderIcon Icon={Bell} label="Notification" />
-              <HeaderIcon Icon={Calculator} label="Case Calculator" />
+              <HeaderIcon Icon={HelpCircle} label="Help" />
               <HeaderIcon Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
             </motion.div>
           )}
@@ -368,9 +368,9 @@ export default function LoginPage({ onLoginSuccess }) {
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ delay: 0.15, duration: 0.6 }} className="flex xl:hidden items-start justify-center gap-1 sm:gap-2 mt-2 w-full px-1">
             <HeaderIcon Icon={Settings} label="Platform Settings" />
             <HeaderIcon Icon={LayoutDashboard} label="Dashboard Settings" />
-            <HeaderIcon Icon={HelpCircle} label="Help" />
+            <HeaderIcon Icon={User} label="Account Setting" />
             <HeaderIcon Icon={Bell} label="Notification" />
-            <HeaderIcon Icon={Calculator} label="Case Calculator" />
+            <HeaderIcon Icon={HelpCircle} label="Help" />
             <HeaderIcon Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
           </motion.div>
         )}
@@ -864,7 +864,7 @@ export default function LoginPage({ onLoginSuccess }) {
           className={
             view === 'morphing' 
               ? "w-full mt-auto relative z-10"
-              : "w-full bg-[#cbe6ff] px-6 py-4 border-t border-[#b5d7fb] flex justify-between items-center text-[#1e2a52] text-[11px] font-medium relative z-20"
+              : "w-full bg-[#cbe6ff] px-6 py-4 border-t border-[#b5d7fb] flex justify-between items-center text-[#1e2a52] text-[calc(11px*var(--text-scale,1))] font-medium relative z-20"
           }
         >
           {view !== 'morphing' ? (

@@ -45,7 +45,7 @@ import {
   TDIIcon,
   IntelligenceModulesIcon,
   AboutUsIcon,
-  AccountSettingIcon
+  DemoCardIcon
 } from '../components/nexora';
 
 export const NEXORA_MODULES = [
@@ -303,11 +303,11 @@ export const NEXORA_MODULES = [
     iconColor: 'text-[#334155]'
   },
   {
-    id: 'account-setting',
-    name: 'Account Setting',
-    description: 'Get in touch with our team for support, enterprise integration & general queries',
-    icon: AccountSettingIcon,
-    bgColor: 'bg-[#FFECEC]',
-    iconColor: 'text-[#DC2626]'
+    id: 'demo-card',
+    name: 'Demo Card',
+    description: 'This is a placeholder demo card for future intelligence modules.',
+    icon: DemoCardIcon,
+    bgColor: 'bg-[#F3F4F6]',
+    iconColor: 'text-[#6B7280]'
   }
 ];

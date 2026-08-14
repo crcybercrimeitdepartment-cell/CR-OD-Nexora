@@ -453,7 +453,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                   <Key className="w-4 h-4 text-indigo-600" />
                   Default Master Password
                 </h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Used as the fallback password for all locked modules.</p>
+                <p className="text-[calc(11px*var(--text-scale,1))] text-slate-500 mt-0.5">Used as the fallback password for all locked modules.</p>
               </div>
               <div>
                 {moduleLockConfig.defaultPassword ? (
@@ -507,11 +507,11 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                       <div className={`p-3 rounded-xl border flex items-center justify-between gap-3 transition-colors ${isLocked ? 'bg-indigo-50/50 border-indigo-200' : 'bg-white border-slate-200'}`}>
                         <div className="flex-1 min-w-0">
                           <span className="block text-xs font-bold text-slate-800 truncate">{module.name}</span>
-                          <span className="block text-[10px] text-slate-500 truncate">{module.description}</span>
+                          <span className="block text-[calc(10px*var(--text-scale,1))] text-slate-500 truncate">{module.description}</span>
                           {subTools.length > 0 && (
                             <button 
                               onClick={(e) => toggleExpand(mId, e)}
-                              className="mt-2 text-[10px] font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 transition-colors relative z-10"
+                              className="mt-2 text-[calc(10px*var(--text-scale,1))] font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 transition-colors relative z-10"
                             >
                               {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                               {isExpanded ? 'Hide Inner Pages' : `View Inner Pages (${subTools.length})`}
@@ -523,7 +523,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                           {isLocked && (
                             <button 
                               onClick={() => toggleModulePasswordType(mId)}
-                              className={`px-2 py-1 text-[9px] font-bold rounded flex items-center gap-1 transition-colors ${useDefault ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'}`}
+                              className={`px-2 py-1 text-[calc(9px*var(--text-scale,1))] font-bold rounded flex items-center gap-1 transition-colors ${useDefault ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'}`}
                               title={useDefault ? 'Using Default Password' : 'Using Custom Password'}
                             >
                               <Settings2 className="w-3 h-3" />
@@ -558,14 +558,14 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                             return (
                               <div key={stId} className={`p-2.5 rounded-lg border flex items-center justify-between gap-3 transition-colors ${stIsLocked ? 'bg-indigo-50/30 border-indigo-100' : 'bg-slate-50 border-slate-100'}`}>
                                 <div className="flex-1 min-w-0">
-                                  <span className="block text-[11px] font-bold text-slate-700 truncate">{subTool.name}</span>
-                                  <span className="block text-[9px] text-slate-400 truncate">{subTool.desc}</span>
+                                  <span className="block text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700 truncate">{subTool.name}</span>
+                                  <span className="block text-[calc(9px*var(--text-scale,1))] text-slate-400 truncate">{subTool.desc}</span>
                                 </div>
                                 <div className="flex items-center gap-2 shrink-0">
                                   {stIsLocked && (
                                     <button 
                                       onClick={() => toggleModulePasswordType(stId)}
-                                      className={`px-1.5 py-0.5 text-[8px] font-bold rounded flex items-center gap-1 transition-colors ${stUseDefault ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'}`}
+                                      className={`px-1.5 py-0.5 text-[calc(8px*var(--text-scale,1))] font-bold rounded flex items-center gap-1 transition-colors ${stUseDefault ? 'bg-slate-200 text-slate-600 hover:bg-slate-300' : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'}`}
                                       title={stUseDefault ? 'Using Default Password' : 'Using Custom Password'}
                                     >
                                       <Settings2 className="w-2.5 h-2.5" />
@@ -605,7 +605,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                 <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
                   Active Sessions & Login History
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-500 font-medium">
+                <p className="text-[calc(11px*var(--text-scale,1))] sm:text-xs text-slate-500 font-medium">
                   Review and revoke access from unrecognized devices.
                 </p>
               </div>
@@ -628,7 +628,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
           <div className="overflow-x-auto rounded-xl border border-slate-200 bg-slate-50/50">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100/70 border-b border-slate-200 text-[10px] uppercase font-extrabold text-slate-500 tracking-wider">
+                <tr className="bg-slate-100/70 border-b border-slate-200 text-[calc(10px*var(--text-scale,1))] uppercase font-extrabold text-slate-500 tracking-wider">
                   <th className="p-3 pl-4">Device / Browser</th>
                   <th className="p-3 hidden sm:table-cell">IP Address</th>
                   <th className="p-3 hidden md:table-cell">Location</th>
@@ -649,12 +649,12 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                     <td className="p-3 text-xs text-slate-500 hidden md:table-cell">{session.location}</td>
                     <td className="p-3">
                       {session.current ? (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 text-[10px] font-bold border border-emerald-200">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-700 text-[calc(10px*var(--text-scale,1))] font-bold border border-emerald-200">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                           Current
                         </span>
                       ) : (
-                        <span className="text-[10px] font-medium text-slate-400">{session.time}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-medium text-slate-400">{session.time}</span>
                       )}
                     </td>
                     <td className="p-3 text-right pr-4">
@@ -711,7 +711,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Password</span>
-                      <span className="text-[10.5px] text-slate-400">Last changed 45 days ago</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Last changed 45 days ago</span>
                     </div>
                   </div>
                   <button className="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-2xs">
@@ -727,7 +727,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Two-Factor Auth (2FA)</span>
-                      <span className="text-[10.5px] text-slate-400">Require code on new device logins</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Require code on new device logins</span>
                     </div>
                   </div>
                   <button
@@ -747,7 +747,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Session Timeout</span>
-                      <span className="text-[10.5px] text-slate-400">Auto-logout after inactivity</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Auto-logout after inactivity</span>
                     </div>
                   </div>
                   <div className="relative">
@@ -810,7 +810,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">New Device Logins</span>
-                      <span className="text-[10.5px] text-slate-400">Receive alerts on unrecognized devices</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Receive alerts on unrecognized devices</span>
                     </div>
                   </div>
                   <button
@@ -830,7 +830,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Suspicious Activity</span>
-                      <span className="text-[10.5px] text-slate-400">Alerts for failed logins or abnormal usage</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Alerts for failed logins or abnormal usage</span>
                     </div>
                   </div>
                   <button
@@ -844,7 +844,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                 
                 <div className="p-3 mt-4 bg-amber-50/50 border border-amber-100 rounded-xl flex items-start gap-2.5">
                    <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                   <p className="text-[10px] sm:text-xs font-medium text-amber-800 leading-relaxed">
+                   <p className="text-[calc(10px*var(--text-scale,1))] sm:text-xs font-medium text-amber-800 leading-relaxed">
                      We recommend keeping all security alerts enabled to prevent unauthorized access to the intelligence platform.
                    </p>
                 </div>
@@ -934,7 +934,7 @@ export default function PlatformSecuritySettingPage({ onBack }) {
                 </div>
                 
                 {modalError && (
-                  <p className="text-[11px] font-bold text-red-500 flex items-center gap-1">
+                  <p className="text-[calc(11px*var(--text-scale,1))] font-bold text-red-500 flex items-center gap-1">
                     <AlertTriangle className="w-3 h-3" />
                     {modalError}
                   </p>

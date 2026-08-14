@@ -1688,3 +1688,19 @@ html:not(.dark) .custom-color-theme .text-slate-600 {
 .theme-colored-bg {
   background-color: var(--primary-theme-color) !important;
 }
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #cbd5e1;
+}

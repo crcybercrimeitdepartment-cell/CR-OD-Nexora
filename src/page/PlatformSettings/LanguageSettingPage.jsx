@@ -123,7 +123,7 @@ export default function LanguageSetting({ onBack }) {
             >
               <div className="flex items-center gap-3">
                 <Globe className="w-5 h-5 text-blue-600 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-slate-800">
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 notranslate" translate="no">
                   {selectedLanguageObj.name}
                 </span>
               </div>
@@ -148,7 +148,7 @@ export default function LanguageSetting({ onBack }) {
                   >
                     <div className="flex items-center gap-2.5">
                       <span className="text-base">{lang.flag}</span>
-                      <span>{lang.name}</span>
+                      <span className="notranslate" translate="no">{lang.name}</span>
                     </div>
                     {selectedLanguageObj.name === lang.name && (
                       <Check className="w-4 h-4 text-blue-600" />

@@ -431,7 +431,7 @@ export default function LayoutSetting({ onBack }) {
         {/* Draggable Cards Grid in Live Preview (Full Width Top View) */}
         <div className={
           arrangement === 'Grid'
-            ? `grid grid-cols-1 ${gridColumns === 2 ? 'sm:grid-cols-2' : gridColumns === 4 ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : 'sm:grid-cols-2 md:grid-cols-3'} gap-3.5`
+            ? `grid ${gridColumns === 2 ? 'grid-cols-2' : gridColumns === 3 ? 'grid-cols-3' : 'grid-cols-4'} gap-3.5`
             : 'space-y-3'
         }>
           {cards.map((card, index) => {
@@ -447,24 +447,30 @@ export default function LayoutSetting({ onBack }) {
                 onDragOver={(e) => handleDragOver(e, index)}
                 onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
-                className={`bg-white rounded-2xl p-3.5 border transition-all cursor-grab active:cursor-grabbing flex items-center justify-between shadow-2xs hover:shadow-md ${
+                className={`bg-white rounded-2xl ${gridColumns >= 3 && arrangement === 'Grid' ? 'p-2 sm:p-3' : 'p-3.5'} border transition-all cursor-grab active:cursor-grabbing flex ${gridColumns >= 3 && arrangement === 'Grid' ? 'flex-col justify-center text-center' : 'items-center justify-between'} shadow-2xs hover:shadow-md ${
                   isDragging ? 'opacity-40 scale-95 border-indigo-400 border-dashed bg-indigo-50/50' : 'border-slate-200/90'
                 } ${isDragOver ? 'border-indigo-600 ring-2 ring-indigo-200' : ''}`}
               >
-                <div className="flex items-center gap-3 min-w-0 pr-1">
-                  <GripVertical className="w-4 h-4 text-slate-300 shrink-0" />
-                  <div className={`w-9 h-9 rounded-xl ${card.bg || card.bgColor || 'bg-blue-50'} ${card.color || card.iconColor || 'text-blue-600'} flex items-center justify-center shrink-0 border border-slate-100`}>
-                    {React.isValidElement(card.icon) ? React.cloneElement(card.icon, { className: 'w-4.5 h-4.5' }) : <CardIcon className="w-4.5 h-4.5" />}
+                <div className={`flex ${gridColumns >= 3 && arrangement === 'Grid' ? 'flex-col items-center justify-center gap-1 sm:gap-2 w-full' : 'items-center gap-3 min-w-0 pr-1'}`}>
+                  {!(gridColumns >= 3 && arrangement === 'Grid') && (
+                    <GripVertical className="w-4 h-4 text-slate-300 shrink-0 hidden sm:block" />
+                  )}
+                  <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl ${card.bg || card.bgColor || 'bg-blue-50'} ${card.color || card.iconColor || 'text-blue-600'} flex items-center justify-center shrink-0 border border-slate-100`}>
+                    {React.isValidElement(card.icon) ? React.cloneElement(card.icon, { className: 'w-4 h-4 sm:w-4.5 sm:h-4.5' }) : <CardIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />}
                   </div>
-                  <div className="min-w-0">
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 truncate">{t(`modules.${card.id}.name`, card.title)}</h4>
-                    <p className="text-[11px] text-slate-400 truncate">{t(`modules.${card.id}.description`, card.desc)}</p>
+                  <div className="min-w-0 w-full">
+                    <h4 className="text-[10px] sm:text-xs md:text-sm font-bold text-slate-900 truncate w-full">{t(`modules.${card.id}.name`, card.title)}</h4>
+                    {!(gridColumns >= 3 && arrangement === 'Grid') && (
+                      <p className="text-[calc(11px*var(--text-scale,1))] text-slate-400 truncate w-full">{t(`modules.${card.id}.description`, card.desc)}</p>
+                    )}
                   </div>
                 </div>
 
-                <span className="text-xs font-extrabold text-slate-700 px-2 shrink-0">
-                  {index + 1}
-                </span>
+                {!(gridColumns >= 3 && arrangement === 'Grid') && (
+                  <span className="text-xs font-extrabold text-slate-700 px-2 shrink-0">
+                    {index + 1}
+                  </span>
+                )}
               </div>
             );
           })}
@@ -492,7 +498,7 @@ export default function LayoutSetting({ onBack }) {
             <div className="space-y-3">
               <div>
                 <span className="block text-xs sm:text-sm font-bold text-slate-800">{t('layoutSetting.gridColumns')}</span>
-                <p className="text-[11px] text-slate-400 font-medium">{t('layoutSetting.gridColumnsDesc')}</p>
+                <p className="text-[calc(11px*var(--text-scale,1))] text-slate-400 font-medium">{t('layoutSetting.gridColumnsDesc')}</p>
               </div>
               <div className="grid grid-cols-3 gap-3 pt-1">
                 {[2, 3, 4].map((cols) => {
@@ -518,7 +524,7 @@ export default function LayoutSetting({ onBack }) {
                           />
                         ))}
                       </div>
-                      <span className="text-[11px] sm:text-xs font-bold leading-none">{cols} Columns</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] sm:text-xs font-bold leading-none">{cols} Columns</span>
                     </button>
                   );
                 })}
@@ -539,7 +545,7 @@ export default function LayoutSetting({ onBack }) {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-xs sm:text-sm font-extrabold text-slate-900">{t('layoutSetting.cardOrder')}</h3>
-                  <p className="text-[11px] text-slate-400 font-medium">{t('layoutSetting.cardOrderDesc')}</p>
+                  <p className="text-[calc(11px*var(--text-scale,1))] text-slate-400 font-medium">{t('layoutSetting.cardOrderDesc')}</p>
                 </div>
                 <button
                   type="button"
@@ -558,7 +564,7 @@ export default function LayoutSetting({ onBack }) {
                 </div>
                 <div>
                   <h4 className="text-xs font-extrabold text-[#312e81]">{t('layoutSetting.cardOrder')}</h4>
-                  <p className="text-[11px] text-[#635BFF] font-semibold mt-0.5 leading-snug">
+                  <p className="text-[calc(11px*var(--text-scale,1))] text-[#635BFF] font-semibold mt-0.5 leading-snug">
                     {t('layoutSetting.dragInfo')}
                   </p>
                 </div>
@@ -634,15 +640,15 @@ export default function LayoutSetting({ onBack }) {
                   let iconSize = 'w-4.5 h-4.5';
                   let iconContainerSize = 'w-9 h-9';
                   let titleSize = 'text-xs sm:text-sm';
-                  let descSize = 'text-[11px]';
+                  let descSize = 'text-[calc(11px*var(--text-scale,1))]';
                   let gapClass = 'gap-3';
                   
                   if (cardSize === 'Small') {
                     paddingClass = 'p-2.5';
                     iconSize = 'w-3.5 h-3.5';
                     iconContainerSize = 'w-7 h-7 rounded-lg';
-                    titleSize = 'text-[11px] sm:text-xs';
-                    descSize = 'text-[9px] sm:text-[10px]';
+                    titleSize = 'text-[calc(11px*var(--text-scale,1))] sm:text-xs';
+                    descSize = 'text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))]';
                     gapClass = 'gap-2';
                   } else if (cardSize === 'Large') {
                     paddingClass = 'p-5 sm:p-6';

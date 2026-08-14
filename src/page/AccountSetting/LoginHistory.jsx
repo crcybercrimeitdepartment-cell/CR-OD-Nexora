@@ -33,7 +33,7 @@ const StatusBadge = ({ status }) => {
     if (status === 'Rejected') colorClass = 'text-indigo-500 bg-indigo-50';
 
     return (
-        <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${colorClass} whitespace-nowrap`}>
+        <span className={`px-2 py-0.5 rounded-full text-[calc(9px*var(--text-scale,1))] font-bold ${colorClass} whitespace-nowrap`}>
             {status}
         </span>
     );
@@ -52,11 +52,11 @@ const KeyValueList = ({ icon: Icon, title, items }) => (
     <div className="mb-4 last:mb-0">
         <div className="flex items-center gap-1.5 mb-2">
             <Icon className="w-3.5 h-3.5 text-indigo-500" />
-            <h4 className="text-[11px] font-bold text-indigo-900">{title}</h4>
+            <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-900">{title}</h4>
         </div>
         <div className="space-y-1.5 ml-5">
             {items.map((item, idx) => (
-                <div key={idx} className="flex text-[10px]">
+                <div key={idx} className="flex text-[calc(10px*var(--text-scale,1))]">
                     <span className="text-slate-500 font-medium w-28 shrink-0">{item.label}</span>
                     <span className="text-slate-400 mx-2">:</span>
                     <span className="text-[#1e2a52] font-bold flex-1">{item.value}</span>
@@ -200,7 +200,7 @@ export default function LoginHistory2({ onBack }) {
     const paginatedLogins = logins.slice((currentPage - 1) * entriesPerPage, currentPage * entriesPerPage);
 
     return (
-        <div className="w-full text-slate-800 font-sans bg-transparent min-h-screen relative">
+        <div className="w-full text-slate-800 font-sans bg-transparent  relative">
             {/* Header */}
             <header className="py-2 sm:py-4 flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -222,7 +222,7 @@ export default function LoginHistory2({ onBack }) {
             </header>
 
             {/* Main Content Area */}
-            <div className="-mx-4 sm:-mx-6 md:-mx-10 min-h-screen pb-12 pt-6 px-4 sm:px-6 md:px-10">
+            <div className="-mx-4 sm:-mx-6 md:-mx-10  pb-12 pt-6 px-4 sm:px-6 md:px-10">
                 <div className="space-y-4 w-full max-w-[1920px] mx-auto">
 
                     {/* ROW 2: Filters & Search */}
@@ -233,9 +233,9 @@ export default function LoginHistory2({ onBack }) {
                             {/* Active Filters Chips */}
                             {activeFilters.length > 0 && (
                                 <div className="flex flex-wrap items-center gap-2 mb-2">
-                                    <span className="text-[10px] font-bold text-slate-500 mr-1">Active Filters:</span>
+                                    <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 mr-1">Active Filters:</span>
                                     {activeFilters.map(([key, value]) => (
-                                        <div key={key} className="flex items-center gap-1.5 px-2.5 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-bold rounded-full">
+                                        <div key={key} className="flex items-center gap-1.5 px-2.5 py-1 bg-indigo-50 border border-indigo-100 text-indigo-700 text-[calc(10px*var(--text-scale,1))] font-bold rounded-full">
                                             <span>{key}: {value}</span>
                                             <button onClick={() => removeFilter(key)} className="hover:text-indigo-900 transition-colors">
                                                 <XCircle className="w-3 h-3" />
@@ -248,16 +248,16 @@ export default function LoginHistory2({ onBack }) {
                             {/* ROW 1: Filters */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                                 <div>
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Date From</label>
-                                    <input type="date" name="dateFrom" value={filters.dateFrom} onChange={handleFilterChange} className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all cursor-pointer" />
+                                    <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Date From</label>
+                                    <input type="date" name="dateFrom" value={filters.dateFrom} onChange={handleFilterChange} className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all cursor-pointer" />
                                 </div>
                                 <div>
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Date To</label>
-                                    <input type="date" name="dateTo" value={filters.dateTo} onChange={handleFilterChange} className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all cursor-pointer" />
+                                    <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Date To</label>
+                                    <input type="date" name="dateTo" value={filters.dateTo} onChange={handleFilterChange} className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all cursor-pointer" />
                                 </div>
                                 <div>
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Login Status</label>
-                                    <select name="status" value={filters.status} onChange={handleFilterChange} className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all appearance-none cursor-pointer">
+                                    <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Login Status</label>
+                                    <select name="status" value={filters.status} onChange={handleFilterChange} className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all appearance-none cursor-pointer">
                                         <option value="">All Status</option>
                                         <option value="Successful">Successful</option>
                                         <option value="Failed">Failed</option>
@@ -266,8 +266,8 @@ export default function LoginHistory2({ onBack }) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Device</label>
-                                    <select name="device" value={filters.device} onChange={handleFilterChange} className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all appearance-none cursor-pointer">
+                                    <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Device</label>
+                                    <select name="device" value={filters.device} onChange={handleFilterChange} className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all appearance-none cursor-pointer">
                                         <option value="">All Devices</option>
                                         <option value="Laptop">Laptop</option>
                                         <option value="Mobile">Mobile</option>
@@ -275,12 +275,12 @@ export default function LoginHistory2({ onBack }) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">IP Address</label>
-                                    <input type="text" name="ipAddress" value={filters.ipAddress} onChange={handleFilterChange} placeholder="Enter IP" className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all" />
+                                    <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">IP Address</label>
+                                    <input type="text" name="ipAddress" value={filters.ipAddress} onChange={handleFilterChange} placeholder="Enter IP" className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all" />
                                 </div>
                                 <div>
-                                    <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Location</label>
-                                    <select name="location" value={filters.location} onChange={handleFilterChange} className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all appearance-none cursor-pointer">
+                                    <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Location</label>
+                                    <select name="location" value={filters.location} onChange={handleFilterChange} className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all appearance-none cursor-pointer">
                                         <option value="">All Locations</option>
                                         <option value="Mumbai, India">Mumbai, India</option>
                                         <option value="New Delhi, India">New Delhi, India</option>
@@ -290,25 +290,25 @@ export default function LoginHistory2({ onBack }) {
 
                             {/* ROW 2: Search */}
                             <fieldset className="border border-white/60 bg-white/20 backdrop-blur-sm rounded-xl p-3 md:p-4 mt-2">
-                                <legend className="px-2 text-[11px] font-bold text-indigo-800 flex items-center gap-1.5"><Search className="w-3.5 h-3.5" /> Detailed Search</legend>
+                                <legend className="px-2 text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-800 flex items-center gap-1.5"><Search className="w-3.5 h-3.5" /> Detailed Search</legend>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
                                     <div>
-                                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Device Name</label>
-                                        <input type="text" name="searchDeviceName" value={filters.searchDeviceName} onChange={handleFilterChange} placeholder="Enter Device Name" className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all" />
+                                        <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Device Name</label>
+                                        <input type="text" name="searchDeviceName" value={filters.searchDeviceName} onChange={handleFilterChange} placeholder="Enter Device Name" className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all" />
                                     </div>
                                     <div>
-                                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Exact IP Address</label>
-                                        <input type="text" name="searchIp" value={filters.searchIp} onChange={handleFilterChange} placeholder="Enter IP Address" className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all" />
+                                        <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Exact IP Address</label>
+                                        <input type="text" name="searchIp" value={filters.searchIp} onChange={handleFilterChange} placeholder="Enter IP Address" className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all" />
                                     </div>
                                     <div>
-                                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Exact Date</label>
-                                        <input type="date" name="searchDate" value={filters.searchDate} onChange={handleFilterChange} className="w-full px-3 py-2 text-[11px] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all cursor-pointer" />
+                                        <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider mb-2 block">Exact Date</label>
+                                        <input type="date" name="searchDate" value={filters.searchDate} onChange={handleFilterChange} className="w-full px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-700 bg-white/40 border border-white/40 backdrop-blur-sm shadow-[0_4px_12px_rgb(0,0,0,0.02)] rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 hover:border-indigo-300 transition-all cursor-pointer" />
                                     </div>
                                     <div className="flex items-center justify-end gap-3 mt-2 sm:mt-0">
-                                        <button onClick={resetFilters} className="px-5 py-2 border border-white/60 bg-white/40 text-slate-700 rounded-lg text-[11px] font-bold hover:bg-white/60 transition-all shadow-sm">
+                                        <button onClick={resetFilters} className="px-5 py-2 border border-white/60 bg-white/40 text-slate-700 rounded-lg text-[calc(11px*var(--text-scale,1))] font-bold hover:bg-white/60 transition-all shadow-sm">
                                             Reset
                                         </button>
-                                        <button onClick={applyFilters} className="flex items-center justify-center gap-1.5 px-5 py-2 bg-indigo-600 text-white rounded-lg text-[11px] font-bold hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5 transition-all w-full md:w-auto">
+                                        <button onClick={applyFilters} className="flex items-center justify-center gap-1.5 px-5 py-2 bg-indigo-600 text-white rounded-lg text-[calc(11px*var(--text-scale,1))] font-bold hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-0.5 transition-all w-full md:w-auto">
                                             <Filter className="w-3.5 h-3.5" fill="currentColor" /> Apply
                                         </button>
                                     </div>
@@ -331,7 +331,7 @@ export default function LoginHistory2({ onBack }) {
                                             <div className="w-4 h-4 rounded-full border-2 border-blue-500 flex items-center justify-center"><div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div></div>
                                         </div>
                                         <span className="text-2xl font-black text-[#1e2a52]">{totalAttempts.toLocaleString()}</span>
-                                        <span className="text-[10px] font-bold text-[#1e2a52] mt-1 leading-tight">Total Login<br />Attempts</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] mt-1 leading-tight">Total Login<br />Attempts</span>
                                         <svg className="w-16 h-4 mt-2 text-blue-400 opacity-50" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q15,5 30,10 T60,10 T100,5" fill="none" stroke="currentColor" strokeWidth="2" /></svg>
                                     </button>
                                     {/* Successful Logins */}
@@ -342,8 +342,8 @@ export default function LoginHistory2({ onBack }) {
                                             </div>
                                         </div>
                                         <span className="text-xl font-black text-[#1e2a52]">{successfulCount.toLocaleString()}</span>
-                                        <span className="text-[10px] font-bold text-[#1e2a52] mt-1 leading-tight">Successful<br />Logins</span>
-                                        <span className="text-[10px] font-bold text-emerald-500 mt-2">{successfulPct}%</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] mt-1 leading-tight">Successful<br />Logins</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-emerald-500 mt-2">{successfulPct}%</span>
                                     </button>
                                     {/* Failed Logins */}
                                     <button onClick={() => setFilters(prev => ({ ...prev, status: 'Failed' }))} className="bg-white/40 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:bg-white/70 cursor-pointer group border border-slate-100">
@@ -353,8 +353,8 @@ export default function LoginHistory2({ onBack }) {
                                             </div>
                                         </div>
                                         <span className="text-xl font-black text-[#1e2a52]">{failedCount.toLocaleString()}</span>
-                                        <span className="text-[10px] font-bold text-[#1e2a52] mt-1 leading-tight">Failed<br />Logins</span>
-                                        <span className="text-[10px] font-bold text-red-500 mt-2">{failedPct}%</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] mt-1 leading-tight">Failed<br />Logins</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-red-500 mt-2">{failedPct}%</span>
                                     </button>
                                     {/* Blocked Attempts */}
                                     <button onClick={() => setFilters(prev => ({ ...prev, status: 'Blocked' }))} className="bg-white/40 backdrop-blur-sm rounded-lg p-4 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:bg-white/70 cursor-pointer group border border-slate-100">
@@ -364,8 +364,8 @@ export default function LoginHistory2({ onBack }) {
                                             </div>
                                         </div>
                                         <span className="text-xl font-black text-[#1e2a52]">{blockedCount.toLocaleString()}</span>
-                                        <span className="text-[10px] font-bold text-[#1e2a52] mt-1 leading-tight">Blocked Login<br />Attempts</span>
-                                        <span className="text-[10px] font-bold text-orange-500 mt-2">{blockedPct}%</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] mt-1 leading-tight">Blocked Login<br />Attempts</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-orange-500 mt-2">{blockedPct}%</span>
                                     </button>
                                 </div>
 
@@ -373,18 +373,18 @@ export default function LoginHistory2({ onBack }) {
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default">
                                         <div className="flex items-start justify-center gap-1.5 mb-2">
                                             <div className="w-5 h-5 rounded bg-emerald-50 border border-emerald-100 flex items-center justify-center shrink-0"><CalendarIcon className="w-3 h-3 text-emerald-600" /></div>
-                                            <span className="text-[10px] font-bold text-[#1e2a52] leading-tight">Last Successful<br />Login</span>
+                                            <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] leading-tight">Last Successful<br />Login</span>
                                         </div>
-                                        <div className="text-[11px] font-bold text-[#1e2a52]">{lastSuccessful ? lastSuccessful.date : '-'}</div>
-                                        <div className="text-[10px] font-medium text-[#1e2a52] mt-0.5">{lastSuccessful ? lastSuccessful.time : '-'}</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{lastSuccessful ? lastSuccessful.date : '-'}</div>
+                                        <div className="text-[calc(10px*var(--text-scale,1))] font-medium text-[#1e2a52] mt-0.5">{lastSuccessful ? lastSuccessful.time : '-'}</div>
                                     </div>
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default">
                                         <div className="flex items-start justify-center gap-1.5 mb-2">
                                             <div className="w-5 h-5 rounded bg-red-50 border border-red-100 flex items-center justify-center shrink-0"><CalendarIcon className="w-3 h-3 text-red-600" /></div>
-                                            <span className="text-[10px] font-bold text-[#1e2a52] leading-tight">Last Failed Login</span>
+                                            <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] leading-tight">Last Failed Login</span>
                                         </div>
-                                        <div className="text-[11px] font-bold text-[#1e2a52]">{lastFailed ? lastFailed.date : '-'}</div>
-                                        <div className="text-[10px] font-medium text-[#1e2a52] mt-0.5">{lastFailed ? lastFailed.time : '-'}</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{lastFailed ? lastFailed.date : '-'}</div>
+                                        <div className="text-[calc(10px*var(--text-scale,1))] font-medium text-[#1e2a52] mt-0.5">{lastFailed ? lastFailed.time : '-'}</div>
                                     </div>
                                 </div>
                             </div>
@@ -393,13 +393,13 @@ export default function LoginHistory2({ onBack }) {
                         {/* Card 2: Login Records */}
                         <div className="lg:col-span-6 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 p-5 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
                             <CardHeader num="2" title="Login Records" rightContent={
-                                <button className="text-[10px] font-bold text-indigo-600 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">View All</button>
+                                <button className="text-[calc(10px*var(--text-scale,1))] font-bold text-indigo-600 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">View All</button>
                             } />
                             <div className="border-t border-slate-100 pt-2 flex-1 flex flex-col">
                                 <div className="flex-1 overflow-auto max-h-[380px]">
                                     <table className="w-full text-left whitespace-nowrap">
                                         <thead className="bg-white/40 backdrop-blur-sm sticky top-0 z-10">
-                                            <tr className="border-b border-slate-200 text-[11px] text-[#1e2a52] font-black tracking-wider">
+                                            <tr className="border-b border-slate-200 text-[calc(11px*var(--text-scale,1))] text-[#1e2a52] font-black tracking-wider">
                                                 <th className="py-3 px-2 w-8"></th>
                                                 <th className="py-3 px-2">Date / Time</th>
                                                 <th className="py-3 px-2">Status</th>
@@ -420,14 +420,14 @@ export default function LoginHistory2({ onBack }) {
                                                             </button>
                                                         </td>
                                                         <td className="py-3 px-2">
-                                                            <div className="text-[11px] font-semibold text-slate-700">{log.date}</div>
-                                                            <div className="text-[10px] text-slate-500">{log.time}</div>
+                                                            <div className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.date}</div>
+                                                            <div className="text-[calc(10px*var(--text-scale,1))] text-slate-500">{log.time}</div>
                                                         </td>
                                                         <td className="py-3 px-2"><StatusBadge status={log.status} /></td>
-                                                        <td className="py-3 px-2 text-[11px] font-semibold text-slate-700">{log.deviceName}</td>
-                                                        <td className="py-3 px-2 text-[11px] font-semibold text-slate-700">{log.os}</td>
-                                                        <td className="py-3 px-2 text-[11px] font-semibold text-slate-700">{log.ip}</td>
-                                                        <td className="py-3 px-2 text-[11px] font-semibold text-slate-700">{log.location}</td>
+                                                        <td className="py-3 px-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.deviceName}</td>
+                                                        <td className="py-3 px-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.os}</td>
+                                                        <td className="py-3 px-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.ip}</td>
+                                                        <td className="py-3 px-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.location}</td>
                                                         <td className="py-3 px-2 text-center">
                                                             <Eye className="w-4 h-4 inline-block text-slate-400 hover:text-indigo-600 transition-colors" />
                                                         </td>
@@ -437,21 +437,21 @@ export default function LoginHistory2({ onBack }) {
                                                             <td colSpan="8" className="px-10 py-4">
                                                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                                                                     <div>
-                                                                        <span className="text-[10px] font-bold text-slate-400 block mb-1">Device Type</span>
-                                                                        <span className="text-[11px] font-semibold text-slate-700">{log.deviceType}</span>
+                                                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 block mb-1">Device Type</span>
+                                                                        <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.deviceType}</span>
                                                                     </div>
                                                                     <div>
-                                                                        <span className="text-[10px] font-bold text-slate-400 block mb-1">Browser / App</span>
-                                                                        <span className="text-[11px] font-semibold text-slate-700">{log.browser}</span>
+                                                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 block mb-1">Browser / App</span>
+                                                                        <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.browser}</span>
                                                                     </div>
                                                                     <div>
-                                                                        <span className="text-[10px] font-bold text-slate-400 block mb-1">IP Type</span>
-                                                                        <span className="text-[11px] font-semibold text-slate-700">{log.ipType}</span>
+                                                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 block mb-1">IP Type</span>
+                                                                        <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-700">{log.ipType}</span>
                                                                     </div>
                                                                     {log.status !== 'Successful' && log.reason && log.reason !== '-' && (
                                                                         <div>
-                                                                            <span className="text-[10px] font-bold text-slate-400 block mb-1">Failure Reason</span>
-                                                                            <span className="text-[11px] font-bold text-red-500">{log.reason}</span>
+                                                                            <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 block mb-1">Failure Reason</span>
+                                                                            <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-red-500">{log.reason}</span>
                                                                         </div>
                                                                     )}
                                                                 </div>
@@ -474,7 +474,7 @@ export default function LoginHistory2({ onBack }) {
                                             <button
                                                 key={page}
                                                 onClick={() => setCurrentPage(page)}
-                                                className={`w-7 h-7 rounded flex items-center justify-center text-[11px] font-bold shadow-sm transition-colors ${currentPage === page ? 'bg-indigo-600 text-white' : 'text-[#1e2a52] hover:bg-slate-50 border border-slate-200'}`}
+                                                className={`w-7 h-7 rounded flex items-center justify-center text-[calc(11px*var(--text-scale,1))] font-bold shadow-sm transition-colors ${currentPage === page ? 'bg-indigo-600 text-white' : 'text-[#1e2a52] hover:bg-slate-50 border border-slate-200'}`}
                                             >
                                                 {page}
                                             </button>
@@ -488,9 +488,7 @@ export default function LoginHistory2({ onBack }) {
 
                         {/* Card 3: Login Details */}
                         <div className="lg:col-span-3 bg-white/60 backdrop-blur-md rounded-2xl border border-white/50 p-5 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-                            <CardHeader num="3" title="Login Details" rightContent={
-                                <button className="text-[10px] font-bold text-indigo-600 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50 transition-colors">View Full Details</button>
-                            } />
+                            <CardHeader num="3" title="Login Details" />
                             <div className="border-t border-slate-100 pt-4 flex-1">
                                 {selectedLogin ? (
                                     <div className="space-y-4">
@@ -536,23 +534,23 @@ export default function LoginHistory2({ onBack }) {
                             <div className="border-t border-slate-100 pt-4 flex-1 flex flex-col items-center justify-center">
 
                                 <div className="w-full space-y-3">
-                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Successful' }))} className="w-full flex justify-between items-center text-[10px] hover:bg-emerald-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
+                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Successful' }))} className="w-full flex justify-between items-center text-[calc(10px*var(--text-scale,1))] hover:bg-emerald-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
                                         <div className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /><span className="font-bold text-[#1e2a52]">Successful</span></div>
                                         <div className="flex items-center gap-1"><span className="font-bold text-[#1e2a52]">{successfulCount}</span><span className="text-slate-400 font-medium">({successfulPct}%)</span></div>
                                     </button>
-                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Failed' }))} className="w-full flex justify-between items-center text-[10px] hover:bg-red-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
+                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Failed' }))} className="w-full flex justify-between items-center text-[calc(10px*var(--text-scale,1))] hover:bg-red-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
                                         <div className="flex items-center gap-1.5"><XCircle className="w-3.5 h-3.5 text-red-500" /><span className="font-bold text-[#1e2a52]">Failed</span></div>
                                         <div className="flex items-center gap-1"><span className="font-bold text-[#1e2a52]">{failedCount}</span><span className="text-slate-400 font-medium">({failedPct}%)</span></div>
                                     </button>
-                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Blocked' }))} className="w-full flex justify-between items-center text-[10px] hover:bg-orange-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
+                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Blocked' }))} className="w-full flex justify-between items-center text-[calc(10px*var(--text-scale,1))] hover:bg-orange-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
                                         <div className="flex items-center gap-1.5"><AlertTriangle className="w-3.5 h-3.5 text-orange-500" /><span className="font-bold text-[#1e2a52]">Blocked</span></div>
                                         <div className="flex items-center gap-1"><span className="font-bold text-[#1e2a52]">{blockedCount}</span><span className="text-slate-400 font-medium">({blockedPct}%)</span></div>
                                     </button>
-                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Rejected' }))} className="w-full flex justify-between items-center text-[10px] hover:bg-indigo-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
+                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Rejected' }))} className="w-full flex justify-between items-center text-[calc(10px*var(--text-scale,1))] hover:bg-indigo-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
                                         <div className="flex items-center gap-1.5"><div className="w-3.5 h-3.5 rounded-full border-2 border-indigo-500 flex items-center justify-center"><div className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div></div><span className="font-bold text-[#1e2a52]">Rejected</span></div>
                                         <div className="flex items-center gap-1"><span className="font-bold text-[#1e2a52]">{rejectedCount}</span><span className="text-slate-400 font-medium">({rejectedPct}%)</span></div>
                                     </button>
-                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Session Expired' }))} className="w-full flex justify-between items-center text-[10px] hover:bg-indigo-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
+                                    <button onClick={() => setFilters(prev => ({ ...prev, status: 'Session Expired' }))} className="w-full flex justify-between items-center text-[calc(10px*var(--text-scale,1))] hover:bg-indigo-50/50 p-1.5 -mx-1.5 rounded-lg transition-all cursor-pointer">
                                         <div className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-indigo-400" /><span className="font-bold text-[#1e2a52]">Session Expired</span></div>
                                         <div className="flex items-center gap-1"><span className="font-bold text-[#1e2a52]">{expiredCount}</span><span className="text-slate-400 font-medium">({expiredPct}%)</span></div>
                                     </button>
@@ -568,8 +566,8 @@ export default function LoginHistory2({ onBack }) {
                                         {expiredCount > 0 && <circle onClick={() => setFilters(prev => ({ ...prev, status: 'Session Expired' }))} className="cursor-pointer transition-all hover:stroke-[14px]" cx="50" cy="50" r="40" fill="transparent" stroke="#818cf8" strokeWidth="12" strokeDasharray="251.2" strokeDashoffset={251.2 * (1 - expiredPct / 100)} style={{ transformOrigin: '50% 50%', transform: `rotate(${(parseFloat(successfulPct) + parseFloat(failedPct) + parseFloat(blockedPct) + parseFloat(rejectedPct)) * 3.6}deg)` }} />}
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                                        <span className="text-[13px] font-black text-[#1e2a52]">{totalAttempts}</span>
-                                        <span className="text-[8px] font-bold text-[#1e2a52] leading-tight text-center mt-0.5">Total Attempts</span>
+                                        <span className="text-[calc(13px*var(--text-scale,1))] font-black text-[#1e2a52]">{totalAttempts}</span>
+                                        <span className="text-[calc(8px*var(--text-scale,1))] font-bold text-[#1e2a52] leading-tight text-center mt-0.5">Total Attempts</span>
                                     </div>
                                 </div>
                             </div>
@@ -581,7 +579,7 @@ export default function LoginHistory2({ onBack }) {
                             <div className="border-t border-slate-100 pt-4 flex-1 flex flex-col gap-4">
                                 {methodStats.map((method, idx) => (
                                     <button key={idx} className="w-full text-left hover:scale-[1.02] transition-transform cursor-pointer group p-1 -mx-1 rounded">
-                                        <div className="flex justify-between items-center text-[10px] mb-1">
+                                        <div className="flex justify-between items-center text-[calc(10px*var(--text-scale,1))] mb-1">
                                             <div className="flex items-center gap-2">
                                                 {method.icon ? <method.icon className={`w-3.5 h-3.5 ${method.color}`} /> : <div className="w-3.5 h-3.5 flex items-center justify-center text-slate-400 text-xs font-bold tracking-widest">...</div>}
                                                 <span className="font-bold text-[#1e2a52]">{method.key}</span>
@@ -599,7 +597,7 @@ export default function LoginHistory2({ onBack }) {
                             <CardHeader num="6" title="Failed Login Information" />
                             <div className="border-t border-slate-100 pt-4 flex-1 flex flex-col gap-3">
                                 {failedReasons.length > 0 ? failedReasons.slice(0, 7).map((item, idx) => (
-                                    <div key={idx} className={`flex justify-between items-center text-[10px] p-1.5 -mx-1.5 rounded-lg ${idx === 0 ? 'bg-indigo-50/70 border border-indigo-100/50 shadow-sm' : ''}`}>
+                                    <div key={idx} className={`flex justify-between items-center text-[calc(10px*var(--text-scale,1))] p-1.5 -mx-1.5 rounded-lg ${idx === 0 ? 'bg-indigo-50/70 border border-indigo-100/50 shadow-sm' : ''}`}>
                                         <div className="flex items-center gap-2">
                                             <div className={idx === 0 ? "text-indigo-600" : "text-red-500"}>
                                                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" /></svg>
@@ -607,12 +605,12 @@ export default function LoginHistory2({ onBack }) {
                                             <span className={`font-bold ${idx === 0 ? 'text-indigo-900' : 'text-[#1e2a52]'}`}>{item.label}</span>
                                         </div>
                                         <div className="flex items-center gap-1">
-                                            <span className={`text-[11px] font-black ${idx === 0 ? 'text-indigo-700' : 'text-[#1e2a52]'}`}>{item.count}</span>
+                                            <span className={`text-[calc(11px*var(--text-scale,1))] font-black ${idx === 0 ? 'text-indigo-700' : 'text-[#1e2a52]'}`}>{item.count}</span>
                                             <span className="text-slate-400 font-medium w-10 text-right">({item.pct}%)</span>
                                         </div>
                                     </div>
                                 )) : (
-                                    <div className="flex-1 flex items-center justify-center text-[10px] font-bold text-slate-400">
+                                    <div className="flex-1 flex items-center justify-center text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400">
                                         No failed login data available in current view.
                                     </div>
                                 )}
@@ -629,8 +627,8 @@ export default function LoginHistory2({ onBack }) {
                                             <Monitor className="w-4 h-4 text-emerald-500" />
                                         </div>
                                         <div>
-                                            <div className="text-[11px] font-bold text-[#1e2a52]">Unique Devices</div>
-                                            <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Total unique devices logged</div>
+                                            <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Unique Devices</div>
+                                            <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Total unique devices logged</div>
                                         </div>
                                     </div>
                                     <span className="text-xs font-black text-[#1e2a52]">{uniqueDevices}</span>
@@ -641,8 +639,8 @@ export default function LoginHistory2({ onBack }) {
                                             <MapPin className="w-4 h-4 text-blue-500" />
                                         </div>
                                         <div>
-                                            <div className="text-[11px] font-bold text-[#1e2a52]">Unique IPs</div>
-                                            <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Total unique IP addresses</div>
+                                            <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Unique IPs</div>
+                                            <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Total unique IP addresses</div>
                                         </div>
                                     </div>
                                     <span className="text-xs font-black text-[#1e2a52]">{uniqueIPs}</span>
@@ -653,8 +651,8 @@ export default function LoginHistory2({ onBack }) {
                                             <AlertTriangle className="w-4 h-4 text-orange-500" />
                                         </div>
                                         <div>
-                                            <div className="text-[11px] font-bold text-[#1e2a52]">Unusual Logins</div>
-                                            <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Unusual activity detected</div>
+                                            <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Unusual Logins</div>
+                                            <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Unusual activity detected</div>
                                         </div>
                                     </div>
                                     <span className="text-xs font-black text-[#1e2a52]">{unusualLogins}</span>
@@ -665,8 +663,8 @@ export default function LoginHistory2({ onBack }) {
                                             <ShieldCheck className="w-4 h-4 text-indigo-500" />
                                         </div>
                                         <div>
-                                            <div className="text-[11px] font-bold text-[#1e2a52]">Verification Required</div>
-                                            <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Additional verification needed</div>
+                                            <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Verification Required</div>
+                                            <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Additional verification needed</div>
                                         </div>
                                     </div>
                                     <span className="text-xs font-black text-[#1e2a52]">{verificationRequired}</span>
@@ -683,8 +681,8 @@ export default function LoginHistory2({ onBack }) {
                                         <Eye className="w-3.5 h-3.5 text-indigo-600" />
                                     </div>
                                     <div>
-                                        <div className="text-[11px] font-bold text-indigo-800">View Details</div>
-                                        <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">View selected login details</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-800">View Details</div>
+                                        <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">View selected login details</div>
                                     </div>
                                 </button>
                                 <button className="flex items-center gap-3 group text-left w-full">
@@ -692,8 +690,8 @@ export default function LoginHistory2({ onBack }) {
                                         <Search className="w-3.5 h-3.5 text-indigo-600" />
                                     </div>
                                     <div>
-                                        <div className="text-[11px] font-bold text-indigo-800">Search</div>
-                                        <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Search login history</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-800">Search</div>
+                                        <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Search login history</div>
                                     </div>
                                 </button>
                                 <button className="flex items-center gap-3 group text-left w-full">
@@ -701,8 +699,8 @@ export default function LoginHistory2({ onBack }) {
                                         <Filter className="w-3.5 h-3.5 text-indigo-600" />
                                     </div>
                                     <div>
-                                        <div className="text-[11px] font-bold text-indigo-800">Filter</div>
-                                        <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Filter login history</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-800">Filter</div>
+                                        <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Filter login history</div>
                                     </div>
                                 </button>
                                 <button className="flex items-center gap-3 group text-left w-full">
@@ -710,8 +708,8 @@ export default function LoginHistory2({ onBack }) {
                                         <RefreshCcw className="w-3.5 h-3.5 text-indigo-600" />
                                     </div>
                                     <div>
-                                        <div className="text-[11px] font-bold text-indigo-800">Refresh</div>
-                                        <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Refresh records</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-800">Refresh</div>
+                                        <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Refresh records</div>
                                     </div>
                                 </button>
                                 <button className="flex items-center gap-3 group text-left w-full">
@@ -719,8 +717,8 @@ export default function LoginHistory2({ onBack }) {
                                         <Download className="w-3.5 h-3.5 text-indigo-600" />
                                     </div>
                                     <div>
-                                        <div className="text-[11px] font-bold text-indigo-800">Export Login History</div>
-                                        <div className="text-[9px] font-medium text-[#1e2a52] opacity-70">Export login history report</div>
+                                        <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-indigo-800">Export Login History</div>
+                                        <div className="text-[calc(9px*var(--text-scale,1))] font-medium text-[#1e2a52] opacity-70">Export login history report</div>
                                     </div>
                                 </button>
                             </div>
@@ -735,17 +733,17 @@ export default function LoginHistory2({ onBack }) {
                             <div className="border-t border-slate-100 pt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                                 <div className="space-y-3">
-                                    <div className="flex items-center justify-between text-[11px]">
+                                    <div className="flex items-center justify-between text-[calc(11px*var(--text-scale,1))]">
                                         <div className="flex items-center gap-2"><CalendarIcon className="w-3.5 h-3.5 text-indigo-500" /><span className="font-bold text-[#1e2a52]">Retention Period</span></div>
                                         <span className="text-[#1e2a52] mx-2">:</span>
                                         <span className="font-bold text-[#1e2a52]">365 Days</span>
                                     </div>
-                                    <div className="flex items-center justify-between text-[11px]">
+                                    <div className="flex items-center justify-between text-[calc(11px*var(--text-scale,1))]">
                                         <div className="flex items-center gap-2"><CalendarIcon className="w-3.5 h-3.5 text-indigo-500" /><span className="font-bold text-[#1e2a52]">Records Available From</span></div>
                                         <span className="text-[#1e2a52] mx-2">:</span>
                                         <span className="font-bold text-[#1e2a52]">{oldestDate}</span>
                                     </div>
-                                    <div className="flex items-center justify-between text-[11px]">
+                                    <div className="flex items-center justify-between text-[calc(11px*var(--text-scale,1))]">
                                         <div className="flex items-center gap-2"><CalendarIcon className="w-3.5 h-3.5 text-indigo-500" /><span className="font-bold text-[#1e2a52]">Records Available Until</span></div>
                                         <span className="text-[#1e2a52] mx-2">:</span>
                                         <span className="font-bold text-[#1e2a52]">{newestDate}</span>
@@ -753,12 +751,12 @@ export default function LoginHistory2({ onBack }) {
                                 </div>
 
                                 <div className="space-y-3 md:border-l md:border-slate-100 md:pl-6">
-                                    <div className="flex items-center justify-between text-[11px]">
+                                    <div className="flex items-center justify-between text-[calc(11px*var(--text-scale,1))]">
                                         <div className="flex items-center gap-2"><Info className="w-3.5 h-3.5 text-indigo-500" /><span className="font-bold text-[#1e2a52]">Automatic Cleanup Status</span></div>
                                         <span className="text-[#1e2a52] mx-2">:</span>
                                         <span className="font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Enabled</span>
                                     </div>
-                                    <div className="flex items-center justify-between text-[11px] pt-4">
+                                    <div className="flex items-center justify-between text-[calc(11px*var(--text-scale,1))] pt-4">
                                         <div className="flex items-center gap-2"><Info className="w-3.5 h-3.5 text-indigo-500" /><span className="font-bold text-[#1e2a52]">Retention Controlled By</span></div>
                                         <span className="text-[#1e2a52] mx-2">:</span>
                                         <span className="font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">Organization/System Policy</span>
@@ -769,7 +767,7 @@ export default function LoginHistory2({ onBack }) {
                                     <div className="w-8 h-8 rounded-full border border-indigo-200 flex items-center justify-center shrink-0">
                                         <Info className="w-4 h-4 text-indigo-600" />
                                     </div>
-                                    <div className="text-[10px] font-bold text-[#1e2a52]">
+                                    <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52]">
                                         Login history is retained as per organization policy.<br /><br />
                                         <span className="font-medium opacity-80">Users cannot clear or delete history manually.</span>
                                     </div>

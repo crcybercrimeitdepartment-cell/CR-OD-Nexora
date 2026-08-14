@@ -98,7 +98,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
           
           {/* Card 1: Authentication Registration */}
           <motion.div variants={itemVariants} className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col">
-            <h3 className="font-extrabold text-[16px] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
+            <h3 className="font-extrabold text-[calc(16px*var(--text-scale,1))] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
               Authentication Registration
             </h3>
             
@@ -111,7 +111,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-slate-800 dark:text-white">{method.name}</h4>
-                    <span className="text-[10px] font-semibold text-slate-500 flex items-center gap-1 mt-1">
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500 flex items-center gap-1 mt-1">
                       Configure Registration <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
@@ -122,7 +122,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
 
           {/* Card 2: Registration & Authentication Status */}
           <motion.div variants={itemVariants} className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col">
-            <h3 className="font-extrabold text-[16px] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
+            <h3 className="font-extrabold text-[calc(16px*var(--text-scale,1))] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
               Registration & Authentication Status
             </h3>
 
@@ -130,11 +130,11 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <th className="text-left text-[11px] font-bold text-slate-500 uppercase py-3">Method</th>
-                    <th className="text-left text-[11px] font-bold text-slate-500 uppercase py-3">Registration</th>
-                    <th className="text-left text-[11px] font-bold text-slate-500 uppercase py-3">Status</th>
-                    <th className="text-left text-[11px] font-bold text-slate-500 uppercase py-3">Registered On</th>
-                    <th className="text-right text-[11px] font-bold text-slate-500 uppercase py-3">Action</th>
+                    <th className="text-left text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-3">Method</th>
+                    <th className="text-left text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-3">Registration</th>
+                    <th className="text-left text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-3">Status</th>
+                    <th className="text-left text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-3">Registered On</th>
+                    <th className="text-right text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-3">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -142,7 +142,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
                     <tr key={idx} className="border-b border-slate-100 dark:border-slate-800/50 hover:bg-slate-50 dark:hover:bg-slate-800/20 transition-colors">
                       <td className="py-3 text-sm font-bold text-slate-800 dark:text-white">{row.name}</td>
                       <td className="py-3">
-                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-${row.c}-100 text-${row.c}-700`}>
+                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[calc(10px*var(--text-scale,1))] font-bold bg-${row.c}-100 text-${row.c}-700`}>
                           {row.reg === 'Registered' && <CheckCircle2 className="w-3 h-3" />}
                           {row.reg === 'Pending' && <AlertCircle className="w-3 h-3" />}
                           {row.reg}
@@ -153,7 +153,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
                       </td>
                       <td className="py-3 text-xs font-semibold text-slate-500">{row.date}</td>
                       <td className="py-3 text-right">
-                        <button className="text-[11px] font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg shadow-sm hover:border-blue-400 hover:text-blue-600 transition-colors">
+                        <button className="text-[calc(11px*var(--text-scale,1))] font-bold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-lg shadow-sm hover:border-blue-400 hover:text-blue-600 transition-colors">
                           {row.reg === 'Not Registered' ? 'Register' : row.reg === 'Pending' ? 'Complete' : 'View / Update'}
                         </button>
                       </td>
@@ -165,19 +165,19 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-auto bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50">
               <div className="flex flex-col">
-                <span className="text-[10px] uppercase font-bold text-slate-500">Total Methods</span>
+                <span className="text-[calc(10px*var(--text-scale,1))] uppercase font-bold text-slate-500">Total Methods</span>
                 <span className="text-lg font-black text-slate-800 dark:text-white">{methodsArray.length}</span>
               </div>
               <div className="flex flex-col border-l border-slate-200 dark:border-slate-700 pl-3">
-                <span className="text-[10px] uppercase font-bold text-emerald-500">Registered</span>
+                <span className="text-[calc(10px*var(--text-scale,1))] uppercase font-bold text-emerald-500">Registered</span>
                 <span className="text-lg font-black text-emerald-600 dark:text-emerald-400">{totalRegistered}</span>
               </div>
               <div className="flex flex-col border-l border-slate-200 dark:border-slate-700 pl-3">
-                <span className="text-[10px] uppercase font-bold text-amber-500">Pending</span>
+                <span className="text-[calc(10px*var(--text-scale,1))] uppercase font-bold text-amber-500">Pending</span>
                 <span className="text-lg font-black text-amber-600 dark:text-amber-400">{totalPending}</span>
               </div>
               <div className="flex flex-col border-l border-slate-200 dark:border-slate-700 pl-3">
-                <span className="text-[10px] uppercase font-bold text-blue-500">Active</span>
+                <span className="text-[calc(10px*var(--text-scale,1))] uppercase font-bold text-blue-500">Active</span>
                 <span className="text-lg font-black text-blue-600 dark:text-blue-400">{totalActive}</span>
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
 
           {/* Card 3: Authentication Settings */}
           <motion.div variants={itemVariants} className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col">
-            <h3 className="font-extrabold text-[16px] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
+            <h3 className="font-extrabold text-[calc(16px*var(--text-scale,1))] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
               Authentication Settings
             </h3>
             
@@ -209,7 +209,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
                   <div className="sm:col-span-2 flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
                     <div className="flex flex-col">
                       <span className="text-sm font-bold text-slate-700 dark:text-slate-300">OTP Mode</span>
-                      <span className="text-[10px] text-slate-500 font-semibold">Mobile Only, Email Only, Both</span>
+                      <span className="text-[calc(10px*var(--text-scale,1))] text-slate-500 font-semibold">Mobile Only, Email Only, Both</span>
                     </div>
                     <div className="relative">
                       <button 
@@ -255,11 +255,11 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
                     </button>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700/50 opacity-60">
-                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">Face <span className="text-[9px] bg-slate-200 dark:bg-slate-700 px-1.5 py-0.5 rounded text-slate-500">Not Reg</span></span>
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">Face <span className="text-[calc(9px*var(--text-scale,1))] bg-slate-200 dark:bg-slate-700 px-1.5 py-0.5 rounded text-slate-500">Not Reg</span></span>
                     <ToggleLeft className="w-7 h-7 text-slate-400 cursor-not-allowed" />
                   </div>
                   <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700/50 opacity-60">
-                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">Voice <span className="text-[9px] bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 rounded text-amber-600">Pending</span></span>
+                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2">Voice <span className="text-[calc(9px*var(--text-scale,1))] bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 rounded text-amber-600">Pending</span></span>
                     <ToggleLeft className="w-7 h-7 text-slate-400 cursor-not-allowed" />
                   </div>
                   <div className="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
@@ -277,7 +277,7 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
                 <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-700/50">
                   <div className="flex flex-col">
                     <span className="text-sm font-bold text-slate-700 dark:text-slate-300">CAPTCHA Protection</span>
-                    <span className="text-[10px] text-slate-500 font-semibold mt-1">Random Selection (Image, Challenge, Auto Calculation)</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] text-slate-500 font-semibold mt-1">Random Selection (Image, Challenge, Auto Calculation)</span>
                   </div>
                   <button onClick={() => setCaptchaEnabled(!captchaEnabled)} className="outline-none">
                     {captchaEnabled ? <ToggleRight className="w-7 h-7 text-blue-500" /> : <ToggleLeft className="w-7 h-7 text-slate-400" />}
@@ -289,26 +289,26 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
 
           {/* Card 4: Authentication Method Summary */}
           <motion.div variants={itemVariants} className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col">
-            <h3 className="font-extrabold text-[16px] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
+            <h3 className="font-extrabold text-[calc(16px*var(--text-scale,1))] text-slate-800 dark:text-white mb-5 flex items-center gap-2 border-b border-slate-100 dark:border-slate-800/50 pb-4">
               Authentication Method Summary
             </h3>
             
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
                <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50 flex flex-col gap-1 text-center">
                   <span className="text-2xl font-black text-slate-800 dark:text-white">{totalRegistered}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Registered</span>
+                  <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase tracking-wider text-slate-400">Total Registered</span>
                </div>
                <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-2xl border border-emerald-100 dark:border-emerald-800/50 flex flex-col gap-1 text-center">
                   <span className="text-2xl font-black text-emerald-600 dark:text-emerald-400">{totalActive}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-500/70">Active Methods</span>
+                  <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase tracking-wider text-emerald-500/70">Active Methods</span>
                </div>
                <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-700/50 flex flex-col gap-1 text-center">
                   <span className="text-2xl font-black text-slate-800 dark:text-white">{disabledCount}</span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Disabled</span>
+                  <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase tracking-wider text-slate-400">Disabled</span>
                </div>
                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-2xl border border-blue-100 dark:border-blue-800/50 flex flex-col gap-1 text-center">
                   <span className={`text-2xl font-black ${captchaEnabled ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400'}`}>{captchaEnabled ? 'ON' : 'OFF'}</span>
-                  <span className={`text-[10px] font-bold uppercase tracking-wider ${captchaEnabled ? 'text-blue-500/70' : 'text-slate-400/70'}`}>CAPTCHA</span>
+                  <span className={`text-[calc(10px*var(--text-scale,1))] font-bold uppercase tracking-wider ${captchaEnabled ? 'text-blue-500/70' : 'text-slate-400/70'}`}>CAPTCHA</span>
                </div>
             </div>
 
@@ -316,9 +316,9 @@ export default function TwoFactorAuthenticationPage({ onBack }) {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700">
-                    <th className="text-left text-[11px] font-bold text-slate-500 uppercase py-2">Method</th>
-                    <th className="text-center text-[11px] font-bold text-slate-500 uppercase py-2">Registered</th>
-                    <th className="text-right text-[11px] font-bold text-slate-500 uppercase py-2">Status</th>
+                    <th className="text-left text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-2">Method</th>
+                    <th className="text-center text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-2">Registered</th>
+                    <th className="text-right text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 uppercase py-2">Status</th>
                   </tr>
                 </thead>
                 <tbody>

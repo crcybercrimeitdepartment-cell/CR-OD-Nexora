@@ -63,7 +63,7 @@ export default function ProfilePage({ onBack }) {
   };
 
   return (
-    <div className="w-full pb-10 px-4 sm:px-6 lg:px-8 relative min-h-screen flex flex-col">
+    <div className="w-full pb-10 px-4 sm:px-6 lg:px-8 relative  flex flex-col">
       {onBack && (
         <button onClick={onBack}
           className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm"
@@ -124,15 +124,15 @@ export default function ProfilePage({ onBack }) {
                       name="designation"
                       value={editFormData.designation}
                       onChange={handleInputChange}
-                      className="text-blue-600 dark:text-blue-400 font-bold bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-blue-200 dark:border-blue-800 rounded-lg sm:rounded-xl py-1 sm:py-1.5 px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm text-[14px] sm:text-base"
+                      className="text-blue-600 dark:text-blue-400 font-bold bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-blue-200 dark:border-blue-800 rounded-lg sm:rounded-xl py-1 sm:py-1.5 px-3 sm:px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm text-[calc(14px*var(--text-scale,1))] sm:text-base"
                     />
                   </motion.div>
                 ) : (
                   <div className="text-center sm:text-left">
-                    <h2 className="text-[26px] sm:text-[38px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 tracking-tight leading-tight">
+                    <h2 className="text-[calc(26px*var(--text-scale,1))] sm:text-[calc(38px*var(--text-scale,1))] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 tracking-tight leading-tight">
                       {profileData.fullName}
                     </h2>
-                    <p className="text-blue-600 dark:text-blue-400 font-bold text-[14px] sm:text-[16px] mt-1 sm:mt-1.5 flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
+                    <p className="text-blue-600 dark:text-blue-400 font-bold text-[calc(14px*var(--text-scale,1))] sm:text-[calc(16px*var(--text-scale,1))] mt-1 sm:mt-1.5 flex items-center gap-1.5 sm:gap-2 justify-center sm:justify-start">
                       <Briefcase className="w-4 h-4" />
                       {profileData.designation}
                     </p>
@@ -140,7 +140,7 @@ export default function ProfilePage({ onBack }) {
                 )}
 
                 {/* Department Pill */}
-                <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-1.5 sm:py-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-md border border-white dark:border-slate-700/50 rounded-full sm:rounded-2xl shadow-sm text-blue-700 dark:text-blue-300 text-[12px] sm:text-sm font-bold hover:shadow-md transition-shadow">
+                <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-1.5 sm:py-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur-md border border-white dark:border-slate-700/50 rounded-full sm:rounded-2xl shadow-sm text-blue-700 dark:text-blue-300 text-[calc(12px*var(--text-scale,1))] sm:text-sm font-bold hover:shadow-md transition-shadow">
                   <Building2 className="w-4 h-4 text-blue-500" />
                   {isEditing ? (
                     <input 
@@ -160,7 +160,7 @@ export default function ProfilePage({ onBack }) {
             <div className="mt-6 sm:mt-0 z-10 shrink-0 flex flex-col gap-3 w-full sm:w-auto pt-2">
               <button 
                 onClick={handleEditToggle}
-                className={`w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 text-[14px] rounded-xl font-bold tracking-wide transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl ${
+                className={`w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 text-[calc(14px*var(--text-scale,1))] rounded-xl font-bold tracking-wide transition-all duration-300 shadow-lg hover:-translate-y-1 hover:shadow-xl ${
                   isEditing 
                     ? 'bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white shadow-emerald-500/25 hover:shadow-emerald-500/40' 
                     : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-blue-500/25 hover:shadow-blue-500/40'
@@ -175,7 +175,7 @@ export default function ProfilePage({ onBack }) {
               {isEditing && (
                 <button 
                   onClick={handleCancelEdit}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 text-[14px] rounded-xl font-bold text-slate-600 dark:text-slate-200 bg-white/80 dark:bg-slate-800/80 backdrop-blur border border-slate-200 dark:border-slate-600 shadow-sm hover:bg-white dark:hover:bg-slate-700 hover:shadow-md hover:-translate-y-0.5 transition-all"
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 text-[calc(14px*var(--text-scale,1))] rounded-xl font-bold text-slate-600 dark:text-slate-200 bg-white/80 dark:bg-slate-800/80 backdrop-blur border border-slate-200 dark:border-slate-600 shadow-sm hover:bg-white dark:hover:bg-slate-700 hover:shadow-md hover:-translate-y-0.5 transition-all"
                 >
                   <X className="w-4 h-4" /> Cancel
                 </button>
@@ -398,7 +398,7 @@ function BentoCard({ variants, colSpan, bg, borderHover, iconBg, iconColor, icon
       </div>
       
       <div className="flex flex-col flex-1 min-w-0 w-full justify-center">
-        <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-400 mb-0.5 sm:mb-1 uppercase tracking-wider">{label}</span>
+        <span className="text-[calc(10px*var(--text-scale,1))] sm:text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 dark:text-slate-400 mb-0.5 sm:mb-1 uppercase tracking-wider">{label}</span>
         
         {isEditing ? (
           isTextarea ? (
@@ -407,7 +407,7 @@ function BentoCard({ variants, colSpan, bg, borderHover, iconBg, iconColor, icon
               value={value}
               onChange={onChange}
               rows={2}
-              className="w-full text-[12px] sm:text-[14px] font-bold text-slate-800 dark:text-slate-200 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg sm:rounded-xl p-2 sm:p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none shadow-inner"
+              className="w-full text-[calc(12px*var(--text-scale,1))] sm:text-[calc(14px*var(--text-scale,1))] font-bold text-slate-800 dark:text-slate-200 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg sm:rounded-xl p-2 sm:p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none shadow-inner"
             />
           ) : (
             <input 
@@ -415,7 +415,7 @@ function BentoCard({ variants, colSpan, bg, borderHover, iconBg, iconColor, icon
               value={value}
               onChange={onChange}
               type={type}
-              className="w-full text-[12px] sm:text-[14px] font-bold text-slate-800 dark:text-slate-200 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg sm:rounded-xl p-2 sm:p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-inner"
+              className="w-full text-[calc(12px*var(--text-scale,1))] sm:text-[calc(14px*var(--text-scale,1))] font-bold text-slate-800 dark:text-slate-200 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm border border-slate-200 dark:border-slate-700 rounded-lg sm:rounded-xl p-2 sm:p-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-inner"
             />
           )
         ) : (
@@ -426,7 +426,7 @@ function BentoCard({ variants, colSpan, bg, borderHover, iconBg, iconColor, icon
               </span>
             </div>
           ) : (
-            <span className="text-[12px] sm:text-[14px] font-bold text-slate-800 dark:text-white whitespace-pre-line leading-relaxed truncate overflow-hidden text-ellipsis w-full block">
+            <span className="text-[calc(12px*var(--text-scale,1))] sm:text-[calc(14px*var(--text-scale,1))] font-bold text-slate-800 dark:text-white whitespace-pre-line leading-relaxed truncate overflow-hidden text-ellipsis w-full block">
               {value}
             </span>
           )

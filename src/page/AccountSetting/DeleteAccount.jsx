@@ -554,7 +554,7 @@ export default function DeleteAccount({ onBack }) {
   if (isSuccess) {
     return (
       <div 
-        className="min-h-screen bg-transparent flex items-center justify-center p-4"
+        className=" bg-transparent flex items-center justify-center p-4"
         style={{
           '--color-primary': '#2563EB',
           '--color-primary-dark': '#1D4ED8',
@@ -616,7 +616,7 @@ export default function DeleteAccount({ onBack }) {
 
   return (
     <div 
-      className="min-h-screen bg-transparent font-sans text-slate-800 relative"
+      className=" bg-transparent font-sans text-slate-800 relative"
       style={{
         '--color-primary': '#2563EB',
         '--color-primary-dark': '#1D4ED8',
@@ -649,8 +649,8 @@ export default function DeleteAccount({ onBack }) {
         {/* Page Heading */}
         <div className="bg-white/70 backdrop-blur-xl rounded-[24px] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] px-6 py-5 mb-2 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-[28px] font-bold text-[#0F2B5B] mb-1 tracking-tight">Delete Account</h1>
-            <p className="text-[13px] font-medium text-[#64748B]">
+            <h1 className="text-[calc(28px*var(--text-scale,1))] font-bold text-[#0F2B5B] mb-1 tracking-tight">Delete Account</h1>
+            <p className="text-[calc(13px*var(--text-scale,1))] font-medium text-[#64748B]">
               Manage account deactivation, security verification and account closure
             </p>
           </div>
@@ -660,7 +660,7 @@ export default function DeleteAccount({ onBack }) {
             <ShieldCheck className="w-4 h-4 text-emerald-500" />
             <div className="flex flex-col">
               <span className="text-xs font-semibold text-emerald-900 leading-none mb-0.5">Your account is secure</span>
-              <span className="text-[10px] text-emerald-600/80 leading-none">Last checked: 2 min ago</span>
+              <span className="text-[calc(10px*var(--text-scale,1))] text-emerald-600/80 leading-none">Last checked: 2 min ago</span>
             </div>
           </div>
         </div>
@@ -668,8 +668,10 @@ export default function DeleteAccount({ onBack }) {
         {/* Section 1: Account Deactivation */}
         <section className="bg-white/70 backdrop-blur-xl rounded-[24px] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
           <div className="px-6 pt-6 pb-2">
-            <h2 className="text-[15px] font-bold text-[#0F2B5B] flex items-center gap-2">
-              <span className="bg-[#EBF3FF] text-[#2563EB] w-5 h-5 rounded-[6px] flex items-center justify-center text-[11px]">1</span>
+            <h2 className="text-[calc(15px*var(--text-scale,1))] font-bold text-[#0F2B5B] flex items-center gap-2">
+              <span className="bg-[#EBF3FF] text-[#2563EB] w-7 h-7 rounded-[8px] flex items-center justify-center">
+                <PowerOff className="w-4 h-4" />
+              </span>
               Account Deactivation
             </h2>
           </div>
@@ -712,8 +714,10 @@ export default function DeleteAccount({ onBack }) {
         {/* Section 2: Deactivation Reason */}
         <section className="bg-white/70 backdrop-blur-xl rounded-[24px] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
           <div className="px-6 pt-6 pb-2">
-            <h2 className="text-[15px] font-bold text-[#0F2B5B] flex items-center gap-2">
-              <span className="bg-[#EBF3FF] text-[#2563EB] w-5 h-5 rounded-[6px] flex items-center justify-center text-[11px]">2</span>
+            <h2 className="text-[calc(15px*var(--text-scale,1))] font-bold text-[#0F2B5B] flex items-center gap-2">
+              <span className="bg-[#EBF3FF] text-[#2563EB] w-7 h-7 rounded-[8px] flex items-center justify-center">
+                <FileWarning className="w-4 h-4" />
+              </span>
               Deactivation Reason
             </h2>
           </div>
@@ -730,8 +734,10 @@ export default function DeleteAccount({ onBack }) {
         {/* Section 3: Active Work & Cases */}
         <section className="bg-white/70 backdrop-blur-xl rounded-[24px] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
           <div className="px-6 pt-6 pb-2">
-            <h2 className="text-[15px] font-bold text-[#0F2B5B] flex items-center gap-2">
-              <span className="bg-[#EBF3FF] text-[#2563EB] w-5 h-5 rounded-[6px] flex items-center justify-center text-[11px]">3</span>
+            <h2 className="text-[calc(15px*var(--text-scale,1))] font-bold text-[#0F2B5B] flex items-center gap-2">
+              <span className="bg-[#EBF3FF] text-[#2563EB] w-7 h-7 rounded-[8px] flex items-center justify-center">
+                <Briefcase className="w-4 h-4" />
+              </span>
               Active Work & Cases
             </h2>
           </div>
@@ -743,8 +749,10 @@ export default function DeleteAccount({ onBack }) {
         {/* Section 4: Security Verification */}
         <section className="bg-white/70 backdrop-blur-xl rounded-[24px] border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
           <div className="px-6 pt-6 pb-2">
-            <h2 className="text-[15px] font-bold text-[#0F2B5B] flex items-center gap-2">
-              <span className="bg-[#EBF3FF] text-[#2563EB] w-5 h-5 rounded-[6px] flex items-center justify-center text-[11px]">4</span>
+            <h2 className="text-[calc(15px*var(--text-scale,1))] font-bold text-[#0F2B5B] flex items-center gap-2">
+              <span className="bg-[#EBF3FF] text-[#2563EB] w-7 h-7 rounded-[8px] flex items-center justify-center">
+                <ShieldCheck className="w-4 h-4" />
+              </span>
               Security Verification
             </h2>
           </div>

@@ -34,11 +34,26 @@ const applyAccessibilitySettingsToDOM = (settings) => {
   const isEnabled = settings.visualDisplayEnabled ?? true;
 
   // Text Size
-  if (!isEnabled) root.style.fontSize = '16px';
-  else if (settings.textSize === 'Small') root.style.fontSize = '14px';
-  else if (settings.textSize === 'Large') root.style.fontSize = '18px';
-  else if (settings.textSize === 'Extra Large') root.style.fontSize = '20px';
-  else root.style.fontSize = '16px'; // Medium
+  if (!isEnabled) {
+    root.style.fontSize = '16px';
+    root.style.setProperty('--text-scale', '1');
+  }
+  else if (settings.textSize === 'Small') {
+    root.style.fontSize = '14px';
+    root.style.setProperty('--text-scale', '0.875');
+  }
+  else if (settings.textSize === 'Large') {
+    root.style.fontSize = '18px';
+    root.style.setProperty('--text-scale', '1.125');
+  }
+  else if (settings.textSize === 'Extra Large') {
+    root.style.fontSize = '20px';
+    root.style.setProperty('--text-scale', '1.25');
+  }
+  else {
+    root.style.fontSize = '16px'; // Medium
+    root.style.setProperty('--text-scale', '1');
+  }
 
   // Letter Spacing
   if (!isEnabled) root.style.letterSpacing = 'normal';
@@ -225,7 +240,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <span className="block text-xs font-bold text-slate-800">High Contrast</span>
-                      <span className="text-[11px] text-slate-400">Increase contrast for better readability</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] text-slate-400">Increase contrast for better readability</span>
                     </div>
                     <button
                       type="button"
@@ -240,7 +255,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                   <div className="flex items-center justify-between gap-2 pt-1 relative">
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Text Size</span>
-                      <span className="text-[11px] text-slate-400">Choose the default text size</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] text-slate-400">Choose the default text size</span>
                     </div>
                     <div className="relative shrink-0">
                       <button
@@ -274,7 +289,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                   <div className="flex items-center justify-between gap-2 pt-1 relative">
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Letter Spacing</span>
-                      <span className="text-[11px] text-slate-400">Increase space between letters</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] text-slate-400">Increase space between letters</span>
                     </div>
                     <div className="relative shrink-0">
                       <button
@@ -308,7 +323,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                   <div className="flex items-center justify-between gap-2 pt-1 relative">
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Color Blind Filter</span>
-                      <span className="text-[11px] text-slate-400">Adjust colors for color blindness</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] text-slate-400">Adjust colors for color blindness</span>
                     </div>
                     <div className="relative shrink-0">
                       <button
@@ -365,7 +380,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                   <div className="flex items-center justify-between gap-2">
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Screen Reader Optimization</span>
-                      <span className="text-[11px] text-slate-400">Enhance compatibility with screen readers</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] text-slate-400">Enhance compatibility with screen readers</span>
                     </div>
                     <button
                       type="button"
@@ -394,7 +409,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                   <h3 className="text-base font-bold text-slate-900 leading-snug">
                     Live Preview Box
                   </h3>
-                  <p className="text-[11px] text-slate-400 font-normal">
+                  <p className="text-[calc(11px*var(--text-scale,1))] text-slate-400 font-normal">
                     See how your visual settings affect the actual text size globally across Nexora.
                   </p>
                 </div>
@@ -437,7 +452,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                       </div>
                       <div>
                         <span className="block text-xs font-bold text-slate-800">Reduced Motion</span>
-                        <span className="text-[10.5px] text-slate-400">Minimize animations and transitions</span>
+                        <span className="text-[calc(11px*var(--text-scale,1))] text-slate-400">Minimize animations and transitions</span>
                       </div>
                     </div>
                     <button
@@ -457,7 +472,7 @@ export default function AccessibilitySettingPage({ onBack }) {
                       </div>
                       <div>
                         <span className="block text-xs font-bold text-slate-800">Focus Indicators</span>
-                        <span className="text-[10.5px] text-slate-400">Highlight active elements for keyboard users</span>
+                        <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Highlight active elements for keyboard users</span>
                       </div>
                     </div>
                     <button

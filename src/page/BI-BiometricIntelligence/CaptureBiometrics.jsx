@@ -197,7 +197,7 @@ export default function CaptureBiometrics({ featureType }) {
             {renderIcon()}
           </div>
           <h3 className="text-2xl font-bold text-slate-800 mb-3">Capture {featureName}</h3>
-          <p className="text-slate-500 mb-8 text-center max-w-sm text-[15px]">
+          <p className="text-slate-500 mb-8 text-center max-w-sm text-[calc(15px*var(--text-scale,1))]">
             {isCameraType && `Use your device's camera to securely capture your ${featureName.toLowerCase()}.`}
             {isFingerprint && "Place your finger securely on the scanner to verify your identity."}
             {isVoice && "Use your device's microphone to record a secure voice sample."}

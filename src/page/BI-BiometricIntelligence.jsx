@@ -133,7 +133,7 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[15px]">Capture Face</span>
+                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Face</span>
                       <button 
                         onClick={() => handleFeatureOpen('capture_face')}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
@@ -157,7 +157,7 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[15px]">Capture Fingerprint</span>
+                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Fingerprint</span>
                       <button 
                         onClick={() => handleFeatureOpen('capture_fingerprint')}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
@@ -182,7 +182,7 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[15px]">Capture Iris</span>
+                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Iris</span>
                       <button 
                         onClick={() => handleFeatureOpen('capture_iris')}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
@@ -206,7 +206,7 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[15px]">Capture Voice</span>
+                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Voice</span>
                       <button 
                         onClick={() => handleFeatureOpen('capture_voice')}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
@@ -249,7 +249,7 @@ export default function BIPage({ onBack }) {
                     <svg className="w-14 h-14 text-blue-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
-                    <p className="font-bold text-slate-700 text-[17px]">Drag & Drop Files Here</p>
+                    <p className="font-bold text-slate-700 text-[calc(17px*var(--text-scale,1))]">Drag & Drop Files Here</p>
                     <p className="text-slate-500 text-sm mt-1 mb-5">or click to browse files</p>
                     <p className="text-slate-400 text-xs">Supports: JPG, PNG, WSQ, BMP, MP3, WAV</p>
                     <p className="text-slate-400 text-xs mt-1.5 font-medium">Max file size: 50MB</p>
@@ -265,7 +265,7 @@ export default function BIPage({ onBack }) {
                     {/* Upload Face */}
                     <button
                       onClick={() => handleFeatureOpen('upload_face')}
-                      className={`py-3.5 px-4 font-semibold text-[13px] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
+                      className={`py-3.5 px-4 font-semibold text-[calc(13px*var(--text-scale,1))] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
                         activeFeature === 'upload_face' 
                         ? 'bg-blue-50 text-slate-800 border-blue-300 shadow-sm' 
                         : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
@@ -280,7 +280,7 @@ export default function BIPage({ onBack }) {
                     {/* Upload Fingerprint */}
                     <button
                       onClick={() => handleFeatureOpen('upload_fingerprint')}
-                      className={`py-3.5 px-4 font-semibold text-[13px] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
+                      className={`py-3.5 px-4 font-semibold text-[calc(13px*var(--text-scale,1))] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
                         activeFeature === 'upload_fingerprint' 
                         ? 'bg-emerald-50 text-slate-800 border-emerald-300 shadow-sm' 
                         : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
@@ -295,7 +295,7 @@ export default function BIPage({ onBack }) {
                     {/* Upload Iris */}
                     <button
                       onClick={() => handleFeatureOpen('upload_iris')}
-                      className={`py-3.5 px-4 font-semibold text-[13px] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
+                      className={`py-3.5 px-4 font-semibold text-[calc(13px*var(--text-scale,1))] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
                         activeFeature === 'upload_iris' 
                         ? 'bg-purple-50 text-slate-800 border-purple-300 shadow-sm' 
                         : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'
@@ -310,7 +310,7 @@ export default function BIPage({ onBack }) {
                     {/* Upload Voice */}
                     <button
                       onClick={() => handleFeatureOpen('upload_voice')}
-                      className={`py-3.5 px-4 font-semibold text-[13px] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
+                      className={`py-3.5 px-4 font-semibold text-[calc(13px*var(--text-scale,1))] sm:text-sm rounded-xl border transition-colors flex items-center justify-start gap-3 ${
                         activeFeature === 'upload_voice' 
                         ? 'bg-orange-50 text-slate-800 border-orange-300 shadow-sm' 
                         : 'bg-white hover:bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-300'

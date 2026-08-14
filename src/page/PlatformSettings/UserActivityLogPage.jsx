@@ -141,19 +141,19 @@ export default function UserActivityLog({ onBack, resolveModuleName }) {
           {/* Top Dashboard Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 border-b border-slate-200 bg-slate-50">
             <div className="p-3 sm:p-4 text-center border-b md:border-b-0 border-r border-slate-200">
-              <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Sessions</p>
+              <p className="text-[calc(10px*var(--text-scale,1))] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Sessions</p>
               <p className="text-lg sm:text-xl font-bold text-[#1e2a52] mt-1">{totalSessions}</p>
             </div>
             <div className="p-3 sm:p-4 text-center border-b md:border-b-0 md:border-r border-slate-200">
-              <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Active Time</p>
+              <p className="text-[calc(10px*var(--text-scale,1))] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Total Active Time</p>
               <p className="text-lg sm:text-xl font-bold text-[#1e2a52] mt-1">{fmtTotalDuration(totalActiveTimeMs)}</p>
             </div>
             <div className="p-3 sm:p-4 text-center border-r border-slate-200">
-              <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Modules Used</p>
+              <p className="text-[calc(10px*var(--text-scale,1))] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Modules Used</p>
               <p className="text-lg sm:text-xl font-bold text-[#1e2a52] mt-1">{uniqueModules}</p>
             </div>
             <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Current Status</p>
+              <p className="text-[calc(10px*var(--text-scale,1))] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide">Current Status</p>
               <p className={`text-lg sm:text-xl font-bold mt-1 ${isCameraActive ? 'text-green-600' : 'text-slate-600'}`}>
                 {cameraStatusText}
               </p>
@@ -217,7 +217,7 @@ export default function UserActivityLog({ onBack, resolveModuleName }) {
                               <div className="w-4 h-4" /> // spacer
                             )}
                             {session.moduleName}
-                            {hasSubs && <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full ml-2">{nestedSubs.length}</span>}
+                            {hasSubs && <span className="text-[calc(10px*var(--text-scale,1))] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full ml-2">{nestedSubs.length}</span>}
                           </td>
                           <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">{fmtDate(session.startTime)}</td>
                           <td className="px-6 py-3.5 text-sm text-slate-600 whitespace-nowrap">{fmtTime(session.startTime)}</td>
@@ -235,7 +235,7 @@ export default function UserActivityLog({ onBack, resolveModuleName }) {
                                 <img key={`click-${i}`} src={click.image} alt={`click-${i}`} onClick={(e) => { e.stopPropagation(); setSelectedImage(click.image); }} className="w-10 h-6 object-cover rounded border border-slate-200 cursor-pointer hover:scale-110 transition-transform shrink-0" title={fmtTime(click.timestamp)} />
                               ))}
                               {!session.image && !nestedSubs.some(sub => sub.image) && (!session.sessionClicks || session.sessionClicks.length === 0) && (
-                                <span className="text-[10px] text-slate-400">N/A</span>
+                                <span className="text-[calc(10px*var(--text-scale,1))] text-slate-400">N/A</span>
                               )}
                             </div>
                           </td>
@@ -249,7 +249,7 @@ export default function UserActivityLog({ onBack, resolveModuleName }) {
                               <div className="bg-slate-100/50 pl-4 sm:pl-16 pr-4 sm:pr-6 py-4 shadow-inner overflow-x-auto">
                                 <table className="w-full text-left min-w-max">
                                   <thead>
-                                    <tr className="text-[10px] uppercase text-slate-400 tracking-wider border-b border-slate-200">
+                                    <tr className="text-[calc(10px*var(--text-scale,1))] uppercase text-slate-400 tracking-wider border-b border-slate-200">
                                       <th className="pb-2 pr-4 font-semibold whitespace-nowrap">Inner Card Visited</th>
                                       <th className="pb-2 px-4 font-semibold whitespace-nowrap">Start Time</th>
                                       <th className="pb-2 px-4 font-semibold whitespace-nowrap">Stop Time</th>
@@ -274,7 +274,7 @@ export default function UserActivityLog({ onBack, resolveModuleName }) {
                                             {sub.image ? (
                                               <img src={sub.image} alt="sub-snapshot" onClick={(e) => { e.stopPropagation(); setSelectedImage(sub.image); }} className="w-8 h-5 object-cover rounded border border-slate-200 cursor-pointer hover:scale-110 transition-transform shrink-0" />
                                             ) : (
-                                              <span className="text-[10px] text-slate-400">N/A</span>
+                                              <span className="text-[calc(10px*var(--text-scale,1))] text-slate-400">N/A</span>
                                             )}
                                             {sub.sessionClicks && sub.sessionClicks.map((click, i) => (
                                               <img key={i} src={click.image} alt={`click-${i}`} onClick={(e) => { e.stopPropagation(); setSelectedImage(click.image); }} className="w-8 h-5 object-cover rounded border border-slate-200 cursor-pointer hover:scale-110 transition-transform shrink-0" title={fmtTime(click.timestamp)} />

@@ -46,7 +46,7 @@ const CardContent = ({ section, animateText, index, totalCount }) => {
 
       {/* Massive subtle background number */}
       {index !== undefined && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[180px] sm:text-[240px] font-black text-slate-100 opacity-50 pointer-events-none select-none z-10 group-hover:scale-105 group-hover:text-blue-50 transition-all duration-700 ease-out">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[calc(180px*var(--text-scale,1))] sm:text-[calc(240px*var(--text-scale,1))] font-black text-slate-100 opacity-50 pointer-events-none select-none z-10 group-hover:scale-105 group-hover:text-blue-50 transition-all duration-700 ease-out">
           {String(index + 1).padStart(2, '0')}
         </div>
       )}
@@ -68,7 +68,7 @@ const CardContent = ({ section, animateText, index, totalCount }) => {
       >
         <div className="flex flex-col items-center justify-start min-h-full text-center relative z-30">
           {index !== undefined && (
-            <motion.div variants={animateText ? item : undefined} className="text-blue-500 font-bold tracking-[0.3em] text-[10px] sm:text-xs mb-3 sm:mb-4 uppercase opacity-80 group-hover:opacity-100 transition-all duration-700 ease-out shrink-0">
+            <motion.div variants={animateText ? item : undefined} className="text-blue-500 font-bold tracking-[0.3em] text-[calc(10px*var(--text-scale,1))] sm:text-xs mb-3 sm:mb-4 uppercase opacity-80 group-hover:opacity-100 transition-all duration-700 ease-out shrink-0">
               {String(index + 1).padStart(2, '0')} &mdash; {totalCount}
             </motion.div>
           )}
@@ -487,7 +487,7 @@ export default function InfiniteFoldingCard({ data = [], heading = "Purpose of N
           className="relative group flex items-center justify-center gap-3 bg-white/70 hover:bg-white backdrop-blur-xl border border-white/50 px-5 py-2 sm:py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 order-3 sm:order-2 w-full sm:w-auto mt-2 sm:mt-0 cursor-pointer z-50"
           onClick={() => viewState.mode === 'idle' && setIsDropdownOpen(!isDropdownOpen)}
         >
-          <span className="text-blue-500 font-bold text-[10px] sm:text-xs uppercase tracking-[0.2em] hidden sm:inline-block">Jump</span>
+          <span className="text-blue-500 font-bold text-[calc(10px*var(--text-scale,1))] sm:text-xs uppercase tracking-[0.2em] hidden sm:inline-block">Jump</span>
           
           <div className="flex items-center gap-3 w-full sm:w-auto min-w-[220px]">
             <div className="h-4 w-px bg-slate-300 hidden sm:block" />

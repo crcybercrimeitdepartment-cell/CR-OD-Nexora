@@ -32,6 +32,16 @@ const hex2rgb = (hex) => {
   return `${(v >> 16) & 255}, ${(v >> 8) & 255}, ${v & 255}`;
 };
 
+const getTextColorForBackground = (hex) => {
+  const v = parseInt(hex.replace('#', ''), 16);
+  const r = (v >> 16) & 255;
+  const g = (v >> 8) & 255;
+  const b = v & 255;
+  // Calculate relative luminance
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return luminance > 0.5 ? '#0F172A' : '#FFFFFF';
+};
+
 export default function ThemeSelector({ onBack, onApply }) {
   const [isOpen, setIsOpen] = useState(false);
   
@@ -215,7 +225,7 @@ export default function ThemeSelector({ onBack, onApply }) {
                       }}
                     >
                       <Icon className={`w-4 h-4 mb-1 ${!isActive && 'text-slate-500 dark:text-slate-400'}`} />
-                      <span className={`text-[10px] font-medium ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+                      <span className={`text-[calc(10px*var(--text-scale,1))] font-medium ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
                         {mode.name}
                       </span>
                     </motion.button>
@@ -270,7 +280,7 @@ export default function ThemeSelector({ onBack, onApply }) {
                       </div>
                       
                       {/* Text */}
-                      <span className={`text-[9px] font-semibold text-center leading-tight ${
+                      <span className={`text-[calc(9px*var(--text-scale,1))] font-semibold text-center leading-tight ${
                         isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300'
                       }`}>
                         {color.name}
@@ -287,8 +297,8 @@ export default function ThemeSelector({ onBack, onApply }) {
           <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex justify-end md:hidden">
             <button
               onClick={handleConfirm}
-              className="px-6 py-2.5 rounded-xl text-white font-medium shadow-sm transition-all hover:opacity-90 hover:shadow-md active:scale-95 w-full"
-              style={{ backgroundColor: stagedColor }}
+              className="px-6 py-2.5 rounded-xl font-medium shadow-sm transition-all hover:opacity-90 hover:shadow-md active:scale-95 w-full"
+              style={{ backgroundColor: stagedColor, color: getTextColorForBackground(stagedColor) }}
             >
               Apply Theme <Check className="w-4 h-4 inline-block ml-1" />
             </button>
@@ -356,8 +366,8 @@ export default function ThemeSelector({ onBack, onApply }) {
                   onBack();
                 }
               }}
-              className="px-6 py-3 rounded-xl font-bold shadow-lg transition-transform hover:-translate-y-1 text-white flex items-center gap-2"
-              style={{ backgroundColor: stagedColor }}
+              className="px-6 py-3 rounded-xl font-bold shadow-lg transition-transform hover:-translate-y-1 flex items-center gap-2"
+              style={{ backgroundColor: stagedColor, color: getTextColorForBackground(stagedColor) }}
             >
               Apply Theme <Check className="w-5 h-5" />
             </button>

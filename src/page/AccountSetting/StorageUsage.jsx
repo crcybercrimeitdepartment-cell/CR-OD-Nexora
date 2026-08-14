@@ -214,7 +214,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
     };
 
     return (
-        <div className="min-h-screen bg-transparent text-slate-800 font-sans pb-12 w-full">
+        <div className=" bg-transparent text-slate-800 font-sans pb-12 w-full">
             {/* Header Area */}
             <header className="bg-transparent px-4 sm:px-6 md:px-10 py-4 flex items-center justify-between sticky top-0 z-50 transition-all duration-300">
                 <div className="flex items-center gap-4">
@@ -247,7 +247,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 1: Storage Overview */}
                     <div className="lg:col-span-12 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={Database} title="Storage Overview" />
-                        <div className="flex-1 flex flex-col justify-center gap-6">
+                        <div className="flex-1 min-h-0 flex flex-col justify-center gap-6">
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
                                 {/* Circular Chart */}
                                 <div className="relative w-32 h-32 shrink-0">
@@ -257,7 +257,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                     </svg>
                                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                                         <span className="text-3xl font-black text-slate-800">{displayPercentage}%</span>
-                                        <span className="text-[10px] font-bold text-slate-500 uppercase">Used</span>
+                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase">Used</span>
                                     </div>
                                 </div>
                                 {/* Legend */}
@@ -265,21 +265,21 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600"><Database className="w-5 h-5" /></div>
                                         <div>
-                                            <p className="text-[10px] font-bold text-slate-500">Total Storage</p>
+                                            <p className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500">Total Storage</p>
                                             <p className="text-sm font-black text-slate-800">{formatGB(totalStorage)}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-red-500"><Activity className="w-5 h-5" /></div>
                                         <div>
-                                            <p className="text-[10px] font-bold text-slate-500">Used Storage</p>
+                                            <p className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500">Used Storage</p>
                                             <p className="text-sm font-black text-slate-800">{formatGB(usedStorage)}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-600"><CheckCircle2 className="w-5 h-5" /></div>
                                         <div>
-                                            <p className="text-[10px] font-bold text-slate-500">Available Storage</p>
+                                            <p className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500">Available Storage</p>
                                             <p className="text-sm font-black text-slate-800">{formatGB(availableStorage)}</p>
                                         </div>
                                     </div>
@@ -288,16 +288,16 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                             
                             <div className="grid grid-cols-3 gap-2 border-t border-slate-100 pt-4 mt-2">
                                 <div className="text-center">
-                                    <p className="text-[10px] text-slate-500 mb-1 font-medium">Storage Usage</p>
+                                    <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mb-1 font-medium">Storage Usage</p>
                                     <p className="text-sm font-bold text-slate-800">{usagePercentage}%</p>
                                 </div>
                                 <div className="text-center border-l border-r border-slate-100">
-                                    <p className="text-[10px] text-slate-500 mb-1 font-medium">Storage Status</p>
-                                    <span className="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[10px] font-bold rounded">{statusText}</span>
+                                    <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mb-1 font-medium">Storage Status</p>
+                                    <span className="inline-block px-2 py-0.5 bg-green-50 text-green-600 text-[calc(10px*var(--text-scale,1))] font-bold rounded">{statusText}</span>
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-[10px] text-slate-500 mb-1 font-medium">Last Updated</p>
-                                    <p className="text-[10px] font-bold text-slate-700">{lastUpdated.split(' ')[0]}<br/>{lastUpdated.split(' ').slice(1).join(' ')}</p>
+                                    <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mb-1 font-medium">Last Updated</p>
+                                    <p className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700">{lastUpdated.split(' ')[0]}<br/>{lastUpdated.split(' ').slice(1).join(' ')}</p>
                                 </div>
                             </div>
                         </div>
@@ -306,10 +306,10 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 2: Storage Usage Breakdown */}
                     <div className="lg:col-span-12 xl:col-span-4 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={Layers} title="Storage Usage Breakdown" />
-                        <div className="flex-1 overflow-x-auto">
+                        <div className="flex-1 min-h-0 overflow-auto custom-scrollbar" data-lenis-prevent>
                             <table className="w-full text-left text-xs whitespace-nowrap">
                                 <thead>
-                                    <tr className="border-b border-slate-100 text-[10px] text-slate-500 font-bold uppercase">
+                                    <tr className="border-b border-slate-100 text-[calc(10px*var(--text-scale,1))] text-slate-500 font-bold uppercase">
                                         <th className="py-2 pr-2">Category</th>
                                         <th className="py-2 px-2">Used Storage</th>
                                         <th className="py-2 px-2">Percentage</th>
@@ -329,7 +329,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                                         <div className="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                                                             <div className={`h-full bg-blue-500 rounded-full ${isRefreshing ? '' : 'transition-all duration-[1500ms] ease-out'}`} style={{ width: `${isProgressLoaded ? itemPct : 0}%` }}></div>
                                                         </div>
-                                                        <span className="text-[10px] font-bold text-slate-600 w-6">{displayItemPct}%</span>
+                                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-600 w-6">{displayItemPct}%</span>
                                                     </div>
                                                 </td>
                                                 <td className="py-2.5 pl-2 text-right font-medium text-slate-700">{formatNum(item.count)}</td>
@@ -344,7 +344,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                         <td className="py-3 px-2">
                                             <div className="flex items-center gap-2">
                                                 <div className="w-12 h-1.5 bg-blue-500 rounded-full"></div>
-                                                <span className="text-[10px] font-bold w-6">100%</span>
+                                                <span className="text-[calc(10px*var(--text-scale,1))] font-bold w-6">100%</span>
                                             </div>
                                         </td>
                                         <td className="py-3 pl-2 text-right">{formatNum(totalBreakdownFiles)}</td>
@@ -357,10 +357,10 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 3: Module-wise Storage */}
                     <div className="lg:col-span-12 xl:col-span-5 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={Server} title="Module-wise Storage" />
-                        <div className="flex-1 overflow-x-auto">
+                        <div className="flex-1 min-h-0 overflow-auto custom-scrollbar" data-lenis-prevent>
                             <table className="w-full text-left text-xs whitespace-nowrap">
                                 <thead>
-                                    <tr className="border-b border-slate-100 text-[10px] text-slate-500 font-bold uppercase">
+                                    <tr className="border-b border-slate-100 text-[calc(10px*var(--text-scale,1))] text-slate-500 font-bold uppercase">
                                         <th className="py-2 pr-2">Module Name</th>
                                         <th className="py-2 px-2">Storage Used</th>
                                         <th className="py-2 px-2">File Count</th>
@@ -380,7 +380,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                                 <td className="py-2.5 px-2 font-medium text-slate-700">{formatNum(mod.records)}</td>
                                                 <td className="py-2.5 pl-2">
                                                     <div className="flex items-center gap-2">
-                                                        <span className="text-[10px] font-bold text-slate-600 w-6 text-right">{displayModPct}%</span>
+                                                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-600 w-6 text-right">{displayModPct}%</span>
                                                         <div className="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                                                             <div className={`h-full bg-indigo-500 rounded-full ${isRefreshing ? '' : 'transition-all duration-[1500ms] ease-out'}`} style={{ width: `${isProgressLoaded ? modPct : 0}%` }}></div>
                                                         </div>
@@ -398,7 +398,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                         <td className="py-3 px-2">{formatNum(totalModuleRecords)}</td>
                                         <td className="py-3 pl-2">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-[10px] w-6 text-right">100%</span>
+                                                <span className="text-[calc(10px*var(--text-scale,1))] w-6 text-right">100%</span>
                                                 <div className="w-12 h-1.5 bg-indigo-500 rounded-full"></div>
                                             </div>
                                         </td>
@@ -414,51 +414,51 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 4: File & Data Statistics */}
                     <div className="lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={FileText} title="File & Data Statistics" />
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 flex-1 min-h-0">
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <File className="w-5 h-5 text-blue-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(totalStatsFiles)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Total Files</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Total Files</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <Database className="w-5 h-5 text-blue-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(totalStatsRecords)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Total Records</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Total Records</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <FileText className="w-5 h-5 text-blue-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.documents)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Documents</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Documents</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <Images className="w-5 h-5 text-green-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.images)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Images</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Images</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <Video className="w-5 h-5 text-green-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.videos)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Videos</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Videos</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <Music className="w-5 h-5 text-blue-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.audio)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Audio Files</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Audio Files</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <File className="w-5 h-5 text-red-500 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.pdf)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">PDF Files</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">PDF Files</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <FileSpreadsheet className="w-5 h-5 text-green-600 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.spreadsheets)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Spreadsheets</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Spreadsheets</span>
                             </div>
                             <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 flex flex-col justify-center items-center text-center gap-1">
                                 <Archive className="w-5 h-5 text-slate-400 mb-1" />
                                 <span className="font-black text-slate-800">{formatNum(dynamicFileStats.others)}</span>
-                                <span className="text-[9px] font-bold text-slate-500">Other Files</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500">Other Files</span>
                             </div>
                         </div>
                     </div>
@@ -466,10 +466,10 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 5: Storage by File Type */}
                     <div className="lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col">
                         <CardHeader icon={File} title="Storage by File Type" />
-                        <div className="flex-1">
-                            <table className="w-full text-left text-[10px]">
+                        <div className="flex-1 min-h-0 overflow-auto custom-scrollbar pr-2" data-lenis-prevent>
+                            <table className="w-full text-left text-[calc(10px*var(--text-scale,1))]">
                                 <thead>
-                                    <tr className="border-b border-slate-100 text-[9px] text-slate-500 font-bold uppercase">
+                                    <tr className="border-b border-slate-100 text-[calc(9px*var(--text-scale,1))] text-slate-500 font-bold uppercase">
                                         <th className="py-1.5 pr-1">Type</th>
                                         <th className="py-1.5 px-0.5 text-center">Files</th>
                                         <th className="py-1.5 px-0.5 text-center">Size</th>
@@ -490,7 +490,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                                         <div className="w-5 sm:w-6 h-1 bg-slate-100 rounded-full overflow-hidden">
                                                             <div className={`h-full bg-blue-500 rounded-full ${isRefreshing ? '' : 'transition-all duration-[1500ms] ease-out'}`} style={{ width: `${isProgressLoaded ? ftPct : 0}%` }}></div>
                                                         </div>
-                                                        <span className="text-[9px] font-bold text-slate-600 min-w-[18px] text-right">{displayFtPct}%</span>
+                                                        <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-600 min-w-[18px] text-right">{displayFtPct}%</span>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -505,7 +505,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                         <td className="py-3 pl-1 text-right">
                                             <div className="flex items-center justify-end gap-1">
                                                 <div className="w-8 h-1.5 bg-blue-500 rounded-full"></div>
-                                                <span className="text-[10px] w-6 text-right">100%</span>
+                                                <span className="text-[calc(10px*var(--text-scale,1))] w-6 text-right">100%</span>
                                             </div>
                                         </td>
                                     </tr>
@@ -517,18 +517,18 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 6: Storage Status */}
                     <div className="lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={Activity} title="Storage Status" />
-                        <div className="flex flex-col gap-3 flex-1 justify-center">
+                        <div className="flex flex-col gap-3 flex-1 min-h-0 justify-center">
                             <div className={`flex items-center justify-between p-3 rounded-lg border ${usagePercentage <= 75 ? 'border-green-200 bg-green-50' : 'border-slate-100 hover:bg-slate-50'} transition-colors`}>
                                 <div className="flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center"><CheckCircle2 className="w-4 h-4" /></div>
                                     <div>
                                         <p className="font-bold text-green-700 text-sm">Normal</p>
-                                        <p className="text-[10px] text-green-600">0% - 75%</p>
+                                        <p className="text-[calc(10px*var(--text-scale,1))] text-green-600">0% - 75%</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
                                     {usagePercentage <= 75 && <p className="font-bold text-green-800 text-xs">{usagePercentage}% Used</p>}
-                                    <p className="text-[9px] text-green-600">{formatGB(usedStorage)} of {formatGB(totalStorage)}</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] text-green-600">{formatGB(usedStorage)} of {formatGB(totalStorage)}</p>
                                 </div>
                             </div>
                             
@@ -537,12 +537,12 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                     <div className={`w-8 h-8 rounded-full ${usagePercentage > 75 && usagePercentage <= 85 ? 'bg-orange-500 text-white' : 'bg-orange-100 text-orange-500'} flex items-center justify-center`}><AlertTriangle className="w-4 h-4" /></div>
                                     <div>
                                         <p className="font-bold text-slate-700 text-sm">Warning</p>
-                                        <p className="text-[10px] text-slate-500">76% - 85%</p>
+                                        <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500">76% - 85%</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
                                     {usagePercentage > 75 && usagePercentage <= 85 && <p className="font-bold text-orange-700 text-xs">{usagePercentage}% Used</p>}
-                                    <p className="text-[9px] text-slate-500">{formatGB(availableStorage)} Remaining</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] text-slate-500">{formatGB(availableStorage)} Remaining</p>
                                 </div>
                             </div>
                             
@@ -551,12 +551,12 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                     <div className={`w-8 h-8 rounded-full ${usagePercentage > 85 && usagePercentage <= 95 ? 'bg-red-500 text-white' : 'bg-red-100 text-red-500'} flex items-center justify-center`}><AlertTriangle className="w-4 h-4" /></div>
                                     <div>
                                         <p className="font-bold text-slate-700 text-sm">Critical</p>
-                                        <p className="text-[10px] text-slate-500">86% - 95%</p>
+                                        <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500">86% - 95%</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
                                     {usagePercentage > 85 && usagePercentage <= 95 && <p className="font-bold text-red-700 text-xs">{usagePercentage}% Used</p>}
-                                    <p className="text-[9px] text-slate-500">{formatGB(availableStorage)} Remaining</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] text-slate-500">{formatGB(availableStorage)} Remaining</p>
                                 </div>
                             </div>
                             
@@ -565,12 +565,12 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                     <div className={`w-8 h-8 rounded-full ${usagePercentage > 95 ? 'bg-purple-600 text-white' : 'bg-purple-100 text-purple-600'} flex items-center justify-center`}><AlertTriangle className="w-4 h-4" /></div>
                                     <div>
                                         <p className="font-bold text-slate-700 text-sm">Full</p>
-                                        <p className="text-[10px] text-slate-500">96% - 100%</p>
+                                        <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500">96% - 100%</p>
                                     </div>
                                 </div>
                                 <div className="text-right">
                                     {usagePercentage > 95 && <p className="font-bold text-purple-700 text-xs">Storage Full</p>}
-                                    <p className="text-[9px] text-slate-500">{formatGB(availableStorage)} Remaining</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] text-slate-500">{formatGB(availableStorage)} Remaining</p>
                                 </div>
                             </div>
                         </div>
@@ -579,7 +579,7 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 7: Storage Alerts */}
                     <div className="lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={ShieldAlert} title="Storage Alerts" />
-                        <div className="flex-1 flex flex-col gap-4">
+                        <div className="flex-1 min-h-0 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
                             {currentData.alerts.map((alert, idx) => {
                                 const IconComp = alert.icon;
                                 return (
@@ -589,11 +589,11 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                                                 <IconComp className="w-3.5 h-3.5" />
                                             </div>
                                             <div>
-                                                <p className="text-[11px] font-bold text-slate-800">{alert.title}</p>
-                                                <p className="text-[10px] text-slate-500 mt-0.5 leading-tight">{alert.desc}</p>
+                                                <p className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-800">{alert.title}</p>
+                                                <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5 leading-tight">{alert.desc}</p>
                                             </div>
                                         </div>
-                                        <span className="text-[9px] font-medium text-slate-400 shrink-0 text-right">{alert.time}</span>
+                                        <span className="text-[calc(9px*var(--text-scale,1))] font-medium text-slate-400 shrink-0 text-right">{alert.time}</span>
                                     </div>
                                 );
                             })}
@@ -606,10 +606,10 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 8: Storage Activity */}
                     <div className="lg:col-span-12 xl:col-span-6 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={TrendingUp} title="Storage Activity" />
-                        <div className="flex-1 overflow-auto max-h-[320px]">
+                        <div className="flex-1 min-h-0 overflow-auto max-h-[320px] custom-scrollbar" data-lenis-prevent>
                             <table className="w-full text-left text-xs whitespace-nowrap">
                                 <thead>
-                                    <tr className="border-b border-slate-100 text-[10px] text-slate-500 font-bold uppercase">
+                                    <tr className="border-b border-slate-100 text-[calc(10px*var(--text-scale,1))] text-slate-500 font-bold uppercase">
                                         <th className="py-2 pr-2">Date</th>
                                         <th className="py-2 px-2">Time</th>
                                         <th className="py-2 px-2">Activity</th>
@@ -637,41 +637,41 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 9: Storage Actions */}
                     <div className="lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={LayoutList} title="Storage Actions" />
-                        <div className="grid grid-cols-2 gap-3 flex-1">
+                        <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
                             <button onClick={() => handleActionClick('View Storage Details')} className="flex flex-col items-center justify-center gap-2 p-3 h-24 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-blue-300 transition-colors group">
                                 <Eye className="w-6 h-6 text-slate-400 group-hover:text-blue-600 transition-colors" />
                                 <div className="text-center">
-                                    <span className="block text-[10px] font-bold text-slate-700">View Storage Details</span>
-                                    <span className="block text-[8px] text-slate-400 mt-0.5">Detailed storage overview</span>
+                                    <span className="block text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700">View Storage Details</span>
+                                    <span className="block text-[calc(8px*var(--text-scale,1))] text-slate-400 mt-0.5">Detailed storage overview</span>
                                 </div>
                             </button>
                             <button onClick={() => handleActionClick('View Files')} className="flex flex-col items-center justify-center gap-2 p-3 h-24 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-blue-300 transition-colors group">
                                 <FileText className="w-6 h-6 text-slate-400 group-hover:text-blue-600 transition-colors" />
                                 <div className="text-center">
-                                    <span className="block text-[10px] font-bold text-slate-700">View Files</span>
-                                    <span className="block text-[8px] text-slate-400 mt-0.5">Browse stored files</span>
+                                    <span className="block text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700">View Files</span>
+                                    <span className="block text-[calc(8px*var(--text-scale,1))] text-slate-400 mt-0.5">Browse stored files</span>
                                 </div>
                             </button>
                             <button onClick={() => handleActionClick('View Module Usage')} className="flex flex-col items-center justify-center gap-2 p-3 h-24 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-blue-300 transition-colors group">
                                 <Layers className="w-6 h-6 text-slate-400 group-hover:text-blue-600 transition-colors" />
                                 <div className="text-center">
-                                    <span className="block text-[10px] font-bold text-slate-700">View Module Usage</span>
-                                    <span className="block text-[8px] text-slate-400 mt-0.5">Module wise storage</span>
+                                    <span className="block text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700">View Module Usage</span>
+                                    <span className="block text-[calc(8px*var(--text-scale,1))] text-slate-400 mt-0.5">Module wise storage</span>
                                 </div>
                             </button>
                             <button onClick={handleRefresh} className="flex flex-col items-center justify-center gap-2 p-3 h-24 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-blue-300 transition-colors group">
                                 <RefreshCw className={`w-6 h-6 text-slate-400 group-hover:text-blue-600 transition-colors ${isRefreshing ? 'animate-spin text-blue-600' : ''}`} />
                                 <div className="text-center">
-                                    <span className="block text-[10px] font-bold text-slate-700">Refresh Storage</span>
-                                    <span className="block text-[8px] text-slate-400 mt-0.5">Update storage information</span>
+                                    <span className="block text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700">Refresh Storage</span>
+                                    <span className="block text-[calc(8px*var(--text-scale,1))] text-slate-400 mt-0.5">Update storage information</span>
                                 </div>
                             </button>
                             <button onClick={() => handleActionClick('Export Storage Report')} className="col-span-2 flex flex-col items-center justify-center gap-2 p-3 h-20 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-blue-300 transition-colors group">
                                 <div className="flex items-center gap-2">
                                     <Download className="w-5 h-5 text-slate-400 group-hover:text-blue-600 transition-colors" />
-                                    <span className="block text-[11px] font-bold text-slate-700">Export Storage Report</span>
+                                    <span className="block text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700">Export Storage Report</span>
                                 </div>
-                                <span className="block text-[9px] text-slate-400">Download storage report</span>
+                                <span className="block text-[calc(9px*var(--text-scale,1))] text-slate-400">Download storage report</span>
                             </button>
                         </div>
                     </div>
@@ -679,36 +679,36 @@ export default function StorageUsage({ onBack, data = DEFAULT_DATA }) {
                     {/* Card 10: Storage Policy */}
                     <div className="lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
                         <CardHeader icon={Shield} title="Storage Policy" />
-                        <div className="flex flex-col justify-between flex-1 gap-2">
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                        <div className="flex flex-col justify-between flex-1 min-h-0 gap-2">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><Database className="w-3.5 h-3.5" /> Storage Limit</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.limit}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><Server className="w-3.5 h-3.5" /> Allocated Storage</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.allocated}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><Activity className="w-3.5 h-3.5" /> Storage Used</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.used}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><Info className="w-3.5 h-3.5" /> Storage Available</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.available}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><Shield className="w-3.5 h-3.5" /> Storage Policy</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.policy}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><Calendar className="w-3.5 h-3.5" /> Storage Retention</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.retention}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 border-b border-slate-50 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><HardDrive className="w-3.5 h-3.5" /> Maximum File Size</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.maxSize}</span>
                             </div>
-                            <div className="flex items-center justify-between py-1.5 text-[11px]">
+                            <div className="flex items-center justify-between py-1.5 text-[calc(11px*var(--text-scale,1))]">
                                 <span className="text-slate-500 font-medium flex items-center gap-2"><FileText className="w-3.5 h-3.5" /> Allowed File Types</span>
                                 <span className="font-bold text-slate-800">{dynamicPolicy.allowedTypes}</span>
                             </div>

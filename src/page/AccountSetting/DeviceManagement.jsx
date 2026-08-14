@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Laptop, Smartphone, Monitor, ShieldCheck, ShieldAlert, 
@@ -30,12 +31,12 @@ const DeviceIcon = ({ type, className = "w-6 h-6" }) => {
 
 const StatusBadge = ({ status, trust }) => {
   if (status === 'Blocked') {
-    return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-400 border border-rose-200 dark:border-rose-800/50"><XCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Blocked</span>;
+    return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[calc(10px*var(--text-scale,1))] sm:text-xs font-bold bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-400 border border-rose-200 dark:border-rose-800/50"><XCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Blocked</span>;
   }
   if (trust === 'Trusted') {
-    return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"><CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Trusted</span>;
+    return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[calc(10px*var(--text-scale,1))] sm:text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50"><CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Trusted</span>;
   }
-  return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50"><AlertTriangle className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Untrusted</span>;
+  return <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[calc(10px*var(--text-scale,1))] sm:text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50"><AlertTriangle className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> Untrusted</span>;
 };
 
 // ==========================================
@@ -166,7 +167,7 @@ export default function DeviceManagementPage({ onBack }) {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-800 dark:text-slate-200 pt-20 sm:pt-24 pb-12 px-3 sm:px-6 relative font-sans">
+    <div className="flex-1 flex flex-col w-full bg-transparent text-slate-800 dark:text-slate-200 pt-20 sm:pt-24 pb-12 px-3 sm:px-6 relative font-sans">
       {onBack && (
         <button onClick={onBack}
           className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm"
@@ -208,11 +209,11 @@ export default function DeviceManagementPage({ onBack }) {
           variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 lg:grid-cols-12 gap-6"
+          className="grid grid-cols-1 xl:grid-cols-12 gap-6"
         >
           
           {/* Main Content Area (Col 1-8) */}
-          <div className="col-span-1 lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
+          <div className="col-span-1 xl:col-span-8 flex flex-col gap-6">
             
             {/* 1. My Current Device */}
             <motion.div variants={itemVariants} className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl rounded-[24px] p-6 border border-white/60 dark:border-slate-700/50 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden">
@@ -224,8 +225,8 @@ export default function DeviceManagementPage({ onBack }) {
                 </div>
                 <div className="flex flex-col flex-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-1">
-                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">1. My Current Device</span>
-                    <span className="px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50 whitespace-nowrap shrink-0">This Device</span>
+                    <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest whitespace-nowrap">1. My Current Device</span>
+                    <span className="px-2 py-0.5 rounded-full text-[calc(9px*var(--text-scale,1))] font-black uppercase tracking-widest bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50 whitespace-nowrap shrink-0">This Device</span>
                   </div>
                   <span className="text-lg sm:text-xl font-extrabold text-slate-800 dark:text-white leading-tight break-words pr-2">{currentDevice?.name}</span>
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1.5">
@@ -238,15 +239,15 @@ export default function DeviceManagementPage({ onBack }) {
 
               <div className="flex flex-wrap gap-4 sm:gap-6 z-10 w-full sm:w-auto bg-white/60 dark:bg-slate-800/60 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
                  <div className="flex flex-col">
-                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Current IP Address</span>
+                   <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase tracking-wider">Current IP Address</span>
                    <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{currentDevice?.ip} <span className="text-xs text-slate-500">({currentDevice?.ipType})</span></span>
                  </div>
                  <div className="flex flex-col">
-                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Trust Status</span>
+                   <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase tracking-wider">Trust Status</span>
                    <span className="text-sm font-bold text-emerald-600 flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5" /> {currentDevice?.trustStatus}</span>
                  </div>
                  <div className="flex flex-col">
-                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Last Used</span>
+                   <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase tracking-wider">Last Used</span>
                    <span className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1">
                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> {currentDevice?.lastUsed}
                    </span>
@@ -265,40 +266,40 @@ export default function DeviceManagementPage({ onBack }) {
 
               <div className="flex flex-col divide-y divide-slate-100/50 dark:divide-slate-800/50 p-2">
                 {devices.map((device) => (
-                  <div key={device.id} className={`flex flex-col lg:flex-row items-start lg:items-center justify-between p-4 sm:p-5 pr-14 lg:pr-4 rounded-[20px] transition-colors relative ${activeDropdown === device.id ? 'z-50' : 'z-10'} ${device.isCurrent ? 'bg-blue-50/40 dark:bg-blue-900/10 border border-blue-100/50 dark:border-blue-800/30' : 'hover:bg-slate-50/80 dark:hover:bg-slate-800/40'}`}>
+                  <div key={device.id} className={`flex flex-col xl:flex-row items-start xl:items-center justify-between p-4 sm:p-5 pr-14 xl:pr-4 rounded-[20px] transition-colors relative ${activeDropdown === device.id ? 'z-50' : 'z-10'} ${device.isCurrent ? 'bg-blue-50/40 dark:bg-blue-900/10 border border-blue-100/50 dark:border-blue-800/30' : 'hover:bg-slate-50/80 dark:hover:bg-slate-800/40'}`}>
                     
                     {/* Device Info */}
-                    <div className="flex items-center gap-4 w-full lg:w-1/3 mb-4 lg:mb-0">
+                    <div className="flex items-center gap-4 w-full xl:w-1/3 mb-4 xl:mb-0">
                       <div className={`w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 shadow-sm border ${device.isCurrent ? 'bg-blue-50 dark:bg-blue-900/40 text-blue-600 border-blue-200 dark:border-blue-800/50' : device.status === 'Blocked' ? 'bg-rose-50 dark:bg-rose-900/40 text-rose-500 border-rose-200 dark:border-rose-800/50' : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700'}`}>
                         <DeviceIcon type={device.type} />
                       </div>
                       <div className="flex flex-col min-w-0 pr-2">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-extrabold text-slate-800 dark:text-white truncate">{device.name}</span>
-                          {device.isCurrent && <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">Current</span>}
+                          {device.isCurrent && <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[calc(9px*var(--text-scale,1))] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50">Current</span>}
                         </div>
-                        <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mt-0.5 truncate">{device.os} • {device.browser}</span>
-                        <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 mt-0.5 truncate">ID: {device.id}</span>
+                        <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 dark:text-slate-400 mt-0.5 truncate">{device.os} • {device.browser}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-400 dark:text-slate-500 mt-0.5 truncate">ID: {device.id}</span>
                       </div>
                     </div>
 
                     {/* Extended Details */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:flex-nowrap items-start lg:items-center justify-between lg:justify-end w-full lg:w-2/3 gap-4 lg:gap-8 pt-3 lg:pt-0 border-t border-slate-100/50 dark:border-slate-800/50 lg:border-t-0">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 xl:flex xl:flex-nowrap items-start xl:items-center justify-between xl:justify-end w-full xl:w-2/3 gap-4 xl:gap-8 pt-3 xl:pt-0 border-t border-slate-100/50 dark:border-slate-800/50 xl:border-t-0">
                       
                       <div className="flex flex-col min-w-[100px]">
-                        <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Last IP & Location</span>
-                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate">{device.ip} <span className="text-[10px] text-slate-500">({device.ipType})</span></span>
-                        <span className="text-[10px] font-semibold text-slate-500 truncate">{device.location.split(',')[0]}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase text-slate-400 tracking-wider">Last IP & Location</span>
+                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300 truncate">{device.ip} <span className="text-[calc(10px*var(--text-scale,1))] text-slate-500">({device.ipType})</span></span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500 truncate">{device.location.split(',')[0]}</span>
                       </div>
                       
                       <div className="flex flex-col min-w-[90px]">
-                        <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1">Status</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase text-slate-400 tracking-wider mb-1">Status</span>
                         <StatusBadge status={device.status} trust={device.trustStatus} />
                       </div>
 
                       <div className="flex flex-col min-w-[110px] col-span-2 sm:col-span-1 mt-1 sm:mt-0">
-                         <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider">Registered / Used</span>
-                         <span className="text-[10px] font-semibold text-slate-500 truncate">{device.registeredDate.split(',')[0]}</span>
+                         <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase text-slate-400 tracking-wider">Registered / Used</span>
+                         <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500 truncate">{device.registeredDate.split(',')[0]}</span>
                          <div className="flex items-center gap-1.5 mt-0.5 text-xs font-bold text-slate-700 dark:text-slate-300">
                           {device.status === 'Active' ? <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> : <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600"></span>}
                           {device.lastUsed}
@@ -306,7 +307,7 @@ export default function DeviceManagementPage({ onBack }) {
                       </div>
 
                       {/* 7. Device Actions Dropdown */}
-                      <div className="absolute top-4 right-4 lg:static lg:top-auto lg:right-auto shrink-0 z-20">
+                      <div className="absolute top-4 right-4 xl:static xl:top-auto xl:right-auto shrink-0 z-20">
                         <button 
                           onClick={(e) => { e.stopPropagation(); setActiveDropdown(activeDropdown === device.id ? null : device.id); }}
                           className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-700 dark:hover:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700"
@@ -321,7 +322,7 @@ export default function DeviceManagementPage({ onBack }) {
                               className="absolute right-0 top-10 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50 py-1"
                             >
                               <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
-                                <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">7. Device Actions</span>
+                                <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider">7. Device Actions</span>
                                 <button onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5 rounded-sm hover:bg-slate-100 dark:hover:bg-slate-700">
                                   <X className="w-3.5 h-3.5" />
                                 </button>
@@ -356,17 +357,17 @@ export default function DeviceManagementPage({ onBack }) {
               <motion.div variants={itemVariants} className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl rounded-[24px] border border-white/60 dark:border-slate-700/50 shadow-sm flex flex-col overflow-hidden">
                 <div className="px-5 py-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/50">
                   <h3 className="font-extrabold text-sm text-slate-800 dark:text-white">5. Trusted Devices</h3>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-black bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">{trustedDevices.length + 1}</span>
+                  <span className="px-2 py-0.5 rounded text-[calc(10px*var(--text-scale,1))] font-black bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">{trustedDevices.length + 1}</span>
                 </div>
                 <div className="p-2 flex flex-col divide-y divide-slate-100/50 dark:divide-slate-800/50">
                   {[currentDevice, ...trustedDevices].map(dev => (
                     <div key={'trust_'+dev.id} className="flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                       <div className="flex flex-col">
                         <span className="text-xs font-bold text-slate-800 dark:text-white">{dev.name}</span>
-                        <span className="text-[10px] font-semibold text-slate-500">Trusted: {dev.trustedDate}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500">Trusted: {dev.trustedDate}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">Trusted</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded">Trusted</span>
                         {!dev.isCurrent && (
                           <button onClick={(e) => handleAction(e, dev, 'untrust')} className="p-1.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 transition-colors" title="Remove Trust">
                             <X className="w-3 h-3" />
@@ -382,7 +383,7 @@ export default function DeviceManagementPage({ onBack }) {
               <motion.div variants={itemVariants} className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl rounded-[24px] border border-white/60 dark:border-slate-700/50 shadow-sm flex flex-col overflow-hidden">
                 <div className="px-5 py-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800/50">
                   <h3 className="font-extrabold text-sm text-slate-800 dark:text-white">6. Blocked Devices</h3>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-black bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400">{blockedDevices.length}</span>
+                  <span className="px-2 py-0.5 rounded text-[calc(10px*var(--text-scale,1))] font-black bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400">{blockedDevices.length}</span>
                 </div>
                 <div className="p-2 flex flex-col divide-y divide-slate-100/50 dark:divide-slate-800/50">
                   {blockedDevices.length === 0 ? (
@@ -394,13 +395,13 @@ export default function DeviceManagementPage({ onBack }) {
                           <DeviceIcon type={dev.type} className="w-3.5 h-3.5 text-rose-500" />
                           <span className="text-xs font-bold text-slate-800 dark:text-white truncate">{dev.name}</span>
                         </div>
-                        <span className="text-[10px] font-semibold text-slate-500">IP: {dev.ip}</span>
-                        <span className="text-[10px] font-semibold text-rose-600/80 line-clamp-2 leading-tight">Reason: {dev.blockReason}</span>
-                        <span className="text-[9px] font-bold text-slate-400">Blocked: {dev.blockedDate}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500">IP: {dev.ip}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-rose-600/80 line-clamp-2 leading-tight">Reason: {dev.blockReason}</span>
+                        <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-400">Blocked: {dev.blockedDate}</span>
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <span className="text-[10px] font-bold text-rose-600 bg-rose-50 dark:bg-rose-900/20 border border-rose-100 dark:border-rose-800/50 px-2 py-0.5 rounded">Blocked</span>
-                        <button onClick={(e) => handleAction(e, dev, 'unblock')} className="text-[10px] font-bold text-blue-600 hover:text-blue-700 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded transition-colors border border-blue-100 dark:border-blue-800/50">
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-rose-600 bg-rose-50 dark:bg-rose-900/20 border border-rose-100 dark:border-rose-800/50 px-2 py-0.5 rounded">Blocked</span>
+                        <button onClick={(e) => handleAction(e, dev, 'unblock')} className="text-[calc(10px*var(--text-scale,1))] font-bold text-blue-600 hover:text-blue-700 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded transition-colors border border-blue-100 dark:border-blue-800/50">
                           Unblock
                         </button>
                       </div>
@@ -414,13 +415,13 @@ export default function DeviceManagementPage({ onBack }) {
           </div>
 
           {/* Right Sidebar Area (Col 9-12) */}
-          <div className="col-span-1 lg:col-span-5 xl:col-span-4 flex flex-col gap-6">
+          <div className="col-span-1 xl:col-span-4 flex flex-col gap-6">
             
             {/* 8. Device Security */}
             <motion.div variants={itemVariants} className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-5 flex flex-col">
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
-                <h3 className="font-extrabold text-[15px] text-slate-800 dark:text-white">8. Device Security</h3>
-                <span className="px-2 py-0.5 rounded text-[10px] font-black bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">{securityAlerts.length} Alerts</span>
+                <h3 className="font-extrabold text-[calc(15px*var(--text-scale,1))] text-slate-800 dark:text-white">8. Device Security</h3>
+                <span className="px-2 py-0.5 rounded text-[calc(10px*var(--text-scale,1))] font-black bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">{securityAlerts.length} Alerts</span>
               </div>
               <div className="flex flex-col gap-3 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
                 {securityAlerts.map(alert => (
@@ -431,9 +432,9 @@ export default function DeviceManagementPage({ onBack }) {
                     <div className="flex flex-col flex-1 pt-0.5">
                       <div className="flex justify-between items-start gap-2">
                         <span className="text-xs font-extrabold text-slate-800 dark:text-white">{alert.title}</span>
-                        <span className="text-[9px] font-bold text-slate-400 shrink-0">{alert.time}</span>
+                        <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-400 shrink-0">{alert.time}</span>
                       </div>
-                      <span className="text-[11px] font-semibold text-slate-500 leading-tight mt-1">{alert.desc}</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-500 leading-tight mt-1">{alert.desc}</span>
                     </div>
                   </div>
                 ))}
@@ -452,7 +453,7 @@ export default function DeviceManagementPage({ onBack }) {
                    
                    <div className="flex flex-col items-center bg-white dark:bg-slate-900 w-full h-full rounded-full justify-center shadow">
                      <span className="text-3xl font-black text-slate-800 dark:text-white leading-none">{devices.length}</span>
-                     <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mt-1">Total</span>
+                     <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-400 uppercase tracking-wider mt-1">Total</span>
                    </div>
                 </div>
                 
@@ -473,8 +474,8 @@ export default function DeviceManagementPage({ onBack }) {
             {/* 9. Device History */}
             <motion.div variants={itemVariants} className="bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl rounded-[24px] border border-white/60 dark:border-slate-700/50 shadow-sm p-5 flex flex-col flex-1 min-h-[300px]">
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
-                <h3 className="font-extrabold text-[15px] text-slate-800 dark:text-white">9. Device History</h3>
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{history.length} Events</span>
+                <h3 className="font-extrabold text-[calc(15px*var(--text-scale,1))] text-slate-800 dark:text-white">9. Device History</h3>
+                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase tracking-wider">{history.length} Events</span>
               </div>
               <div className="flex flex-col gap-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                 {history.map(hist => (
@@ -484,11 +485,11 @@ export default function DeviceManagementPage({ onBack }) {
                     </div>
                     <div className="flex items-center justify-between -mt-1">
                       <span className={`text-xs font-extrabold ${hist.color}`}>{hist.action}</span>
-                      <span className="text-[9px] font-bold text-slate-400">{hist.time}</span>
+                      <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-400">{hist.time}</span>
                     </div>
                     <div className="bg-slate-50 dark:bg-slate-800/50 p-2 rounded-lg border border-slate-100 dark:border-slate-700/50">
-                      <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300 block mb-1">Device: {hist.target}</span>
-                      <div className="flex items-center gap-3 text-[10px] font-semibold text-slate-500">
+                      <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 block mb-1">Device: {hist.target}</span>
+                      <div className="flex items-center gap-3 text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500">
                          <span>Old IP: {hist.prevIp}</span>
                          <ArrowRight className="w-2.5 h-2.5 text-slate-300" />
                          <span>New IP: {hist.newIp}</span>
@@ -505,9 +506,10 @@ export default function DeviceManagementPage({ onBack }) {
       </div>
 
       {/* 3 & 4. Device Details & Verification Modal */}
-      <AnimatePresence>
-        {selectedDevice && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4">
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {selectedDevice && (
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4">
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setSelectedDevice(null)}
@@ -554,41 +556,41 @@ export default function DeviceManagementPage({ onBack }) {
                    
                    {/* Info Blocks */}
                    <div className="flex flex-col">
-                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Laptop className="w-3 h-3" /> Operating System</span>
+                     <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Laptop className="w-3 h-3" /> Operating System</span>
                      <span className="text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-700/50">{selectedDevice.os}</span>
                    </div>
                    <div className="flex flex-col">
-                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Search className="w-3 h-3" /> Browser / App</span>
+                     <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Search className="w-3 h-3" /> Browser / App</span>
                      <span className="text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-700/50">{selectedDevice.browser}</span>
                    </div>
                    <div className="flex flex-col">
-                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><MapPin className="w-3 h-3" /> Last Known Location</span>
+                     <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><MapPin className="w-3 h-3" /> Last Known Location</span>
                      <span className="text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/50 p-2.5 rounded-xl border border-slate-100 dark:border-slate-700/50">{selectedDevice.location}</span>
                    </div>
 
                    {/* IP Block */}
                    <div className="sm:col-span-2 lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6 bg-slate-50 dark:bg-slate-800/30 p-4 rounded-2xl border border-slate-200 dark:border-slate-700">
                      <div className="flex flex-col">
-                       <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1">Current/Last IP Address</span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1">Current/Last IP Address</span>
                        <span className="text-sm font-bold text-blue-600 dark:text-blue-400">{selectedDevice.ip} <span className="text-xs text-slate-500 bg-slate-200 dark:bg-slate-700 px-1.5 rounded">{selectedDevice.ipType}</span></span>
                      </div>
                      <div className="flex flex-col">
-                       <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1">IP First Seen</span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1">IP First Seen</span>
                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{selectedDevice.ipFirstSeen}</span>
                      </div>
                      <div className="flex flex-col">
-                       <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1">IP Last Seen</span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1">IP Last Seen</span>
                        <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{selectedDevice.ipLastSeen}</span>
                      </div>
                    </div>
 
                    {/* Time Block */}
                    <div className="flex flex-col">
-                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Clock className="w-3 h-3" /> Registered Date & Time</span>
+                     <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Clock className="w-3 h-3" /> Registered Date & Time</span>
                      <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{selectedDevice.registeredDate}</span>
                    </div>
                    <div className="flex flex-col">
-                     <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Activity className="w-3 h-3" /> Last Used Date & Time</span>
+                     <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center gap-1.5"><Activity className="w-3 h-3" /> Last Used Date & Time</span>
                      <span className="text-xs font-bold text-slate-700 dark:text-slate-200">{selectedDevice.lastUsed === 'Just now' ? 'Today, Just now' : selectedDevice.lastUsed}</span>
                    </div>
                    
@@ -599,7 +601,7 @@ export default function DeviceManagementPage({ onBack }) {
                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-emerald-50/50 dark:bg-emerald-900/10 p-5 rounded-[20px] border border-emerald-100 dark:border-emerald-800/50 gap-4">
                         <div className="flex flex-col gap-2">
                           <div className="flex items-center gap-2">
-                             <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Verification Status:</span>
+                             <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-slate-400 tracking-wider">Verification Status:</span>
                              {selectedDevice.verificationStatus === 'Verified' ? (
                                <span className="px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800/50 flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> Verified</span>
                              ) : selectedDevice.verificationStatus === 'Verification Pending' ? (
@@ -633,7 +635,9 @@ export default function DeviceManagementPage({ onBack }) {
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
 
     </div>
   );

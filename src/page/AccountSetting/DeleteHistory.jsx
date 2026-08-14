@@ -44,7 +44,7 @@ export const DeletedItemDetails = ({ item }) => {
     return (
       <div className="card p-5 h-full flex flex-col bg-white">
         <CardHeader number={2} title="Deleted Item Details" />
-        <div className="flex-1 flex flex-col items-center justify-center text-slate-400">
+        <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-slate-400">
           <Info className="w-10 h-10 mb-2 text-slate-200" />
           <p className="text-sm">Select an item to view details</p>
         </div>
@@ -57,7 +57,7 @@ export const DeletedItemDetails = ({ item }) => {
       <div className="mt-0.5 text-slate-400">
         <Icon className="w-4 h-4" />
       </div>
-      <div className="flex-1">
+      <div className="flex-1 min-h-0">
         <div className="text-xs text-slate-500 mb-0.5">{label}</div>
         {isBadge ? (
           <StatusBadge status={value} />
@@ -72,7 +72,7 @@ export const DeletedItemDetails = ({ item }) => {
     <div className="card p-5 h-full flex flex-col bg-white">
       <CardHeader number={2} title="Deleted Item Details" />
       
-      <div className="flex-1 overflow-y-auto pr-2">
+      <div className="flex-1 min-h-0 overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
         <div className="bg-slate-50 rounded-lg p-4 mb-4 border border-slate-100">
           <div className="text-xs text-slate-500 mb-1">Deletion ID</div>
           <div className="text-sm font-mono font-bold text-blue-700">{item.deletionId}</div>
@@ -83,11 +83,11 @@ export const DeletedItemDetails = ({ item }) => {
         <DetailRow icon={Folder} label="Module / Type" value={`${item.module} — ${item.itemType}`} />
         
         <div className="flex gap-4 py-2.5 border-b border-slate-100">
-          <div className="flex-1">
+          <div className="flex-1 min-h-0">
             <div className="text-xs text-slate-500 mb-0.5">Case ID</div>
             <div className="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded inline-block border border-blue-100">{item.caseId}</div>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-h-0">
             <div className="text-xs text-slate-500 mb-0.5">Investigation ID</div>
             <div className="text-sm font-medium text-slate-800">{item.investigationId}</div>
           </div>
@@ -118,15 +118,37 @@ const getModuleIcon = (type) => {
 };
 
 export const DeletedItemsTable = ({ items, selectedItem, onSelectItem, onRestore, onPermanentDelete }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 8;
+  const totalPages = Math.ceil(items.length / pageSize);
+  
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(totalPages);
+    }
+  }, [items.length, totalPages, currentPage]);
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = Math.min(startIndex + pageSize, items.length);
+  const currentItems = items.slice(startIndex, endIndex);
+  
+  const handlePrev = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+  
+  const handleNext = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
   return (
-    <div className="card p-5 h-full flex flex-col bg-white">
+    <div className="card p-5 h-full bg-white grid grid-rows-[auto_minmax(0,1fr)_auto] gap-0 overflow-hidden">
       <CardHeader number={1} title="Deleted Items" />
       
-      <div className="flex-1 overflow-auto w-full custom-scrollbar">
-        <div className="min-w-[900px]">
-          <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="border-b border-slate-200 bg-slate-50">
+      <div className="overflow-y-auto w-full custom-scrollbar min-h-0" data-lenis-prevent>
+        <div className="min-w-full overflow-x-auto">
+          <table className="min-w-[900px] w-full text-left border-collapse">
+          <thead className="sticky top-0 z-10 bg-slate-50 shadow-sm border-b border-slate-200">
+            <tr>
               <th className="py-3 px-4 text-xs font-semibold text-slate-600 uppercase tracking-wider rounded-tl-md">Item</th>
               <th className="py-3 px-4 text-xs font-semibold text-slate-600 uppercase tracking-wider">Module</th>
               <th className="py-3 px-4 text-xs font-semibold text-slate-600 uppercase tracking-wider">Case / Inv ID</th>
@@ -136,8 +158,8 @@ export const DeletedItemsTable = ({ items, selectedItem, onSelectItem, onRestore
               <th className="py-3 px-4 text-xs font-semibold text-slate-600 uppercase tracking-wider text-right rounded-tr-md">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
-            {items.map((item) => (
+          <tbody className="divide-y divide-slate-100 bg-white">
+            {currentItems.map((item) => (
               <tr 
                 key={item.deletionId}
                 onClick={() => onSelectItem(item)}
@@ -167,12 +189,12 @@ export const DeletedItemsTable = ({ items, selectedItem, onSelectItem, onRestore
                 </td>
                 <td className="py-3 px-4 align-top">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] font-bold text-slate-600">
+                    <div className="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-[calc(10px*var(--text-scale,1))] font-bold text-slate-600">
                       {item.deletedBy.substring(0,2).toUpperCase()}
                     </div>
                     <div>
                       <div className="text-sm text-slate-700">{item.deletedBy}</div>
-                      <div className="text-[10px] text-slate-400 truncate max-w-[100px]" title={item.deletionReason}>{item.deletionReason}</div>
+                      <div className="text-[calc(10px*var(--text-scale,1))] text-slate-400 truncate max-w-[100px]" title={item.deletionReason}>{item.deletionReason}</div>
                     </div>
                   </div>
                 </td>
@@ -212,13 +234,30 @@ export const DeletedItemsTable = ({ items, selectedItem, onSelectItem, onRestore
         </div>
       </div>
       
-      <div className="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center text-sm text-slate-500">
-        <div>Showing 1 to {items.length} of {items.length} entries</div>
-        <div className="flex gap-1">
-          <button className="px-3 py-1 border border-slate-200 rounded text-slate-400 cursor-not-allowed">Prev</button>
-          <button className="px-3 py-1 border border-slate-200 bg-blue-50 text-blue-600 rounded">1</button>
-          <button className="px-3 py-1 border border-slate-200 rounded text-slate-400 cursor-not-allowed">Next</button>
-        </div>
+      <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-slate-500">
+        <div>Showing {items.length === 0 ? 0 : startIndex + 1} to {endIndex} of {items.length} entries</div>
+        
+        {items.length > pageSize && (
+          <div className="flex gap-1">
+            <button 
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className={`px-3 py-1 border rounded transition-colors ${currentPage === 1 ? 'border-slate-200 text-slate-400 cursor-not-allowed bg-slate-50' : 'border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer'}`}
+            >
+              Prev
+            </button>
+            <button className="px-3 py-1 border border-blue-200 bg-blue-50 text-blue-600 font-medium rounded">
+              {currentPage}
+            </button>
+            <button 
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-1 border rounded transition-colors ${currentPage === totalPages ? 'border-slate-200 text-slate-400 cursor-not-allowed bg-slate-50' : 'border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer'}`}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -233,7 +272,7 @@ export const DeleteHistoryActions = () => {
       </div>
       <div>
         <div className="text-sm font-semibold text-slate-800">{title}</div>
-        <div className="text-[10px] text-slate-500 mt-0.5 leading-tight">{description}</div>
+        <div className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5 leading-tight">{description}</div>
       </div>
     </button>
   );
@@ -241,7 +280,7 @@ export const DeleteHistoryActions = () => {
   return (
     <div className="card p-5 h-full flex flex-col bg-white">
       <CardHeader number={7} title="Delete History Actions" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-3 flex-1 content-start">
+      <div className="flex-1 min-h-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-3 content-start overflow-y-auto pr-2 custom-scrollbar pb-2" data-lenis-prevent>
         <ActionButton icon={Info} title="View Details" description="See complete deleted item information." colorClass="bg-blue-50 text-blue-600" />
         <ActionButton icon={RefreshCw} title="Restore" description="Restore recoverable records." colorClass="bg-green-50 text-green-600" />
         <ActionButton icon={Trash2} title="Permanent Delete" description="Permanently delete approved records." colorClass="bg-red-50 text-red-600" />
@@ -282,7 +321,7 @@ const CustomSelect = ({ options, placeholder }) => {
       
       {isOpen && (
         <div className="relative z-50 w-full mt-1 bg-white border border-slate-200 rounded-md shadow-sm overflow-hidden">
-          <div className="max-h-60 overflow-y-auto custom-scrollbar">
+          <div className="max-h-60 overflow-y-auto custom-scrollbar" data-lenis-prevent>
             {options.map((option, idx) => (
               <div 
                 key={idx}
@@ -313,9 +352,9 @@ export const DeleteHistoryFilters = () => {
     <div className="card p-5 h-full flex flex-col bg-white">
       <CardHeader number={6} title="Delete History Search & Filters" />
       
-      <div key={resetKey} className="space-y-4 flex-1">
+      <div key={resetKey} className="space-y-4 flex-1 min-h-0">
         <div>
-          <label className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1 block">Search</label>
+          <label className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-500 uppercase tracking-wider mb-1 block">Search</label>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <input type="text" placeholder="Search item name..." className="w-full text-sm border border-slate-200 rounded-md px-3 py-2 bg-slate-50 focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none" />
             <input type="text" placeholder="e.g. RPT-88521" className="w-full text-sm border border-slate-200 rounded-md px-3 py-2 bg-slate-50 focus:bg-white focus:ring-1 focus:ring-blue-500 outline-none" />
@@ -325,7 +364,7 @@ export const DeleteHistoryFilters = () => {
         </div>
         
         <div>
-          <label className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-1 block">Filters</label>
+          <label className="text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-500 uppercase tracking-wider mb-1 block">Filters</label>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
             <CustomSelect placeholder="Select Date Range" options={['Select Date Range', 'Last 7 Days', 'Last 30 Days']} />
             <CustomSelect placeholder="All Modules" options={['All Modules', 'Reports', 'Digital Evidence']} />
@@ -364,7 +403,7 @@ export const DeleteHistoryHeader = () => {
           <ShieldCheck className="w-5 h-5 text-green-600" />
           <div className="flex flex-col">
             <span className="text-xs font-semibold text-green-800">Your account is secure</span>
-            <span className="text-[10px] text-green-600">Last checked: 2 min ago</span>
+            <span className="text-[calc(10px*var(--text-scale,1))] text-green-600">Last checked: 2 min ago</span>
           </div>
         </div>
       </div>
@@ -400,7 +439,7 @@ export const ViewDetailsModal = ({ isOpen, onClose, item, onRestore, onPermanent
         </button>
       </div>
       
-      <div className="p-5 max-h-[70vh] overflow-y-auto">
+      <div className="p-5 max-h-[70vh] overflow-y-auto" data-lenis-prevent>
         <div className="grid grid-cols-2 gap-y-4 gap-x-6">
           <div className="col-span-2 bg-blue-50/50 border border-blue-100 p-3 rounded-lg mb-2">
             <div className="text-xs text-slate-500 mb-1">Deletion ID</div>
@@ -580,7 +619,7 @@ export const DeletionApproval = ({ item }) => {
     return (
       <div className="card p-5 h-full flex flex-col bg-white">
         <CardHeader number={5} title="Deletion Approval" />
-        <div className="flex-1 flex items-center justify-center text-sm text-slate-400">
+        <div className="flex-1 min-h-0 flex items-center justify-center text-sm text-slate-400">
           Select an item to view options
         </div>
       </div>
@@ -594,7 +633,7 @@ export const DeletionApproval = ({ item }) => {
       <CardHeader number={5} title="Deletion Approval" />
       
       {!approvalRequired ? (
-        <div className="flex-1 flex flex-col items-center justify-center">
+        <div className="flex-1 min-h-0 flex flex-col items-center justify-center">
           <div className="bg-slate-50 p-4 rounded-lg border border-slate-100 text-center w-full">
             <Info className="w-6 h-6 text-slate-400 mx-auto mb-2" />
             <h4 className="text-sm font-semibold text-slate-700">Not Required</h4>
@@ -602,7 +641,7 @@ export const DeletionApproval = ({ item }) => {
           </div>
         </div>
       ) : (
-        <div className="flex-1 flex flex-col overflow-y-auto pr-2 custom-scrollbar">
+        <div className="flex-1 min-h-0 flex flex-col overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
           <div className="flex justify-between items-center mb-4">
             <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Approval Status</span>
             {approvalStatus === 'Pending' && (
@@ -622,19 +661,19 @@ export const DeletionApproval = ({ item }) => {
             )}
           </div>
           
-          <div className="space-y-3 flex-1">
+          <div className="space-y-3 flex-1 min-h-0">
             <div className="bg-slate-50 p-3 rounded-md border border-slate-100">
-              <div className="text-[11px] text-slate-500 uppercase font-semibold mb-0.5">Requested By</div>
+              <div className="text-[calc(11px*var(--text-scale,1))] text-slate-500 uppercase font-semibold mb-0.5">Requested By</div>
               <div className="text-sm text-slate-800 font-medium">{requestedBy || 'N/A'}</div>
             </div>
             
             <div className="bg-slate-50 p-3 rounded-md border border-slate-100">
-              <div className="text-[11px] text-slate-500 uppercase font-semibold mb-0.5">Approved By</div>
+              <div className="text-[calc(11px*var(--text-scale,1))] text-slate-500 uppercase font-semibold mb-0.5">Approved By</div>
               <div className="text-sm text-slate-800 font-medium">{approvedBy || '—'}</div>
             </div>
             
             <div className="bg-slate-50 p-3 rounded-md border border-slate-100">
-              <div className="text-[11px] text-slate-500 uppercase font-semibold mb-0.5">Approval Date & Time</div>
+              <div className="text-[calc(11px*var(--text-scale,1))] text-slate-500 uppercase font-semibold mb-0.5">Approval Date & Time</div>
               <div className="text-sm text-slate-800 font-medium">{approvalDate || '—'}</div>
             </div>
           </div>
@@ -656,7 +695,7 @@ export const DeletionRetention = ({ item }) => {
     return (
       <div className="card p-5 h-full flex flex-col bg-white">
         <CardHeader number={8} title="Deletion Retention" />
-        <div className="flex-1 flex items-center justify-center text-sm text-slate-400">
+        <div className="flex-1 min-h-0 flex items-center justify-center text-sm text-slate-400">
           Select an item to view options
         </div>
       </div>
@@ -671,7 +710,7 @@ export const DeletionRetention = ({ item }) => {
     <div className="card p-5 h-full flex flex-col bg-white">
       <CardHeader number={8} title="Deletion Retention" />
       
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 min-h-0 flex flex-col overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
         <div className="grid grid-cols-2 gap-4 mb-5">
           <div>
             <div className="text-xs text-slate-500 mb-0.5">Deleted Date</div>
@@ -694,7 +733,7 @@ export const DeletionRetention = ({ item }) => {
         </div>
         
         <div className="mb-6">
-          <div className="flex justify-between text-[10px] text-slate-500 font-semibold uppercase mb-2">
+          <div className="flex justify-between text-[calc(10px*var(--text-scale,1))] text-slate-500 font-semibold uppercase mb-2">
             <span>{deletedDateStr}</span>
             <span>{deadlineStr}</span>
           </div>
@@ -709,7 +748,7 @@ export const DeletionRetention = ({ item }) => {
         
         <div className="mt-auto bg-slate-50 p-3 rounded-lg border border-slate-100 flex items-start gap-2">
           <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-          <p className="text-[11px] text-slate-600 leading-relaxed">
+          <p className="text-[calc(11px*var(--text-scale,1))] text-slate-600 leading-relaxed">
             Deleted records are retained according to the organization's applicable retention policy. Records may become permanently unavailable after the retention period expires.
           </p>
         </div>
@@ -737,7 +776,7 @@ export const DeletionStatus = () => {
   return (
     <div className="card p-5 h-full flex flex-col bg-white">
       <CardHeader number={9} title="Deletion Status" />
-      <div className="flex-1 flex flex-col justify-start overflow-y-auto pr-2 custom-scrollbar">
+      <div className="flex-1 min-h-0 flex flex-col justify-start overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
         <StatItem 
           icon={Info} 
           label="Deleted" 
@@ -787,10 +826,10 @@ export const DeletionStatus = () => {
           colorClass="bg-red-100" 
           iconColorClass="text-red-700" 
         />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 
 export const PermanentDeleteCard = ({ item, onPermanentDelete }) => {
@@ -808,7 +847,7 @@ export const PermanentDeleteCard = ({ item, onPermanentDelete }) => {
     return (
       <div className="card p-5 h-full flex flex-col bg-white">
         <CardHeader number={4} title="Permanent Delete" />
-        <div className="flex-1 flex items-center justify-center text-sm text-slate-400">
+        <div className="flex-1 min-h-0 flex items-center justify-center text-sm text-slate-400">
           Select an item to view options
         </div>
       </div>
@@ -823,7 +862,7 @@ export const PermanentDeleteCard = ({ item, onPermanentDelete }) => {
     return (
       <div className="card p-5 h-full flex flex-col bg-white border-red-100">
         <CardHeader number={4} title="Permanent Delete" />
-        <div className="flex-1 flex flex-col items-center justify-center text-center">
+        <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-center">
           <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-3">
             <Trash2 className="w-6 h-6" />
           </div>
@@ -857,10 +896,10 @@ export const PermanentDeleteCard = ({ item, onPermanentDelete }) => {
   };
 
   return (
-    <div className="card p-5 h-full flex flex-col bg-white border border-red-100 relative overflow-hidden">
+    <div className="card p-5 h-full flex flex-col bg-white border border-red-100 relative">
       <CardHeader number={4} title="Permanent Delete" />
       
-      <div className="flex-1 flex flex-col overflow-y-auto pr-2 custom-scrollbar">
+      <div className="flex-1 min-h-0 flex flex-col overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
         <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4 shrink-0">
           <div className="flex items-center gap-2 text-red-700 font-bold mb-1">
             <AlertTriangle className="w-4 h-4" />
@@ -930,7 +969,7 @@ export const RestoreCard = ({ item, onRestoreItem }) => {
     return (
       <div className="card p-5 h-full flex flex-col bg-white">
         <CardHeader number={3} title="Restore" />
-        <div className="flex-1 flex items-center justify-center text-sm text-slate-400">
+        <div className="flex-1 min-h-0 flex items-center justify-center text-sm text-slate-400">
           Select an item to view options
         </div>
       </div>
@@ -966,11 +1005,11 @@ export const RestoreCard = ({ item, onRestoreItem }) => {
   };
 
   return (
-    <div className="card p-5 h-full flex flex-col bg-white relative overflow-hidden">
+    <div className="card p-5 h-full flex flex-col bg-white relative">
       <CardHeader number={3} title="Restore" />
       
       {isSuccess || item.status === 'Restored' || item.status === 'Restore Requested' ? (
-        <div className="flex-1 flex flex-col items-center justify-center text-center animate-in fade-in duration-300">
+        <div className="flex-1 min-h-0 flex flex-col items-center justify-center text-center animate-in fade-in duration-300">
           <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-3">
             <CheckCircle2 className="w-6 h-6" />
           </div>
@@ -986,7 +1025,7 @@ export const RestoreCard = ({ item, onRestoreItem }) => {
           </div>
         </div>
       ) : (
-        <div className="flex-1 flex flex-col overflow-y-auto pr-2 custom-scrollbar">
+        <div className="flex-1 min-h-0 flex flex-col overflow-y-auto pr-2 custom-scrollbar" data-lenis-prevent>
           <div className="bg-blue-50/50 border border-blue-100 rounded-lg p-3 mb-4 shrink-0">
             <div className="text-xs text-slate-500">Restore Item</div>
             <div className="font-semibold text-slate-800 mt-0.5">{item.itemName}</div>
@@ -1096,7 +1135,7 @@ export const CardHeader = ({ number, title }) => {
       <div className="w-6 h-6 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center text-xs font-bold shadow-sm">
         {number}
       </div>
-      <h3 className="text-[15px] font-semibold text-slate-800">{title}</h3>
+      <h3 className="text-[calc(15px*var(--text-scale,1))] font-semibold text-slate-800">{title}</h3>
     </div>
   );
 };
@@ -1148,7 +1187,7 @@ export const DeletHistoryPage = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-800 p-4 md:p-6 lg:p-8 font-sans relative">
+    <div className=" bg-transparent text-slate-800 p-4 md:p-6 lg:p-8 font-sans relative">
       {onBack && (
         <button onClick={onBack}
           className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm"
@@ -1182,16 +1221,16 @@ export const DeletHistoryPage = ({ onBack }) => {
           </div>
 
           {/* Row 2 */}
-          <div className="lg:col-span-1 xl:col-span-1 h-auto min-h-[400px] lg:h-[400px]">
+          <div className="lg:col-span-1 xl:col-span-1 h-auto min-h-[400px]">
             <DeletedItemDetails item={selectedItem} />
           </div>
-          <div className="lg:col-span-1 xl:col-span-1 h-[400px]">
+          <div className="lg:col-span-1 xl:col-span-1 h-auto min-h-[400px]">
             <RestoreCard item={selectedItem} onRestoreItem={handleRestoreItem} />
           </div>
-          <div className="lg:col-span-1 xl:col-span-1 h-[400px]">
+          <div className="lg:col-span-1 xl:col-span-1 h-auto min-h-[400px]">
             <PermanentDeleteCard item={selectedItem} onPermanentDelete={handleOpenPermanentDeleteModal} />
           </div>
-          <div className="lg:col-span-1 xl:col-span-1 h-[400px]">
+          <div className="lg:col-span-1 xl:col-span-1 h-auto min-h-[400px]">
             <DeletionApproval item={selectedItem} />
           </div>
 

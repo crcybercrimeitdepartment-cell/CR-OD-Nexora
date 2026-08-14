@@ -40,7 +40,7 @@ export function Header({ lastUpdated, isRefreshing, onRefresh }) {
             </p>
           </div>
           <div className="flex items-center gap-3 mt-3 sm:mt-0">
-            <span className="text-[11px] font-semibold text-gray-500">Last Updated: {lastUpdated}</span>
+            <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Last Updated: {lastUpdated}</span>
             <button
               onClick={onRefresh}
               disabled={isRefreshing}
@@ -62,16 +62,16 @@ const Badge = ({ text, type }) => {
     info: "bg-blue-50 text-blue-600 border border-blue-200",
     purple: "bg-purple-50 text-purple-600 border border-purple-200",
   };
-  return <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${styles[type] || styles.info}`}>{text}</span>;
+  return <span className={`px-2 py-0.5 rounded text-[calc(10px*var(--text-scale,1))] font-bold ${styles[type] || styles.info}`}>{text}</span>;
 }
 
 const CardTitle = ({ title, actionText, onAction, isLoading }) => (
   <div className="flex items-center justify-between mb-4 pb-3 border-b border-gray-100">
     <div className="flex items-center gap-2.5">
-      <h2 className="text-[15px] font-bold text-[#1e2a52]">{title}</h2>
+      <h2 className="text-[calc(15px*var(--text-scale,1))] font-bold text-[#1e2a52]">{title}</h2>
     </div>
     {actionText && (
-      <button onClick={onAction} disabled={isLoading} className="text-[11px] font-bold text-blue-600 hover:underline flex items-center gap-1 disabled:opacity-50 disabled:no-underline">
+      <button onClick={onAction} disabled={isLoading} className="text-[calc(11px*var(--text-scale,1))] font-bold text-blue-600 hover:underline flex items-center gap-1 disabled:opacity-50 disabled:no-underline">
         {isLoading && actionText === 'Refresh' && <Loader2 className="w-3 h-3 animate-spin" />}
         {isLoading && actionText === 'Refresh' ? 'Refreshing...' : actionText}
       </button>
@@ -81,7 +81,7 @@ const CardTitle = ({ title, actionText, onAction, isLoading }) => (
 
 const Pagination = ({ currentPage, totalPages, totalRecords, onPageChange }) => (
   <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
-    <span className="text-[10px] font-bold text-gray-500">Total Records: {totalRecords}</span>
+    <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500">Total Records: {totalRecords}</span>
     <div className="flex items-center gap-1">
       <button
         onClick={() => onPageChange(Math.max(1, currentPage - 1))}
@@ -90,7 +90,7 @@ const Pagination = ({ currentPage, totalPages, totalRecords, onPageChange }) => 
         <ChevronLeft className="w-3 h-3" />
       </button>
       <div className="flex gap-1 mx-1">
-        <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Pg {currentPage}</span>
+        <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Pg {currentPage}</span>
       </div>
       <button
         onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
@@ -199,7 +199,7 @@ export default function BackupRestorePage({ onBack }) {
   const storagePercentage = Math.round((storage.used / storage.total) * 100);
 
   return (
-    <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4 bg-transparent min-h-screen">
+    <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4 bg-transparent ">
       {onBack && (
         <button onClick={onBack}
           className="absolute -top-2 left-1 sm:top-1 sm:left-3 md:left-4 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm">
@@ -223,8 +223,8 @@ export default function BackupRestorePage({ onBack }) {
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-500 mb-0.5">Backup Status</div>
-                  <div className="text-[12px] font-black text-green-600">Successful</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Backup Status</div>
+                  <div className="text-[calc(12px*var(--text-scale,1))] font-black text-green-600">Successful</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -232,9 +232,9 @@ export default function BackupRestorePage({ onBack }) {
                   <Calendar className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-500 mb-0.5">Last Successful Backup</div>
-                  <div className="text-[12px] font-black text-[#1e2a52]">10 Aug 2026</div>
-                  <div className="text-[10px] font-semibold text-gray-400">02:00 AM</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Last Successful Backup</div>
+                  <div className="text-[calc(12px*var(--text-scale,1))] font-black text-[#1e2a52]">10 Aug 2026</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-400">02:00 AM</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -242,9 +242,9 @@ export default function BackupRestorePage({ onBack }) {
                   <AlertCircle className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-500 mb-0.5">Last Failed Backup</div>
-                  <div className="text-[12px] font-black text-[#1e2a52]">07 Aug 2026</div>
-                  <div className="text-[10px] font-semibold text-gray-400">11:20 PM</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Last Failed Backup</div>
+                  <div className="text-[calc(12px*var(--text-scale,1))] font-black text-[#1e2a52]">07 Aug 2026</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-400">11:20 PM</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -252,9 +252,9 @@ export default function BackupRestorePage({ onBack }) {
                   <Clock className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-500 mb-0.5">Next Scheduled Backup</div>
-                  <div className="text-[12px] font-black text-[#1e2a52]">11 Aug 2026</div>
-                  <div className="text-[10px] font-semibold text-gray-400">02:00 PM</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Next Scheduled Backup</div>
+                  <div className="text-[calc(12px*var(--text-scale,1))] font-black text-[#1e2a52]">11 Aug 2026</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-400">02:00 PM</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -262,8 +262,8 @@ export default function BackupRestorePage({ onBack }) {
                   <HardDrive className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-500 mb-0.5">Total Backup Size</div>
-                  <div className="text-[12px] font-black text-[#1e2a52]">245 GB</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Total Backup Size</div>
+                  <div className="text-[calc(12px*var(--text-scale,1))] font-black text-[#1e2a52]">245 GB</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -271,15 +271,15 @@ export default function BackupRestorePage({ onBack }) {
                   <FileCode className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-[10px] font-bold text-gray-500 mb-0.5">Available Versions</div>
-                  <div className="text-[12px] font-black text-[#1e2a52]">{records.length}</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Available Versions</div>
+                  <div className="text-[calc(12px*var(--text-scale,1))] font-black text-[#1e2a52]">{records.length}</div>
                 </div>
               </div>
             </div>
             <div className="pt-3 border-t border-gray-100 mt-2">
               <div className="flex justify-between items-center mb-1.5">
-                <span className="text-[11px] font-bold text-[#1e2a52]">Storage Status</span>
-                <span className="text-[10px] font-semibold text-gray-500">{storagePercentage}% Used ({storage.used.toFixed(2)} TB / {storage.total.toFixed(2)} TB)</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Storage Status</span>
+                <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500">{storagePercentage}% Used ({storage.used.toFixed(2)} TB / {storage.total.toFixed(2)} TB)</span>
               </div>
               <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden flex">
                 <div className={`h-full rounded-full transition-all duration-1000 ${storagePercentage > 85 ? 'bg-red-500' : 'bg-blue-600'}`} style={{ width: `${storagePercentage}%` }}></div>
@@ -294,12 +294,12 @@ export default function BackupRestorePage({ onBack }) {
               <table className="w-full text-left border-collapse min-w-[360px]">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="pb-2 px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Backup ID</th>
-                    <th className="pb-2 px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Date</th>
-                    <th className="pb-2 px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Time</th>
-                    <th className="pb-2 px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Type</th>
-                    <th className="pb-2 px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Size</th>
-                    <th className="pb-2 px-1 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Status</th>
+                    <th className="pb-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Backup ID</th>
+                    <th className="pb-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Date</th>
+                    <th className="pb-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Time</th>
+                    <th className="pb-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Type</th>
+                    <th className="pb-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Size</th>
+                    <th className="pb-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
@@ -307,11 +307,11 @@ export default function BackupRestorePage({ onBack }) {
                     <tr key={row.id}
                       onClick={() => setSelectedBackup(row)}
                       className={`transition-colors cursor-pointer ${selectedBackup?.id === row.id ? 'bg-blue-50/50' : 'hover:bg-gray-50/50'}`}>
-                      <td className={`py-2.5 px-1 text-[10px] font-bold ${selectedBackup?.id === row.id ? 'text-blue-700' : 'text-gray-700'}`}>{row.id}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-600">{row.date}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-500">{row.time}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-600">{row.type.includes('Inc') ? 'Inc.' : row.type}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-500">{row.size}</td>
+                      <td className={`py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-bold ${selectedBackup?.id === row.id ? 'text-blue-700' : 'text-gray-700'}`}>{row.id}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-600">{row.date}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500">{row.time}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-600">{row.type.includes('Inc') ? 'Inc.' : row.type}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500">{row.size}</td>
                       <td className="py-2.5 px-1">
                         {row.status === 'Successful' ? <Badge text="Successful" type="success" /> : <Badge text="Failed" type="error" />}
                       </td>
@@ -337,33 +337,33 @@ export default function BackupRestorePage({ onBack }) {
             {selectedBackup ? (
               <div className="flex flex-col gap-2.5 flex-1 animate-in fade-in duration-300">
                 <div className="flex justify-between items-start">
-                  <span className="text-[11px] font-semibold text-gray-500 mt-0.5">Backup ID</span>
-                  <span className="text-[12px] font-black text-blue-600">{selectedBackup.id}</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Backup ID</span>
+                  <span className="text-[calc(12px*var(--text-scale,1))] font-black text-blue-600">{selectedBackup.id}</span>
                 </div>
                 <div className="flex justify-between items-start">
-                  <span className="text-[11px] font-semibold text-gray-500 mt-0.5">Backup Type</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Backup Type</span>
                   <Badge text={selectedBackup.type} type="purple" />
                 </div>
                 <div className="flex justify-between items-start">
-                  <span className="text-[11px] font-semibold text-gray-500 mt-0.5">Created</span>
-                  <span className="text-[11px] font-bold text-[#1e2a52]">{selectedBackup.date}, {selectedBackup.time}</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Created</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{selectedBackup.date}, {selectedBackup.time}</span>
                 </div>
                 <div className="flex justify-between items-start">
-                  <span className="text-[11px] font-semibold text-gray-500 mt-0.5">Backup Size</span>
-                  <span className="text-[11px] font-bold text-[#1e2a52]">{selectedBackup.size}</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Backup Size</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{selectedBackup.size}</span>
                 </div>
                 <div className="flex justify-between items-start pb-3 border-b border-gray-50">
-                  <span className="text-[11px] font-semibold text-gray-500 mt-0.5">Status</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Status</span>
                   <Badge text={selectedBackup.status} type={selectedBackup.status === 'Successful' ? 'success' : 'error'} />
                 </div>
 
                 <div className="pt-1.5 flex-1">
-                  <div className="text-[11px] font-bold text-[#1e2a52] mb-2.5">Included Data</div>
+                  <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52] mb-2.5">Included Data</div>
                   <div className="grid grid-cols-2 gap-2">
                     {['Case Data', 'Reports', 'Investigation Data', 'Configuration Data', 'Evidence Metadata', 'System Records'].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-1.5 opacity-90">
                         <CheckCircle2 className="w-3.5 h-3.5 text-green-500 shrink-0" />
-                        <span className="text-[10px] font-semibold text-gray-600">{item}</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-600">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -371,18 +371,18 @@ export default function BackupRestorePage({ onBack }) {
 
                 <div className="pt-4 mt-auto flex justify-between">
                   <div>
-                    <div className="text-[9px] font-bold text-gray-400 mb-0.5">Encryption</div>
-                    <div className="text-[11px] font-bold text-[#1e2a52]">AES-256</div>
+                    <div className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 mb-0.5">Encryption</div>
+                    <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">AES-256</div>
                   </div>
                   <div>
-                    <div className="text-[9px] font-bold text-gray-400 mb-0.5">Integrity</div>
-                    <div className={`text-[11px] font-bold ${selectedBackup.status === 'Successful' ? 'text-green-600' : 'text-red-500'}`}>
+                    <div className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 mb-0.5">Integrity</div>
+                    <div className={`text-[calc(11px*var(--text-scale,1))] font-bold ${selectedBackup.status === 'Successful' ? 'text-green-600' : 'text-red-500'}`}>
                       {selectedBackup.status === 'Successful' ? 'Verified' : 'Failed'}
                     </div>
                   </div>
                   <div>
-                    <div className="text-[9px] font-bold text-gray-400 mb-0.5">Location</div>
-                    <div className="text-[11px] font-bold text-[#1e2a52]">Primary Repository</div>
+                    <div className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 mb-0.5">Location</div>
+                    <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Primary Repository</div>
                   </div>
                 </div>
               </div>
@@ -398,28 +398,28 @@ export default function BackupRestorePage({ onBack }) {
             <CardTitle title="Backup Schedule" />
             <div className="flex flex-col gap-3.5 flex-1">
               <div className="flex justify-between items-center pb-2.5 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Schedule Type</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Schedule Type</span>
                 <Badge text="Daily" type="info" />
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Next Backup</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">11 Aug 2026, 02:00 AM</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Next Backup</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">11 Aug 2026, 02:00 AM</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Last Backup</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{records[0]?.date || '-'}, {records[0]?.time || '-'}</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Last Backup</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{records[0]?.date || '-'}, {records[0]?.time || '-'}</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Frequency</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">Every 24 Hours</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Frequency</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Every 24 Hours</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Retention</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">60 Days</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Retention</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">60 Days</span>
               </div>
               <div className="flex justify-between items-center pb-1">
-                <span className="text-[11px] font-semibold text-gray-500">Backup Window</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">01:30 AM - 03:30 AM</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Backup Window</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">01:30 AM - 03:30 AM</span>
               </div>
             </div>
           </div>
@@ -429,40 +429,40 @@ export default function BackupRestorePage({ onBack }) {
             <CardTitle title="Backup Storage" />
             <div className="flex flex-col gap-2.5 flex-1">
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Storage Type</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">On-Premises</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Storage Type</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">On-Premises</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Storage Status</span>
-                <span className={`text-[11px] font-bold ${storagePercentage > 90 ? 'text-red-500' : 'text-green-600'}`}>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Storage Status</span>
+                <span className={`text-[calc(11px*var(--text-scale,1))] font-bold ${storagePercentage > 90 ? 'text-red-500' : 'text-green-600'}`}>
                   {storagePercentage > 90 ? 'Critical' : 'Healthy'}
                 </span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Total Storage</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{storage.total.toFixed(2)} TB</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Total Storage</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{storage.total.toFixed(2)} TB</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Used Storage</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{storage.used.toFixed(2)} TB ({storagePercentage}%)</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Used Storage</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{storage.used.toFixed(2)} TB ({storagePercentage}%)</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Available Storage</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{(storage.total - storage.used).toFixed(2)} TB ({100 - storagePercentage}%)</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Available Storage</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{(storage.total - storage.used).toFixed(2)} TB ({100 - storagePercentage}%)</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Backup Count</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{records.length}</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Backup Count</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{records.length}</span>
               </div>
               <div className="flex justify-between items-center pb-3">
-                <span className="text-[11px] font-semibold text-gray-500">Encryption Status</span>
-                <span className="text-[11px] font-bold text-green-600">Enabled</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Encryption Status</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-green-600">Enabled</span>
               </div>
 
               <div className="pt-2 mt-auto">
                 <div className="flex justify-between items-center mb-1.5">
-                  <span className="text-[11px] font-bold text-[#1e2a52]">Storage Health</span>
-                  <span className={`text-[10px] font-bold ${storagePercentage > 90 ? 'text-red-500' : 'text-green-600'}`}>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Storage Health</span>
+                  <span className={`text-[calc(10px*var(--text-scale,1))] font-bold ${storagePercentage > 90 ? 'text-red-500' : 'text-green-600'}`}>
                     {storagePercentage > 90 ? 'Action Required' : 'Good'}
                   </span>
                 </div>
@@ -483,34 +483,34 @@ export default function BackupRestorePage({ onBack }) {
                 </div>
               )}
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Integrity Verification</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Integrity Verification</span>
                 <Badge text="Verified" type="success" />
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Last Verification</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{lastUpdated}</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Last Verification</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{lastUpdated}</span>
               </div>
               <div className="flex justify-between items-center pb-3">
-                <span className="text-[11px] font-semibold text-gray-500">Verification Result</span>
-                <span className="text-[11px] font-bold text-green-600">Successful</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Verification Result</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-green-600">Successful</span>
               </div>
 
               <div className="mb-1.5 mt-1">
-                <span className="text-[11px] font-bold text-blue-600">Backup Health</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-blue-600">Backup Health</span>
               </div>
               <div className="bg-[#f0fdf4] border border-green-100 rounded-lg p-4 flex items-center gap-3.5 mb-3.5 transition-colors">
                 <div className="w-9 h-9 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0 shadow-[0_2px_8px_rgba(34,197,94,0.3)]">
                   <ShieldCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[14px] font-black text-green-700">Verified</div>
-                  <div className="text-[10px] font-semibold text-green-600/80 mt-0.5">Backup is healthy and usable.</div>
+                  <div className="text-[calc(14px*var(--text-scale,1))] font-black text-green-700">Verified</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-semibold text-green-600/80 mt-0.5">Backup is healthy and usable.</div>
                 </div>
               </div>
 
               <div className="flex justify-between items-center mt-auto">
-                <span className="text-[11px] font-bold text-gray-500">Next Verification</span>
-                <div className="flex items-center gap-1.5 text-[11px] font-black text-[#1e2a52]">
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500">Next Verification</span>
+                <div className="flex items-center gap-1.5 text-[calc(11px*var(--text-scale,1))] font-black text-[#1e2a52]">
                   <Clock className="w-3.5 h-3.5 text-blue-500" />
                   Tomorrow, 03:00 AM
                 </div>
@@ -523,8 +523,8 @@ export default function BackupRestorePage({ onBack }) {
             <CardTitle title="Restore" />
             <div className="flex flex-col gap-3 flex-1">
               <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-1 xl:gap-3">
-                <label className="text-[10px] font-bold text-gray-600 whitespace-nowrap">Select Backup</label>
-                <select name="version" value={restoreForm.version} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[10px] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
+                <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 whitespace-nowrap">Select Backup</label>
+                <select name="version" value={restoreForm.version} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[calc(10px*var(--text-scale,1))] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
                   <option value="">Select Backup</option>
                   {records.slice(0, 5).map(r => (
                     <option key={r.id} value={r.id}>{r.id} - {r.date}</option>
@@ -532,8 +532,8 @@ export default function BackupRestorePage({ onBack }) {
                 </select>
               </div>
               <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-1 xl:gap-3">
-                <label className="text-[10px] font-bold text-gray-600 whitespace-nowrap">Restore Type</label>
-                <select name="type" value={restoreForm.type} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[10px] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
+                <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 whitespace-nowrap">Restore Type</label>
+                <select name="type" value={restoreForm.type} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[calc(10px*var(--text-scale,1))] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
                   <option value="">Select Type</option>
                   <option value="Full">Full Restore</option>
                   <option value="Partial">Partial Restore</option>
@@ -541,8 +541,8 @@ export default function BackupRestorePage({ onBack }) {
                 </select>
               </div>
               <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-1 xl:gap-3">
-                <label className="text-[10px] font-bold text-gray-600 whitespace-nowrap">Data Category</label>
-                <select name="category" value={restoreForm.category} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[10px] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
+                <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 whitespace-nowrap">Data Category</label>
+                <select name="category" value={restoreForm.category} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[calc(10px*var(--text-scale,1))] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
                   <option value="">Select Category</option>
                   <option value="All">All Categories</option>
                   <option value="Cases">Case Data</option>
@@ -550,20 +550,20 @@ export default function BackupRestorePage({ onBack }) {
                 </select>
               </div>
               <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-1 xl:gap-3">
-                <label className="text-[10px] font-bold text-gray-600 whitespace-nowrap">Case / Inv. <span className="text-gray-400 font-normal">(Optional)</span></label>
-                <input type="text" name="caseId" value={restoreForm.caseId} onChange={handleFormChange} placeholder="Enter Case ID" className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[10px] font-semibold placeholder:text-gray-400 text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow" />
+                <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 whitespace-nowrap">Case / Inv. <span className="text-gray-400 font-normal">(Optional)</span></label>
+                <input type="text" name="caseId" value={restoreForm.caseId} onChange={handleFormChange} placeholder="Enter Case ID" className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[calc(10px*var(--text-scale,1))] font-semibold placeholder:text-gray-400 text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow" />
               </div>
               <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-1 xl:gap-3">
-                <label className="text-[10px] font-bold text-gray-600 whitespace-nowrap">Destination</label>
-                <select name="dest" value={restoreForm.dest} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[10px] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
+                <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 whitespace-nowrap">Destination</label>
+                <select name="dest" value={restoreForm.dest} onChange={handleFormChange} className="flex-1 w-full xl:max-w-[170px] border border-gray-200 rounded-md px-2.5 py-1.5 text-[calc(10px*var(--text-scale,1))] font-semibold text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow">
                   <option value="">Select Destination</option>
                   <option value="Original">Original Location</option>
                   <option value="Alternate">Alternate Location</option>
                 </select>
               </div>
               <div className="flex flex-col justify-between items-start gap-1 flex-1">
-                <label className="text-[10px] font-bold text-gray-600 whitespace-nowrap">Restore Reason</label>
-                <textarea name="reason" value={restoreForm.reason} onChange={handleFormChange} placeholder="Enter restore reason..." className="w-full flex-1 border border-gray-200 rounded-md px-2.5 py-2 text-[10px] font-semibold placeholder:text-gray-400 text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none min-h-[50px] transition-shadow"></textarea>
+                <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 whitespace-nowrap">Restore Reason</label>
+                <textarea name="reason" value={restoreForm.reason} onChange={handleFormChange} placeholder="Enter restore reason..." className="w-full flex-1 border border-gray-200 rounded-md px-2.5 py-2 text-[calc(10px*var(--text-scale,1))] font-semibold placeholder:text-gray-400 text-[#1e2a52] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none min-h-[50px] transition-shadow"></textarea>
               </div>
             </div>
             <div className="pt-4 mt-auto">
@@ -587,7 +587,7 @@ export default function BackupRestorePage({ onBack }) {
                     setRestoreForm({ version: '', type: '', category: '', caseId: '', dest: '', reason: '' });
                   }, 1200);
                 }}
-                className={`w-full text-white rounded-lg py-2.5 text-[11px] font-bold transition-all shadow-[0_2px_8px_rgba(139,92,246,0.25)] flex justify-center items-center gap-2 ${isRestoring ? 'bg-purple-400' : 'bg-[#8b5cf6] hover:bg-[#7c3aed] hover:shadow-lg active:scale-[0.98]'}`}>
+                className={`w-full text-white rounded-lg py-2.5 text-[calc(11px*var(--text-scale,1))] font-bold transition-all shadow-[0_2px_8px_rgba(139,92,246,0.25)] flex justify-center items-center gap-2 ${isRestoring ? 'bg-purple-400' : 'bg-[#8b5cf6] hover:bg-[#7c3aed] hover:shadow-lg active:scale-[0.98]'}`}>
                 {isRestoring ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : null}
                 {isRestoring ? 'Submitting Request...' : 'Preview Restore'}
               </button>
@@ -601,31 +601,31 @@ export default function BackupRestorePage({ onBack }) {
               <div className="flex flex-col xl:flex-row gap-5 xl:gap-3 flex-1 animate-in fade-in duration-300">
                 <div className="flex-1 flex flex-col gap-2.5">
                   <div className="flex justify-between items-start">
-                    <span className="text-[10px] font-semibold text-gray-500 mt-0.5">Request ID</span>
-                    <span className="text-[11px] font-bold text-[#1e2a52]">{currentRestoreRequest.id}</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Request ID</span>
+                    <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{currentRestoreRequest.id}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-[10px] font-semibold text-gray-500 mt-0.5">Requested By</span>
-                    <span className="text-[11px] font-bold text-[#1e2a52]">{currentRestoreRequest.reqBy}</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Requested By</span>
+                    <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{currentRestoreRequest.reqBy}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-[10px] font-semibold text-gray-500 mt-0.5">Backup ID</span>
-                    <span className="text-[11px] font-bold text-blue-600">{currentRestoreRequest.bakId}</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Backup ID</span>
+                    <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-blue-600">{currentRestoreRequest.bakId}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-[10px] font-semibold text-gray-500 mt-0.5">Reason</span>
-                    <span className="text-[11px] font-semibold text-[#1e2a52] text-right max-w-[100px] truncate" title={currentRestoreRequest.reason}>{currentRestoreRequest.reason}</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Reason</span>
+                    <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-[#1e2a52] text-right max-w-[100px] truncate" title={currentRestoreRequest.reason}>{currentRestoreRequest.reason}</span>
                   </div>
                   <div className="flex justify-between items-start">
-                    <span className="text-[10px] font-semibold text-gray-500 mt-0.5">Requested On</span>
-                    <span className="text-[10px] font-bold text-[#1e2a52] text-right">{currentRestoreRequest.date}</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 mt-0.5">Requested On</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] text-right">{currentRestoreRequest.date}</span>
                   </div>
                   <div className="flex justify-between items-start mt-1">
-                    <span className="text-[10px] font-semibold text-gray-500 pt-1">Approval Status</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 pt-1">Approval Status</span>
                     <Badge text="Pending Approval" type="warning" />
                   </div>
                   <div className="flex justify-between items-start mt-1">
-                    <span className="text-[10px] font-semibold text-gray-500 pt-1">Restore Status</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500 pt-1">Restore Status</span>
                     <Badge text="Requested" type="info" />
                   </div>
                 </div>
@@ -647,8 +647,8 @@ export default function BackupRestorePage({ onBack }) {
                         <div className={`w-3 h-3 rounded-full mt-0.5 shrink-0 flex items-center justify-center ${step.current || step.active ? 'bg-blue-500 ring-2 ring-blue-100' : 'border-[1.5px] border-gray-200 bg-white'}`}>
                         </div>
                         <div className="flex flex-col -mt-0.5">
-                          <span className={`text-[9px] font-bold ${step.active || step.current ? 'text-[#1e2a52]' : 'text-gray-400'}`}>{step.label}</span>
-                          {step.time && <span className="text-[8px] font-semibold text-gray-400 mt-0.5 leading-tight">{step.time}</span>}
+                          <span className={`text-[calc(9px*var(--text-scale,1))] font-bold ${step.active || step.current ? 'text-[#1e2a52]' : 'text-gray-400'}`}>{step.label}</span>
+                          {step.time && <span className="text-[calc(8px*var(--text-scale,1))] font-semibold text-gray-400 mt-0.5 leading-tight">{step.time}</span>}
                         </div>
                       </div>
                     </div>
@@ -658,8 +658,8 @@ export default function BackupRestorePage({ onBack }) {
             ) : (
               <div className="flex-1 flex flex-col items-center justify-center text-center">
                 <RotateCcw className="w-8 h-8 text-gray-200 mb-2" />
-                <div className="text-[11px] font-semibold text-gray-400">No Active Restore Request</div>
-                <div className="text-[9px] font-semibold text-gray-400 mt-1">Submit a restore to track it here.</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-400">No Active Restore Request</div>
+                <div className="text-[calc(9px*var(--text-scale,1))] font-semibold text-gray-400 mt-1">Submit a restore to track it here.</div>
               </div>
             )}
           </div>
@@ -671,24 +671,24 @@ export default function BackupRestorePage({ onBack }) {
               <table className="w-full text-left border-collapse min-w-[320px]">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="pb-1.5 px-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Restore ID</th>
-                    <th className="pb-1.5 px-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Backup ID</th>
-                    <th className="pb-1.5 px-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Type</th>
-                    <th className="pb-1.5 px-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Data Restored</th>
-                    <th className="pb-1.5 px-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Requested By</th>
-                    <th className="pb-1.5 px-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Status</th>
+                    <th className="pb-1.5 px-1 text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Restore ID</th>
+                    <th className="pb-1.5 px-1 text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Backup ID</th>
+                    <th className="pb-1.5 px-1 text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Type</th>
+                    <th className="pb-1.5 px-1 text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Data Restored</th>
+                    <th className="pb-1.5 px-1 text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Requested By</th>
+                    <th className="pb-1.5 px-1 text-[calc(9px*var(--text-scale,1))] font-bold text-gray-400 uppercase tracking-wider">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {currentHistory.map((row, i) => (
                     <tr key={row.id} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="py-2.5 px-1 text-[10px] font-bold text-gray-700">{row.id}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-500">{row.bakId}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-600">{row.type}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-600">{row.data}</td>
-                      <td className="py-2.5 px-1 text-[10px] font-semibold text-gray-500">{row.reqBy}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">{row.id}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500">{row.bakId}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-600">{row.type}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-600">{row.data}</td>
+                      <td className="py-2.5 px-1 text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-500">{row.reqBy}</td>
                       <td className="py-2.5 px-1">
-                        <span className={`text-[9px] font-bold ${row.status === 'Completed' ? 'text-[#00A350]' : 'text-[#FF4D4F]'}`}>{row.status}</span>
+                        <span className={`text-[calc(9px*var(--text-scale,1))] font-bold ${row.status === 'Completed' ? 'text-[#00A350]' : 'text-[#FF4D4F]'}`}>{row.status}</span>
                       </td>
                     </tr>
                   ))}
@@ -720,15 +720,15 @@ export default function BackupRestorePage({ onBack }) {
                 <div key={idx} className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-2">
                     <item.icon className="w-3.5 h-3.5 text-green-500 shrink-0" />
-                    <span className="text-[10px] font-semibold text-gray-600">{item.label}</span>
+                    <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-600">{item.label}</span>
                   </div>
-                  <span className="text-[10px] font-bold text-[#1e2a52] sm:text-right">{item.val}</span>
+                  <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-[#1e2a52] sm:text-right">{item.val}</span>
                 </div>
               ))}
             </div>
             <div className="bg-[#f0f7ff] border border-blue-100 rounded-lg p-3 flex items-start gap-2.5 mt-auto">
               <ShieldCheck className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
-              <p className="text-[10px] font-semibold text-blue-800 leading-snug">
+              <p className="text-[calc(10px*var(--text-scale,1))] font-semibold text-blue-800 leading-snug">
                 All backups are secured and protected as per government guidelines.
               </p>
             </div>
@@ -742,14 +742,14 @@ export default function BackupRestorePage({ onBack }) {
                 <div className="w-9 h-9 rounded-lg bg-blue-50 text-blue-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Eye className="w-4 h-4" />
                 </div>
-                <span className="text-[9px] font-bold text-gray-600 text-center leading-tight">View Backup</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">View Backup</span>
               </button>
 
               <button onClick={() => alert("Viewing detailed logs...")} className="flex flex-col items-center justify-center gap-1.5 p-2 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all group">
                 <div className="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <FileText className="w-4 h-4" />
                 </div>
-                <span className="text-[9px] font-bold text-gray-600 text-center leading-tight">View Details</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">View Details</span>
               </button>
 
               <button
@@ -759,7 +759,7 @@ export default function BackupRestorePage({ onBack }) {
                 <div className="w-9 h-9 rounded-lg bg-green-50 text-green-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   {isCreating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
                 </div>
-                <span className="text-[9px] font-bold text-gray-600 text-center leading-tight">
+                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">
                   {isCreating ? 'Creating...' : 'Create Backup'}
                 </span>
               </button>
@@ -771,7 +771,7 @@ export default function BackupRestorePage({ onBack }) {
                 <div className="w-9 h-9 rounded-lg bg-purple-50 text-purple-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   {isVerifying ? <Loader2 className="w-4 h-4 animate-spin" /> : <ShieldCheck className="w-4 h-4" />}
                 </div>
-                <span className="text-[9px] font-bold text-gray-600 text-center leading-tight">
+                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">
                   {isVerifying ? 'Verifying...' : 'Verify Backup'}
                 </span>
               </button>
@@ -780,19 +780,19 @@ export default function BackupRestorePage({ onBack }) {
                 <div className="w-9 h-9 rounded-lg bg-pink-50 text-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <RotateCcw className="w-4 h-4" />
                 </div>
-                <span className="text-[9px] font-bold text-gray-600 text-center leading-tight">Request Restore</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">Request Restore</span>
               </button>
 
               <button onClick={() => alert("Status: Active")} className="flex flex-col items-center justify-center gap-1.5 p-2 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all group">
                 <div className="w-9 h-9 rounded-lg bg-orange-50 text-orange-500 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Clock className="w-4 h-4" />
                 </div>
-                <span className="text-[9px] font-bold text-gray-600 text-center leading-tight">Restore Status</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">Restore Status</span>
               </button>
 
               <button onClick={() => alert("Viewing full restore history...")} className="col-span-3 flex flex-col items-center justify-center gap-1.5 p-2.5 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all group mt-1">
                 <List className="w-4 h-4 text-gray-500 group-hover:text-gray-700" />
-                <span className="text-[10px] font-bold text-gray-600 text-center leading-tight">Full Restore History</span>
+                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-600 text-center leading-tight">Full Restore History</span>
               </button>
             </div>
           </div>
@@ -802,33 +802,33 @@ export default function BackupRestorePage({ onBack }) {
             <CardTitle title="Backup Retention" />
             <div className="flex flex-col gap-2.5 flex-1">
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Retention Period</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">60 Days</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Retention Period</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">60 Days</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Backup Available From</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">12 Jun 2026</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Backup Available From</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">12 Jun 2026</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Backup Expiry</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">11 Oct 2026</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Backup Expiry</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">11 Oct 2026</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Automatic Cleanup</span>
-                <span className="text-[11px] font-bold text-[#00A350] bg-[#E8F8F0] px-1.5 py-0.5 rounded">Enabled</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Automatic Cleanup</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#00A350] bg-[#E8F8F0] px-1.5 py-0.5 rounded">Enabled</span>
               </div>
               <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                <span className="text-[11px] font-semibold text-gray-500">Retention Policy</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">Keep last {records.length} versions</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Retention Policy</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">Keep last {records.length} versions</span>
               </div>
               <div className="flex justify-between items-center pb-3">
-                <span className="text-[11px] font-semibold text-gray-500">Backup Version Count</span>
-                <span className="text-[11px] font-bold text-[#1e2a52]">{records.length} / Unlimited</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500">Backup Version Count</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-[#1e2a52]">{records.length} / Unlimited</span>
               </div>
 
               <div className="bg-[#fff9e6] border border-[#ffeeba] rounded-lg p-3 flex items-start gap-2.5 mt-auto">
                 <AlertCircle className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
-                <p className="text-[9px] sm:text-[10px] font-semibold text-orange-800 leading-snug">
+                <p className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-semibold text-orange-800 leading-snug">
                   Old backups will be automatically deleted after the retention period as per policy.
                 </p>
               </div>
@@ -876,26 +876,26 @@ export default function BackupRestorePage({ onBack }) {
               <table className="w-full text-left border-collapse">
                 <thead className="sticky top-0 bg-gray-50/90 backdrop-blur-sm shadow-sm z-10 border-b border-gray-200">
                   <tr>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Restore ID</th>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Backup ID</th>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Date & Time</th>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Type</th>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Data Restored</th>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Requested By</th>
-                    <th className="py-3.5 px-5 text-[11px] font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Restore ID</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Backup ID</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Date & Time</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Type</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Data Restored</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Requested By</th>
+                    <th className="py-3.5 px-5 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 uppercase tracking-wider">Status</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {history.map((row) => (
                     <tr key={row.id} className="hover:bg-blue-50/30 transition-colors group">
-                      <td className="py-4 px-5 text-[11px] sm:text-xs font-bold text-[#1e2a52]">{row.id}</td>
-                      <td className="py-4 px-5 text-[11px] sm:text-xs font-bold text-blue-600 hover:underline cursor-pointer">{row.bakId}</td>
-                      <td className="py-4 px-5 text-[11px] sm:text-xs font-semibold text-gray-500">11 Aug 2026, 12:45 PM</td>
-                      <td className="py-4 px-5 text-[11px] sm:text-xs font-semibold text-gray-600">{row.type}</td>
-                      <td className="py-4 px-5 text-[11px] sm:text-xs font-semibold text-gray-600 max-w-[120px] truncate">{row.data}</td>
-                      <td className="py-4 px-5 text-[11px] sm:text-xs font-semibold text-gray-600">{row.reqBy}</td>
+                      <td className="py-4 px-5 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-bold text-[#1e2a52]">{row.id}</td>
+                      <td className="py-4 px-5 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-bold text-blue-600 hover:underline cursor-pointer">{row.bakId}</td>
+                      <td className="py-4 px-5 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-semibold text-gray-500">11 Aug 2026, 12:45 PM</td>
+                      <td className="py-4 px-5 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-semibold text-gray-600">{row.type}</td>
+                      <td className="py-4 px-5 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-semibold text-gray-600 max-w-[120px] truncate">{row.data}</td>
+                      <td className="py-4 px-5 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-semibold text-gray-600">{row.reqBy}</td>
                       <td className="py-4 px-5">
-                        <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${row.status === 'Completed' ? 'bg-green-50 text-green-600 border-green-200' : 'bg-red-50 text-red-600 border-red-200'}`}>{row.status}</span>
+                        <span className={`px-2.5 py-1 rounded-full text-[calc(10px*var(--text-scale,1))] font-bold border ${row.status === 'Completed' ? 'bg-green-50 text-green-600 border-green-200' : 'bg-red-50 text-red-600 border-red-200'}`}>{row.status}</span>
                       </td>
                     </tr>
                   ))}

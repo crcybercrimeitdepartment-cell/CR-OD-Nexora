@@ -241,7 +241,7 @@ export function VoiceProvider({ children }) {
             <div className="w-px h-8" style={{ backgroundColor: 'rgba(var(--primary-theme-color-rgb, 30, 42, 82), 0.2)' }} />
             <button
               onClick={toggleVoice}
-              className="px-3 py-1.5 rounded-full text-[13px] font-semibold transition-all hover:bg-white/20 dark:hover:bg-black/20 flex items-center gap-1.5 whitespace-nowrap border"
+              className="px-3 py-1.5 rounded-full text-[calc(13px*var(--text-scale,1))] font-semibold transition-all hover:bg-white/20 dark:hover:bg-black/20 flex items-center gap-1.5 whitespace-nowrap border"
               style={{ 
                 color: 'var(--primary-theme-color, #1e2a52)',
                 borderColor: 'rgba(var(--primary-theme-color-rgb, 30, 42, 82), 0.25)',
@@ -256,7 +256,7 @@ export function VoiceProvider({ children }) {
                 const nextSpeed = readingSpeed >= 2.5 ? 0.5 : readingSpeed + 0.5;
                 setReadingSpeed(nextSpeed);
               }}
-              className="px-3 py-1.5 rounded-full text-[13px] font-semibold transition-all hover:bg-white/20 dark:hover:bg-black/20 flex items-center gap-1.5 whitespace-nowrap border"
+              className="px-3 py-1.5 rounded-full text-[calc(13px*var(--text-scale,1))] font-semibold transition-all hover:bg-white/20 dark:hover:bg-black/20 flex items-center gap-1.5 whitespace-nowrap border"
               style={{ 
                 color: 'var(--primary-theme-color, #1e2a52)',
                 borderColor: 'rgba(var(--primary-theme-color-rgb, 30, 42, 82), 0.25)',

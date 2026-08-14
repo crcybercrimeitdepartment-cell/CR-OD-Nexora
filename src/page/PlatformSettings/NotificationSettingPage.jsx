@@ -291,7 +291,7 @@ export default function NotificationSettingPage({ onBack }) {
         </div>
 
         {/* TOP ROW GRID (3 PANELS: Behavior, Sounds, Alerts) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
           {/* PANEL 1: Notification Behavior */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-xs flex flex-col justify-between space-y-5">
@@ -315,14 +315,14 @@ export default function NotificationSettingPage({ onBack }) {
               <div className="space-y-4 pt-2">
                 {/* Switch 1 */}
                 <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Enable Notifications</span>
-                    <span className="text-[11px] text-slate-400">Turn all notifications on or off</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Enable Notifications</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Turn all notifications on or off</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setEnableNotifications(!enableNotifications)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableNotifications ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableNotifications ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${enableNotifications ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -330,14 +330,14 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Switch 2 */}
                 <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Show on Desktop</span>
-                    <span className="text-[11px] text-slate-400">Display browser/desktop notifications</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Show on Desktop</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Display browser/desktop notifications</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setShowOnDesktop(!showOnDesktop)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${showOnDesktop ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${showOnDesktop ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${showOnDesktop ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -345,15 +345,15 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Dropdown Position */}
                 <div className="flex items-center justify-between gap-2 pt-1 relative">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Notification Position</span>
-                    <span className="text-[11px] text-slate-400">Choose where notifications appear</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Notification Position</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Choose where notifications appear</span>
                   </div>
                   <div className="relative">
                     <button
                       type="button"
                       onClick={() => setPositionDropdownOpen(!positionDropdownOpen)}
-                      className="px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 flex items-center gap-2 shadow-2xs hover:border-slate-400 cursor-pointer min-w-[100px] justify-between"
+                      className="shrink-0 px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 flex items-center gap-2 shadow-2xs hover:border-slate-400 cursor-pointer min-w-[100px] justify-between"
                     >
                       <span>{position}</span>
                       <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
@@ -406,14 +406,14 @@ export default function NotificationSettingPage({ onBack }) {
               <div className="space-y-4 pt-2">
                 {/* Switch 1 */}
                 <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Enable Notification Sound</span>
-                    <span className="text-[11px] text-slate-400">Play sound when a notification arrives</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Enable Notification Sound</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Play sound when a notification arrives</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => setEnableSound(!enableSound)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableSound ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableSound ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${enableSound ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -421,16 +421,16 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Dropdown Sound + Play Button */}
                 <div className="flex items-center justify-between gap-2 pt-1 relative">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Select Sound</span>
-                    <span className="text-[11px] text-slate-400">Choose a notification sound</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Select Sound</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Choose a notification sound</span>
                   </div>
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="relative">
                       <button
                         type="button"
                         onClick={() => setSoundDropdownOpen(!soundDropdownOpen)}
-                        className="h-8 px-3.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 flex items-center gap-2 shadow-2xs hover:border-slate-400 cursor-pointer min-w-[95px] justify-between"
+                        className="shrink-0 h-8 px-3.5 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 flex items-center gap-2 shadow-2xs hover:border-slate-400 cursor-pointer min-w-[95px] justify-between"
                       >
                         <span>{selectedSound}</span>
                         <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
@@ -473,7 +473,7 @@ export default function NotificationSettingPage({ onBack }) {
                     <span className="text-xs font-bold text-slate-800">Volume</span>
                     <span className="text-xs font-extrabold text-slate-900">{volume}%</span>
                   </div>
-                  <p className="text-[11px] text-slate-400 mb-2">Adjust notification sound volume</p>
+                  <p className="text-[calc(11px*var(--text-scale,1))] text-slate-400 mb-2">Adjust notification sound volume</p>
                   <input
                     type="range"
                     min="0"
@@ -495,7 +495,7 @@ export default function NotificationSettingPage({ onBack }) {
 
           {/* PANEL 3: Alerts */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-xs flex flex-col justify-between space-y-5">
-            <div>
+            <div className="flex-1 min-w-0 pr-2">
               {/* Header */}
               <div className="flex items-center gap-3.5 mb-4">
                 <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center shrink-0 border border-orange-100 shadow-2xs">
@@ -516,19 +516,19 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Item 1: System Alerts */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                       <Monitor className="w-4 h-4" />
                     </div>
-                    <div>
-                      <span className="block text-xs font-bold text-slate-800">System Alerts</span>
-                      <span className="text-[10.5px] text-slate-400">Important system updates</span>
+                    <div className="flex-1 min-w-0 pr-3">
+                      <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">System Alerts</span>
+                      <span className="block text-[calc(10.5px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Important system updates</span>
                     </div>
                   </div>
                   <button
                     type="button"
                     onClick={() => setSystemAlerts(!systemAlerts)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${systemAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${systemAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${systemAlerts ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -536,19 +536,19 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Item 2: Security Alerts */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="w-8 h-8 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0">
                       <Shield className="w-4 h-4" />
                     </div>
-                    <div>
-                      <span className="block text-xs font-bold text-slate-800">Security Alerts</span>
-                      <span className="text-[10.5px] text-slate-400">Login & security alerts</span>
+                    <div className="flex-1 min-w-0 pr-3">
+                      <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Security Alerts</span>
+                      <span className="block text-[calc(10.5px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Login & security alerts</span>
                     </div>
                   </div>
                   <button
                     type="button"
                     onClick={() => setSecurityAlerts(!securityAlerts)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${securityAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${securityAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${securityAlerts ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -556,19 +556,19 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Item 3: Activity Alerts */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
                       <Zap className="w-4 h-4" />
                     </div>
-                    <div>
-                      <span className="block text-xs font-bold text-slate-800">Activity Alerts</span>
-                      <span className="text-[10.5px] text-slate-400">User activities & actions</span>
+                    <div className="flex-1 min-w-0 pr-3">
+                      <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Activity Alerts</span>
+                      <span className="block text-[calc(10.5px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">User activities & actions</span>
                     </div>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActivityAlerts(!activityAlerts)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${activityAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${activityAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${activityAlerts ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -576,19 +576,19 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Item 4: Marketing Alerts */}
                 <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
                       <Megaphone className="w-4 h-4" />
                     </div>
-                    <div>
-                      <span className="block text-xs font-bold text-slate-800">Marketing Alerts</span>
-                      <span className="text-[10.5px] text-slate-400">Offers & announcements</span>
+                    <div className="flex-1 min-w-0 pr-3">
+                      <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Marketing Alerts</span>
+                      <span className="block text-[calc(10.5px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Offers & announcements</span>
                     </div>
                   </div>
                   <button
                     type="button"
                     onClick={() => setMarketingAlerts(!marketingAlerts)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${marketingAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${marketingAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${marketingAlerts ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -601,11 +601,11 @@ export default function NotificationSettingPage({ onBack }) {
         </div>
 
         {/* BOTTOM ROW GRID (2 PANELS: Duration, Preferences) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
 
           {/* PANEL 4: Duration */}
           <div className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-xs flex flex-col justify-between space-y-5">
-            <div>
+            <div className="flex-1 min-w-0 pr-2">
               {/* Header */}
               <div className="flex items-center gap-3.5 mb-4">
                 <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 border border-indigo-100 shadow-2xs">
@@ -622,7 +622,7 @@ export default function NotificationSettingPage({ onBack }) {
               </div>
 
               {/* Radio Option Pills */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                 {durations.map((dur) => {
                   const isSelected = durationOption === dur;
                   return (
@@ -668,9 +668,9 @@ export default function NotificationSettingPage({ onBack }) {
               <div className="space-y-4 pt-1">
                 {/* Switch 1: Do Not Disturb */}
                 <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Do Not Disturb</span>
-                    <span className="text-[11px] text-slate-400">Pause notifications during specific time</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Do Not Disturb</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Pause notifications during specific time</span>
                   </div>
                   <button
                     type="button"
@@ -679,7 +679,7 @@ export default function NotificationSettingPage({ onBack }) {
                       setDoNotDisturb(nextState);
                       if (nextState) setImportantAlerts(false);
                     }}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${doNotDisturb ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${doNotDisturb ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${doNotDisturb ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
@@ -687,9 +687,9 @@ export default function NotificationSettingPage({ onBack }) {
 
                 {/* Switch 2: Important Alerts */}
                 <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <span className="block text-xs font-bold text-slate-800">Important Alerts</span>
-                    <span className="text-[11px] text-slate-400">Always show important alerts</span>
+                  <div className="flex-1 min-w-0 pr-3">
+                    <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Important Alerts</span>
+                    <span className="block text-[calc(11px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Always show important alerts</span>
                   </div>
                   <button
                     type="button"
@@ -698,7 +698,7 @@ export default function NotificationSettingPage({ onBack }) {
                       setImportantAlerts(nextState);
                       if (nextState) setDoNotDisturb(false);
                     }}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${importantAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${importantAlerts ? 'bg-blue-600' : 'bg-slate-300'}`}
                   >
                     <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${importantAlerts ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>

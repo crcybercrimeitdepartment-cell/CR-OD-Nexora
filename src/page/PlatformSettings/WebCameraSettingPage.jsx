@@ -136,7 +136,7 @@ export default function WebCameraSettingPage({ onBack }) {
             {lastImage ? (
               <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg border-2 border-white">
                 <img src={lastImage} alt="Test capture" className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 inset-x-0 bg-black/60 backdrop-blur-sm p-2 text-center text-white text-[10px] font-mono">
+                <div className="absolute bottom-0 inset-x-0 bg-black/60 backdrop-blur-sm p-2 text-center text-white text-[calc(10px*var(--text-scale,1))] font-mono">
                   Captured at {new Date().toLocaleTimeString()}
                 </div>
               </div>

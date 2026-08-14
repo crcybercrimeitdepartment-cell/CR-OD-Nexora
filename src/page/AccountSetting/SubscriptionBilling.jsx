@@ -55,9 +55,8 @@ export default function SubscriptionBillingPage({ onBack }) {
     <motion.div variants={itemVariants} className={`col-span-1 ${colSpan} ${bg} backdrop-blur-2xl rounded-[28px] border ${borderColor} shadow-lg p-5 sm:p-6 flex flex-col relative overflow-hidden`}>
       <div className="flex items-center justify-between mb-5 border-b border-slate-100/50 dark:border-slate-800/50 pb-4">
         <div className="flex items-center gap-3">
-          <span className={`w-8 h-8 rounded-lg ${badgeBg} text-white flex items-center justify-center text-sm font-black shrink-0`}>{number}</span> 
           <div className="flex flex-col">
-            <h3 className="font-extrabold text-[16px] sm:text-[18px] text-slate-800 dark:text-white truncate">{title}</h3>
+            <h3 className="font-extrabold text-[calc(16px*var(--text-scale,1))] sm:text-[calc(18px*var(--text-scale,1))] text-slate-800 dark:text-white truncate">{title}</h3>
             {subtitle && <span className="text-xs font-semibold text-slate-500">{subtitle}</span>}
           </div>
         </div>
@@ -74,7 +73,7 @@ export default function SubscriptionBillingPage({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-800 dark:text-slate-200 pt-20 sm:pt-24 pb-12 px-3 sm:px-6 relative font-sans">
+    <div className=" bg-transparent text-slate-800 dark:text-slate-200 pt-20 sm:pt-24 pb-12 px-3 sm:px-6 relative font-sans">
       {onBack && (
         <button onClick={onBack}
           className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm"
@@ -113,8 +112,8 @@ export default function SubscriptionBillingPage({ onBack }) {
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <span className="text-[11px] sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 leading-tight">Account secure</span>
-                  <span className="text-[9px] sm:text-xs font-semibold text-emerald-600/70 dark:text-emerald-400/70 leading-tight">Checked: 2m ago</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] sm:text-sm font-bold text-emerald-800 dark:text-emerald-300 leading-tight">Account secure</span>
+                  <span className="text-[calc(9px*var(--text-scale,1))] sm:text-xs font-semibold text-emerald-600/70 dark:text-emerald-400/70 leading-tight">Checked: 2m ago</span>
                 </div>
               </div>
             </div>
@@ -142,11 +141,11 @@ export default function SubscriptionBillingPage({ onBack }) {
                      <div className="flex flex-col">
                        <div className="flex items-center gap-1.5 mb-1 bg-white/60 dark:bg-slate-900/60 w-max px-2 py-0.5 rounded-full border border-emerald-100 dark:border-emerald-800">
                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
-                         <span className="text-[9px] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-widest leading-none">Active</span>
+                         <span className="text-[calc(9px*var(--text-scale,1))] font-black uppercase text-emerald-600 dark:text-emerald-400 tracking-widest leading-none">Active</span>
                        </div>
                        <span className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight">{currentPlan}</span>
-                       <span className="text-lg sm:text-xl font-extrabold text-[#148395] dark:text-[#2bcbd7] leading-tight mt-1">₹{planAmount} <span className="text-[10px] sm:text-[11px] font-semibold text-slate-500">/ Year</span></span>
-                       <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-400 mt-0.5">Billing Cycle: <span className="text-[#148395] font-black">Annually</span></span>
+                       <span className="text-lg sm:text-xl font-extrabold text-[#148395] dark:text-[#2bcbd7] leading-tight mt-1">₹{planAmount} <span className="text-[calc(10px*var(--text-scale,1))] sm:text-[calc(11px*var(--text-scale,1))] font-semibold text-slate-500">/ Year</span></span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] sm:text-[calc(11px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-400 mt-0.5">Billing Cycle: <span className="text-[#148395] font-black">Annually</span></span>
                      </div>
                    </div>
                 </div>
@@ -158,11 +157,11 @@ export default function SubscriptionBillingPage({ onBack }) {
                       <div className={`w-8 h-8 rounded-lg flex items-center justify-center mb-1.5 border ${s.bg} ${s.color} ${s.b}`}>
                         <s.icon className="w-4 h-4" />
                       </div>
-                      <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center">{s.title}</span>
+                      <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase tracking-wider text-center">{s.title}</span>
                       {s.isStatus ? (
-                         <span className="px-1.5 py-0.5 mt-1 rounded text-[9px] sm:text-[10px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 flex items-center gap-1"><span className="w-1 h-1 rounded-full bg-emerald-500"></span>{s.val}</span>
+                         <span className="px-1.5 py-0.5 mt-1 rounded text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 flex items-center gap-1"><span className="w-1 h-1 rounded-full bg-emerald-500"></span>{s.val}</span>
                       ) : (
-                         <span className={`text-[11px] sm:text-[12px] font-black text-center mt-1 leading-none ${s.textCol || 'text-slate-800 dark:text-white'}`}>{s.val}</span>
+                         <span className={`text-[calc(11px*var(--text-scale,1))] sm:text-[calc(12px*var(--text-scale,1))] font-black text-center mt-1 leading-none ${s.textCol || 'text-slate-800 dark:text-white'}`}>{s.val}</span>
                       )}
                     </div>
                   ))}
@@ -176,12 +175,12 @@ export default function SubscriptionBillingPage({ onBack }) {
                        <div className="w-6 h-6 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 flex items-center justify-center border border-emerald-100 dark:border-emerald-800/50">
                          <Crown className="w-3.5 h-3.5" />
                        </div>
-                       <span className="text-[10px] font-black uppercase text-[#148395] tracking-widest">Plan Features</span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-[#148395] tracking-widest">Plan Features</span>
                      </div>
                      <ul className="flex flex-col gap-2 flex-1 mb-3">
                        {planFeaturesData.map((f, i) => (
                          <React.Fragment key={i}>
-                           <li className="flex items-center gap-2 text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-300">
+                           <li className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))] sm:text-xs font-bold text-slate-700 dark:text-slate-300">
                              <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center shrink-0">
                                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                              </div>
@@ -195,7 +194,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                        <div className="w-7 h-7 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-sm shrink-0">
                          <Crown className="w-4 h-4 text-blue-600" />
                        </div>
-                       <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-300 leading-tight">Your plan gives access to all premium tools.</span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] sm:text-[calc(11px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-300 leading-tight">Your plan gives access to all premium tools.</span>
                      </div>
                    </div>
 
@@ -205,7 +204,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                        <div className="w-6 h-6 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center border border-blue-100 dark:border-blue-800/50">
                          <Database className="w-3.5 h-3.5" />
                        </div>
-                       <span className="text-[10px] font-black uppercase text-blue-600 tracking-widest">Storage</span>
+                       <span className="text-[calc(10px*var(--text-scale,1))] font-black uppercase text-blue-600 tracking-widest">Storage</span>
                      </div>
                      
                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center mt-5 mb-4">
@@ -217,13 +216,13 @@ export default function SubscriptionBillingPage({ onBack }) {
                        <div className="absolute inset-0 flex flex-col items-center justify-center mt-0.5">
                          <Database className="w-4 h-4 text-blue-600 mb-0.5 drop-shadow-sm" />
                          <span className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white leading-none">120 GB</span>
-                         <span className="text-[9px] font-bold text-slate-500 mt-1">Used (24%)</span>
+                         <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500 mt-1">Used (24%)</span>
                        </div>
                      </div>
 
                      <div className="text-center mb-3 w-full pb-2 border-b border-dashed border-slate-200 dark:border-slate-700">
                        <span className="text-base sm:text-lg font-black text-slate-800 dark:text-white block">500 GB</span>
-                       <span className="text-[9px] font-bold text-slate-500 uppercase tracking-wider">Total Storage</span>
+                       <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wider">Total Storage</span>
                      </div>
 
                      <div className="w-full flex flex-col gap-1.5 mt-auto">
@@ -231,8 +230,8 @@ export default function SubscriptionBillingPage({ onBack }) {
                          <div className="h-full bg-gradient-to-r from-[#17a2b8] to-[#2bcbd7] rounded-full" style={{ width: '24%' }} />
                        </div>
                        <div className="flex justify-between items-center px-0.5">
-                         <span className="text-[9px] sm:text-[10px] font-bold text-[#148395]">120 GB</span>
-                         <span className="text-[8px] sm:text-[9px] font-bold text-slate-400">/ 500 GB (24%)</span>
+                         <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-[#148395]">120 GB</span>
+                         <span className="text-[calc(8px*var(--text-scale,1))] sm:text-[calc(9px*var(--text-scale,1))] font-bold text-slate-400">/ 500 GB (24%)</span>
                        </div>
                      </div>
                    </div>
@@ -245,8 +244,8 @@ export default function SubscriptionBillingPage({ onBack }) {
                        <ShieldCheck className="w-3.5 h-3.5" />
                      </div>
                      <div className="flex flex-col">
-                       <span className="text-[11px] sm:text-xs font-extrabold text-slate-800 dark:text-emerald-100 leading-none mb-1">Your subscription is active and secure.</span>
-                       <span className="text-[9px] sm:text-[10px] font-semibold text-slate-600 dark:text-emerald-400/80 leading-none">Enjoy uninterrupted access to all premium features.</span>
+                       <span className="text-[calc(11px*var(--text-scale,1))] sm:text-xs font-extrabold text-slate-800 dark:text-emerald-100 leading-none mb-1">Your subscription is active and secure.</span>
+                       <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-600 dark:text-emerald-400/80 leading-none">Enjoy uninterrupted access to all premium features.</span>
                      </div>
                    </div>
                    <div className="relative z-10 hidden sm:block">
@@ -283,7 +282,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-xs font-bold text-slate-500 truncate pr-2">Renewal Status</span>
-                      <span className="px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 shrink-0">Upcoming</span>
+                      <span className="px-2 py-0.5 rounded text-[calc(9px*var(--text-scale,1))] font-black uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 shrink-0">Upcoming</span>
                     </div>
                   </div>
                   
@@ -294,7 +293,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                     >
                        Renew Now
                     </button>
-                    <div className="flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-50 dark:bg-blue-900/10 text-[10px] text-blue-600 dark:text-blue-400 font-semibold text-center leading-tight">
+                    <div className="flex items-center justify-center gap-2 p-2 rounded-lg bg-blue-50 dark:bg-blue-900/10 text-[calc(10px*var(--text-scale,1))] text-blue-600 dark:text-blue-400 font-semibold text-center leading-tight">
                        <Calendar className="w-3.5 h-3.5 shrink-0" /> Your subscription will be renewed on 10 Aug 2027
                     </div>
                   </div>
@@ -311,8 +310,8 @@ export default function SubscriptionBillingPage({ onBack }) {
                        className={`w-12 h-6 rounded-full p-1 transition-colors relative flex items-center ${autoRenew ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-slate-600'}`}
                      >
                        <motion.div layout className="w-4 h-4 bg-white rounded-full shadow-sm" style={{ x: autoRenew ? 24 : 0 }} />
-                       <span className="absolute left-2 text-[9px] font-black text-white" style={{ opacity: autoRenew ? 1 : 0 }}>ON</span>
-                       <span className="absolute right-1.5 text-[9px] font-black text-white" style={{ opacity: autoRenew ? 0 : 1 }}>OFF</span>
+                       <span className="absolute left-2 text-[calc(9px*var(--text-scale,1))] font-black text-white" style={{ opacity: autoRenew ? 1 : 0 }}>ON</span>
+                       <span className="absolute right-1.5 text-[calc(9px*var(--text-scale,1))] font-black text-white" style={{ opacity: autoRenew ? 0 : 1 }}>OFF</span>
                      </button>
                   </div>
                   
@@ -339,7 +338,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                       {autoRenew ? 'Disable Auto-Renewal' : 'Enable Auto-Renewal'}
                     </button>
 
-                    <div className={`p-3 rounded-lg text-[10px] font-semibold flex items-start gap-2 leading-tight ${autoRenew ? 'bg-emerald-50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400' : 'bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400'}`}>
+                    <div className={`p-3 rounded-lg text-[calc(10px*var(--text-scale,1))] font-semibold flex items-start gap-2 leading-tight ${autoRenew ? 'bg-emerald-50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400' : 'bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400'}`}>
                        <RefreshCw className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                        {autoRenew ? 'Your subscription will be automatically renewed on the renewal date.' : 'Auto-renewal is off. You will need to manually renew your subscription to avoid disruption.'}
                     </div>
@@ -357,8 +356,8 @@ export default function SubscriptionBillingPage({ onBack }) {
                        className={`w-12 h-6 rounded-full p-1 transition-colors relative flex items-center ${autoPay ? 'bg-emerald-500' : 'bg-slate-300 dark:bg-slate-600'}`}
                      >
                        <motion.div layout className="w-4 h-4 bg-white rounded-full shadow-sm" style={{ x: autoPay ? 24 : 0 }} />
-                       <span className="absolute left-2 text-[9px] font-black text-white" style={{ opacity: autoPay ? 1 : 0 }}>ON</span>
-                       <span className="absolute right-1.5 text-[9px] font-black text-white" style={{ opacity: autoPay ? 0 : 1 }}>OFF</span>
+                       <span className="absolute left-2 text-[calc(9px*var(--text-scale,1))] font-black text-white" style={{ opacity: autoPay ? 1 : 0 }}>ON</span>
+                       <span className="absolute right-1.5 text-[calc(9px*var(--text-scale,1))] font-black text-white" style={{ opacity: autoPay ? 0 : 1 }}>OFF</span>
                      </button>
                   </div>
                   
@@ -366,7 +365,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-bold text-slate-500 truncate pr-2">Payment Method</span>
                       <span className="font-extrabold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 shrink-0">
-                        <div className="w-6 h-4 bg-blue-800 rounded flex items-center justify-center text-[7px] font-black text-white tracking-widest">VISA</div>
+                        <div className="w-6 h-4 bg-blue-800 rounded flex items-center justify-center text-[calc(7px*var(--text-scale,1))] font-black text-white tracking-widest">VISA</div>
                         {paymentMethod}
                       </span>
                     </div>
@@ -380,7 +379,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                     </div>
                     <div className="flex justify-between items-center text-xs mb-2 border-b border-slate-100 dark:border-slate-800/50 pb-3">
                       <span className="font-bold text-slate-500 truncate pr-2">Authorization</span>
-                      <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider shrink-0 ${autoPay ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}`}>{autoPay ? 'Authorized' : 'Not Authorized'}</span>
+                      <span className={`px-2 py-0.5 rounded text-[calc(9px*var(--text-scale,1))] font-black uppercase tracking-wider shrink-0 ${autoPay ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400' : 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400'}`}>{autoPay ? 'Authorized' : 'Not Authorized'}</span>
                     </div>
                   </div>
 
@@ -392,7 +391,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                       {autoPay ? 'Disable Auto-Pay' : 'Enable Auto-Pay'}
                     </button>
 
-                    <div className={`p-3 rounded-lg text-[10px] font-semibold flex items-start gap-2 leading-tight ${autoPay ? 'bg-emerald-50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400' : 'bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400'}`}>
+                    <div className={`p-3 rounded-lg text-[calc(10px*var(--text-scale,1))] font-semibold flex items-start gap-2 leading-tight ${autoPay ? 'bg-emerald-50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400' : 'bg-slate-100 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400'}`}>
                        <ShieldCheck className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                        {autoPay ? 'Payments will be automatically processed using your default payment method.' : 'Auto-pay is disabled. You will be reminded to pay manually before the due date.'}
                     </div>
@@ -405,7 +404,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                <div className="flex flex-col gap-5 h-full">
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                    <div className="bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 rounded-xl p-4 flex flex-col items-center justify-center text-center">
-                      <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1">Current Plan</span>
+                      <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase text-slate-400 tracking-wider mb-1">Current Plan</span>
                       <span className="text-sm font-black text-slate-700 dark:text-slate-200">{currentPlan}</span>
                    </div>
                    
@@ -419,7 +418,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                        </div>
                      </div>
                      <div className="bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-800/50 rounded-xl p-4 flex flex-col items-center justify-center text-center">
-                        <span className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider mb-1">Available Plan</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-bold uppercase text-emerald-600 tracking-wider mb-1">Available Plan</span>
                         <span className="text-sm font-black text-emerald-700 dark:text-emerald-400">{currentPlan === "Premium Plan" ? "Enterprise Plan" : "Premium Plan"}</span>
                      </div>
                    </div>
@@ -440,7 +439,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                    </div>
                    <div className="flex justify-between items-center text-xs mb-2">
                      <span className="font-bold text-slate-500 truncate pr-2">Plan Change Status</span>
-                     <span className="px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 shrink-0">Allowed</span>
+                     <span className="px-2 py-0.5 rounded text-[calc(9px*var(--text-scale,1))] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 shrink-0">Allowed</span>
                    </div>
                  </div>
 
@@ -471,15 +470,15 @@ export default function SubscriptionBillingPage({ onBack }) {
             <Card title="Payment Method" number="6" icon={CreditCard} colSpan="col-span-1 md:col-span-6 lg:col-span-6 xl:col-span-6" bg="bg-amber-50/50 dark:bg-amber-900/10" borderColor="border-amber-200/50 dark:border-amber-800/30" badgeBg="bg-amber-500" iconColor="text-amber-500">
                <div className="flex flex-col gap-4 h-full">
                  <div className="bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/50 rounded-xl p-4 flex items-center gap-3 sm:gap-4">
-                    <div className="w-10 h-6 bg-blue-800 rounded flex items-center justify-center text-[9px] font-black text-white tracking-widest shadow-sm shrink-0">VISA</div>
+                    <div className="w-10 h-6 bg-blue-800 rounded flex items-center justify-center text-[calc(9px*var(--text-scale,1))] font-black text-white tracking-widest shadow-sm shrink-0">VISA</div>
                     <div className="flex flex-col min-w-0 flex-1">
-                      <span className="text-[10px] font-bold text-slate-400 uppercase truncate">Default Method</span>
+                      <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase truncate">Default Method</span>
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-extrabold text-slate-700 dark:text-slate-200 truncate">{paymentMethod}</span>
-                        <span className="text-[10px] font-semibold text-slate-500 whitespace-nowrap">Exp: 12/28</span>
+                        <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-slate-500 whitespace-nowrap">Exp: 12/28</span>
                       </div>
                     </div>
-                    <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[8px] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 shrink-0">Default</span>
+                    <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[calc(8px*var(--text-scale,1))] font-black uppercase tracking-wider bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 shrink-0">Default</span>
                  </div>
 
                  <div className="flex flex-col gap-1 mt-2 border-t border-slate-100 dark:border-slate-800/50 pt-3">
@@ -556,7 +555,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                     </div>
                     <div className="flex justify-between items-center text-xs">
                       <span className="font-bold text-slate-500 truncate pr-2">Billing Status</span>
-                      <span className="px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900/30 shrink-0">Upcoming</span>
+                      <span className="px-2 py-0.5 rounded text-[calc(9px*var(--text-scale,1))] font-black uppercase tracking-wider bg-blue-100 text-blue-700 dark:bg-blue-900/30 shrink-0">Upcoming</span>
                     </div>
                  </div>
                </div>
@@ -600,7 +599,7 @@ export default function SubscriptionBillingPage({ onBack }) {
                     </div>
                     <div className="flex flex-col">
                       <span className="text-sm font-extrabold text-slate-800 dark:text-white">Need help with your subscription?</span>
-                      <span className="text-[11px] sm:text-xs font-semibold text-slate-500">Our support team is here to assist you with any billing or subscription related queries.</span>
+                      <span className="text-[calc(11px*var(--text-scale,1))] sm:text-xs font-semibold text-slate-500">Our support team is here to assist you with any billing or subscription related queries.</span>
                     </div>
                  </div>
                  <button 

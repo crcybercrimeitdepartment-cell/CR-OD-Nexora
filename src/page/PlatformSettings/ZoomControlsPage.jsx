@@ -162,7 +162,7 @@ export default function ZoomControlsPage({ onBack }) {
                 {/* Quick Presets */}
                 <div>
                   <h4 className="text-xs font-bold text-slate-800 mb-3">Quick Presets</h4>
-                  <div className="grid grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {presets.map(preset => (
                       <button
                         key={preset}
@@ -181,14 +181,14 @@ export default function ZoomControlsPage({ onBack }) {
 
                 <div className="pt-4 border-t border-slate-100">
                   {/* Switch: Auto Scaling */}
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
                       <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
                         <Maximize className="w-4 h-4" />
                       </div>
-                      <div>
-                        <span className="block text-xs font-bold text-slate-800">Responsive Auto-Scaling</span>
-                        <span className="text-[10.5px] text-slate-400">Automatically adjust text sizes on small screens</span>
+                      <div className="flex-1 min-w-0 pr-2">
+                        <span className="block text-xs font-bold text-slate-800 truncate sm:whitespace-normal">Responsive Auto-Scaling</span>
+                        <span className="block text-[calc(10.5px*var(--text-scale,1))] text-slate-400 mt-0.5 leading-snug">Automatically adjust text sizes on small screens</span>
                       </div>
                     </div>
                     <button

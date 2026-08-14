@@ -148,15 +148,17 @@ export default function AnimationSettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Enable Animations</span>
-                      <span className="text-[10.5px] text-slate-400">Master switch for all complex animations</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Master switch for all complex animations</span>
                     </div>
                   </div>
                   <button
                     type="button"
+                    role="switch"
+                    aria-checked={enableAnimations}
                     onClick={() => setEnableAnimations(!enableAnimations)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableAnimations ? 'bg-indigo-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 cursor-pointer outline-none ring-offset-1 focus-visible:ring-2 focus-visible:ring-indigo-500 hover:ring-4 active:scale-90 ${enableAnimations ? 'hover:ring-indigo-200 bg-indigo-600 transition-all duration-300 ease-out' : 'hover:ring-slate-200 bg-slate-300 transition-none'}`}
                   >
-                    <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${enableAnimations ? 'translate-x-5' : 'translate-x-0'}`} />
+                    <div className={`bg-white w-4 h-4 rounded-full shadow-sm transform ${enableAnimations ? 'transition-transform duration-300 ease-out translate-x-5' : 'transition-none translate-x-0'}`} />
                   </button>
                 </div>
 
@@ -168,16 +170,18 @@ export default function AnimationSettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Enable Transitions</span>
-                      <span className="text-[10.5px] text-slate-400">Page routing and component loading effects</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Page routing and component loading effects</span>
                     </div>
                   </div>
                   <button
                     type="button"
+                    role="switch"
+                    aria-checked={enableTransitions}
                     onClick={() => setEnableTransitions(!enableTransitions)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableTransitions ? 'bg-indigo-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 outline-none ring-offset-1 focus-visible:ring-2 focus-visible:ring-indigo-500 active:scale-90 ${!enableAnimations ? 'opacity-50 cursor-not-allowed transition-none bg-slate-300' : enableTransitions ? 'cursor-pointer hover:ring-4 hover:ring-indigo-200 bg-indigo-600 transition-all duration-300 ease-out' : 'cursor-pointer hover:ring-4 hover:ring-slate-200 bg-slate-300 transition-all duration-300 ease-out'}`}
                     disabled={!enableAnimations}
                   >
-                    <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${enableTransitions && enableAnimations ? 'translate-x-5' : 'translate-x-0'}`} />
+                    <div className={`bg-white w-4 h-4 rounded-full shadow-sm transform ${enableAnimations ? 'transition-transform duration-300 ease-out' : 'transition-none'} ${enableTransitions && enableAnimations ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
                 </div>
 
@@ -189,16 +193,18 @@ export default function AnimationSettingPage({ onBack }) {
                     </div>
                     <div>
                       <span className="block text-xs font-bold text-slate-800">Hover Effects</span>
-                      <span className="text-[10.5px] text-slate-400">Interactive mouse-over visual changes</span>
+                      <span className="text-[calc(10.5px*var(--text-scale,1))] text-slate-400">Interactive mouse-over visual changes</span>
                     </div>
                   </div>
                   <button
                     type="button"
+                    role="switch"
+                    aria-checked={enableHoverEffects}
                     onClick={() => setEnableHoverEffects(!enableHoverEffects)}
-                    className={`w-11 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-200 ${enableHoverEffects ? 'bg-indigo-600' : 'bg-slate-300'}`}
+                    className={`w-11 h-6 shrink-0 flex items-center rounded-full p-1 outline-none ring-offset-1 focus-visible:ring-2 focus-visible:ring-indigo-500 active:scale-90 ${!enableAnimations ? 'opacity-50 cursor-not-allowed transition-none bg-slate-300' : enableHoverEffects ? 'cursor-pointer hover:ring-4 hover:ring-indigo-200 bg-indigo-600 transition-all duration-300 ease-out' : 'cursor-pointer hover:ring-4 hover:ring-slate-200 bg-slate-300 transition-all duration-300 ease-out'}`}
                     disabled={!enableAnimations}
                   >
-                    <div className={`bg-white w-4 h-4 rounded-full shadow-xs transform transition-transform duration-200 ${enableHoverEffects && enableAnimations ? 'translate-x-5' : 'translate-x-0'}`} />
+                    <div className={`bg-white w-4 h-4 rounded-full shadow-sm transform ${enableAnimations ? 'transition-transform duration-300 ease-out' : 'transition-none'} ${enableHoverEffects && enableAnimations ? 'translate-x-5' : 'translate-x-0'}`} />
                   </button>
                 </div>
               </div>
@@ -239,11 +245,12 @@ export default function AnimationSettingPage({ onBack }) {
                       step="0.1" 
                       value={animationSpeed} 
                       onChange={(e) => setAnimationSpeed(parseFloat(e.target.value))}
-                      className="flex-1 accent-indigo-500 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer"
+                      className={`flex-1 accent-indigo-600 h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 hover:accent-indigo-500 active:scale-[0.99] ${enableAnimations ? 'transition-all duration-300' : 'transition-none'}`}
+                      aria-label="Global Animation Speed"
                     />
                   </div>
                   
-                  <div className="flex justify-between items-center mt-2 px-1 text-[10px] font-bold text-slate-400 uppercase">
+                  <div className="flex justify-between items-center mt-2 px-1 text-[calc(10px*var(--text-scale,1))] font-bold text-slate-400 uppercase">
                     <span>Slower (0.5x)</span>
                     <span>Normal (1.0x)</span>
                     <span>Faster (2.5x)</span>

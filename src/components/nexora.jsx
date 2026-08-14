@@ -18,6 +18,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   PhoneCall,
   UserCheck,
+  User,
   Activity,
   Server,
   Database,
@@ -117,13 +118,13 @@ export default function ToolCard({ tool, index = 0, onClick, customHeight, disab
   // Alternate slide direction: even rows from left, odd rows from right
   const slideAnimation = disableCssAnimation ? '' : (rowIndex % 2 === 0 ? 'animate-card-slide-left' : 'animate-card-slide-right');
 
-  const cardHeight = customHeight || 'h-[84px] sm:h-[96px]';
+  const cardHeight = customHeight || 'h-full min-h-[84px] sm:min-h-[96px]';
 
   return (
     <div
       onClick={() => onClick && onClick(tool)}
       style={disableCssAnimation ? {} : { animationDelay: `${delayMs}ms` }}
-      className={`${slideAnimation} bg-white rounded-[14px] sm:rounded-[18px] p-2.5 sm:p-3.5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-250 ease-out cursor-pointer flex items-center gap-2.5 sm:gap-4 group select-none relative overflow-hidden ${cardHeight}`}
+      className={`${slideAnimation} bg-white rounded-[14px] sm:rounded-[18px] p-2.5 sm:p-3.5 border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-250 ease-out cursor-pointer flex flex-nowrap items-center justify-start gap-2.5 sm:gap-4 group select-none relative overflow-hidden ${cardHeight}`}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
@@ -159,11 +160,11 @@ export default function ToolCard({ tool, index = 0, onClick, customHeight, disab
       </div>
 
       {/* Right Text Stack */}
-      <div className="flex flex-col text-left min-w-0 relative z-0">
-        <h3 className="text-[11px] sm:text-[14px] font-bold text-slate-900 leading-snug line-clamp-3 group-hover:text-red-600 transition-colors">
+      <div className="flex flex-col text-left min-w-[90px] sm:min-w-0 relative z-0 flex-1">
+        <h3 className="text-[calc(11px*var(--text-scale,1))] sm:text-[calc(14px*var(--text-scale,1))] font-bold text-slate-900 leading-snug line-clamp-3 group-hover:text-red-600 transition-colors">
           {toolName}
         </h3>
-        <p className="text-[9.5px] sm:text-[11.5px] text-slate-500 font-normal leading-tight line-clamp-1 sm:line-clamp-2 mt-0.5 sm:mt-1">
+        <p className="text-[calc(9.5px*var(--text-scale,1))] sm:text-[calc(11.5px*var(--text-scale,1))] text-slate-500 font-normal leading-tight line-clamp-2 mt-0.5 sm:mt-1">
           {tool.description || tool.desc}
         </p>
       </div>
@@ -220,7 +221,7 @@ export function TIIIcon({ className = "w-8 h-8" }) { return <Wifi className={cla
 export function TDIIcon({ className = "w-8 h-8" }) { return <Radio className={className} />; }
 export function IntelligenceModulesIcon({ className = "w-8 h-8" }) { return <Cpu className={className} />; }
 export function AboutUsIcon({ className = "w-8 h-8" }) { return <Info className={className} />; }
-export function AccountSettingIcon({ className = "w-8 h-8" }) { return <Settings className={className} />; }
+export function DemoCardIcon({ className = "w-8 h-8" }) { return <Layers className={className} />; }
 
 
 
@@ -263,10 +264,10 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
         }}
         className="flex flex-col items-center justify-start cursor-pointer group w-[50px] md:w-[70px] shrink-0"
       >
-        <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700' : 'text-[#1e2a52] group-hover:scale-110 group-hover:text-blue-700'}`}>
+        <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700 dark:text-blue-400' : 'text-[#1e2a52] dark:text-slate-300 group-hover:scale-110 group-hover:text-blue-700 dark:group-hover:text-blue-400'}`}>
           <Icon className="w-5 h-5 md:w-5 md:h-5" strokeWidth={1.5} />
         </div>
-        <span className="text-[6px] md:text-[7.5px] font-bold text-[#1e2a52] text-center leading-tight uppercase tracking-wide mt-1 relative pb-1">
+        <span className="text-[calc(6px*var(--text-scale,1))] md:text-[calc(7.5px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-slate-300 text-center leading-tight uppercase tracking-wide mt-1 relative pb-1">
           {label}
           {/* Interactive Glow Line */}
           <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)] transition-all duration-300 ${isActive ? 'w-[80%]' : 'w-0 group-hover:w-[80%]'}`}></span>
@@ -276,7 +277,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
   };
 
   return (
-    <header className="global-header w-full py-4 md:py-6 bg-[#cbe6ff] shadow-sm border-b border-[#b5d7fb] mb-6 lg:mb-8 relative z-10">
+    <header className="global-header w-full py-4 md:py-6 bg-[#cbe6ff] dark:bg-transparent shadow-sm border-b border-[#b5d7fb] dark:border-slate-800/60 mb-6 lg:mb-8 relative z-10">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10">
         {/* Header Row: Left Logo | Center Title & Subtitle | Right Logo */}
         <div className="flex items-center justify-between gap-2 sm:gap-4 md:gap-6 w-full">
@@ -297,21 +298,21 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
             <HeaderIcon id="PlatformSettings" Icon={Settings} label="Platform Settings" />
             <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
-            <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
+            <HeaderIcon id="AccountSetting" Icon={User} label="Account Setting" />
           </div>
 
           {/* CENTER: Page Title & Subtitle & Search */}
           <div className="flex-1 text-center flex flex-col items-center justify-center px-2 md:px-6 xl:px-12 min-w-0">
             <h1 
               onClick={onHomeClick}
-              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1 cursor-pointer hover:text-blue-700 transition-colors"
+              className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1e2a52] dark:text-white tracking-tight leading-tight break-words pb-1 cursor-pointer hover:text-blue-700 transition-colors"
             >
               NEXORA
             </h1>
 
             <div className="flex items-center justify-center w-full max-w-lg mt-1 sm:mt-2 mb-3 sm:mb-4">
               <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#b0b8d6] to-transparent opacity-70"></div>
-              <p className="px-1.5 sm:px-3 md:px-4 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[15px] font-medium text-[#4b5563] text-center leading-snug xl:whitespace-nowrap">
+              <p className="px-1.5 sm:px-3 md:px-4 text-[calc(10px*var(--text-scale,1))] sm:text-[calc(12px*var(--text-scale,1))] md:text-[calc(14px*var(--text-scale,1))] lg:text-[calc(15px*var(--text-scale,1))] font-medium text-[#4b5563] dark:text-slate-400 text-center leading-snug xl:whitespace-nowrap">
                 One Secure Platform for <br className="block lg:hidden" /> Advanced Intelligence & Investigation Records
               </p>
               <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#b0b8d6] to-transparent opacity-70"></div>
@@ -322,7 +323,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
               className="flex items-center justify-center gap-2 sm:gap-3.5 w-full max-w-xl mx-auto"
             >
               <div className="relative flex-1 group">
-                <svg className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1e2a52] transition-colors pointer-events-none z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#1e2a52] dark:text-slate-400 transition-colors pointer-events-none z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
                 <motion.input
@@ -331,7 +332,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
                   value={searchQuery}
                   onChange={(e) => onSearchChange(e.target.value)}
                   style={disableScrollAnimation ? { boxShadow: '0 4px 16px rgba(30,42,82,0.12)' } : { boxShadow: useTransform(shadowOpacity, v => `0 4px 16px rgba(30,42,82,${v})`) }}
-                  className="w-full bg-white border-2 border-[#1e2a52]/40 hover:border-[#1e2a52] rounded-full py-1.5 sm:py-2.5 pl-9 sm:pl-11 pr-3 sm:pr-4 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-[#1e2a52]/20 focus:border-[#1e2a52] transition-all text-[#1e2a52] placeholder-[#1e2a52]/60"
+                  className="w-full bg-white dark:bg-[#151e32] border-2 border-[#1e2a52]/40 dark:border-slate-700 hover:border-[#1e2a52] dark:hover:border-slate-500 rounded-full py-1.5 sm:py-2.5 pl-9 sm:pl-11 pr-3 sm:pr-4 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-4 focus:ring-[#1e2a52]/20 dark:focus:ring-blue-500/20 focus:border-[#1e2a52] dark:focus:border-blue-500 transition-all text-[#1e2a52] dark:text-white placeholder-[#1e2a52]/60 dark:placeholder-slate-500"
                 />
               </div>
               <button className="flex items-center justify-center gap-1.5 sm:gap-2 bg-[#1e2a52] hover:bg-[#121c3b] text-white font-bold py-1.5 sm:py-2.5 px-3 sm:px-6 rounded-full text-xs sm:text-sm transition-all duration-300 shadow-[0_4px_12px_rgba(30,42,82,0.3)] hover:shadow-[0_6px_16px_rgba(30,42,82,0.4)] hover:-translate-y-0.5 shrink-0">
@@ -346,7 +347,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           {/* RIGHT ICONS (Hidden on very small screens) */}
           <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
             <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
-            <HeaderIcon id="CaseCalculator" Icon={Calculator} label="Case Calculator" />
+            <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
             <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
           </div>
 
@@ -367,9 +368,9 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
         <div className="flex xl:hidden items-start justify-center gap-1 sm:gap-2 mt-4 w-full px-1">
           <HeaderIcon id="PlatformSettings" Icon={Settings} label="Platform Settings" />
           <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
-          <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
+          <HeaderIcon id="AccountSetting" Icon={User} label="Account Setting" />
           <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
-          <HeaderIcon id="CaseCalculator" Icon={Calculator} label="Case Calculator" />
+          <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
           <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
         </div>
       </div>
@@ -624,10 +625,10 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
           <div className="grid grid-cols-1 lg:col-span-4 lg:pl-6 lg:border-l lg:border-[#b5d7fb]">
             {/* Column 2: INTELLIGENCE MODULES */}
             <div className="flex flex-col space-y-3 lg:space-y-4">
-              <h3 className="text-[#1e2a52] text-[11px] lg:text-[13px] font-black uppercase tracking-wider mb-1 lg:mb-2">INTELLIGENCE MODULES</h3>
+              <h3 className="text-[#1e2a52] text-[calc(11px*var(--text-scale,1))] lg:text-[calc(13px*var(--text-scale,1))] font-black uppercase tracking-wider mb-1 lg:mb-2">INTELLIGENCE MODULES</h3>
               <div className="grid grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2 lg:gap-y-3">
                 {['Call Detail Record', 'Subscriber Record', 'Internet Traffic', 'OSINT Analytics', 'Bank Statement Audit', 'All Modules'].map((link) => (
-                  <button key={link} onClick={() => onSelectLink && onSelectLink(link)} className="flex items-center justify-between text-[11px] lg:text-[13px] text-[#4b5563] font-medium hover:text-[#1e2a52] group transition-colors text-left w-full max-w-[160px] py-0.5 lg:py-0">
+                  <button key={link} onClick={() => onSelectLink && onSelectLink(link)} className="flex items-center justify-between text-[calc(11px*var(--text-scale,1))] lg:text-[calc(13px*var(--text-scale,1))] text-[#4b5563] font-medium hover:text-[#1e2a52] group transition-colors text-left w-full max-w-[160px] py-0.5 lg:py-0">
                     <span>{link}</span>
                     <ChevronRight className="w-3 h-3 lg:w-3.5 lg:h-3.5 text-[#6b7280] group-hover:text-[#1e2a52] shrink-0 ml-1" />
                   </button>
@@ -643,8 +644,8 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
                 <ShieldCheck className="w-4 h-4 lg:w-5 lg:h-5 text-emerald-700" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] lg:text-sm font-bold text-[#1e2a52] leading-tight">100% Encrypted</span>
-                <span className="text-[9px] lg:text-[12px] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Law enforcement grade</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] lg:text-sm font-bold text-[#1e2a52] leading-tight">100% Encrypted</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] lg:text-[calc(12px*var(--text-scale,1))] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Law enforcement grade</span>
               </div>
             </div>
 
@@ -653,8 +654,8 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
                 <Lock className="w-4 h-4 lg:w-5 lg:h-5 text-purple-700" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] lg:text-sm font-bold text-[#1e2a52] leading-tight">Zero Data Leak</span>
-                <span className="text-[9px] lg:text-[12px] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Confidential & audited</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] lg:text-sm font-bold text-[#1e2a52] leading-tight">Zero Data Leak</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] lg:text-[calc(12px*var(--text-scale,1))] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Confidential & audited</span>
               </div>
             </div>
 
@@ -663,8 +664,8 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
                 <Zap className="w-4 h-4 lg:w-5 lg:h-5 text-blue-700" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] lg:text-sm font-bold text-[#1e2a52] leading-tight">Real-Time Analytics</span>
-                <span className="text-[9px] lg:text-[12px] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Instant record correlation</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] lg:text-sm font-bold text-[#1e2a52] leading-tight">Real-Time Analytics</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] lg:text-[calc(12px*var(--text-scale,1))] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Instant record correlation</span>
               </div>
             </div>
 
@@ -673,8 +674,8 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
                 <Globe className="w-4 h-4 lg:w-5 lg:h-5 text-teal-700" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[11px] lg:text-sm font-bold text-[#1e2a52] leading-tight">Unified Hub</span>
-                <span className="text-[9px] lg:text-[12px] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Multi-agency intelligence</span>
+                <span className="text-[calc(11px*var(--text-scale,1))] lg:text-sm font-bold text-[#1e2a52] leading-tight">Unified Hub</span>
+                <span className="text-[calc(9px*var(--text-scale,1))] lg:text-[calc(12px*var(--text-scale,1))] text-[#4b5563] font-medium mt-0 lg:mt-1 hidden sm:block">Multi-agency intelligence</span>
               </div>
             </div>
           </div>
@@ -685,7 +686,7 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 lg:pt-14 pb-2 gap-4 text-xs sm:text-sm text-[#4b5563] font-medium">
 
           {/* Left Side: Live Date & Time Badge */}
-          <div className="flex items-center gap-2 bg-[#bcdcfa]/60 hover:bg-[#b0d8fc]/80 border border-[#9ecaf7] rounded-lg px-3 py-1.5 text-[#1e2a52] text-xs sm:text-[13px] font-medium transition-colors shadow-2xs">
+          <div className="flex items-center gap-2 bg-[#bcdcfa]/60 hover:bg-[#b0d8fc]/80 border border-[#9ecaf7] rounded-lg px-3 py-1.5 text-[#1e2a52] text-xs sm:text-[calc(13px*var(--text-scale,1))] font-medium transition-colors shadow-2xs">
             <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1e2a52] shrink-0" />
             <span>{formatDate(time)}</span>
             <span className="text-[#1e2a52]/50 font-bold px-0.5">·</span>
@@ -695,10 +696,10 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
 
           {/* Center: Made with ❤️ & Copyright */}
           <div className="flex flex-col items-center justify-center text-center gap-0.5">
-            <div className="flex items-center justify-center gap-1.5 text-xs sm:text-[13px]">
+            <div className="flex items-center justify-center gap-1.5 text-xs sm:text-[calc(13px*var(--text-scale,1))]">
               Made with <Heart className="w-3.5 h-3.5 fill-red-500 text-red-500 shrink-0 inline" /> for {audience}
             </div>
-            <div className="font-bold text-[#1e2a52] text-xs sm:text-[13px]">
+            <div className="font-bold text-[#1e2a52] text-xs sm:text-[calc(13px*var(--text-scale,1))]">
               © 2026 {pageName}
             </div>
           </div>
@@ -707,14 +708,14 @@ export function Footer({ pageName = "NEXORA INTELLIGENCE", audience = "Law Enfor
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => onSelectLink && onSelectLink('Feedback')}
-              className="flex items-center gap-1.5 bg-[#bcdcfa]/60 hover:bg-[#a9d3fc] border border-[#9ecaf7] text-[#1e2a52] px-3.5 py-1.5 rounded-lg text-xs sm:text-[13px] font-medium transition-all shadow-2xs cursor-pointer active:scale-95"
+              className="flex items-center gap-1.5 bg-[#bcdcfa]/60 hover:bg-[#a9d3fc] border border-[#9ecaf7] text-[#1e2a52] px-3.5 py-1.5 rounded-lg text-xs sm:text-[calc(13px*var(--text-scale,1))] font-medium transition-all shadow-2xs cursor-pointer active:scale-95"
             >
               <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1e2a52]" />
               <span>Feedback</span>
             </button>
             <button
               onClick={() => onSelectLink && onSelectLink('Help')}
-              className="flex items-center gap-1.5 bg-[#bcdcfa]/60 hover:bg-[#a9d3fc] border border-[#9ecaf7] text-[#1e2a52] px-3.5 py-1.5 rounded-lg text-xs sm:text-[13px] font-medium transition-all shadow-2xs cursor-pointer active:scale-95"
+              className="flex items-center gap-1.5 bg-[#bcdcfa]/60 hover:bg-[#a9d3fc] border border-[#9ecaf7] text-[#1e2a52] px-3.5 py-1.5 rounded-lg text-xs sm:text-[calc(13px*var(--text-scale,1))] font-medium transition-all shadow-2xs cursor-pointer active:scale-95"
             >
               <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1e2a52]" />
               <span>Help</span>

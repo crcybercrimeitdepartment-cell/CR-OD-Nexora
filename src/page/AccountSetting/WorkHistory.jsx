@@ -133,7 +133,7 @@ export default function AS11Page({ onBack }) {
   )`;
 
   return (
-    <div className="flex-1 flex flex-col w-full min-h-screen bg-transparent pb-10">
+    <div className="flex-1 flex flex-col w-full  bg-transparent pb-10">
       {/* Header and Back Button */}
       <div className="relative w-full pt-11 sm:pt-4 mb-4">
         {onBack && (
@@ -169,7 +169,7 @@ export default function AS11Page({ onBack }) {
           {/* 1 Work Overview */}
           <div className="w-full flex flex-col gap-3">
           <div className="flex items-center gap-3 mb-1">
-            <h2 className="text-[17px] font-bold text-[#1e2a52]">Work Overview</h2>
+            <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52]">Work Overview</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
             {/* Total */}
@@ -177,63 +177,63 @@ export default function AS11Page({ onBack }) {
               <div className="w-[38px] h-[38px] rounded-xl bg-indigo-50 text-indigo-500 flex items-center justify-center mb-3.5">
                 <Briefcase className="w-5 h-5" strokeWidth={1.75} />
               </div>
-              <span className="text-[11px] font-bold text-slate-500 mb-1.5 block">Total Work Items</span>
-              <span className="text-[26px] font-black text-[#1e2a52] leading-none">{totalCount}</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 mb-1.5 block">Total Work Items</span>
+              <span className="text-[calc(26px*var(--text-scale,1))] font-black text-[#1e2a52] leading-none">{totalCount}</span>
             </div>
             {/* Active */}
             <div className="bg-white border border-gray-100 rounded-[14px] p-4 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center">
               <div className="w-[38px] h-[38px] rounded-xl bg-emerald-50 text-emerald-500 flex items-center justify-center mb-3.5">
                 <Zap className="w-5 h-5" strokeWidth={1.75} />
               </div>
-              <span className="text-[11px] font-bold text-slate-500 mb-1.5 block">Active Work</span>
-              <span className="text-[26px] font-black text-[#1e2a52] leading-none">{inProgressCount}</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 mb-1.5 block">Active Work</span>
+              <span className="text-[calc(26px*var(--text-scale,1))] font-black text-[#1e2a52] leading-none">{inProgressCount}</span>
             </div>
             {/* Completed */}
             <div className="bg-white border border-gray-100 rounded-[14px] p-4 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center">
               <div className="w-[38px] h-[38px] rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center mb-3.5">
                 <CheckSquare className="w-5 h-5" strokeWidth={1.75} />
               </div>
-              <span className="text-[11px] font-bold text-slate-500 mb-1.5 block">Completed</span>
-              <span className="text-[26px] font-black text-[#1e2a52] leading-none">{completedCount}</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 mb-1.5 block">Completed</span>
+              <span className="text-[calc(26px*var(--text-scale,1))] font-black text-[#1e2a52] leading-none">{completedCount}</span>
             </div>
             {/* Pending */}
             <div className="bg-white border border-gray-100 rounded-[14px] p-4 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center">
               <div className="w-[38px] h-[38px] rounded-xl bg-orange-50 text-orange-400 flex items-center justify-center mb-3.5">
                 <Clock className="w-5 h-5" strokeWidth={1.75} />
               </div>
-              <span className="text-[11px] font-bold text-slate-500 mb-1.5 block">Pending Work</span>
-              <span className="text-[26px] font-black text-[#1e2a52] leading-none">{pendingCount}</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 mb-1.5 block">Pending Work</span>
+              <span className="text-[calc(26px*var(--text-scale,1))] font-black text-[#1e2a52] leading-none">{pendingCount}</span>
             </div>
             {/* On Hold */}
             <div className="bg-white border border-gray-100 rounded-[14px] p-4 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center">
               <div className="w-[38px] h-[38px] rounded-xl bg-purple-50 text-purple-500 flex items-center justify-center mb-3.5">
                 <Clock4 className="w-5 h-5" strokeWidth={1.75} />
               </div>
-              <span className="text-[11px] font-bold text-slate-500 mb-1.5 block">On Hold</span>
-              <span className="text-[26px] font-black text-[#1e2a52] leading-none">{onHoldCount}</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 mb-1.5 block">On Hold</span>
+              <span className="text-[calc(26px*var(--text-scale,1))] font-black text-[#1e2a52] leading-none">{onHoldCount}</span>
             </div>
             {/* Overdue */}
             <div className="bg-white border border-gray-100 rounded-[14px] p-4 shadow-[0_2px_8px_rgba(0,0,0,0.02)] flex flex-col items-center justify-center text-center">
               <div className="w-[38px] h-[38px] rounded-xl bg-red-50 text-red-400 flex items-center justify-center mb-3.5">
                 <AlertCircle className="w-5 h-5" strokeWidth={1.75} />
               </div>
-              <span className="text-[11px] font-bold text-slate-500 mb-1.5 block">Overdue Work</span>
-              <span className="text-[26px] font-black text-[#1e2a52] leading-none">{overdueCount}</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-500 mb-1.5 block">Overdue Work</span>
+              <span className="text-[calc(26px*var(--text-scale,1))] font-black text-[#1e2a52] leading-none">{overdueCount}</span>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
             <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center"><FileSearch className="w-5 h-5" /></div>
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-0.5">Last Worked Item</div>
-                <div className="text-[14px] font-black text-[#1e2a52]">{workHistoryData[0]?.title || 'No recent activity'}</div>
-                <div className="text-[10px] font-semibold text-gray-400 flex items-center gap-1 mt-1"><Clock className="w-3 h-3" /> {workHistoryData[0]?.lastActive || ''}</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Last Worked Item</div>
+                <div className="text-[calc(14px*var(--text-scale,1))] font-black text-[#1e2a52]">{workHistoryData[0]?.title || 'No recent activity'}</div>
+                <div className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-400 flex items-center gap-1 mt-1"><Clock className="w-3 h-3" /> {workHistoryData[0]?.lastActive || ''}</div>
               </div>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"><Clock4 className="w-5 h-5" /></div>
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-0.5">Total Active Work Time</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-0.5">Total Active Work Time</div>
                 <div className="text-2xl font-black text-[#1e2a52]">42h 18m</div>
               </div>
             </div>
@@ -244,11 +244,11 @@ export default function AS11Page({ onBack }) {
         <div className="w-full flex flex-col gap-3">
           <div className="flex items-center justify-between mb-1">
             <div className="flex items-center gap-3">
-              <h2 className="text-[17px] font-bold text-[#1e2a52]">Current / Active Work</h2>
+              <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52]">Current / Active Work</h2>
             </div>
             <button
               onClick={() => setShowAllActive(!showAllActive)}
-              className="text-[12px] font-bold text-blue-600 hover:underline">
+              className="text-[calc(12px*var(--text-scale,1))] font-bold text-blue-600 hover:underline">
               {showAllActive ? 'Show Less ←' : 'View All →'}
             </button>
           </div>
@@ -258,15 +258,15 @@ export default function AS11Page({ onBack }) {
                 <div className={`absolute left-0 top-0 bottom-0 w-1 ${work.status === 'In Progress' ? 'bg-[#00A350]' : 'bg-[#FF8C00]'}`}></div>
                 <div className="pl-3 flex justify-between items-start">
                   <div>
-                    <h3 className="text-[16px] font-bold text-[#1e2a52]">{work.title}</h3>
-                    <div className="text-[11px] font-semibold text-gray-500 mt-1">{work.id} - {work.caseId} - {work.module}</div>
+                    <h3 className="text-[calc(16px*var(--text-scale,1))] font-bold text-[#1e2a52]">{work.title}</h3>
+                    <div className="text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 mt-1">{work.id} - {work.caseId} - {work.module}</div>
                   </div>
-                  <span className={`px-2 py-0.5 text-[11px] font-bold rounded-md border ${work.status === 'In Progress' ? 'bg-[#E8F8F0] text-[#00A350] border-[#C5EBD6]' : 'bg-[#FFF4E5] text-[#FF8C00] border-[#FFD9A3]'
+                  <span className={`px-2 py-0.5 text-[calc(11px*var(--text-scale,1))] font-bold rounded-md border ${work.status === 'In Progress' ? 'bg-[#E8F8F0] text-[#00A350] border-[#C5EBD6]' : 'bg-[#FFF4E5] text-[#FF8C00] border-[#FFD9A3]'
                     }`}>
                     {work.status}
                   </span>
                 </div>
-                <div className="pl-3 flex items-center justify-between text-[11px] font-bold text-gray-500 mt-2">
+                <div className="pl-3 flex items-center justify-between text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mt-2">
                   <span>Assigned: <span className="text-gray-800">{work.date}</span></span>
                   <span>Priority: <span className={work.priority === 'High' ? 'text-red-500' : work.priority === 'Medium' ? 'text-orange-500' : 'text-green-500'}>{work.priority}</span></span>
                   <span>Time Spent: <span className="text-gray-800">{work.time}</span></span>
@@ -275,11 +275,11 @@ export default function AS11Page({ onBack }) {
                   <div className="flex-1 h-2 bg-gray-100 rounded-full">
                     <div className={`h-full rounded-full ${work.status === 'In Progress' ? 'bg-[#00A350]' : 'bg-[#FF8C00]'}`} style={{ width: `${work.progress}%` }}></div>
                   </div>
-                  <span className="text-[11px] font-black text-[#1e2a52]">{work.progress}%</span>
+                  <span className="text-[calc(11px*var(--text-scale,1))] font-black text-[#1e2a52]">{work.progress}%</span>
                 </div>
                 <div className="pl-2 flex justify-between items-center pt-2 border-t border-gray-100 mt-1">
-                  <span className="text-[10px] font-semibold text-gray-400">Last Activity: {work.lastActive}</span>
-                  <button onClick={() => setSelectedWork(work)} className={`text-[11px] font-bold ${work.status === 'In Progress' ? 'text-[#00A350]' : 'text-[#FF8C00]'}`}>
+                  <span className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-400">Last Activity: {work.lastActive}</span>
+                  <button onClick={() => setSelectedWork(work)} className={`text-[calc(11px*var(--text-scale,1))] font-bold ${work.status === 'In Progress' ? 'text-[#00A350]' : 'text-[#FF8C00]'}`}>
                     Continue Work
                   </button>
                 </div>
@@ -291,8 +291,15 @@ export default function AS11Page({ onBack }) {
 
         {/* 3 Work History */}
         <div id="work-history-table" className="w-full flex flex-col gap-3 mt-2 scroll-mt-24">
-          <div className="flex items-center gap-3 mb-1">
-            <h2 className="text-[17px] font-bold text-[#1e2a52]">Work History</h2>
+          <div className="flex items-center justify-between mb-1">
+            <div className="flex items-center gap-3">
+              <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-white">Work History</h2>
+            </div>
+            <button
+              onClick={() => document.getElementById('work-history-table')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-[calc(12px*var(--text-scale,1))] font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer active:scale-95 transition-transform">
+              View All →
+            </button>
           </div>
 
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden flex flex-col p-4">
@@ -301,46 +308,45 @@ export default function AS11Page({ onBack }) {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200">
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Work ID</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Work Title</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Work Type</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Case ID</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Investigation ID</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Module</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Assigned Date</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Priority</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Status</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Time Spent</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700">Last Activity</th>
-                    <th className="px-3 py-2 text-[10px] font-bold text-gray-700 text-center">Action</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Work ID</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Work Title</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Work Type</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Case ID</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Investigation ID</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Module</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Assigned Date</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Priority</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Status</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Time Spent</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700">Last Activity</th>
+                    <th className="px-3 py-2 text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700 text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {filteredData.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-gray-50/50">
-                      <td className="px-3 py-2 text-[11px] font-bold text-gray-700">{row.id}</td>
-                      <td className="px-3 py-2 text-[11px] font-semibold text-gray-700">{row.title}</td>
-                      <td className="px-3 py-2 text-[11px] font-semibold text-gray-700">{row.type}</td>
-                      <td className="px-3 py-2 text-[11px] font-bold text-gray-700">{row.caseId}</td>
-                      <td className="px-3 py-2 text-[11px] font-bold text-gray-700">{row.invId}</td>
-                      <td className="px-3 py-2 text-[11px] font-semibold text-gray-700">{row.module}</td>
-                      <td className="px-3 py-2 text-[11px] font-bold text-gray-700">{row.date}</td>
-                      <td className="px-3 py-2 text-[11px] font-bold">
+                    <tr key={idx} className="hover:bg-blue-50/60 dark:hover:bg-blue-900/10 transition-colors cursor-pointer group active:scale-[0.99]" onClick={() => setSelectedWork(row)}>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-700 dark:text-gray-300">{row.id}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-700 dark:text-gray-300">{row.title}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-700 dark:text-gray-300">{row.type}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-700 dark:text-gray-300">{row.caseId}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-700 dark:text-gray-300">{row.invId}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-700 dark:text-gray-300">{row.module}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-700 dark:text-gray-300">{row.date}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-bold">
                         <span className={row.priority === 'High' ? 'text-red-500' : row.priority === 'Medium' ? 'text-orange-500' : 'text-green-500'}>{row.priority}</span>
                       </td>
                       <td className="px-3 py-2">
-                        <span className={`px-2 py-0.5 text-[9px] font-bold rounded border inline-flex ${row.status === 'In Progress' ? 'bg-green-50 text-green-700 border-green-200' :
+                        <span className={`px-2 py-0.5 text-[calc(9px*var(--text-scale,1))] font-bold rounded border inline-flex ${row.status === 'In Progress' ? 'bg-green-50 text-green-700 border-green-200' :
                           row.status === 'Pending Review' ? 'bg-orange-50 text-orange-600 border-orange-200' :
                             row.status === 'Completed' ? 'bg-blue-50 text-blue-600 border-blue-200' :
                               'bg-purple-50 text-purple-600 border-purple-200'
                           }`}>{row.status}</span>
                       </td>
-                      <td className="px-3 py-2 text-[11px] font-bold text-gray-700">{row.time}</td>
-                      <td className="px-3 py-2 text-[11px] font-semibold text-gray-500">{row.lastActive}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-700 dark:text-gray-300">{row.time}</td>
+                      <td className="px-3 py-2 text-[calc(11px*var(--text-scale,1))] font-semibold text-gray-500 dark:text-gray-400">{row.lastActive}</td>
                       <td className="px-3 py-2">
                         <div className="flex items-center justify-center gap-1">
-                          <button onClick={() => setSelectedWork(row)} className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-bold text-gray-700 hover:bg-gray-50">View Details</button>
-                          <button className="p-1 text-gray-400 hover:text-gray-600"><MoreVertical className="w-3 h-3" /></button>
+                          <button onClick={(e) => { e.stopPropagation(); setSelectedWork(row); }} className="px-2 py-1 bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded text-[calc(10px*var(--text-scale,1))] font-bold text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-all active:scale-95 shadow-sm">View Details</button>
                         </div>
                       </td>
                     </tr>
@@ -356,7 +362,7 @@ export default function AS11Page({ onBack }) {
           <div className="w-full flex flex-col gap-3 mt-2">
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-3">
-                <h2 className="text-[17px] font-bold text-[#1e2a52]">Work Details</h2>
+                <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52]">Work Details</h2>
               </div>
               <button onClick={() => setSelectedWork(null)} className="text-gray-400 hover:text-gray-600"><X className="w-4 h-4" /></button>
             </div>
@@ -365,8 +371,8 @@ export default function AS11Page({ onBack }) {
               {/* Header */}
               <div className="p-4 border-b border-gray-100">
                 <div className="flex justify-between items-start mb-1">
-                  <h3 className="text-[18px] font-black text-[#1e2a52] pr-2">{selectedWork.title}</h3>
-                  <span className={`px-2 py-0.5 text-[11px] font-bold rounded-md border ${selectedWork.status === 'In Progress' ? 'bg-green-50 text-green-700 border-green-200' :
+                  <h3 className="text-[calc(18px*var(--text-scale,1))] font-black text-[#1e2a52] pr-2">{selectedWork.title}</h3>
+                  <span className={`px-2 py-0.5 text-[calc(11px*var(--text-scale,1))] font-bold rounded-md border ${selectedWork.status === 'In Progress' ? 'bg-green-50 text-green-700 border-green-200' :
                       selectedWork.status === 'Pending Review' ? 'bg-orange-50 text-orange-600 border-orange-200' :
                         selectedWork.status === 'Completed' ? 'bg-blue-50 text-blue-600 border-blue-200' :
                           'bg-gray-50 text-gray-700 border-gray-200'
@@ -374,13 +380,13 @@ export default function AS11Page({ onBack }) {
                     {selectedWork.status}
                   </span>
                 </div>
-                <div className="text-[12px] font-semibold text-gray-500 mt-1">{selectedWork.id}</div>
+                <div className="text-[calc(12px*var(--text-scale,1))] font-semibold text-gray-500 mt-1">{selectedWork.id}</div>
 
                 {/* Tabs */}
                 <div className="flex p-1 bg-white rounded-lg border border-gray-100 mt-5">
-                  <button className="flex-1 py-2 text-[12px] font-bold bg-white text-blue-600 shadow-sm rounded-md border border-gray-200">Overview</button>
-                  <button className="flex-1 py-2 text-[12px] font-bold text-gray-500 hover:text-gray-700">Activity</button>
-                  <button className="flex-1 py-2 text-[12px] font-bold text-gray-500 hover:text-gray-700">Attachments</button>
+                  <button className="flex-1 py-2 text-[calc(12px*var(--text-scale,1))] font-bold bg-white text-blue-600 shadow-sm rounded-md border border-gray-200">Overview</button>
+                  <button className="flex-1 py-2 text-[calc(12px*var(--text-scale,1))] font-bold text-gray-500 hover:text-gray-700">Activity</button>
+                  <button className="flex-1 py-2 text-[calc(12px*var(--text-scale,1))] font-bold text-gray-500 hover:text-gray-700">Attachments</button>
                 </div>
               </div>
 
@@ -389,12 +395,12 @@ export default function AS11Page({ onBack }) {
 
                 {/* Work Information */}
                 <div>
-                  <h4 className="text-[11px] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Work Information</h4>
-                  <div className="flex justify-between text-[11px] mb-2">
+                  <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Work Information</h4>
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Work Type</span>
                     <span className="font-bold text-gray-800">{selectedWork.type}</span>
                   </div>
-                  <div className="flex justify-between text-[11px]">
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))]">
                     <span className="text-gray-500 font-semibold w-24">Description</span>
                     <span className="font-semibold text-gray-700 text-right">Detailed task execution for {selectedWork.title} related to {selectedWork.module}.</span>
                   </div>
@@ -402,16 +408,16 @@ export default function AS11Page({ onBack }) {
 
                 {/* Investigation Context */}
                 <div>
-                  <h4 className="text-[11px] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Investigation Context</h4>
-                  <div className="flex justify-between text-[11px] mb-2">
+                  <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Investigation Context</h4>
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Case ID</span>
                     <span className="font-bold text-[#1e2a52]">{selectedWork.caseId}</span>
                   </div>
-                  <div className="flex justify-between text-[11px] mb-2">
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Investigation ID</span>
                     <span className="font-bold text-[#1e2a52]">{selectedWork.invId}</span>
                   </div>
-                  <div className="flex justify-between text-[11px] mb-2">
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Module</span>
                     <span className="font-bold text-gray-800">{selectedWork.module}</span>
                   </div>
@@ -419,26 +425,26 @@ export default function AS11Page({ onBack }) {
 
                 {/* Assignment */}
                 <div>
-                  <h4 className="text-[11px] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Assignment</h4>
-                  <div className="flex justify-between items-center text-[11px] mb-2">
+                  <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Assignment</h4>
+                  <div className="flex justify-between items-center text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Assigned By</span>
                     <div className="flex items-center gap-1.5">
-                      <div className="w-4 h-4 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-[8px] font-bold">RK</div>
+                      <div className="w-4 h-4 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-[calc(8px*var(--text-scale,1))] font-bold">RK</div>
                       <span className="font-bold text-gray-800">System Admin</span>
                     </div>
                   </div>
-                  <div className="flex justify-between items-center text-[11px] mb-2">
+                  <div className="flex justify-between items-center text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Assigned To</span>
                     <div className="flex items-center gap-1.5">
-                      <div className="w-4 h-4 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[8px] font-bold">U</div>
+                      <div className="w-4 h-4 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-[calc(8px*var(--text-scale,1))] font-bold">U</div>
                       <span className="font-bold text-gray-800">You</span>
                     </div>
                   </div>
-                  <div className="flex justify-between text-[11px] mb-2">
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Assigned Date</span>
                     <span className="font-bold text-gray-800">{selectedWork.date}</span>
                   </div>
-                  <div className="flex justify-between text-[11px]">
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))]">
                     <span className="text-gray-500 font-semibold">Priority</span>
                     <span className={`font-bold ${selectedWork.priority === 'High' ? 'text-red-500' : selectedWork.priority === 'Medium' ? 'text-orange-500' : 'text-green-500'}`}>{selectedWork.priority}</span>
                   </div>
@@ -446,13 +452,13 @@ export default function AS11Page({ onBack }) {
 
                 {/* Progress */}
                 <div>
-                  <h4 className="text-[11px] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Progress</h4>
-                  <div className="flex justify-between items-center text-[11px] mb-3">
+                  <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Progress</h4>
+                  <div className="flex justify-between items-center text-[calc(11px*var(--text-scale,1))] mb-3">
                     <span className="text-gray-500 font-semibold">Current Status</span>
                     <span className="font-bold text-green-600">{selectedWork.status}</span>
                   </div>
                   <div className="mb-3">
-                    <div className="flex justify-between text-[10px] font-bold mb-1">
+                    <div className="flex justify-between text-[calc(10px*var(--text-scale,1))] font-bold mb-1">
                       <span className="text-gray-500">Progress</span>
                       <span className="text-gray-900">{selectedWork.progress || 0}%</span>
                     </div>
@@ -460,7 +466,7 @@ export default function AS11Page({ onBack }) {
                       <div className="bg-green-500 h-1.5 rounded-full" style={{ width: `${selectedWork.progress || 0}%` }}></div>
                     </div>
                   </div>
-                  <div className="flex justify-between text-[11px]">
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))]">
                     <span className="text-gray-500 font-semibold">Last Activity</span>
                     <span className="font-bold text-gray-800">{selectedWork.lastActive}</span>
                   </div>
@@ -468,8 +474,8 @@ export default function AS11Page({ onBack }) {
 
                 {/* Time */}
                 <div>
-                  <h4 className="text-[11px] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Time</h4>
-                  <div className="flex justify-between text-[11px] mb-2">
+                  <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Time</h4>
+                  <div className="flex justify-between text-[calc(11px*var(--text-scale,1))] mb-2">
                     <span className="text-gray-500 font-semibold">Total Work Time</span>
                     <span className="font-bold text-blue-600">{selectedWork.time}</span>
                   </div>
@@ -477,13 +483,13 @@ export default function AS11Page({ onBack }) {
 
                 {/* Actions Footer */}
                 <div className="mt-2">
-                  <h4 className="text-[11px] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Actions</h4>
+                  <h4 className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-900 mb-2.5 uppercase tracking-wider">Actions</h4>
                   <div className="flex gap-2 mb-2">
-                    <button className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-bold rounded-lg shadow-sm transition-colors">
+                    <button className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white text-[calc(11px*var(--text-scale,1))] font-bold rounded-lg shadow-sm transition-colors">
                       Open Work
                     </button>
                     {selectedWork.status !== 'Completed' && (
-                      <button className="flex-1 py-2 bg-white border border-green-600 text-green-600 hover:bg-green-50 text-[11px] font-bold rounded-lg shadow-sm transition-colors">
+                      <button className="flex-1 py-2 bg-white border border-green-600 text-green-600 hover:bg-green-50 text-[calc(11px*var(--text-scale,1))] font-bold rounded-lg shadow-sm transition-colors">
                         Continue Work
                       </button>
                     )}
@@ -502,16 +508,16 @@ export default function AS11Page({ onBack }) {
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-3">
-                <h2 className="text-[17px] font-bold text-[#1e2a52]">Module-wise Work</h2>
+                <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52]">Module-wise Work</h2>
               </div>
               <button
                 onClick={() => document.getElementById('work-history-table')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-[12px] font-bold text-blue-600 hover:underline cursor-pointer">
+                className="text-[calc(12px*var(--text-scale,1))] font-bold text-blue-600 hover:underline cursor-pointer">
                 View All →
               </button>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 h-[280px] overflow-hidden">
-              <table className="w-full text-left text-[10px]">
+              <table className="w-full text-left text-[calc(10px*var(--text-scale,1))]">
                 <thead>
                   <tr className="border-b border-gray-100">
                     <th className="pb-2 font-bold text-gray-500">Module Name</th>
@@ -538,8 +544,14 @@ export default function AS11Page({ onBack }) {
 
           {/* 6 Work Activity */}
           <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-3 mb-1">
-              <h2 className="text-[17px] font-bold text-[#1e2a52]">Work Activity <span className="text-gray-400 font-normal">(CDR Evidence Analysis)</span></h2>
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-3">
+                <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-white">Work Activity <span className="text-gray-500 dark:text-gray-400 font-normal drop-shadow-md">(CDR Evidence Analysis)</span></h2>
+              </div>
+              <button
+                className="text-[calc(12px*var(--text-scale,1))] font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer active:scale-95 transition-transform">
+                View All →
+              </button>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 h-[280px] overflow-hidden flex flex-col gap-3 relative">
               {[
@@ -550,14 +562,14 @@ export default function AS11Page({ onBack }) {
                 { time: '10:15 AM', title: 'Work Started', desc: 'CDR Investigation', dot: 'bg-blue-500', status: 'Started' }
               ].map((act, i) => (
                 <div key={i} className="flex gap-3 relative z-10">
-                  <div className="text-[10px] font-bold text-gray-500 w-12 text-right pt-0.5">{act.time}</div>
+                  <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500 w-12 text-right pt-0.5">{act.time}</div>
                   <div className={`w-2.5 h-2.5 rounded-full mt-1 shrink-0 ${act.dot} border-2 border-white ring-2 ring-gray-50`}></div>
                   <div className="flex-1 flex justify-between items-start">
                     <div>
-                      <div className="text-[12px] font-bold text-gray-800 leading-tight">{act.title}</div>
-                      <div className="text-[10px] font-semibold text-gray-400 mt-0.5">{act.desc}</div>
+                      <div className="text-[calc(12px*var(--text-scale,1))] font-bold text-gray-800 leading-tight">{act.title}</div>
+                      <div className="text-[calc(10px*var(--text-scale,1))] font-semibold text-gray-400 mt-0.5">{act.desc}</div>
                     </div>
-                    <div className={`text-[10px] font-bold ${act.status === 'Started' ? 'text-blue-500' : 'text-green-500'}`}>{act.status}</div>
+                    <div className={`text-[calc(10px*var(--text-scale,1))] font-bold ${act.status === 'Started' ? 'text-blue-500' : 'text-green-500'}`}>{act.status}</div>
                   </div>
                 </div>
               ))}
@@ -567,28 +579,28 @@ export default function AS11Page({ onBack }) {
           {/* 7 Work Status */}
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-3 mb-1">
-              <h2 className="text-[17px] font-bold text-[#1e2a52]">Work Status</h2>
+              <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52]">Work Status</h2>
             </div>
             <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 h-[280px] overflow-hidden flex flex-col justify-center items-center relative">
-              <h3 className="absolute top-4 left-4 text-[11px] font-bold text-gray-500">Work Status Distribution</h3>
+              <h3 className="absolute top-4 left-4 text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500">Work Status Distribution</h3>
               <div className="flex items-center gap-6 mt-4 w-full justify-center">
                 {/* Donut Chart Mockup */}
                 <div className="w-32 h-32 rounded-full relative flex items-center justify-center" style={{ background: conicGradient }}>
                   <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center">
                     <div className="text-center">
                       <div className="text-2xl font-black text-[#1e2a52] leading-none">{totalCount}</div>
-                      <div className="text-[10px] font-bold text-gray-500">Total</div>
+                      <div className="text-[calc(10px*var(--text-scale,1))] font-bold text-gray-500">Total</div>
                     </div>
                   </div>
                 </div>
                 {/* Legend */}
                 <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-2 text-[11px]"><div className="w-2 h-2 rounded-full bg-[#00A350]"></div><span className="font-bold text-gray-700 w-24">In Progress</span><span className="text-gray-500">{inProgressCount} ({inProgressPct}%)</span></div>
-                  <div className="flex items-center gap-2 text-[11px]"><div className="w-2 h-2 rounded-full bg-[#FF8C00]"></div><span className="font-bold text-gray-700 w-24">Pending Review</span><span className="text-gray-500">{pendingCount} ({pendingPct}%)</span></div>
-                  <div className="flex items-center gap-2 text-[11px]"><div className="w-2 h-2 rounded-full bg-blue-500"></div><span className="font-bold text-gray-700 w-24">Completed</span><span className="text-gray-500">{completedCount} ({completedPct}%)</span></div>
-                  <div className="flex items-center gap-2 text-[11px]"><div className="w-2 h-2 rounded-full bg-purple-500"></div><span className="font-bold text-gray-700 w-24">On Hold</span><span className="text-gray-500">{onHoldCount} ({onHoldPct}%)</span></div>
-                  <div className="flex items-center gap-2 text-[11px]"><div className="w-2 h-2 rounded-full bg-red-500"></div><span className="font-bold text-gray-700 w-24">Overdue</span><span className="text-gray-500">{overdueCount} ({overduePct}%)</span></div>
-                  <div className="flex items-center gap-2 text-[11px]"><div className="w-2 h-2 rounded-full bg-gray-400"></div><span className="font-bold text-gray-700 w-24">Cancelled</span><span className="text-gray-500">{cancelledCount} ({cancelledPct}%)</span></div>
+                  <div className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))]"><div className="w-2 h-2 rounded-full bg-[#00A350]"></div><span className="font-bold text-gray-700 w-24">In Progress</span><span className="text-gray-500">{inProgressCount} ({inProgressPct}%)</span></div>
+                  <div className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))]"><div className="w-2 h-2 rounded-full bg-[#FF8C00]"></div><span className="font-bold text-gray-700 w-24">Pending Review</span><span className="text-gray-500">{pendingCount} ({pendingPct}%)</span></div>
+                  <div className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))]"><div className="w-2 h-2 rounded-full bg-blue-500"></div><span className="font-bold text-gray-700 w-24">Completed</span><span className="text-gray-500">{completedCount} ({completedPct}%)</span></div>
+                  <div className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))]"><div className="w-2 h-2 rounded-full bg-purple-500"></div><span className="font-bold text-gray-700 w-24">On Hold</span><span className="text-gray-500">{onHoldCount} ({onHoldPct}%)</span></div>
+                  <div className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))]"><div className="w-2 h-2 rounded-full bg-red-500"></div><span className="font-bold text-gray-700 w-24">Overdue</span><span className="text-gray-500">{overdueCount} ({overduePct}%)</span></div>
+                  <div className="flex items-center gap-2 text-[calc(11px*var(--text-scale,1))]"><div className="w-2 h-2 rounded-full bg-gray-400"></div><span className="font-bold text-gray-700 w-24">Cancelled</span><span className="text-gray-500">{cancelledCount} ({cancelledPct}%)</span></div>
                 </div>
               </div>
             </div>
@@ -599,34 +611,34 @@ export default function AS11Page({ onBack }) {
         {/* Row 4: Retention */}
         <div className="flex flex-col gap-3 mt-2">
           <div className="flex items-center gap-3 mb-1">
-            <h2 className="text-[17px] font-bold text-[#1e2a52]">Work Retention</h2>
+            <h2 className="text-[calc(17px*var(--text-scale,1))] font-bold text-[#1e2a52]">Work Retention</h2>
           </div>
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-5 flex flex-col xl:flex-row xl:items-center justify-between gap-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-8 xl:gap-16 w-full">
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-1">Retention Period</div>
-                <div className="text-[13px] font-black text-[#1e2a52]">7 Years</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-1">Retention Period</div>
+                <div className="text-[calc(13px*var(--text-scale,1))] font-black text-[#1e2a52]">7 Years</div>
               </div>
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-1">Records Available From</div>
-                <div className="text-[13px] font-black text-[#1e2a52]">10 Aug 2019</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-1">Records Available From</div>
+                <div className="text-[calc(13px*var(--text-scale,1))] font-black text-[#1e2a52]">10 Aug 2019</div>
               </div>
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-1">Records Available Until</div>
-                <div className="text-[13px] font-black text-[#1e2a52]">Present</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-1">Records Available Until</div>
+                <div className="text-[calc(13px*var(--text-scale,1))] font-black text-[#1e2a52]">Present</div>
               </div>
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-1">Automatic Retention Cleanup</div>
-                <div className="text-[13px] font-bold text-green-600">Enabled</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-1">Automatic Retention Cleanup</div>
+                <div className="text-[calc(13px*var(--text-scale,1))] font-bold text-green-600">Enabled</div>
               </div>
               <div>
-                <div className="text-[11px] font-bold text-gray-500 mb-1">Retention Controlled By</div>
-                <div className="text-[13px] font-black text-[#1e2a52]">Organization Policy</div>
+                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-gray-500 mb-1">Retention Controlled By</div>
+                <div className="text-[calc(13px*var(--text-scale,1))] font-black text-[#1e2a52]">Organization Policy</div>
               </div>
             </div>
             <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-lg border border-blue-100">
               <HardDrive className="w-5 h-5 text-blue-500" />
-              <span className="text-[11px] font-bold text-blue-800">Historical work records cannot be deleted or modified.<br />All work history is retained as per organization policy.</span>
+              <span className="text-[calc(11px*var(--text-scale,1))] font-bold text-blue-800">Historical work records cannot be deleted or modified.<br />All work history is retained as per organization policy.</span>
             </div>
           </div>
         </div>

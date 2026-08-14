@@ -9,7 +9,7 @@ import { MOCK_ORDERS } from './OrderHistoryData';
 
 const StatusBadge = ({ status, large = false }) => {
     const s = status.toLowerCase();
-    const sizeClasses = large ? "px-2.5 py-1 text-[11px]" : "px-2 py-0.5 text-[10px]";
+    const sizeClasses = large ? "px-2.5 py-1 text-[calc(11px*var(--text-scale,1))]" : "px-2 py-0.5 text-[calc(10px*var(--text-scale,1))]";
     if (['paid', 'completed', 'active'].includes(s)) return <span className={`${sizeClasses} bg-green-50/80 text-green-600 font-bold rounded`}> {status} </span>;
     if (['expired', 'cancelled'].includes(s)) return <span className={`${sizeClasses} bg-red-50/80 text-red-500 font-bold rounded`}> {status} </span>;
     if (['refunded'].includes(s)) return <span className={`${sizeClasses} bg-blue-50 text-blue-600 font-bold rounded`}> {status} </span>;
@@ -19,12 +19,12 @@ const StatusBadge = ({ status, large = false }) => {
 const CardHeader = ({ icon: Icon, title, iconColor = "text-blue-600" }) => (
     <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100 dark:border-slate-800">
         <Icon className={`w-4 h-4 ${iconColor}`} />
-        <h2 className="text-[11px] font-black text-slate-800 dark:text-slate-200 uppercase tracking-widest">{title}</h2>
+        <h2 className="text-[calc(11px*var(--text-scale,1))] font-black text-slate-800 dark:text-slate-200 uppercase tracking-widest">{title}</h2>
     </div>
 );
 
 const KeyValue = ({ label, value, valueNode, boldValue = false }) => (
-    <div className="flex justify-between items-center py-2 text-[11px]">
+    <div className="flex justify-between items-center py-2 text-[calc(11px*var(--text-scale,1))]">
         <span className="font-bold text-slate-700 dark:text-slate-300">{label}</span>
         {valueNode ? valueNode : <span className={`text-right text-slate-600 dark:text-slate-400 ${boldValue ? "font-black text-slate-800 dark:text-slate-200" : "font-semibold"}`}>{value}</span>}
     </div>
@@ -83,7 +83,7 @@ export default function OrderHistory({ onBack }) {
         setOrders(MOCK_ORDERS);
     };
     return (
-        <div className="min-h-screen bg-transparent text-slate-800 dark:text-slate-200 pt-20 sm:pt-24 pb-12 px-3 sm:px-6 relative font-sans">
+        <div className=" bg-transparent text-slate-800 dark:text-slate-200 pt-20 sm:pt-24 pb-12 px-3 sm:px-6 relative font-sans">
 
 
             {/* Header */}
@@ -116,23 +116,23 @@ export default function OrderHistory({ onBack }) {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Search Order ID</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Search Order ID</label>
                             <input name="searchOrderId" value={filters.searchOrderId} onChange={handleFilterChange} type="text" placeholder="Enter Order ID" className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500" />
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Search Plan Name</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Search Plan Name</label>
                             <input name="searchPlanName" value={filters.searchPlanName} onChange={handleFilterChange} type="text" placeholder="Enter Plan Name" className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500" />
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Search Transaction ID</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Search Transaction ID</label>
                             <input name="searchTransactionId" value={filters.searchTransactionId} onChange={handleFilterChange} type="text" placeholder="Enter Transaction ID" className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500" />
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Date Range</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Date Range</label>
                             <input name="dateRange" value={filters.dateRange} onChange={handleFilterChange} type="date" className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 text-slate-500" />
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Plan</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Plan</label>
                             <select name="plan" value={filters.plan} onChange={handleFilterChange} className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 appearance-none bg-white text-slate-500">
                                 <option value="">Select Plan</option>
                                 <option value="Standard Enterprise">Standard Enterprise</option>
@@ -141,7 +141,7 @@ export default function OrderHistory({ onBack }) {
                             </select>
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Order Status</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Order Status</label>
                             <select name="orderStatus" value={filters.orderStatus} onChange={handleFilterChange} className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 appearance-none bg-white text-slate-500">
                                 <option value="">Select Status</option>
                                 <option value="Completed">Completed</option>
@@ -149,7 +149,7 @@ export default function OrderHistory({ onBack }) {
                             </select>
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Payment Status</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Payment Status</label>
                             <select name="paymentStatus" value={filters.paymentStatus} onChange={handleFilterChange} className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 appearance-none bg-white text-slate-500">
                                 <option value="">Select Status</option>
                                 <option value="Paid">Paid</option>
@@ -157,7 +157,7 @@ export default function OrderHistory({ onBack }) {
                             </select>
                         </div>
                         <div className="flex-1">
-                            <label className="text-[10px] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Subscription Status</label>
+                            <label className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 mb-1.5 block">Subscription Status</label>
                             <select name="subscriptionStatus" value={filters.subscriptionStatus} onChange={handleFilterChange} className="w-full px-3 py-2 text-xs border border-slate-200 rounded-md focus:outline-none focus:border-blue-500 appearance-none bg-white text-slate-500">
                                 <option value="">Select Status</option>
                                 <option value="Active">Active</option>
@@ -166,10 +166,10 @@ export default function OrderHistory({ onBack }) {
                         </div>
 
                         <div className="flex items-end justify-end gap-3 sm:col-span-2 lg:col-span-4 xl:col-span-2 mt-2 xl:mt-0">
-                            <button onClick={resetFilters} className="flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-6 py-2 border border-slate-300 rounded-md text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 transition-colors h-[36px]">
+                            <button onClick={resetFilters} className="flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-6 py-2 border border-slate-300 rounded-md text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 transition-colors h-[36px]">
                                 <RefreshCcw className="w-3.5 h-3.5" /> Reset
                             </button>
-                            <button onClick={applyFilters} className="flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-6 py-2 bg-blue-500 text-white rounded-md text-[11px] font-bold hover:bg-blue-600 transition-colors h-[36px]">
+                            <button onClick={applyFilters} className="flex-1 xl:flex-none flex items-center justify-center gap-1.5 px-6 py-2 bg-blue-500 text-white rounded-md text-[calc(11px*var(--text-scale,1))] font-bold hover:bg-blue-600 transition-colors h-[36px]">
                                 <Search className="w-3.5 h-3.5" /> Apply Filters
                             </button>
                         </div>
@@ -184,7 +184,7 @@ export default function OrderHistory({ onBack }) {
                         <div className="flex-1 overflow-auto mt-2 max-h-[400px]">
                             <table className="w-full text-left whitespace-nowrap">
                                 <thead className="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm shadow-sm z-10">
-                                    <tr className="border-b border-slate-200 dark:border-slate-700/60 text-[10px] text-slate-800 dark:text-slate-200 font-bold uppercase tracking-wider">
+                                    <tr className="border-b border-slate-200 dark:border-slate-700/60 text-[calc(10px*var(--text-scale,1))] text-slate-800 dark:text-slate-200 font-bold uppercase tracking-wider">
                                         <th className="py-2.5 px-2">Order ID</th>
                                         <th className="py-2.5 px-2">Date & Time</th>
                                         <th className="py-2.5 px-2">Plan Details</th>
@@ -198,17 +198,17 @@ export default function OrderHistory({ onBack }) {
                                 <tbody>
                                     {orders.map((ord, idx) => (
                                         <tr key={idx} className="border-b border-slate-100 dark:border-slate-800/60 last:border-0 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                                            <td className="py-2.5 px-2 text-[11px] font-bold text-slate-700 dark:text-slate-300">{ord.id}</td>
+                                            <td className="py-2.5 px-2 text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300">{ord.id}</td>
                                             <td className="py-2.5 px-2">
-                                                <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">{ord.date}</div>
-                                                <div className="text-[9px] text-slate-500 mt-0.5">{ord.time}</div>
+                                                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300">{ord.date}</div>
+                                                <div className="text-[calc(9px*var(--text-scale,1))] text-slate-500 mt-0.5">{ord.time}</div>
                                             </td>
                                             <td className="py-2.5 px-2">
-                                                <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">{ord.name}</div>
-                                                <div className="text-[9px] text-slate-500 mt-0.5">{ord.type}</div>
+                                                <div className="text-[calc(11px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300">{ord.name}</div>
+                                                <div className="text-[calc(9px*var(--text-scale,1))] text-slate-500 mt-0.5">{ord.type}</div>
                                             </td>
-                                            <td className="py-2.5 px-2 text-[11px] font-medium text-slate-600 dark:text-slate-400">{ord.duration}</td>
-                                            <td className="py-2.5 px-2 text-[11px] font-bold text-slate-800 dark:text-slate-200">₹ {ord.amount}</td>
+                                            <td className="py-2.5 px-2 text-[calc(11px*var(--text-scale,1))] font-medium text-slate-600 dark:text-slate-400">{ord.duration}</td>
+                                            <td className="py-2.5 px-2 text-[calc(11px*var(--text-scale,1))] font-bold text-slate-800 dark:text-slate-200">₹ {ord.amount}</td>
                                             <td className="py-2.5 px-2"><StatusBadge status={ord.pStatus} /></td>
                                             <td className="py-2.5 px-2"><StatusBadge status={ord.oStatus} /></td>
                                             <td className="py-2.5 px-2 text-center">
@@ -224,7 +224,7 @@ export default function OrderHistory({ onBack }) {
                     </div>
 
                     {/* Card 2: Order Details */}
-                    <div className="xl:col-span-1 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col">
+                    <div id="order-details" className="xl:col-span-1 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col scroll-mt-24">
                         <CardHeader large icon={FileText} title="Order Details" />
                         <div className="flex-1 flex flex-col gap-3 mt-2">
                             <KeyValue large label="Order ID" value="ORD-2024-1001" boldValue />
@@ -237,7 +237,7 @@ export default function OrderHistory({ onBack }) {
                     </div>
 
                     {/* Card 3: Plan Details */}
-                    <div className="xl:col-span-1 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col">
+                    <div id="plan-details" className="xl:col-span-1 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-6 flex flex-col scroll-mt-24">
                         <CardHeader large icon={Package} title="Plan Details" />
                         <div className="flex-1 flex flex-col gap-3 mt-2">
                             <KeyValue large label="Plan Name" value="Standard Enterprise" boldValue />
@@ -255,7 +255,7 @@ export default function OrderHistory({ onBack }) {
                 {/* ROW 3: 5 Cards Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
                     {/* Card 4: Purchased Features */}
-                    <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col">
+                    <div id="purchased-features" className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col scroll-mt-24">
                         <CardHeader icon={ShieldCheck} title="Purchased Features" iconColor="text-green-500" />
                         <div className="flex-1 flex flex-col gap-3 mt-2">
                             <KeyValue large label="Included Features" valueNode={<span className="px-2 py-0.5 bg-blue-50 text-blue-600 font-bold rounded">45</span>} />
@@ -283,7 +283,7 @@ export default function OrderHistory({ onBack }) {
                     </div>
 
                     {/* Card 6: Payment Information */}
-                    <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col">
+                    <div id="payment-info" className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col scroll-mt-24">
                         <CardHeader icon={CreditCard} title="Payment Information" iconColor="text-blue-600" />
                         <div className="flex-1 flex flex-col gap-3 mt-2">
                             <KeyValue large label="Payment Method" value="Credit Card" />
@@ -296,7 +296,7 @@ export default function OrderHistory({ onBack }) {
                     </div>
 
                     {/* Card 7: Subscription Status */}
-                    <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col">
+                    <div id="subscription-status" className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col scroll-mt-24">
                         <CardHeader icon={Activity} title="Subscription Status" iconColor="text-purple-500" />
                         <div className="mt-2 space-y-3">
                             <div className="flex items-center gap-2.5 p-2 bg-green-50 rounded border border-green-100">
@@ -333,27 +333,27 @@ export default function OrderHistory({ onBack }) {
                             <div className="relative pl-5">
                                 <div className="absolute -left-[6px] top-1 w-2.5 h-2.5 bg-blue-500 rounded-full border-2 border-white"></div>
                                 <p className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">Order Created</p>
-                                <p className="text-[10px] text-slate-500 mt-0.5">10 Aug, 2024 10:30 AM</p>
+                                <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5">10 Aug, 2024 10:30 AM</p>
                             </div>
                             <div className="relative pl-5">
                                 <div className="absolute -left-[6px] top-1 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white"></div>
                                 <p className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">Payment Completed</p>
-                                <p className="text-[10px] text-slate-500 mt-0.5">10 Aug, 2024 10:31 AM</p>
+                                <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5">10 Aug, 2024 10:31 AM</p>
                             </div>
                             <div className="relative pl-5">
                                 <div className="absolute -left-[6px] top-1 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white"></div>
                                 <p className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">Order Approved</p>
-                                <p className="text-[10px] text-slate-500 mt-0.5">10 Aug, 2024 10:32 AM</p>
+                                <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5">10 Aug, 2024 10:32 AM</p>
                             </div>
                             <div className="relative pl-5">
                                 <div className="absolute -left-[6px] top-1 w-2.5 h-2.5 bg-orange-400 rounded-full border-2 border-white"></div>
                                 <p className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">Subscription Activated</p>
-                                <p className="text-[10px] text-slate-500 mt-0.5">10 Aug, 2024 10:35 AM</p>
+                                <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5">10 Aug, 2024 10:35 AM</p>
                             </div>
                             <div className="relative pl-5 opacity-50">
                                 <div className="absolute -left-[6px] top-1 w-2.5 h-2.5 bg-slate-300 rounded-full border-2 border-white"></div>
                                 <p className="text-xs font-bold text-slate-800 dark:text-slate-200 leading-tight">Subscription Renewed</p>
-                                <p className="text-[10px] text-slate-500 mt-0.5">Pending (09 Aug, 2025)</p>
+                                <p className="text-[calc(10px*var(--text-scale,1))] text-slate-500 mt-0.5">Pending (09 Aug, 2025)</p>
                             </div>
                         </div>
                     </div>
@@ -368,50 +368,50 @@ export default function OrderHistory({ onBack }) {
                             <div className="flex flex-col p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md bg-white">
                                 <FileText className="w-5 h-5 text-blue-500 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <div className="flex-1">
-                                    <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 leading-tight">Invoice</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 leading-tight">Invoice</p>
                                 </div>
                                 <div className="flex justify-between items-center mt-2 pt-2 border-t border-slate-50">
-                                    <span className="text-[8px] text-slate-400">PDF</span>
+                                    <span className="text-[calc(8px*var(--text-scale,1))] text-slate-400">PDF</span>
                                     <Download className="w-3 h-3 text-slate-400 group-hover:text-blue-600 transition-colors" />
                                 </div>
                             </div>
                             <div className="flex flex-col p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-red-200 group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md bg-white">
                                 <FileText className="w-5 h-5 text-red-500 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <div className="flex-1">
-                                    <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 leading-tight">Payment Receipt</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 leading-tight">Payment Receipt</p>
                                 </div>
                                 <div className="flex justify-between items-center mt-2 pt-2 border-t border-slate-50">
-                                    <span className="text-[8px] text-slate-400">PDF</span>
+                                    <span className="text-[calc(8px*var(--text-scale,1))] text-slate-400">PDF</span>
                                     <Download className="w-3 h-3 text-slate-400 group-hover:text-red-500 transition-colors" />
                                 </div>
                             </div>
                             <div className="flex flex-col p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-green-200 group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md bg-white">
                                 <FileText className="w-5 h-5 text-green-500 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <div className="flex-1">
-                                    <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 leading-tight">Order Confirmation</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 leading-tight">Order Confirmation</p>
                                 </div>
                                 <div className="flex justify-between items-center mt-2 pt-2 border-t border-slate-50">
-                                    <span className="text-[8px] text-slate-400">PDF</span>
+                                    <span className="text-[calc(8px*var(--text-scale,1))] text-slate-400">PDF</span>
                                     <Download className="w-3 h-3 text-slate-400 group-hover:text-green-500 transition-colors" />
                                 </div>
                             </div>
                             <div className="flex flex-col p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-purple-200 group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md bg-white">
                                 <FileText className="w-5 h-5 text-purple-500 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <div className="flex-1">
-                                    <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 leading-tight">Subscription Document</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 leading-tight">Subscription Document</p>
                                 </div>
                                 <div className="flex justify-between items-center mt-2 pt-2 border-t border-slate-50">
-                                    <span className="text-[8px] text-slate-400">PDF</span>
+                                    <span className="text-[calc(8px*var(--text-scale,1))] text-slate-400">PDF</span>
                                     <Download className="w-3 h-3 text-slate-400 group-hover:text-purple-500 transition-colors" />
                                 </div>
                             </div>
                             <div className="flex flex-col p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-orange-200 group cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md bg-white">
                                 <FileText className="w-5 h-5 text-orange-500 mb-2 transition-transform duration-300 group-hover:scale-110" />
                                 <div className="flex-1">
-                                    <p className="text-[9px] font-bold text-slate-700 dark:text-slate-300 leading-tight">License / Auth.</p>
+                                    <p className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-700 dark:text-slate-300 leading-tight">License / Auth.</p>
                                 </div>
                                 <div className="flex justify-between items-center mt-2 pt-2 border-t border-slate-50">
-                                    <span className="text-[8px] text-slate-400">PDF</span>
+                                    <span className="text-[calc(8px*var(--text-scale,1))] text-slate-400">PDF</span>
                                     <Download className="w-3 h-3 text-slate-400 group-hover:text-orange-500 transition-colors" />
                                 </div>
                             </div>
@@ -422,33 +422,33 @@ export default function OrderHistory({ onBack }) {
                     <div className="bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex flex-col">
                         <CardHeader icon={Zap} title="Order Actions" />
                         <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 mt-1 h-full">
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white">
+                            <button onClick={() => document.getElementById('order-details')?.scrollIntoView({ behavior: 'smooth' })} className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white dark:bg-slate-900/50">
                                 <Eye className="w-4 h-4 text-slate-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-slate-600 group-hover:text-blue-700 leading-tight transition-colors">View Order</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">View Order</span>
                             </button>
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white">
+                            <button onClick={() => document.getElementById('plan-details')?.scrollIntoView({ behavior: 'smooth' })} className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white dark:bg-slate-900/50">
                                 <LayoutList className="w-4 h-4 text-slate-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-slate-600 group-hover:text-blue-700 leading-tight transition-colors">View Plan</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">View Plan</span>
                             </button>
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white">
+                            <button onClick={() => document.getElementById('purchased-features')?.scrollIntoView({ behavior: 'smooth' })} className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white dark:bg-slate-900/50">
                                 <ShieldCheck className="w-4 h-4 text-slate-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-slate-600 group-hover:text-blue-700 leading-tight transition-colors">View Features</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">View Features</span>
                             </button>
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white">
+                            <button onClick={() => document.getElementById('payment-info')?.scrollIntoView({ behavior: 'smooth' })} className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white dark:bg-slate-900/50">
                                 <CreditCard className="w-4 h-4 text-slate-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-slate-600 group-hover:text-blue-700 leading-tight transition-colors">View Payment</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">View Payment</span>
                             </button>
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white">
+                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white dark:bg-slate-900/50">
                                 <Download className="w-4 h-4 text-blue-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-blue-600 group-hover:text-blue-700 leading-tight transition-colors">Download Invoice</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-blue-600 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">Download Invoice</span>
                             </button>
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white">
+                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center bg-white dark:bg-slate-900/50">
                                 <Download className="w-4 h-4 text-blue-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-blue-600 group-hover:text-blue-700 leading-tight transition-colors">Download Receipt</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-blue-600 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">Download Receipt</span>
                             </button>
-                            <button className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center col-span-3 sm:col-span-2 bg-white">
+                            <button onClick={() => document.getElementById('subscription-status')?.scrollIntoView({ behavior: 'smooth' })} className="flex flex-col items-center justify-center p-2.5 border border-slate-100 dark:border-slate-800 rounded-lg hover:border-blue-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md hover:-translate-y-1 group transition-all duration-300 text-center col-span-3 sm:col-span-2 bg-white dark:bg-slate-900/50">
                                 <Activity className="w-4 h-4 text-slate-500 group-hover:text-blue-600 mb-1.5 transition-transform duration-300 group-hover:scale-125" />
-                                <span className="text-[9px] font-bold text-slate-600 group-hover:text-blue-700 leading-tight transition-colors">View Subscription</span>
+                                <span className="text-[calc(9px*var(--text-scale,1))] font-bold text-slate-600 dark:text-slate-400 group-hover:text-blue-700 dark:group-hover:text-blue-400 leading-tight transition-colors">View Subscription</span>
                             </button>
                         </div>
                     </div>
@@ -457,43 +457,43 @@ export default function OrderHistory({ onBack }) {
                 {/* ROW 5: Summary & Upgrade */}
                 <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 mt-2">
                     {/* Order Summary */}
-                    <div className="xl:col-span-3 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-4 flex items-center flex-wrap gap-4 lg:gap-8">
-                        <div className="mr-4">
-                            <h2 className="text-[11px] font-bold text-slate-800 dark:text-slate-200 tracking-wide mb-0.5">Order Summary</h2>
+                    <div className="xl:col-span-3 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl rounded-[28px] border border-white/80 dark:border-slate-700/60 shadow-lg p-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 items-center">
+                        <div className="col-span-2 md:col-span-3 xl:col-span-1">
+                            <h2 className="text-[calc(13px*var(--text-scale,1))] font-black text-slate-800 dark:text-slate-200 tracking-wide">Order Summary</h2>
                         </div>
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 dark:border-slate-800"><FileText className="w-4 h-4 text-slate-500" /></div>
-                            <div>
-                                <p className="text-[9px] font-bold text-slate-500">Total Orders</p>
-                                <p className="text-sm font-black text-slate-800 dark:text-slate-200">25</p>
+                            <div className="w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 shrink-0"><FileText className="w-4 h-4 text-slate-500" /></div>
+                            <div className="flex flex-col">
+                                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wide">Total Orders</span>
+                                <span className="text-sm font-black text-slate-800 dark:text-slate-200 leading-tight">25</span>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3 border-l border-slate-100 dark:border-slate-800 pl-4 lg:pl-8">
-                            <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 dark:border-slate-800"><IndianRupee className="w-4 h-4 text-slate-500" /></div>
-                            <div>
-                                <p className="text-[9px] font-bold text-slate-500">Total Spent</p>
-                                <p className="text-sm font-black text-slate-800 dark:text-slate-200">₹ 1,24,975</p>
+                        <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 shrink-0"><IndianRupee className="w-4 h-4 text-slate-500" /></div>
+                            <div className="flex flex-col">
+                                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wide">Total Spent</span>
+                                <span className="text-sm font-black text-slate-800 dark:text-slate-200 leading-tight">₹ 1,24,975</span>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3 border-l border-slate-100 dark:border-slate-800 pl-4 lg:pl-8">
-                            <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center border border-green-100"><ShieldCheck className="w-4 h-4 text-green-500" /></div>
-                            <div>
-                                <p className="text-[9px] font-bold text-slate-500">Active Subscriptions</p>
-                                <p className="text-sm font-black text-slate-800 dark:text-slate-200">3</p>
+                        <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center border border-green-200 dark:border-green-800 shrink-0"><ShieldCheck className="w-4 h-4 text-green-600 dark:text-green-400" /></div>
+                            <div className="flex flex-col">
+                                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wide">Active</span>
+                                <span className="text-sm font-black text-slate-800 dark:text-slate-200 leading-tight">3</span>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3 border-l border-slate-100 dark:border-slate-800 pl-4 lg:pl-8">
-                            <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center border border-orange-100"><Calendar className="w-4 h-4 text-orange-500" /></div>
-                            <div>
-                                <p className="text-[9px] font-bold text-slate-500">Expired Subscriptions</p>
-                                <p className="text-sm font-black text-slate-800 dark:text-slate-200">1</p>
+                        <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center border border-orange-200 dark:border-orange-800 shrink-0"><Calendar className="w-4 h-4 text-orange-600 dark:text-orange-400" /></div>
+                            <div className="flex flex-col">
+                                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wide">Expired</span>
+                                <span className="text-sm font-black text-slate-800 dark:text-slate-200 leading-tight">1</span>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3 border-l border-slate-100 dark:border-slate-800 pl-4 lg:pl-8">
-                            <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center border border-red-100"><XCircle className="w-4 h-4 text-red-500" /></div>
-                            <div>
-                                <p className="text-[9px] font-bold text-slate-500">Cancelled Orders</p>
-                                <p className="text-sm font-black text-slate-800 dark:text-slate-200">2</p>
+                        <div className="flex items-center gap-3">
+                            <div className="w-9 h-9 rounded-full bg-red-50 dark:bg-red-900/30 flex items-center justify-center border border-red-200 dark:border-red-800 shrink-0"><XCircle className="w-4 h-4 text-red-600 dark:text-red-400" /></div>
+                            <div className="flex flex-col">
+                                <span className="text-[calc(10px*var(--text-scale,1))] font-bold text-slate-500 uppercase tracking-wide">Cancelled</span>
+                                <span className="text-sm font-black text-slate-800 dark:text-slate-200 leading-tight">2</span>
                             </div>
                         </div>
                     </div>
@@ -502,9 +502,9 @@ export default function OrderHistory({ onBack }) {
                     <div className="xl:col-span-1 bg-blue-50 rounded-xl border border-blue-100 p-4 flex items-center justify-between">
                         <div>
                             <h3 className="text-xs font-black text-blue-900 mb-1">Need More Storage or Features?</h3>
-                            <p className="text-[9px] font-medium text-blue-700">Upgrade your plan for more power and advanced tools.</p>
+                            <p className="text-[calc(9px*var(--text-scale,1))] font-medium text-blue-700">Upgrade your plan for more power and advanced tools.</p>
                         </div>
-                        <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-[10px] font-bold shadow-md shadow-blue-200 hover:bg-blue-700 transition-colors shrink-0 ml-2">
+                        <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-[calc(10px*var(--text-scale,1))] font-bold shadow-md shadow-blue-200 hover:bg-blue-700 transition-colors shrink-0 ml-2">
                             Upgrade Plan <ArrowUpRight className="w-3.5 h-3.5" />
                         </button>
                     </div>

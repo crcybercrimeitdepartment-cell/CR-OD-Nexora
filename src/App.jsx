@@ -7,8 +7,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useStickyNavAnimation } from './components/useStickyNavAnimation';
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
+
 import laptopWatermark from './assets/WaterMark.png';
 import phoneWatermark from './assets/PhoneWaterMark.png';
 import { useActivityTracker } from './context/ActivityTrackerContext';
@@ -19,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 /*  Layout Components                                                          */
 /* -------------------------------------------------------------------------- */
 import ToolCard, { Header as GlobalHeader, Footer as GlobalFooter } from './components/nexora';
+import NexoraAgent from './components/Agent/NexoraAgent';
 
 /* -------------------------------------------------------------------------- */
 /*  Home Dashboard Data                                                        */
@@ -221,13 +221,23 @@ export default function App() {
 
           if (!isEnabled) {
             root.style.fontSize = '16px';
+            root.style.setProperty('--text-scale', '1');
             root.style.letterSpacing = 'normal';
             root.style.filter = 'none';
           } else {
-            if (settings.textSize === 'Small') root.style.fontSize = '14px';
-            else if (settings.textSize === 'Large') root.style.fontSize = '18px';
-            else if (settings.textSize === 'Extra Large') root.style.fontSize = '20px';
-            else root.style.fontSize = '16px'; // Medium
+            if (settings.textSize === 'Small') {
+              root.style.fontSize = '14px';
+              root.style.setProperty('--text-scale', '0.875');
+            } else if (settings.textSize === 'Large') {
+              root.style.fontSize = '18px';
+              root.style.setProperty('--text-scale', '1.125');
+            } else if (settings.textSize === 'Extra Large') {
+              root.style.fontSize = '20px';
+              root.style.setProperty('--text-scale', '1.25');
+            } else {
+              root.style.fontSize = '16px'; // Medium
+              root.style.setProperty('--text-scale', '1');
+            }
 
             if (settings.letterSpacing === 'Wide') root.style.letterSpacing = '0.05em';
             else if (settings.letterSpacing === 'Extra Wide') root.style.letterSpacing = '0.1em';
@@ -377,43 +387,9 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Initialize Lenis for smooth scrolling
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
-    lenisRef.current = lenis;
-
-    lenis.on('scroll', ScrollTrigger.update);
-
-    const updateLenis = (time) => {
-      lenis.raf(time * 1000);
-    };
-
-    gsap.ticker.add(updateLenis);
-    gsap.ticker.lagSmoothing(0);
-
-    const resizeObserver = new ResizeObserver(() => {
-      lenis.resize();
-    });
-    resizeObserver.observe(document.body);
-    resizeObserver.observe(document.documentElement);
-
-    return () => {
-      resizeObserver.disconnect();
-      lenisRef.current = null;
-      lenis.destroy();
-      gsap.ticker.remove(updateLenis);
-    };
-  }, []);
   const mainRef = React.useRef(null);
   const scrollPositions = React.useRef({});
   const isNavigatingBack = React.useRef(false);
-  const lenisRef = React.useRef(null);
 
   const query = searchQuery.trim().toLowerCase();
 
@@ -447,7 +423,7 @@ export default function App() {
 
   const handleToolClick = (tool) => {
     // Save current scroll position before navigating
-    scrollPositions.current[selectedPage || 'home'] = lenisRef.current?.scroll || window.scrollY || document.documentElement.scrollTop;
+    scrollPositions.current[selectedPage || 'home'] = document.getElementById('main-scroll-container')?.scrollTop || 0;
     isNavigatingBack.current = false;
     
     setSearchQuery(''); // clear search on navigation
@@ -466,7 +442,7 @@ export default function App() {
   };
 
   const handleHeaderIconClick = (id) => {
-    scrollPositions.current[selectedPage || 'home'] = lenisRef.current?.scroll || window.scrollY || document.documentElement.scrollTop;
+    scrollPositions.current[selectedPage || 'home'] = document.getElementById('main-scroll-container')?.scrollTop || 0;
     isNavigatingBack.current = false;
     setSearchQuery('');
     
@@ -594,11 +570,8 @@ export default function App() {
     const handleForceScroll = (e) => {
       const targetScroll = e.detail || 0;
       const setScroll = () => {
-        if (lenisRef.current) {
-          lenisRef.current.scrollTo(targetScroll, { immediate: true });
-        } else {
-          window.scrollTo({ top: targetScroll, left: 0, behavior: 'instant' });
-        }
+        const container = document.getElementById('main-scroll-container');
+        if (container) container.scrollTo({ top: targetScroll, left: 0, behavior: 'instant' });
       };
       setScroll();
       setTimeout(setScroll, 20);
@@ -613,11 +586,8 @@ export default function App() {
     const targetScroll = isNavigatingBack.current ? (scrollPositions.current[selectedPage || 'home'] || 0) : 0;
     
     const setScroll = () => {
-      if (lenisRef.current) {
-        lenisRef.current.scrollTo(targetScroll, { immediate: true });
-      } else {
-        window.scrollTo({ top: targetScroll, left: 0, behavior: 'instant' });
-      }
+      const container = document.getElementById('main-scroll-container');
+      if (container) container.scrollTo({ top: targetScroll, left: 0, behavior: 'instant' });
     };
 
     setScroll();
@@ -634,11 +604,8 @@ export default function App() {
 
   useEffect(() => {
     if (searchQuery) {
-      if (lenisRef.current) {
-        lenisRef.current.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      }
+      const container = document.getElementById('main-scroll-container');
+      if (container) container.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [searchQuery]);
 
@@ -669,7 +636,7 @@ export default function App() {
       className="min-h-screen flex flex-col font-sans selection:bg-slate-900 selection:text-white bg-[#f0f6ff] w-full max-w-full"
     >
       {/* Ashok Stambh Global Watermark */}
-      <div id="watermark-bg" className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none select-none">
+      <div id="watermark-bg" className="fixed top-0 left-0 w-full h-[100vh] z-0 pointer-events-none select-none">
         <div className="w-full h-full overflow-hidden">
           {/* Desktop Watermark */}
           <img
@@ -681,7 +648,7 @@ export default function App() {
           <img
             src={phoneWatermark}
             alt="Global Background Mobile"
-            className="block md:hidden w-full h-full object-cover opacity-20 filter drop-shadow-sm"
+            className="block md:hidden w-full h-full object-contain object-bottom opacity-20 filter drop-shadow-sm"
           />
         </div>
       </div>
@@ -738,7 +705,7 @@ export default function App() {
                               <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center ${tool.bgColor || 'bg-slate-100'} ${tool.iconColor || 'text-slate-600'} transition-transform group-hover:scale-110 shadow-sm border border-slate-200/50`}>
                                 {isElement ? tool.icon : typeof IconComp === 'function' ? <IconComp className="w-4 h-4 sm:w-5 sm:h-5" /> : null}
                               </div>
-                              <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
+                              <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
                             </div>
                           </div>
                         </div>
@@ -758,7 +725,7 @@ export default function App() {
                               <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center ${tool.bgColor || 'bg-slate-100'} ${tool.iconColor || 'text-slate-600'} transition-transform group-hover:scale-110 shadow-sm border border-slate-200/50`}>
                                 {isElement ? tool.icon : typeof IconComp === 'function' ? <IconComp className="w-4 h-4 sm:w-5 sm:h-5" /> : null}
                               </div>
-                              <span className="text-[9px] sm:text-[10px] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
+                              <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
                             </div>
                           </div>
                         </div>
@@ -773,9 +740,9 @@ export default function App() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div id="cards-container" style={{ zoom: `${zoomSettings.zoomLevel}%` }} className={`flex-1 flex flex-col w-full relative overflow-hidden ${selectedPage !== null && !getLockedPageId(selectedPage, activeSubPage) ? 'min-h-[125vh]' : ''}`}>
+      <div id="cards-container" style={{ zoom: `${zoomSettings.zoomLevel}%` }} className={`flex-1 flex flex-col w-full relative overflow-hidden`}>
         <div className="relative z-10 flex-1 flex flex-col w-full">
-          <main className={`flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 flex flex-col min-h-[calc(100vh-160px)] ${selectedPage === null ? 'pt-16 sm:pt-20 lg:pt-24 pb-10 md:pb-16' : 'pt-2 sm:pt-4'}`}>
+          <main className={`flex-1 w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-6 flex flex-col ${selectedPage === null ? 'min-h-[calc(100vh-160px)] pt-16 sm:pt-20 lg:pt-24 pb-10 md:pb-16' : 'pt-2 sm:pt-4'}`}>
             {selectedPage === null ? (
               query && filteredMainTools.length === 0 && filteredSubTools.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20 opacity-0 animate-fade-in flex-1" style={{ animation: 'fadeIn 0.4s ease-out forwards' }}>
@@ -800,9 +767,9 @@ export default function App() {
                             dynamicGridClass = 'grid-cols-1';
                           } else {
                             const cols = globalLayoutSettings.gridColumns || 4;
-                            if (cols === 2) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2';
-                            else if (cols === 3) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
-                            else if (cols === 4) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+                            if (cols === 2) dynamicGridClass = 'grid-cols-2';
+                            else if (cols === 3) dynamicGridClass = 'grid-cols-3';
+                            else if (cols === 4) dynamicGridClass = 'grid-cols-4';
                           }
                           
                           // Reorder based on layout settings
@@ -846,9 +813,9 @@ export default function App() {
                             dynamicGridClass = 'grid-cols-1';
                           } else {
                             const cols = globalLayoutSettings.gridColumns || 4;
-                            if (cols === 2) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2';
-                            else if (cols === 3) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
-                            else if (cols === 4) dynamicGridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+                            if (cols === 2) dynamicGridClass = 'grid-cols-2';
+                            else if (cols === 3) dynamicGridClass = 'grid-cols-3';
+                            else if (cols === 4) dynamicGridClass = 'grid-cols-4';
                           }
                         }
                         return (
@@ -908,6 +875,7 @@ export default function App() {
 
       {/* GLOBAL FOOTER */}
       <GlobalFooter pageName="NEXORA INTELLIGENCE" audience="Law Enforcement & Security Agencies" />
+      <NexoraAgent onNavigateToModule={handleHeaderIconClick} />
     </motion.div>
     </VoiceProvider>
   );

@@ -118,14 +118,14 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
   const renderStatusBadge = (status) => {
     if (status === 'Active') {
       return (
-        <div className="flex items-center gap-1.5 text-[11px] font-bold text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full w-fit uppercase tracking-wide">
+        <div className="flex items-center gap-1.5 text-[calc(11px*var(--text-scale,1))] font-bold text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full w-fit uppercase tracking-wide">
           <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-sm"></span> Active
         </div>
       );
     }
     if (status === 'Idle') {
       return (
-        <div className="flex items-center gap-1.5 text-[11px] font-bold text-orange-600 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full w-fit uppercase tracking-wide">
+        <div className="flex items-center gap-1.5 text-[calc(11px*var(--text-scale,1))] font-bold text-orange-600 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full w-fit uppercase tracking-wide">
           <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-sm"></span> Idle
         </div>
       );
@@ -141,21 +141,21 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
           <div className="flex items-start gap-3">
             <Monitor className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Device Type</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Device Type</p>
               <p className="text-sm text-gray-600 font-medium">{session.deviceType}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Monitor className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Operating System</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Operating System</p>
               <p className="text-sm text-gray-600 font-medium">{session.os}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Globe className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Browser / Application</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Browser / Application</p>
               <p className="text-sm text-gray-600 font-medium">{session.browser}</p>
             </div>
           </div>
@@ -164,21 +164,21 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
           <div className="flex items-start gap-3">
             <Globe className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">IP Address</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">IP Address</p>
               <p className="text-sm text-gray-600 font-medium">{session.ipAddress}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <MapPin className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Location</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Location</p>
               <p className="text-sm text-gray-600 font-medium">{session.location}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Calendar className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Login Date & Time</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Login Date & Time</p>
               <p className="text-sm text-gray-600 font-medium">{session.loginTime}</p>
             </div>
           </div>
@@ -187,14 +187,14 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
           <div className="flex items-start gap-3">
             <Clock className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Last Active</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Last Active</p>
               <p className="text-sm text-gray-600 font-medium">{session.lastActive}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Shield className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-1.5">Session Status</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-1.5">Session Status</p>
               {renderStatusBadge(session.status)}
             </div>
           </div>
@@ -210,46 +210,46 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
       );
     } else {
       return (
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-6 xl:border-l xl:border-gray-100 xl:pl-8">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6 gap-x-6 lg:border-l lg:border-green-200/60 lg:pl-6">
           <div className="flex items-start gap-3">
             {session.deviceType === 'Mobile' ? <Smartphone className="text-blue-600 mt-0.5 shrink-0" size={18} /> : <Monitor className="text-blue-600 mt-0.5 shrink-0" size={18} />}
-            <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Device Type</p>
-              <p className="text-sm text-gray-600 font-medium">{session.deviceType}</p>
+            <div className="min-w-0">
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Device Type</p>
+              <p className="text-sm text-gray-600 font-medium break-words">{session.deviceType}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Globe className="text-blue-600 mt-0.5 shrink-0" size={18} />
-            <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">IP Address</p>
-              <p className="text-sm text-gray-600 font-medium">{session.ipAddress}</p>
+            <div className="min-w-0">
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">IP Address</p>
+              <p className="text-sm text-gray-600 font-medium break-all">{session.ipAddress}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Calendar className="text-blue-600 mt-0.5 shrink-0" size={18} />
-            <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Login Date & Time</p>
-              <p className="text-sm text-gray-600 font-medium">{session.loginTime}</p>
+            <div className="min-w-0">
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Login Date & Time</p>
+              <p className="text-sm text-gray-600 font-medium break-words">{session.loginTime}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <MapPin className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Location</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Location</p>
               <p className="text-sm text-gray-600 font-medium">{session.location}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Clock className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-0.5">Last Active</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-0.5">Last Active</p>
               <p className="text-sm text-gray-600 font-medium">{session.lastActive}</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Shield className="text-blue-600 mt-0.5 shrink-0" size={18} />
             <div>
-              <p className="text-[13px] font-bold text-gray-800 mb-1.5">Session Status</p>
+              <p className="text-[calc(13px*var(--text-scale,1))] font-bold text-gray-800 mb-1.5">Session Status</p>
               {renderStatusBadge(session.status)}
             </div>
           </div>
@@ -259,7 +259,7 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
   };
 
   return (
-    <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4 bg-transparent min-h-screen">
+    <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4 bg-transparent ">
       {onBack && (
         <button onClick={onBack}
           className="absolute top-1.5 left-3 sm:top-5 sm:left-6 md:left-10 z-50 text-[#1e2a52] hover:text-blue-950 font-bold flex items-center gap-1.5 sm:gap-2 bg-white/90 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-md hover:scale-105 cursor-pointer text-xs sm:text-sm">
@@ -310,10 +310,10 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
                       <span className="w-2 h-2 rounded-full bg-green-500 inline-block shadow-sm"></span>
                       Active — This Device
                     </div>
-                    <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-700 font-bold">
-                      <div className="flex items-center gap-1.5">{renderIcon(getBrowserInfo(currentSession.browser).iconName, getBrowserInfo(currentSession.browser).iconUrl, 16, "text-blue-500")} {currentSession.browser}</div>
-                      {currentSession.os && <span className="w-1 h-1 rounded-full bg-gray-400"></span>}
-                      {currentSession.os && <div className="flex items-center gap-1.5">{renderIcon(getOsIcon(currentSession.os), null, 16, "text-blue-600")} {currentSession.os}</div>}
+                    <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-700 font-bold flex-wrap">
+                      <div className="flex items-center gap-1.5">{renderIcon(getBrowserInfo(currentSession.browser).iconName, getBrowserInfo(currentSession.browser).iconUrl, 16, "text-blue-500")} <span className="break-all">{currentSession.browser}</span></div>
+                      {currentSession.os && <span className="w-1 h-1 rounded-full bg-gray-400 shrink-0"></span>}
+                      {currentSession.os && <div className="flex items-center gap-1.5 shrink-0">{renderIcon(getOsIcon(currentSession.os), null, 16, "text-blue-600")} {currentSession.os}</div>}
                     </div>
                   </div>
                 </div>
@@ -332,22 +332,22 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
             <div className="flex flex-col gap-4">
               {otherSessions.map(session => (
                 <div key={session.id} className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 lg:p-7 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="flex flex-col xl:flex-row gap-6 lg:gap-8">
+                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
 
                     {/* Device Info */}
-                    <div className="flex items-center gap-5 xl:w-[260px] shrink-0">
+                    <div className="flex flex-row lg:flex-col items-center lg:items-start gap-5 lg:w-[240px] shrink-0">
                       <div className={`w-[72px] h-[72px] ${getTheme(session.status) === 'orange' ? 'bg-orange-50 border-orange-100' : getTheme(session.status) === 'indigo' ? 'bg-indigo-50 border-indigo-100' : 'bg-blue-50 border-blue-100'} border rounded-full flex items-center justify-center shrink-0 shadow-inner`}>
                         {renderIcon(getDeviceIcon(session.deviceType), null, 32, "text-slate-800")}
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <h3 className="text-base font-bold text-[#1e2a52]">{session.deviceName}</h3>
-                        <div className={`flex items-center gap-2 text-[13px] font-bold ${session.status === 'Active' ? 'text-green-600' : 'text-orange-500'}`}>
+                        <div className={`flex items-center gap-2 text-[calc(13px*var(--text-scale,1))] font-bold ${session.status === 'Active' ? 'text-green-600' : 'text-orange-500'}`}>
                           <span className={`w-2 h-2 rounded-full ${session.status === 'Active' ? 'bg-green-500' : 'bg-orange-500'} inline-block shadow-sm`}></span> {session.status}
                         </div>
-                        <div className="flex items-center gap-2 mt-1 text-xs text-gray-700 font-bold">
-                          <div className="flex items-center gap-1.5">{renderIcon(getBrowserInfo(session.browser).iconName, getBrowserInfo(session.browser).iconUrl, 14, getTheme(session.status) === 'orange' ? 'text-slate-800 fill-slate-800' : 'text-blue-500')} {session.browser}</div>
-                          {session.os && <span className="w-1 h-1 rounded-full bg-gray-400"></span>}
-                          {session.os && <div className="flex items-center gap-1.5">{renderIcon(getOsIcon(session.os), null, 14, "text-blue-600")} {session.os}</div>}
+                        <div className="flex items-center gap-2 mt-1 text-xs text-gray-700 font-bold flex-wrap">
+                          <div className="flex items-center gap-1.5">{renderIcon(getBrowserInfo(session.browser).iconName, getBrowserInfo(session.browser).iconUrl, 14, getTheme(session.status) === 'orange' ? 'text-slate-800 fill-slate-800' : 'text-blue-500')} <span className="break-all">{session.browser}</span></div>
+                          {session.os && <span className="w-1 h-1 rounded-full bg-gray-400 shrink-0"></span>}
+                          {session.os && <div className="flex items-center gap-1.5 shrink-0">{renderIcon(getOsIcon(session.os), null, 14, "text-blue-600")} {session.os}</div>}
                         </div>
                       </div>
                     </div>
@@ -355,16 +355,16 @@ export default function AS6Page({ onBack, sessions = defaultSessions }) {
                     {renderSessionGrid(session)}
 
                     {/* Actions */}
-                    <div className="flex flex-col sm:flex-row xl:flex-col justify-center gap-3 xl:w-[170px] shrink-0 xl:border-l xl:border-gray-100 xl:pl-6 mt-4 xl:mt-0">
+                    <div className="flex flex-col sm:flex-row lg:flex-col justify-center gap-3 lg:w-[170px] shrink-0 lg:border-l lg:border-green-200/60 lg:pl-6 mt-4 lg:mt-0">
                       <button
                         onClick={() => setSelectedSessionDetails(session)}
-                        className="flex-1 xl:flex-none flex items-center justify-center gap-2 border border-blue-200 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg font-bold text-[13px] transition-colors shadow-sm"
+                        className="flex-1 lg:flex-none flex items-center justify-center gap-2 border border-blue-200 text-blue-600 hover:bg-blue-50 px-4 py-2 rounded-lg font-bold text-[calc(13px*var(--text-scale,1))] transition-colors shadow-sm"
                       >
                         <Eye size={16} /> View Details
                       </button>
                       <button
                         onClick={() => handleTerminate(session.id)}
-                        className="flex-1 xl:flex-none flex items-center justify-center gap-2 border border-red-200 text-red-500 hover:bg-red-50 px-4 py-2 rounded-lg font-bold text-[13px] transition-colors shadow-sm"
+                        className="flex-1 lg:flex-none flex items-center justify-center gap-2 border border-red-200 text-red-500 hover:bg-red-50 px-4 py-2 rounded-lg font-bold text-[calc(13px*var(--text-scale,1))] transition-colors shadow-sm"
                       >
                         <Trash2 size={16} /> Terminate Session
                       </button>
