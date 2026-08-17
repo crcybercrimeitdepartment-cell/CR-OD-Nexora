@@ -17,7 +17,9 @@ export function Header() {
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
             <span>Ministry of Corporate Affairs Record Intelligence</span>
           </h1>
-          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">Analytics and data records for Ministry of Corporate Affairs Record Intelligence.</p>
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
+            Analytics and data records for Ministry of Corporate Affairs Record Intelligence. Dive deep into the specific metadata and data patterns of this intelligence sector. Leverage advanced analytical tools, cross-reference multiple data points, and generate comprehensive investigative reports to support ongoing law enforcement operations seamlessly.
+          </p>
         </div>
       </div>
     </header>

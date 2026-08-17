@@ -27,7 +27,7 @@ import SDRDEMO_3Page from "./SDR-SubscriberDetailRecord/SDR-DEMO_3";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Subscriber Detail Record";
-  const displayDesc = description || "Verify SIM registration, CAF details, and subscriber identity.";
+  const displayDesc = description || "Verify SIM registration, CAF details, and subscriber identity. Cross-reference telecom provider data to authenticate user ownership, uncover alternate numbers, and trace activation histories. Ensure robust identity verification through comprehensive analysis of customer application forms, nodal officer logs, and multi-network subscriber records for flawless intelligence.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

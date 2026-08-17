@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "FASTag Intelligence";
-  const displayDesc = description || "Track electronic toll collections, RFID tags & account balances.";
+  const displayDesc = description || "Track electronic toll collections, RFID tags & account balances. Trace vehicle ownership and movement by analyzing linked bank accounts, recharge histories, and tag activation details. Uncover fraudulent tags, monitor real-time cross-country travel, and establish financial links associated with vehicular movement.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

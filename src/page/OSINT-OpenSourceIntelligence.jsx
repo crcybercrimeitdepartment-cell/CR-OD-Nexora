@@ -35,7 +35,7 @@ import ICCIPage from "./OSINT-OpenSourceIntelligence/ICCI-InternationalCallingCo
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Open Source Intelligence";
-  const displayDesc = description || "Gather and analyze publicly available data from diverse sources.";
+  const displayDesc = description || "Gather and analyze publicly available data from diverse sources. Harness the power of the open web to construct comprehensive target profiles, monitor public sentiment, and track digital footprints. Utilize advanced scraping, sentiment analysis, and social graph mapping to uncover actionable insights hidden within public forums, news outlets, and registries.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

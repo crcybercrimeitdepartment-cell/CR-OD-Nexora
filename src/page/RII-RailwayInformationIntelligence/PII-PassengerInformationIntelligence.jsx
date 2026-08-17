@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Passenger Information Intelligence";
-  const displayDesc = description || "Verify passenger identities, ticketing & travel logs.";
+  const displayDesc = description || "Verify passenger identities, ticketing & travel logs. Track individual movements across the national railway network by analyzing booking histories and reservation details. Cross-reference passenger manifests with suspect watchlists to identify travel companions, map out escape routes, and verify alibis with high precision.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

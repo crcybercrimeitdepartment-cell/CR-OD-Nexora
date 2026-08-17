@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Guest History Intelligence";
-  const displayDesc = description || "Analyze guest check-in histories, logs & travel records.";
+  const displayDesc = description || "Analyze guest check-in histories, logs & travel records. Trace the historical footprint of individuals across multiple accommodations to map out travel patterns and frequent destinations. Uncover hidden associations by correlating co-travelers, frequent stay durations, and booking preferences to build a comprehensive movement profile.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

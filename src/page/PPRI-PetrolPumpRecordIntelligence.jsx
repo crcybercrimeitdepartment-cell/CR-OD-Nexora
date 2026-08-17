@@ -20,7 +20,7 @@ import PPRIDPage from './PPRI-PetrolPumpRecordIntelligence/PPRID-PPRIDemo';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Petrol Pump Record Intelligence";
-  const displayDesc = description || "Match fuel transaction logs with CCTV timestamps and routing.";
+  const displayDesc = description || "Match fuel transaction logs with CCTV timestamps and routing. Track vehicular movements by analyzing refueling patterns, payment methods, and station locations. Correlate fuel purchases with toll gate data and cellular records to reconstruct suspect trajectories and verify travel timelines with pinpoint accuracy.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

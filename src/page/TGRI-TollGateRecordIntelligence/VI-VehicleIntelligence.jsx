@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Vehicle Intelligence";
-  const displayDesc = description || "Monitor vehicle classifications, registration details & crossing patterns.";
+  const displayDesc = description || "Monitor vehicle classifications, registration details & crossing patterns. Verify vehicle ownership, track specific license plates, and analyze the movement of various vehicle classes. Cross-reference ANPR captures with national registries to identify stolen vehicles, forged plates, and unauthorized transport operations.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

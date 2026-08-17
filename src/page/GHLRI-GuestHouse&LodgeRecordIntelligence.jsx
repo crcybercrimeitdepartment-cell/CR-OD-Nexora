@@ -19,7 +19,7 @@ import RILPage from "./GHLRI-GuestHouse&LodgeRecordIntelligence/RIL-RestaurantIn
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Guest House & Lodge Record Intelligence";
-  const displayDesc = description || "Review hotel check-in registers and visitor logs.";
+  const displayDesc = description || "Review hotel check-in registers and visitor logs. Monitor real-time hospitality data to track suspect movements, verify alibis, and identify co-travelers across regional accommodations. Utilize advanced cross-referencing to flag suspicious booking patterns, analyze payment methods, and construct detailed timelines of an individual's lodging history.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

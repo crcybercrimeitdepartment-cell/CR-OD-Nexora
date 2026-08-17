@@ -18,7 +18,7 @@ export function Header() {
             <span>Bank Record Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Examine account details, IFSC mapping, and banking trails.
+            Access and interpret detailed banking histories, account linkages, and KYC documents. Trace the origin and destination of funds to uncover hidden financial networks and money laundering operations. Utilize advanced algorithmic profiling to identify suspicious transactions, freeze illicit assets, and monitor continuous financial flows seamlessly.
           </p>
         </div>
       </div>

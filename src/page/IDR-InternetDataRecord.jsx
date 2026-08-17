@@ -18,7 +18,7 @@ export function Header() {
             <span>Internet Data Record</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analyze domain requests, web activity, and digital footprints.
+            Monitor and analyze comprehensive internet data consumption and browsing histories. Trace digital footprints across various platforms to uncover hidden online activities and associations. Correlate web traffic logs with specific timestamps to verify alibis, map out digital behavioral patterns, and identify suspicious internet usage.
           </p>
         </div>
       </div>

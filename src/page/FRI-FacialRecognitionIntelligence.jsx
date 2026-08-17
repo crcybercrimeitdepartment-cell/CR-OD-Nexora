@@ -21,7 +21,7 @@ export function Header() {
             <span>Facial Recognition Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Cross-reference facial logs and visual surveillance matches.
+            Deploy advanced facial recognition algorithms across live feeds and static imagery. Match suspect faces against extensive criminal databases to generate real-time identification and tracking alerts. Enhance surveillance capabilities by mapping out social connections through shared photographs and crowd-sourced video analysis.
           </p>
         </div>
       </div>

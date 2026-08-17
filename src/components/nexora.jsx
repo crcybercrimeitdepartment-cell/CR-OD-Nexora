@@ -262,12 +262,12 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           if (onClick) onClick(e);
           else if (id) onHeaderIconClick(id);
         }}
-        className="flex flex-col items-center justify-start cursor-pointer group w-[50px] md:w-[70px] shrink-0"
+        className="flex flex-col items-center justify-start cursor-pointer group flex-1 min-w-0 max-w-[45px] sm:max-w-[50px] md:max-w-[70px] xl:flex-none xl:w-[70px]"
       >
-        <div className={`w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700 dark:text-blue-400' : 'text-[#1e2a52] dark:text-slate-300 group-hover:scale-110 group-hover:text-blue-700 dark:group-hover:text-blue-400'}`}>
-          <Icon className="w-5 h-5 md:w-5 md:h-5" strokeWidth={1.5} />
+        <div className={`w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700 dark:text-blue-400' : 'text-[#1e2a52] dark:text-slate-300 group-hover:scale-110 group-hover:text-blue-700 dark:group-hover:text-blue-400'}`}>
+          <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-5 md:h-5" strokeWidth={1.5} />
         </div>
-        <span className="text-[calc(6px*var(--text-scale,1))] md:text-[calc(7.5px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-slate-300 text-center leading-tight uppercase tracking-wide mt-1 relative pb-1">
+        <span className="text-[calc(5px*var(--text-scale,1))] sm:text-[calc(6px*var(--text-scale,1))] md:text-[calc(7.5px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-slate-300 text-center leading-[1.1] uppercase tracking-wide mt-1 relative pb-1 w-full h-[24px] md:h-[28px] flex flex-col items-center justify-start">
           {label}
           {/* Interactive Glow Line */}
           <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)] transition-all duration-300 ${isActive ? 'w-[80%]' : 'w-0 group-hover:w-[80%]'}`}></span>
@@ -299,6 +299,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
             <HeaderIcon id="PlatformSettings" Icon={Settings} label="Platform Settings" />
             <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
             <HeaderIcon id="AccountSetting" Icon={User} label="Account Setting" />
+            <HeaderIcon id="AboutUs" Icon={Info} label="About Us" />
           </div>
 
           {/* CENTER: Page Title & Subtitle & Search */}
@@ -346,6 +347,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
 
           {/* RIGHT ICONS (Hidden on very small screens) */}
           <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
+            <HeaderIcon id="DemoCard" Icon={Layers} label="Demo Card" />
             <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
             <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
             <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
@@ -365,10 +367,12 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
         </div>
 
         {/* MOBILE ICONS (Hidden on Desktop XL) - Shown in a single row below the main header */}
-        <div className="flex xl:hidden items-start justify-center gap-1 sm:gap-2 mt-4 w-full px-1">
+        <div className="flex xl:hidden flex-nowrap items-start justify-between w-full px-1 sm:px-2 mt-4 pb-1 overflow-hidden">
           <HeaderIcon id="PlatformSettings" Icon={Settings} label="Platform Settings" />
           <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
           <HeaderIcon id="AccountSetting" Icon={User} label="Account Setting" />
+          <HeaderIcon id="AboutUs" Icon={Info} label="About Us" />
+          <HeaderIcon id="DemoCard" Icon={Layers} label="Demo Card" />
           <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
           <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
           <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />

@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Analytics Intelligence";
-  const displayDesc = description || "Access comprehensive toll data reports, traffic flow & insights.";
+  const displayDesc = description || "Access comprehensive toll data reports, traffic flow & insights. Leverage advanced analytical models to predict travel patterns, identify peak transit times, and analyze regional vehicle density. Transform raw toll data into actionable intelligence for strategic resource deployment and large-scale movement monitoring.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

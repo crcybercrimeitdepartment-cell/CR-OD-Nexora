@@ -18,7 +18,7 @@ export function Header() {
             <span>Location Analysis Record</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Triangulate geolocation and map spatial movement tracking.
+            Perform deep spatial analysis to track suspect movements and historical geographic locations. Utilize GPS coordinates, Wi-Fi triangulation, and cellular data to reconstruct precise travel timelines. Map out frequent destinations, identify hidden safe houses, and establish geographic correlations between multiple subjects of interest.
           </p>
         </div>
       </div>

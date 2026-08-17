@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Station Information Intelligence";
-  const displayDesc = description || "Access station infrastructure, logs & staff directories.";
+  const displayDesc = description || "Access station infrastructure, logs & staff directories. Review comprehensive details about railway station layouts, security camera placements, and operational protocols. Facilitate seamless investigations by connecting with on-ground personnel, analyzing localized incident logs, and mapping out critical transit hubs.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

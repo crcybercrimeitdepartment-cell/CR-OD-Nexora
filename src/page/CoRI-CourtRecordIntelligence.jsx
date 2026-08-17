@@ -43,7 +43,7 @@ import SROLPage from "./CoRI-CourtRecordIntelligence/SROL-SubRegistrarOfficeList
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Court Record Intelligence";
-  const displayDesc = description || "Comprehensive judicial, administrative, and tribunal intelligence.";
+  const displayDesc = description || "Comprehensive judicial, administrative, and tribunal intelligence. Access a centralized repository of case files, ongoing litigations, and historical court verdicts across multiple jurisdictions. Streamline background checks, track legal precedents, and monitor suspect involvement in civil or criminal proceedings with advanced search and cross-referencing tools.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

@@ -23,7 +23,7 @@ import RLCIPage from "./RII-RailwayInformationIntelligence/RLCI-RailwayLevelCros
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Railway Information Intelligence";
-  const displayDesc = description || "Analyze PNR travel logs and train passenger manifests.";
+  const displayDesc = description || "Analyze PNR travel logs and train passenger manifests. Trace suspect movements across the national railway network by correlating booking histories, seat allocations, and travel dates. Uncover hidden travel companions, verify alibis, and track cross-country movement patterns to support comprehensive criminal investigations.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

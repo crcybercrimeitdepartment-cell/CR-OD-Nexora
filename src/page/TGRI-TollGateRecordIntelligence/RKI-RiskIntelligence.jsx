@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Risk Intelligence";
-  const displayDesc = description || "Detect anomalies, blacklisted vehicles & potential security threats.";
+  const displayDesc = description || "Detect anomalies, blacklisted vehicles & potential security threats. Automatically flag vehicles associated with criminal activities, outstanding warrants, or suspicious travel patterns. Enhance regional security by deploying real-time alerts and identifying high-risk targets crossing critical toll infrastructure.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

@@ -19,7 +19,7 @@ import RMPage from "./BSAR-BankStatementAnalysisReport/RM-ReportManagement";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Bank Statement Analysis Report";
-  const displayDesc = description || "Audit credit/debit statements and profile financial transactions.";
+  const displayDesc = description || "Audit credit/debit statements and profile financial transactions. Uncover hidden financial networks, track suspicious fund transfers, and identify money laundering patterns through comprehensive statement parsing. Utilize advanced algorithms to categorize expenditures, visualize transaction flows, and build robust financial profiles for deep investigative insights.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Train Movement Intelligence";
-  const displayDesc = description || "Monitor real-time train tracking, delays & route analytics.";
+  const displayDesc = description || "Monitor real-time train tracking, delays & route analytics. Access live geographic data to pinpoint train locations, predict arrival times, and analyze historical route deviations. Utilize this intelligence to coordinate interceptions, verify travel timelines, and map out suspect trajectories across the railway network.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

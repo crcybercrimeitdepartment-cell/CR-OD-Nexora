@@ -18,7 +18,7 @@ export function Header() {
             <span>Regional Transport Office Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Lookup vehicle registrations, owner history, and RTO logs.
+            Lookup vehicle registrations, owner history, and RTO logs. Verify vehicular ownership, track the history of vehicle transfers, and identify associated driving licenses. Uncover networks of stolen vehicles, trace getaway cars used in crimes, and correlate vehicular data with toll gate records for comprehensive movement analysis.
           </p>
         </div>
       </div>

@@ -18,7 +18,7 @@ export function Header() {
             <span>Internet Traffic Detail Record</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Monitor session logs, bandwidth consumption, and digital activity.
+            Analyze packet-level internet traffic, server connections, and encrypted data flows. Identify communication with malicious IP addresses, track the utilization of dark web gateways, and monitor unauthorized data exfiltration. Enhance cybersecurity investigations by reconstructing digital events and mapping the topology of suspect networks.
           </p>
         </div>
       </div>

@@ -18,7 +18,7 @@ export function Header() {
             <span>PIN Code Record Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Map demographic and geographic intelligence by postal codes.
+            Map demographic and geographic intelligence by postal codes. Analyze regional crime statistics, track parcel deliveries, and understand local population dynamics. Correlate suspect addresses with high-risk PIN codes to optimize resource deployment, identify operational hubs, and enhance targeted investigative sweeps.
           </p>
         </div>
       </div>

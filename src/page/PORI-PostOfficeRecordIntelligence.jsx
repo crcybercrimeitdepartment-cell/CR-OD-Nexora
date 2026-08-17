@@ -18,7 +18,7 @@ export function Header() {
             <span>Post Office Record Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Track postal deliveries, addresses, and regional post office logs.
+            Audit postal transactions, parcel dispatch histories, and registered mail logs. Trace the movement of physical goods, identify recurring communication channels, and uncover illicit smuggling networks utilizing the postal system. Cross-reference recipient addresses with suspect profiles to map out hidden logistical supply chains.
           </p>
         </div>
       </div>

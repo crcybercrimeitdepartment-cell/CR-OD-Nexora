@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Train Information Intelligence";
-  const displayDesc = description || "Analyze train manifests, schedules & carriage details.";
+  const displayDesc = description || "Analyze train manifests, schedules & carriage details. Review complete train compositions, route maps, and historical punctuality records. Cross-reference carriage capacities and seating arrangements to reconstruct on-board incidents, track target movements, and optimize investigative resource deployment.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

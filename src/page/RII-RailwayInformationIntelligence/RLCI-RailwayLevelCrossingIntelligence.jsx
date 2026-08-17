@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Railway Level Crossing Intelligence";
-  const displayDesc = description || "Analyze level crossing status, gate logs & traffic data.";
+  const displayDesc = description || "Analyze level crossing status, gate logs & traffic data. Monitor vehicular and pedestrian movement at critical railway intersections to investigate accidents and track suspect routing. Utilize historical gate closure records to correlate travel timelines, identify potential bottlenecks, and enhance regional security monitoring.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

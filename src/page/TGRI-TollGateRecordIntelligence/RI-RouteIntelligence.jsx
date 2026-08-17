@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Route Intelligence";
-  const displayDesc = description || "Map toll trajectories, entry-exit points & travel durations.";
+  const displayDesc = description || "Map toll trajectories, entry-exit points & travel durations. Visualize complete travel routes on interactive maps to understand suspect navigation strategies. Calculate precise transit times, identify preferred highways, and correlate route choices with other intelligence data to build a comprehensive movement profile.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

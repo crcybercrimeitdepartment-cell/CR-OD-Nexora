@@ -19,7 +19,7 @@ import DEMO2Page from "./PRI-PrisonRecordIntelligence/PrisonDEMO2";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Prison Record Intelligence";
-  const displayDesc = description || "Access and analyze prison and jail history records.";
+  const displayDesc = description || "Access and analyze prison and jail history records. Monitor inmate transfers, visitor logs, and parole statuses to track criminal networks operating within and outside correctional facilities. Cross-reference historical incarceration data to identify repeat offenders, analyze gang affiliations, and anticipate potential security threats.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

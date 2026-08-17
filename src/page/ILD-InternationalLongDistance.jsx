@@ -28,7 +28,7 @@ import ILDD4Page from './ILD-InternationalLongDistance/ILD-DEMO_4';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "International Long Distance";
-  const displayDesc = description || "Analyze international long distance communication records.";
+  const displayDesc = description || "Analyze international long distance communication records. Trace cross-border calls, uncover global communication networks, and identify international associates linked to domestic suspects. Leverage advanced geo-mapping and frequency analysis to detect smuggling rings, foreign intelligence links, and transnational operational patterns.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

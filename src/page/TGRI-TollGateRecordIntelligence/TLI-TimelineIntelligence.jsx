@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Timeline Intelligence";
-  const displayDesc = description || "Correlate toll passings over chronological timelines & historical data.";
+  const displayDesc = description || "Correlate toll passings over chronological timelines & historical data. Reconstruct precise sequences of events by plotting vehicle movements on a detailed temporal axis. Identify critical intersections of different targets in time, verify alibis, and build robust chronological narratives for complex investigations.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

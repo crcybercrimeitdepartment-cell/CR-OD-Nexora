@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Toll Transaction Intelligence";
-  const displayDesc = description || "Analyze toll gate transactions, fee collections & payment histories.";
+  const displayDesc = description || "Analyze toll gate transactions, fee collections & payment histories. Uncover financial footprints by tracking cash, card, and digital payments made at transit points. Correlate transaction times with vehicle captures to verify identities, trace fund sources, and identify payment anomalies linked to illicit travel.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

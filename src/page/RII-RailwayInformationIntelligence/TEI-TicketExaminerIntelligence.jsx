@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Ticket Examiner Intelligence";
-  const displayDesc = description || "Audit TTE reports, penalty logs & on-board verification records.";
+  const displayDesc = description || "Audit TTE reports, penalty logs & on-board verification records. Track unticketed travelers, verify passenger identities mid-journey, and analyze penalty patterns across different routes. Leverage on-ground intelligence to identify suspicious individuals, track movement anomalies, and gather real-time travel data.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

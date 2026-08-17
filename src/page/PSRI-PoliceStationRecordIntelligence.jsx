@@ -35,7 +35,7 @@ import CMRIPage from "./PSRI-PoliceStationRecordIntelligence/CMRI-CriminalRecord
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Police Station Record Intelligence";
-  const displayDesc = description || "Comprehensive police station and investigation records.";
+  const displayDesc = description || "Comprehensive police station and investigation records. Centralize access to FIRs, daily diary entries, and ongoing case files for seamless inter-departmental collaboration. Track historical crime data, monitor suspect arrest records, and analyze localized crime trends to deploy resources effectively and solve cases faster.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

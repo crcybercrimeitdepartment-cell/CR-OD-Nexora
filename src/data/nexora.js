@@ -295,15 +295,15 @@ export const NEXORA_MODULES = [
   },
 
   {
-    id: 'about-us',
-    name: 'About Us',
-    description: 'Learn more about Nexora platform architecture, intelligence capabilities & mission',
-    icon: AboutUsIcon,
+    id: 'demo-card-1',
+    name: 'Demo Card',
+    description: 'This is a placeholder demo card for future intelligence modules.',
+    icon: DemoCardIcon,
     bgColor: 'bg-[#F1F5F9]',
-    iconColor: 'text-[#334155]'
+    iconColor: 'text-[#6B7280]'
   },
   {
-    id: 'demo-card',
+    id: 'demo-card-2',
     name: 'Demo Card',
     description: 'This is a placeholder demo card for future intelligence modules.',
     icon: DemoCardIcon,

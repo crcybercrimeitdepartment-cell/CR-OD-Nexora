@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Movement Intelligence";
-  const displayDesc = description || "Analyze vehicle movement logs, crossing frequencies & timestamps.";
+  const displayDesc = description || "Analyze vehicle movement logs, crossing frequencies & timestamps. Track the exact trajectory of targets by mapping their passage through consecutive toll plazas. Identify travel anomalies, calculate average speeds, and reconstruct precise travel timelines to verify alibis and monitor suspicious activities.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

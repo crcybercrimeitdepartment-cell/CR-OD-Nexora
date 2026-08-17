@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Relationship Intelligence";
-  const displayDesc = description || "Discover convoy patterns, co-travelers & associated vehicles.";
+  const displayDesc = description || "Discover convoy patterns, co-travelers & associated vehicles. Identify separate vehicles traveling in tandem by analyzing chronological proximity at multiple toll gates. Uncover hidden syndicates, track smuggling convoys, and establish connections between seemingly unrelated targets through their coordinated movement.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

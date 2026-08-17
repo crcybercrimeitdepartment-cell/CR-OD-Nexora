@@ -28,7 +28,7 @@ import IPDRD2Page from './IPDR-InternetProtocolDetailRecord/IPDR-DEMO_2';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Internet Protocol Detail Record";
-  const displayDesc = description || "Analyze and visualize internet protocol connection records.";
+  const displayDesc = description || "Analyze and visualize internet protocol connection records. Track digital footprints, trace source IP addresses, and monitor data consumption patterns across specific timeframes. Uncover hidden online activities, map device locations based on network nodes, and identify suspicious internet usage to build comprehensive cyber-intelligence profiles.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

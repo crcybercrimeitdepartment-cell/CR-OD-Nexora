@@ -30,7 +30,7 @@ export function Header() {
             <span>KYC Document Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Verify identity documents, Aadhaar/PAN audits, and KYC records.
+            Verify and authenticate Know Your Customer documents across multiple financial and telecommunication providers. Detect forged identities, trace the usage of fake IDs, and uncover systemic identity fraud rings. Cross-reference submitted documentation with national registries to ensure complete background verification and regulatory compliance.
           </p>
         </div>
       </div>

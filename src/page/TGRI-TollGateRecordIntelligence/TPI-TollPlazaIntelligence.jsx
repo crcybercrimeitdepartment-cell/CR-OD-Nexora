@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Toll Plaza Intelligence";
-  const displayDesc = description || "Review plaza operations, camera logs & infrastructure data.";
+  const displayDesc = description || "Review plaza operations, camera logs & infrastructure data. Access detailed information on toll gate layouts, ANPR camera placements, and lane configurations. Facilitate on-ground investigations by coordinating with plaza management and analyzing localized transit logs for specific operational contexts.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

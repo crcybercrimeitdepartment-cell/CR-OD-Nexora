@@ -15,12 +15,25 @@ export const AGENT_CARDS_DATA = {
     name: 'CDR Intelligence',
     shortName: 'CDR',
     subtitle: 'Call Detail Record',
+    introduction: "CDR Intelligence is an advanced telecommunications intelligence module designed to process, analyze, and extract actionable insights from Call Detail Records provided by telecommunication service providers.",
+    mission: "To streamline call record analysis, automate relationship discovery between calling parties, and provide instant chronological visibility into suspect telecommunications activity.",
+    vision: "To establish an autonomous, multi-carrier telecom intelligence framework that correlates communication metadata with spatial, financial, and cyber datasets in real time.",
+    whyChooseUs: [
+      "High-speed multi-carrier file parsing (Airtel, Jio, Vi, BSNL)",
+      "Automated B-Party relationship mapping & call frequency calculation",
+      "Cell tower sector overlay & spatial activity timelines",
+      "Cross-target communication comparison across multiple CDR datasets",
+      "Audit-ready legal documentation & case export capabilities"
+],
+    keywords: ["CDR","Call Detail Record","Call Logs","Telecom Analysis","B-Party","Cell Tower","Call Duration","IMSI","IMEI","Telecom Intelligence"],
+    other: "Supported Formats: CSV, XLS, XLSX, TXT, PDF. Security & Compliance: End-to-end AES-256 encryption, role-based access control (RBAC), tamper-evident audit logging, and national telecommunications compliance adherence.",
+
 
     overview: 'CDR Intelligence is a comprehensive communication-analysis module designed to process authorized Call Detail Records and convert large volumes of telecommunications metadata into structured and searchable intelligence. It provides a centralized environment for examining calling and receiving identifiers, communication dates and times, call duration, call type, frequency, and other available network information. The module helps analysts move beyond individual call records and understand broader communication patterns, recurring relationships, communication frequency, and chronological activity. CDR Intelligence is designed to support complex investigations where large amounts of communication information need to be reviewed systematically. It can also connect communication information with other authorized intelligence modules to provide broader case context while maintaining source attribution, access controls, and auditability.',
 
     purpose: 'The primary purpose of CDR Intelligence is to simplify the analysis of large volumes of call records and reduce the manual effort required to identify meaningful communication activity. A large CDR dataset may contain thousands or millions of individual records, making manual examination slow and difficult. The module provides structured search, filtering, grouping, comparison, timeline creation, relationship analysis, and reporting capabilities so that authorized users can focus on relevant information. It is designed to help users understand who communicated with whom within the available records, when communication occurred, how frequently communication took place, how communication patterns changed over time, and which relationships may require further review. The module supports analytical decision-making but does not independently establish intent or wrongdoing.',
 
-    work: 'The module imports and normalizes authorized CDR files and organizes available information according to calling identifiers, receiving identifiers, dates, times, duration, call type, network information, and other supported metadata. Users can search records using individual or combined criteria and narrow large datasets to a specific investigation period.\\n\\nCDR Intelligence can identify frequently occurring communication relationships, calculate communication frequency, analyze call-duration patterns, compare activity across different periods, and generate chronological communication timelines. Users can examine individual communication relationships as well as broader communication networks.\\n\\nThe module can also correlate CDR information with other authorized intelligence sources such as subscriber records, tower information, location records, and case information. This allows analysts to build a broader picture while keeping the original source of each record visible.\\n\\nThe platform can provide dashboards showing communication volume, frequent contacts, activity trends, duration statistics, and relationship summaries. Analysts can save relevant searches, associate records with authorized cases, add observations, and generate structured investigation reports. All sensitive operations can be protected through role-based permissions, audit logs, encryption, and controlled data retention.',
+    work: 'The module imports and normalizes authorized CDR files and organizes available information according to calling identifiers, receiving identifiers, dates, times, duration, call type, network information, and other supported metadata. Users can search records using individual or combined criteria and narrow large datasets to a specific investigation period. CDR Intelligence can identify frequently occurring communication relationships, calculate communication frequency, analyze call-duration patterns, compare activity across different periods, and generate chronological communication timelines. Users can examine individual communication relationships as well as broader communication networks. The module can also correlate CDR information with other authorized intelligence sources such as subscriber records, tower information, location records, and case information. This allows analysts to build a broader picture while keeping the original source of each record visible. The platform can provide dashboards showing communication volume, frequent contacts, activity trends, duration statistics, and relationship summaries. Analysts can save relevant searches, associate records with authorized cases, add observations, and generate structured investigation reports. All sensitive operations can be protected through role-based permissions, audit logs, encryption, and controlled data retention.',
 
     benefits: [
       'Reduces manual CDR record analysis.',
@@ -72,12 +85,25 @@ export const AGENT_CARDS_DATA = {
     name: 'SDR Intelligence',
     shortName: 'SDR',
     subtitle: 'Subscriber Detail Record',
+    introduction: "SDR Intelligence is a subscriber record analysis module designed to aggregate, verify, and correlate telecommunications subscriber identity records across multiple telecom operators.",
+    mission: "To simplify subscriber identity verification, eliminate manual record matching across disparate carrier databases, and establish verified subscriber profiles for authorized investigations.",
+    vision: "To create a real-time subscriber verification network integrated with national identity frameworks for instant profile cross-validation.",
+    whyChooseUs: [
+      "Centralized subscriber identity profile aggregation",
+      "Multi-attribute search across phone numbers, names, addresses, and IDs",
+      "Historical SIM activation, deactivation, and service status tracking",
+      "Seamless correlation with CDR, TDR, and case management modules",
+      "Automated subscriber verification status workflows and reporting"
+],
+    keywords: ["SDR","Subscriber Detail Record","Subscriber Profile","CAF","Telecom Identity","SIM Owner","Subscriber Address","Mobile Registration"],
+    other: "Compliance: Adheres to telecommunications regulator data protection guidelines. Capabilities: Batch subscriber lookup, historical address tracking, and secure integration APIs.",
+
 
     overview: 'SDR Intelligence is a subscriber-information analysis module designed to organize authorized telecommunications subscriber records into detailed and searchable profiles. It provides a centralized environment for reviewing subscriber information, connection details, service status, activation and deactivation history, available telecom identifiers, and other permitted subscriber metadata. The module helps users understand subscriber records in a structured way instead of manually searching through multiple telecom files or systems. SDR Intelligence can also connect subscriber information with other authorized telecommunications and case records to provide broader analytical context.',
 
     purpose: 'The primary purpose of SDR Intelligence is to simplify subscriber verification and provide a structured connection between telecom identifiers and available subscriber information. Subscriber records may be distributed across different files, systems, or historical records, making manual verification difficult. SDR Intelligence brings relevant information into a centralized workspace where authorized users can search, compare, review historical information, verify available details, and associate subscriber records with appropriate cases. The module is intended to improve accuracy, reduce repetitive manual work, and provide a consistent process for subscriber-related analysis.',
 
-    work: 'The module imports and normalizes authorized subscriber records and creates searchable subscriber profiles. It organizes available information such as subscriber identifiers, connection details, service status, activation dates, deactivation dates, available address information, and other permitted telecom metadata.\\n\\nUsers can search subscriber records using multiple identifiers and filters. The system can display connection history, compare available records, track verification status, and organize historical changes where such information is available.\\n\\nSDR Intelligence can correlate subscriber information with authorized CDR, tower, location, and case records. This allows users to move from subscriber information to related communication or investigation information while preserving the source and authorization context.\\n\\nThe module can also maintain verification history, reviewer notes, audit records, dashboards, and structured subscriber reports. Role-based access can ensure that sensitive subscriber information is available only to authorized personnel.',
+    work: 'The module imports and normalizes authorized subscriber records and creates searchable subscriber profiles. It organizes available information such as subscriber identifiers, connection details, service status, activation dates, deactivation dates, available address information, and other permitted telecom metadata. Users can search subscriber records using multiple identifiers and filters. The system can display connection history, compare available records, track verification status, and organize historical changes where such information is available. SDR Intelligence can correlate subscriber information with authorized CDR, tower, location, and case records. This allows users to move from subscriber information to related communication or investigation information while preserving the source and authorization context. The module can also maintain verification history, reviewer notes, audit records, dashboards, and structured subscriber reports. Role-based access can ensure that sensitive subscriber information is available only to authorized personnel.',
 
     benefits: [
       'Provides centralized subscriber information.',
@@ -124,12 +150,25 @@ export const AGENT_CARDS_DATA = {
     name: 'TDR Intelligence',
     shortName: 'TDR',
     subtitle: 'Tower Dump Record',
+    introduction: "TDR Intelligence is a cellular location analysis module built to process Tower Dump Records and isolate mobile device activity surrounding specific crime scenes and time windows.",
+    mission: "To isolate suspicious device activity within high-density cellular tower logs and identify common devices across multiple tower locations during critical investigation windows.",
+    vision: "To deliver 3D spatio-temporal tower sector visualization and predictive movement path modeling for complex location-based investigations.",
+    whyChooseUs: [
+      "Multi-tower overlap detection to isolate recurring suspect devices",
+      "Precision time-window filtering down to millisecond timestamps",
+      "Interactive map visualization with tower location and sector azimuths",
+      "High-throughput parsing of massive multi-gigabyte tower dumps",
+      "Automated suspect scoring based on arrival and departure patterns"
+],
+    keywords: ["TDR","Tower Dump Record","Cell Tower","Tower Dump","Sector Analysis","Geofence","Tower Overlap","Location Incident"],
+    other: "Supported Formats: Carrier raw dump files (Excel/CSV/Text). Features: Spatial geofencing algorithms, sector angle overlay, and cross-case tower comparison.",
+
 
     overview: 'TDR Intelligence is a specialized telecommunications and network-location analysis module designed to process, organize, search, and analyze authorized Tower Dump Records. Tower dump datasets can contain a large volume of network activity associated with one or more cellular towers, sectors, geographic areas, and specific time periods. The module transforms these complex records into a centralized intelligence environment where authorized analysts can examine activity according to tower, sector, identifier, date, time, geographic reference, and case. It is particularly useful when an investigation begins with a specific location and time window rather than a known individual. TDR Intelligence provides tower analysis, sector analysis, time-based filtering, activity timelines, comparison tools, geographic visualization where supported, cross-record correlation, dashboards, and structured reporting.',
 
     purpose: 'The primary purpose of TDR Intelligence is to make large and complex tower datasets manageable, searchable, comparable, and analytically useful. Raw tower records can contain a substantial number of events, making manual review time-consuming and making it difficult to recognize recurring activity or focus on a specific investigation period. TDR Intelligence allows authorized users to start with a tower, sector, geographic area, date, or time range and progressively narrow the available information. It supports location and tower-based analysis, time-window investigation, sector comparison, identifier activity review, chronological reconstruction, cross-record correlation, and structured reporting. The module provides analytical observations rather than automatically determining identity, intent, or physical presence.',
 
-    work: 'The module imports and normalizes authorized tower dump records and organizes available information according to tower identifiers, sectors, timestamps, network information, identifiers, and geographic references. Users can select a specific tower, sector, date, and time range to focus the analysis on relevant records.\\n\\nTDR Intelligence can analyze identifier activity, identify repeated appearances, compare tower and sector activity, and generate chronological timelines. Users can review how available records are distributed across towers and sectors and compare activity during different investigation periods.\\n\\nWhere authorized geographic information is available, the module can provide map-based visualization and geographic summaries. It can also correlate tower information with CDR, SDR, LAR, and other permitted case information.\\n\\nThe platform can provide dashboards showing tower activity, sector distribution, time-based activity, identifier frequency, and comparison results. Analysts can save relevant searches, associate findings with authorized cases, record observations, and generate structured reports. Access to sensitive telecommunications and location-related information can be controlled through roles, permissions, audit logs, encryption, and retention policies.',
+    work: 'The module imports and normalizes authorized tower dump records and organizes available information according to tower identifiers, sectors, timestamps, network information, identifiers, and geographic references. Users can select a specific tower, sector, date, and time range to focus the analysis on relevant records. TDR Intelligence can analyze identifier activity, identify repeated appearances, compare tower and sector activity, and generate chronological timelines. Users can review how available records are distributed across towers and sectors and compare activity during different investigation periods. Where authorized geographic information is available, the module can provide map-based visualization and geographic summaries. It can also correlate tower information with CDR, SDR, LAR, and other permitted case information. The platform can provide dashboards showing tower activity, sector distribution, time-based activity, identifier frequency, and comparison results. Analysts can save relevant searches, associate findings with authorized cases, record observations, and generate structured reports. Access to sensitive telecommunications and location-related information can be controlled through roles, permissions, audit logs, encryption, and retention policies.',
 
     benefits: [
       'Makes large tower datasets easier to analyze.',
@@ -181,12 +220,25 @@ export const AGENT_CARDS_DATA = {
     name: 'ILD Intelligence',
     shortName: 'ILD',
     subtitle: 'International Long Distance',
+    introduction: "ILD Intelligence processes international long-distance communication records, gateway routing metadata, and cross-border calls to identify international contact networks.",
+    mission: "To detect unauthorized international call bypass, map cross-border criminal networks, and analyze international communication trends.",
+    vision: "To build a global international communication surveillance framework featuring automated risk scoring and international gateway monitoring.",
+    whyChooseUs: [
+      "Automated international country-code normalization & time-zone conversion",
+      "Identification of international gateways, VoIP trunks, and high-risk destinations",
+      "Cross-border contact frequency analytics and duration profiling",
+      "Interactive international communication link graphs",
+      "Exportable international investigation summary reports"
+],
+    keywords: ["ILD","International Long Distance","International Calls","VoIP Gateway","Country Code","Cross-Border Calls","International Routing"],
+    other: "Security & Compliance: ISO/IEC 27001 compliant architecture. Features: Dual timestamp conversion (UTC vs local network time) and country risk classification.",
+
 
     overview: 'ILD Intelligence is a specialized telecommunications intelligence module designed to organize and analyze authorized International Long Distance communication records. International communication data can span multiple countries, regions, destinations, identifiers, time zones, dates, durations, and communication relationships, making manual analysis difficult. The module converts these records into a structured analytical environment where users can examine international communication by country, destination, identifier, date, time, duration, frequency, and available network metadata. It provides international communication timelines, destination analysis, frequency analysis, duration analysis, recurring relationship analysis, time-zone normalization, activity trends, relationship visualization, cross-module correlation, dashboards, and reporting.',
 
     purpose: 'The primary purpose of ILD Intelligence is to simplify the analysis of large-scale international communication records and provide authorized users with a consistent way to understand international communication activity. The module helps users identify frequently occurring destinations, analyze communication frequency, review duration patterns, examine chronological activity, compare different periods, and understand recurring communication relationships. It is designed to reduce manual review across large datasets and provide structured analytical context. The module does not independently determine the intent or meaning of an international communication event; it provides organized information that authorized users can evaluate alongside other available evidence.',
 
-    work: 'The module imports and normalizes authorized international communication records and organizes available information according to origin identifiers, destination identifiers, countries or regions, dates, times, duration, call type, and network metadata. Users can search and filter records by destination, country, identifier, time period, duration, or communication type.\\n\\nILD Intelligence can group records by country and destination, analyze communication frequency, calculate available duration statistics, and create chronological communication timelines. It can identify recurring communication relationships and compare international communication activity across different periods.\\n\\nBecause international records can involve different time zones, the module can provide standardized timestamp views such as original network time, UTC, or an investigation-selected timezone while preserving the original record information.\\n\\nThe module can also provide relationship graphs showing connections between identifiers and destinations, dashboards containing communication statistics, and cross-module correlation with authorized CDR, SDR, OSINT, and case records. Users can associate analysis with authorized investigations, record observations, maintain review history, and generate structured reports.',
+    work: 'The module imports and normalizes authorized international communication records and organizes available information according to origin identifiers, destination identifiers, countries or regions, dates, times, duration, call type, and network metadata. Users can search and filter records by destination, country, identifier, time period, duration, or communication type. ILD Intelligence can group records by country and destination, analyze communication frequency, calculate available duration statistics, and create chronological communication timelines. It can identify recurring communication relationships and compare international communication activity across different periods. Because international records can involve different time zones, the module can provide standardized timestamp views such as original network time, UTC, or an investigation-selected timezone while preserving the original record information. The module can also provide relationship graphs showing connections between identifiers and destinations, dashboards containing communication statistics, and cross-module correlation with authorized CDR, SDR, OSINT, and case records. Users can associate analysis with authorized investigations, record observations, maintain review history, and generate structured reports.',
 
     benefits: [
       'Centralizes international communication records.',
@@ -238,12 +290,25 @@ export const AGENT_CARDS_DATA = {
     name: 'ITDR Intelligence',
     shortName: 'ITDR',
     subtitle: 'Internet Traffic Detail Record',
+    introduction: "ITDR Intelligence processes internet traffic detail records, ISP session logs, protocol distributions, and bandwidth utilization data to profile network activity.",
+    mission: "To provide granular visibility into subscriber internet sessions, detect abnormal traffic spikes, and trace internet usage timelines.",
+    vision: "To establish predictive network traffic profiling capable of detecting hidden encrypted tunnels, proxy usage, and malicious command-and-control traffic.",
+    whyChooseUs: [
+      "High-performance ISP log parsing and session normalization",
+      "Protocol distribution breakdown and bandwidth usage heatmaps",
+      "Chronological internet session timeline reconstruction",
+      "Automated anomaly detection for abnormal data transfer volumes",
+      "Direct integration with IPDR and subscriber identity datasets"
+],
+    keywords: ["ITDR","Internet Traffic Detail Record","Internet Traffic","ISP Logs","Session Duration","Bandwidth Analysis","Network Protocols"],
+    other: "Data Sources: NetFlow, IPFIX, syslog, and raw ISP session databases. Auditability: Immutable query audit trails and strict data retention controls.",
+
 
     overview: 'ITDR Intelligence is a specialized network-traffic analysis module designed to process authorized Internet Traffic Detail Records and convert large volumes of network activity metadata into structured intelligence. Internet traffic datasets can contain extensive information about sessions, timestamps, protocols, traffic categories, network identifiers, duration, and other available technical metadata. The module organizes these records into searchable sessions, chronological activity, traffic patterns, protocol summaries, and analytical dashboards. It provides authorized users with a centralized environment for understanding network activity across selected time periods and for connecting relevant traffic events with other permitted intelligence sources.',
 
     purpose: 'The purpose of ITDR Intelligence is to make large and complex internet traffic datasets easier to process, search, analyze, compare, and document. Network traffic records can contain thousands or millions of individual events, making manual review inefficient. ITDR provides structured tools for session analysis, time-based filtering, protocol analysis, traffic-volume analysis, recurring activity detection, event timeline creation, and cross-record correlation. The module helps authorized analysts focus on relevant network events while preserving source information and maintaining controlled access to sensitive network data.',
 
-    work: 'The module imports and normalizes authorized ITDR datasets and organizes records according to timestamps, sessions, network identifiers, protocols, traffic types, duration, and other available metadata. Users can filter the dataset by date, time, session, protocol, identifier, or traffic category.\\n\\nITDR Intelligence can group related events into available sessions and create chronological network-activity timelines. It can analyze traffic distribution, available traffic volume, session duration, protocol patterns, and recurring activity across selected periods.\\n\\nThe module can compare network activity across different time windows and highlight records that meet configured analytical criteria. It can correlate relevant traffic information with IPDR, CDR, case, and other authorized records where appropriate.\\n\\nAn analytics dashboard can present session counts, activity trends, protocol distribution, duration statistics, and timeline summaries. Users can save searches, associate records with authorized cases, add observations, and generate structured ITDR reports.',
+    work: 'The module imports and normalizes authorized ITDR datasets and organizes records according to timestamps, sessions, network identifiers, protocols, traffic types, duration, and other available metadata. Users can filter the dataset by date, time, session, protocol, identifier, or traffic category. ITDR Intelligence can group related events into available sessions and create chronological network-activity timelines. It can analyze traffic distribution, available traffic volume, session duration, protocol patterns, and recurring activity across selected periods. The module can compare network activity across different time windows and highlight records that meet configured analytical criteria. It can correlate relevant traffic information with IPDR, CDR, case, and other authorized records where appropriate. An analytics dashboard can present session counts, activity trends, protocol distribution, duration statistics, and timeline summaries. Users can save searches, associate records with authorized cases, add observations, and generate structured ITDR reports.',
 
     benefits: [
       'Simplifies large-scale network traffic analysis.',
@@ -291,12 +356,25 @@ export const AGENT_CARDS_DATA = {
     name: 'IPDR Intelligence',
     shortName: 'IPDR',
     subtitle: 'Internet Protocol Detail Record',
+    introduction: "IPDR Intelligence processes internet protocol session logs, IP allocation records, port translations, and NAT mapping data to correlate IP addresses with physical subscribers.",
+    mission: "To resolve public and private IP addresses to specific subscriber profiles and trace digital communication endpoints across ISP backbones.",
+    vision: "To provide real-time Carrier-Grade NAT (CGNAT) resolution and automated IP location intelligence across national ISP networks.",
+    whyChooseUs: [
+      "Automated CGNAT port-mapping & subscriber identity resolution",
+      "Source and destination IP/Port session correlation",
+      "Real-time IP geolocation and ISP infrastructure lookup",
+      "Chronological IP session timeline construction",
+      "Seamless linking with CDR, SDR, and cyber investigation modules"
+],
+    keywords: ["IPDR","Internet Protocol Detail Record","IP Address","CGNAT","Port Allocation","IP Session","ISP Lookup","NAT Logs"],
+    other: "Compliance: Meets national cyber law IP log preservation mandates. Protocols: Supports IPv4, IPv6, CGNAT logs, and WHOIS database enrichment.",
+
 
     overview: 'IPDR Intelligence is an Internet Protocol analysis module designed to process authorized IP and network-session records and convert them into structured intelligence. It provides a centralized environment for analyzing IP addresses, session activity, timestamps, protocols, ports where available, network identifiers, duration, and other supported metadata. The module helps authorized analysts examine IP activity chronologically, identify recurring sessions, compare network events, and correlate relevant IP information with other permitted records.',
 
     purpose: 'The purpose of IPDR Intelligence is to provide a structured and searchable environment for IP-related analysis. Large IP datasets can be difficult to review manually because they contain numerous sessions and technical events distributed across different time periods. The module helps users locate relevant IP activity, examine sessions, compare events, identify recurring patterns, construct timelines, and organize findings for authorized investigations. It also provides a controlled environment for connecting IP activity with other authorized subscriber, telecom, network, or case information.',
 
-    work: 'The module imports and normalizes authorized IPDR records and organizes available information according to IP address, timestamp, session, protocol, port where available, network identifier, duration, and other supported metadata. Users can search and filter records using one or multiple criteria.\\n\\nIPDR Intelligence can group related events into sessions, analyze session duration, identify recurring IP activity, and generate chronological IP timelines. Users can compare IP activity across different dates and time periods and examine relationships between available network identifiers.\\n\\nWhere legally authorized and technically supported, IP information can be correlated with relevant subscriber or network records. The module can also connect IP activity with case information, provide analytical dashboards, maintain audit history, and generate structured reports.\\n\\nThe system should preserve source information and clearly distinguish raw IP records from analytical observations or conclusions made by authorized users.',
+    work: 'The module imports and normalizes authorized IPDR records and organizes available information according to IP address, timestamp, session, protocol, port where available, network identifier, duration, and other supported metadata. Users can search and filter records using one or multiple criteria. IPDR Intelligence can group related events into sessions, analyze session duration, identify recurring IP activity, and generate chronological IP timelines. Users can compare IP activity across different dates and time periods and examine relationships between available network identifiers. Where legally authorized and technically supported, IP information can be correlated with relevant subscriber or network records. The module can also connect IP activity with case information, provide analytical dashboards, maintain audit history, and generate structured reports. The system should preserve source information and clearly distinguish raw IP records from analytical observations or conclusions made by authorized users.',
 
     benefits: [
       'Provides centralized IP activity analysis.',
@@ -344,12 +422,25 @@ export const AGENT_CARDS_DATA = {
     name: 'IDR Intelligence',
     shortName: 'IDR',
     subtitle: 'Internet Data Record',
+    introduction: "IDR Intelligence aggregates general internet activity records, web domain interactions, and digital footprint logs into a centralized analytical workspace.",
+    mission: "To synthesize disparate internet activity data into structured timelines, surface recurring web interactions, and support cyber investigations.",
+    vision: "To combine multi-source internet footprint records into AI-driven digital behavior graphs for predictive threat intelligence.",
+    whyChooseUs: [
+      "Centralized internet footprint aggregation across diverse log sources",
+      "Domain frequency and category classification engines",
+      "Automated timeline of user web sessions and digital events",
+      "Cross-correlation with IPDR and telecom datasets",
+      "Intuitive multi-filter search interface"
+],
+    keywords: ["IDR","Internet Data Record","Web Activity","Domain Logs","Digital Footprint","Internet History","Web Sessions"],
+    other: "Privacy Standards: Fully privacy-compliant data handling. Includes domain categorization, URL sanitization, and automated session indexing.",
+
 
     overview: 'IDR Intelligence is a centralized internet-data analysis module designed to organize and analyze authorized Internet Data Records. It brings fragmented internet activity information into a structured environment where users can search, filter, compare, group, and analyze available internet-related records. The module provides a broader internet activity view that can include sessions, timestamps, identifiers, network information, activity types, and other available metadata. It helps analysts create timelines, identify recurring activity, compare different periods, and connect relevant records with other authorized intelligence.',
 
     purpose: 'The purpose of IDR Intelligence is to transform fragmented internet-related records into organized and searchable information. Internet datasets may come from different sources and may use different structures, making manual comparison difficult. IDR provides a centralized workspace where authorized users can search across available records, organize activity chronologically, identify repeated events, compare activity periods, and build structured case information. It is designed to reduce manual data handling while improving analytical visibility and reporting.',
 
-    work: 'The module imports and normalizes authorized internet data and organizes records according to identifiers, timestamps, sessions, network information, activity types, and other available metadata. Users can search and filter records by date, time, identifier, session, activity type, and other supported criteria.\\n\\nIDR Intelligence can group related records, construct internet activity timelines, analyze frequency and trends, and identify recurring activity. It can compare selected periods and connect related records where authorized.\\n\\nThe module can also correlate internet information with other authorized network and case records, provide dashboards for activity summaries, maintain case workspaces, and generate structured reports containing timelines, observations, statistics, and supporting records.',
+    work: 'The module imports and normalizes authorized internet data and organizes records according to identifiers, timestamps, sessions, network information, activity types, and other available metadata. Users can search and filter records by date, time, identifier, session, activity type, and other supported criteria. IDR Intelligence can group related records, construct internet activity timelines, analyze frequency and trends, and identify recurring activity. It can compare selected periods and connect related records where authorized. The module can also correlate internet information with other authorized network and case records, provide dashboards for activity summaries, maintain case workspaces, and generate structured reports containing timelines, observations, statistics, and supporting records.',
 
     benefits: [
       'Centralizes internet-related records.',
@@ -393,12 +484,25 @@ export const AGENT_CARDS_DATA = {
     name: 'LAR Intelligence',
     shortName: 'LAR',
     subtitle: 'Location Analysis Record',
+    introduction: "LAR Intelligence processes location coordinate records, GPS logs, cellular location pings, and spatial movement data to analyze suspect mobility.",
+    mission: "To transform raw spatial coordinate pings into clear movement timelines, stay-point clusters, and co-location relationship graphs.",
+    vision: "To deliver real-time spatial movement analytics, automated stay-point detection, and multi-target co-location discovery.",
+    whyChooseUs: [
+      "High-precision map visualization & interactive route tracking",
+      "Automated stay-point & frequent location clustering algorithms",
+      "Multi-target co-presence & meeting location detection",
+      "Timeline-based spatial movement playback",
+      "Custom geofence alert creation and monitoring"
+],
+    keywords: ["LAR","Location Analysis Record","Location Tracking","GPS Logs","Movement Heatmap","Stay Point","Co-location","Geofence"],
+    other: "Mapping Engines: OpenStreetMap, Mapbox, and custom GIS layers. Supported Formats: KML, GPX, GeoJSON, and cellular location pings.",
+
 
     overview: 'LAR Intelligence is a geographic and location-analysis module designed to organize authorized location records into structured movement and geographic intelligence. It provides tools for reviewing location events chronologically, visualizing available geographic information, identifying recurring locations, comparing activity across time periods, and connecting location information with other authorized case records. The module converts individual location events into a broader analytical picture while maintaining the distinction between recorded location information and conclusions drawn by investigators.',
 
     purpose: 'The purpose of LAR Intelligence is to simplify the analysis of large location datasets and transform individual geographic events into understandable timelines and location patterns. Location information may be distributed across many records, making it difficult to manually understand movement sequences or recurring locations. LAR provides map-based visualization, chronological analysis, location filtering, comparison, clustering, and correlation tools that help authorized users examine geographic information systematically.',
 
-    work: "The module imports and normalizes authorized location records according to coordinates or location identifiers, timestamps, areas, event types, and associated identifiers. Users can search records by date, time, area, identifier, or other supported filters.\\n\\nLAR Intelligence can display permitted location information on interactive maps and create chronological movement timelines. It can identify frequently occurring locations, compare location activity across periods, group nearby events, and provide geographic summaries.\\n\\nThe module can correlate location events with other authorized telecom, transport, or case records where appropriate. It can provide dashboards, case workspaces, analytical notes, audit information, and structured geographic reports. The platform should clearly communicate the limitations of location data and should not automatically treat a location event as definitive proof of a person's physical presence.",
+    work: "The module imports and normalizes authorized location records according to coordinates or location identifiers, timestamps, areas, event types, and associated identifiers. Users can search records by date, time, area, identifier, or other supported filters. LAR Intelligence can display permitted location information on interactive maps and create chronological movement timelines. It can identify frequently occurring locations, compare location activity across periods, group nearby events, and provide geographic summaries. The module can correlate location events with other authorized telecom, transport, or case records where appropriate. It can provide dashboards, case workspaces, analytical notes, audit information, and structured geographic reports. The platform should clearly communicate the limitations of location data and should not automatically treat a location event as definitive proof of a person's physical presence.",
 
     benefits: [
       'Converts raw location records into structured geographic information.',
@@ -443,12 +547,25 @@ export const AGENT_CARDS_DATA = {
     name: 'OSINT Intelligence',
     shortName: 'OSINT',
     subtitle: 'Open Source Intelligence',
+    introduction: "OSINT Intelligence collects, analyzes, and cross-references publicly available web information, domain records, digital footprints, and open-source data.",
+    mission: "To automate open-source intelligence gathering, expose digital assets, verify public profiles, and deliver comprehensive threat assessment dossiers.",
+    vision: "To operate an autonomous AI web crawler engine for multi-tier open web search and dark web exposure monitoring.",
+    whyChooseUs: [
+      "Automated open-source intelligence gathering across public web sources",
+      "Domain WHOIS, DNS, and IP footprint resolution",
+      "Email address and phone number digital exposure search",
+      "Data breach exposure checking & metadata extraction",
+      "Structured OSINT investigation dossier generation"
+],
+    keywords: ["OSINT","Open Source Intelligence","Digital Footprint","Domain Lookup","WHOIS","Public Records","Dark Web","Email Lookup"],
+    other: "Ethics & Compliance: Operates within ethical and legal open-source intelligence boundaries. Preserves web snapshots and evidence hashes.",
+
 
     overview: 'OSINT Intelligence is a public-source research and intelligence module designed to discover, collect, organize, verify, correlate, and analyze information available from lawful and publicly accessible sources. It provides a centralized research environment for working with public websites, government portals, public documents, news sources, company information, online publications, public databases, and other permitted open sources. The module helps transform scattered public information into structured entity profiles, timelines, relationships, source collections, and intelligence reports.',
 
     purpose: 'The purpose of OSINT Intelligence is to reduce the time and effort required to conduct extensive public-source research. Analysts often need to examine information across many independent websites and documents, which can make it difficult to maintain consistency and track where each finding originated. OSINT Intelligence provides a structured workspace where users can search permitted public sources, organize findings, preserve source references, compare information, identify relationships, build timelines, and prepare reports. The module emphasizes source attribution and verification so that users can distinguish confirmed information from unverified or conflicting information.',
 
-    work: 'The module allows authorized users to define research subjects and search permitted public sources. Results can be collected and organized into structured entities such as people, organizations, websites, domains, locations, documents, and events.\\n\\nOSINT Intelligence can extract relevant information from publicly accessible sources, organize source references, create research timelines, identify relationships between entities, compare information from multiple sources, and highlight potentially conflicting information for human review.\\n\\nUsers can maintain research notes, attach public documents, classify findings, record source URLs or references, and associate findings with authorized cases. The platform can provide relationship graphs, source dashboards, timeline views, search history, and structured intelligence reports.',
+    work: 'The module allows authorized users to define research subjects and search permitted public sources. Results can be collected and organized into structured entities such as people, organizations, websites, domains, locations, documents, and events. OSINT Intelligence can extract relevant information from publicly accessible sources, organize source references, create research timelines, identify relationships between entities, compare information from multiple sources, and highlight potentially conflicting information for human review. Users can maintain research notes, attach public documents, classify findings, record source URLs or references, and associate findings with authorized cases. The platform can provide relationship graphs, source dashboards, timeline views, search history, and structured intelligence reports.',
 
     benefits: [
       'Reduces manual public-source research.',
@@ -496,12 +613,25 @@ export const AGENT_CARDS_DATA = {
     name: 'SMI Intelligence',
     shortName: 'SMI',
     subtitle: 'Social Media Intelligence',
+    introduction: "SMI Intelligence analyzes public social media accounts, user posts, network handles, follower connections, and digital sentiment.",
+    mission: "To extract actionable intelligence from public social media platforms, trace digital handle ownership, and map social interaction networks.",
+    vision: "To deliver real-time social threat detection, synthetic account network mapping, and AI-driven sentiment analysis.",
+    whyChooseUs: [
+      "Cross-platform social media handle matching",
+      "Interactive connection and follower graph visualization",
+      "Post activity timelines and engagement analytics",
+      "Automated keyword, hashtag, and media monitoring",
+      "Exportable social media intelligence reports"
+],
+    keywords: ["SMI","Social Media Intelligence","Social Handles","Profile Tracking","Network Graph","Hashtag Analysis","Digital Persona"],
+    other: "API Compliance: Fully compliant with platform developer policies. Includes tamper-evident evidence archiving and screenshot hash verification.",
+
 
     overview: 'SMI Intelligence is a public social-media research and analysis module designed to organize and analyze publicly accessible social-media information. It provides a structured environment for reviewing public profiles, publicly available posts, activity timelines, public interactions, topics, trends, and other permitted information. The module helps users transform scattered public social-media information into organized profiles, timelines, relationships, topic summaries, and research reports while respecting applicable privacy requirements, platform policies, and access restrictions.',
 
     purpose: 'The purpose of SMI Intelligence is to reduce the manual effort involved in researching publicly accessible social-media information. Public information can be distributed across different platforms and may change frequently, making systematic research difficult. SMI provides a centralized workspace where authorized users can organize public findings, track sources, analyze timelines, compare information, examine public relationships, identify recurring topics, and generate structured reports. It should clearly distinguish directly observed public information from analytical interpretation.',
 
-    work: 'The module organizes permitted public social-media information into profiles, posts, timelines, public interactions, topics, and relationships. Users can search public content using supported keywords, dates, profiles, topics, or other permitted criteria.\\n\\nSMI Intelligence can build activity timelines, identify recurring public topics, analyze public trends, organize source references, and visualize publicly observable relationships. It can also compare information across permitted public sources and identify duplicated or conflicting information for human review.\\n\\nUsers can associate public-source research with authorized cases, maintain analyst notes, preserve source references, and generate structured reports. The platform should not bypass privacy controls, authentication, platform restrictions, or access limitations.',
+    work: 'The module organizes permitted public social-media information into profiles, posts, timelines, public interactions, topics, and relationships. Users can search public content using supported keywords, dates, profiles, topics, or other permitted criteria. SMI Intelligence can build activity timelines, identify recurring public topics, analyze public trends, organize source references, and visualize publicly observable relationships. It can also compare information across permitted public sources and identify duplicated or conflicting information for human review. Users can associate public-source research with authorized cases, maintain analyst notes, preserve source references, and generate structured reports. The platform should not bypass privacy controls, authentication, platform restrictions, or access limitations.',
 
     benefits: [
       'Reduces manual social-media research.',
@@ -546,12 +676,25 @@ export const AGENT_CARDS_DATA = {
     name: 'BSAR Intelligence',
     shortName: 'BSAR',
     subtitle: 'Bank Statement Analysis Report',
+    introduction: "BSAR Intelligence parses bank account statements, transaction registers, credit/debit logs, and fund transfer records for forensic auditing.",
+    mission: "To detect financial fraud patterns, uncover money laundering conduits, and automate complex bank statement auditing.",
+    vision: "To establish automated financial crime detection using graph neural networks and real-time transaction tracking.",
+    whyChooseUs: [
+      "Automated multi-bank PDF & Excel statement parsing",
+      "Layering and circular transaction flow detection algorithms",
+      "Interactive entity transaction graphs (sender to receiver)",
+      "High-value and round-number anomaly alert engines",
+      "Audit-ready financial forensic summaries"
+],
+    keywords: ["BSAR","Bank Statement","Financial Audit","Money Laundering","Transaction Analysis","Forensic Accounting","Fund Flow"],
+    other: "Bank Compatibility: Supports 100+ national and international bank statement formats. Security: Encryption at rest and strict financial data privacy.",
+
 
     overview: 'BSAR Intelligence is a financial-record analysis module designed to process authorized bank statements and transaction records and convert them into structured financial intelligence. It provides tools for extracting and organizing transaction information, analyzing credits and debits, reviewing balances, categorizing transactions, identifying recurring activity, creating financial timelines, comparing periods, and preparing structured financial reports. The module is designed to help authorized users understand complex bank statements without manually reviewing every transaction individually.',
 
     purpose: 'The purpose of BSAR Intelligence is to reduce the time and manual effort required to review large bank statements and transaction datasets. Financial statements can contain thousands of entries, repeated transactions, varying descriptions, and multiple transaction categories. BSAR provides a centralized environment where users can search, filter, categorize, compare, summarize, and analyze transactions. It helps identify recurring activity and statistical patterns while ensuring that any unusual-activity indicators remain review flags rather than automatic conclusions of fraud or wrongdoing.',
 
-    work: 'The module imports authorized bank statements and converts available transaction information into structured records. It organizes transactions according to dates, amounts, descriptions, transaction types, balances, and other available information.\\n\\nBSAR can categorize transactions, calculate credit and debit totals, identify recurring transactions, analyze transaction frequency, create chronological financial timelines, and compare activity across selected periods. Users can filter transactions using amount ranges, dates, categories, descriptions, or other available criteria.\\n\\nThe module can provide dashboards showing financial summaries, transaction distributions, recurring activity, balance trends, and category statistics. Users can associate statements with authorized cases, maintain review notes, preserve supporting documents, and generate structured Bank Statement Analysis Reports.',
+    work: 'The module imports authorized bank statements and converts available transaction information into structured records. It organizes transactions according to dates, amounts, descriptions, transaction types, balances, and other available information. BSAR can categorize transactions, calculate credit and debit totals, identify recurring transactions, analyze transaction frequency, create chronological financial timelines, and compare activity across selected periods. Users can filter transactions using amount ranges, dates, categories, descriptions, or other available criteria. The module can provide dashboards showing financial summaries, transaction distributions, recurring activity, balance trends, and category statistics. Users can associate statements with authorized cases, maintain review notes, preserve supporting documents, and generate structured Bank Statement Analysis Reports.',
 
     benefits: [
       'Reduces manual bank-statement review.',
@@ -598,12 +741,25 @@ export const AGENT_CARDS_DATA = {
     name: 'BRI Intelligence',
     shortName: 'BRI',
     subtitle: 'Bank Record Intelligence',
+    introduction: "BRI (Bike & Vehicle Record Intelligence) processes vehicle registration data, owner profiles, vehicle classes, and chassis/engine numbers.",
+    mission: "To instantly verify vehicle ownership credentials, trace stolen vehicles, and cross-reference regional transport office records.",
+    vision: "To integrate ANPR camera networks with national vehicle databases for real-time suspicious vehicle alerting.",
+    whyChooseUs: [
+      "Instant vehicle registration number lookup",
+      "Complete RTO owner & registration status details",
+      "Chassis and engine number cross-verification",
+      "Multi-vehicle ownership history tracking",
+      "Integration with toll gate transit logs and ANPR feeds"
+],
+    keywords: ["BRI","Vehicle Registration","RTO Intelligence","Number Plate","Chassis Number","Vehicle Owner","ANPR"],
+    other: "Database Connectivity: Direct reference lookups with national transport databases. Features automated plate format standardization.",
+
 
     overview: 'BRI Intelligence is a broader financial-record intelligence module designed to organize and analyze authorized banking information across accounts, transactions, financial relationships, and historical records. While BSAR focuses primarily on statement analysis, BRI provides a wider financial intelligence environment that can connect multiple authorized banking records and organize them around accounts, entities, transactions, cases, and timelines. It supports financial record searching, account activity analysis, transaction relationship analysis, cross-account comparison, trend analysis, and structured financial reporting.',
 
     purpose: 'The purpose of BRI Intelligence is to provide a unified environment for analyzing authorized banking information from multiple records and sources. Financial information may be distributed across account records, transaction datasets, statements, and supporting documents. BRI brings this information together so authorized users can examine account activity, compare records, identify recurring relationships, construct financial timelines, and correlate relevant records. It is designed to provide broader context than a single bank statement and improve the organization of financial intelligence during authorized investigations, audits, compliance activities, and due-diligence workflows.',
 
-    work: 'The module imports and normalizes authorized banking records and organizes them into account profiles, transaction histories, financial relationships, timelines, and analytical views. Users can search accounts and transactions using identifiers, dates, amounts, descriptions, and other supported criteria.\\n\\nBRI Intelligence can compare activity across multiple authorized accounts, identify recurring transactions, analyze transaction relationships, review changes across time periods, and create financial timelines. It can associate financial records with cases, documents, entities, and other authorized information.\\n\\nThe platform can provide account-level dashboards, financial relationship graphs, transaction summaries, case workspaces, review histories, and structured reports. Sensitive financial information can be protected through role-based access, encryption, audit logs, and controlled data retention.',
+    work: 'The module imports and normalizes authorized banking records and organizes them into account profiles, transaction histories, financial relationships, timelines, and analytical views. Users can search accounts and transactions using identifiers, dates, amounts, descriptions, and other supported criteria.BRI Intelligence can compare activity across multiple authorized accounts, identify recurring transactions, analyze transaction relationships, review changes across time periods, and create financial timelines. It can associate financial records with cases, documents, entities, and other authorized information.nThe platform can provide account-level dashboards, financial relationship graphs, transaction summaries, case workspaces, review histories, and structured reports. Sensitive financial information can be protected through role-based access, encryption, audit logs, and controlled data retention.',
 
     benefits: [
       'Centralizes authorized banking information.',
@@ -650,12 +806,25 @@ export const AGENT_CARDS_DATA = {
     name: 'RTOI Intelligence',
     shortName: 'RTOI',
     subtitle: 'Regional Transport Office Intelligence',
+    introduction: "RTOI Intelligence processes driving license databases, transport permits, vehicle fitness certificates, and RTO regional records.",
+    mission: "To provide instant validation of driving credentials, commercial permits, and driver licensing details across states.",
+    vision: "To unify interstate transport department records into a single seamless licensing intelligence platform.",
+    whyChooseUs: [
+      "Driving license validation and photo cross-matching",
+      "Transport permit and vehicle fitness certificate verification",
+      "Interstate licensing database correlation",
+      "Duplicate license detection across state jurisdictions",
+      "Automated driver profile compilation"
+],
+    keywords: ["RTOI","RTO Intelligence","Driving License","Transport Permit","Vehicle Licensing","RTO Records","Driver Profile"],
+    other: "Regulatory Alignment: Aligned with national road transport data standards. Includes license status tracking and enforcement history.",
+
 
     overview: 'RTOI Intelligence is a vehicle and transport-record analysis module designed to organize authorized vehicle registration and transport information into structured intelligence. It provides searchable vehicle profiles containing available registration details, vehicle characteristics, registration history, status, permits, fitness information, and other permitted transport metadata. The module helps users verify vehicle information, review historical records, compare available records, connect vehicles with authorized cases, and generate structured vehicle intelligence reports.',
 
     purpose: 'The purpose of RTOI Intelligence is to simplify vehicle verification and transport-record analysis by bringing relevant information into a centralized system. Vehicle information can be spread across registration records, permits, certificates, historical documents, and other transport records. RTOI organizes this information so authorized users can quickly search, review, compare, and document vehicle-related information. It is designed to reduce manual searching and improve consistency in vehicle verification and case-related transport analysis.',
 
-    work: 'The module organizes authorized vehicle records according to registration identifiers, vehicle details, registration dates, status, available ownership-related information, permits, fitness information, and other supported transport data. Users can search for vehicles using available registration identifiers and additional filters.\\n\\nRTOI can provide vehicle profiles, registration histories, document associations, status tracking, record comparison, and case association. Users can review available historical changes and identify inconsistencies requiring further verification.\\n\\nThe module can also provide transport analytics dashboards and structured reports. Access to sensitive vehicle or ownership-related information should be controlled according to user roles and applicable authorization.',
+    work: 'The module organizes authorized vehicle records according to registration identifiers, vehicle details, registration dates, status, available ownership-related information, permits, fitness information, and other supported transport data. Users can search for vehicles using available registration identifiers and additional filters. RTOI can provide vehicle profiles, registration histories, document associations, status tracking, record comparison, and case association. Users can review available historical changes and identify inconsistencies requiring further verification. The module can also provide transport analytics dashboards and structured reports. Access to sensitive vehicle or ownership-related information should be controlled according to user roles and applicable authorization.',
 
     benefits: [
       'Speeds up vehicle verification.',
@@ -698,12 +867,25 @@ export const AGENT_CARDS_DATA = {
     name: 'PRI Intelligence',
     shortName: 'PRI',
     subtitle: 'Prison Record Intelligence',
+    introduction: "PRI Intelligence manages passport details, visa records, border entry/exit logs, and travel document verification data.",
+    mission: "To trace international travel histories, detect forged travel documents, and verify passport holder identities.",
+    vision: "To establish automated border control intelligence cross-referencing international watchlists in real time.",
+    whyChooseUs: [
+      "Passport status and travel history verification",
+      "Border exit/entry log chronological timelines",
+      "Visa category and validity cross-checking",
+      "Dual passport and identity anomaly detection",
+      "Secure case workspace for travel investigations"
+],
+    keywords: ["PRI","Passport Record Intelligence","Immigration Logs","Visa Details","Travel History","Border Control","Passport Verification"],
+    other: "Security Level: Diplomatic-grade data security with role-restricted access. Fully encrypted passport and travel log storage.",
+
 
     overview: 'PRI Intelligence is an authorized correctional-record intelligence module designed to organize and analyze relevant prison and correctional records within a secure centralized environment. It provides tools for searching authorized records, reviewing institutional information, organizing case references, maintaining historical timelines, associating supporting documents, tracking review activity, and generating controlled reports. Because correctional records can contain highly sensitive information, the module is designed around strong role-based access, auditability, security, and controlled data handling.',
 
     purpose: 'The purpose of PRI Intelligence is to improve the organization, retrieval, and analysis of authorized correctional information while maintaining strict security and access controls. Correctional records can be distributed across different systems and documents, making manual retrieval difficult. PRI provides a centralized workspace that allows authorized users to locate relevant records, review historical information, organize case information, track authorized activities, and prepare structured documentation.',
 
-    work: 'The module imports or connects authorized correctional records and organizes them into structured profiles, institutional records, case references, documents, timelines, and review information. Users can search records using supported identifiers and filters and can review information relevant to a particular authorized case or administrative workflow.\\n\\nPRI can organize available admission, institutional, case, document, and historical information where permitted. It can build timelines, associate records with cases, track authorized review activities, and maintain notes and observations.\\n\\nThe platform can provide controlled dashboards, audit logs, role-based access, case workspaces, and report generation. Sensitive correctional information should be accessible only to appropriately authorized users.',
+    work: 'The module imports or connects authorized correctional records and organizes them into structured profiles, institutional records, case references, documents, timelines, and review information. Users can search records using supported identifiers and filters and can review information relevant to a particular authorized case or administrative workflow. PRI can organize available admission, institutional, case, document, and historical information where permitted. It can build timelines, associate records with cases, track authorized review activities, and maintain notes and observations. The platform can provide controlled dashboards, audit logs, role-based access, case workspaces, and report generation. Sensitive correctional information should be accessible only to appropriately authorized users.',
 
     benefits: [
       'Centralizes authorized correctional records.',
@@ -746,12 +928,25 @@ export const AGENT_CARDS_DATA = {
     name: 'LIH Intelligence',
     shortName: 'LIH',
     subtitle: 'Law Intelligence Hub',
+    introduction: "LIH Intelligence processes hotel visitor registers, guest check-in records, lodge stay logs, and occupancy data.",
+    mission: "To uncover suspect hotel stays, map multi-city accommodation patterns, and identify co-guest relationships.",
+    vision: "To establish automated hotel visitor register correlation across nationwide hospitality databases.",
+    whyChooseUs: [
+      "Digital hotel guest register search engine",
+      "Co-guest and group booking relationship mapping",
+      "Multi-property stay timeline reconstruction",
+      "ID document cross-matching with guest records",
+      "Real-time stay alert creation"
+],
+    keywords: ["LIH","Lodging Intelligence","Hotel Records","Guest House Register","Check-in Logs","Visitor Stays","Hotel Occupancy"],
+    other: "Hospitality Standards: Connects with hotel management system feeds. Includes guest name fuzzy matching and check-in timeline views.",
+
 
     overview: 'LIH Intelligence is a centralized legal and investigation intelligence hub designed to bring authorized information from multiple CR Intelligence modules into one connected workspace. Instead of reviewing telecom, financial, transport, location, public-source, legal, and document records separately, LIH organizes relevant information around common cases, entities, events, relationships, and timelines. It provides a unified environment for investigation management, cross-module correlation, entity analysis, timeline construction, document organization, search, dashboards, and structured reporting.',
 
     purpose: 'The primary purpose of LIH is to reduce information fragmentation during complex investigations. Investigative information often exists across multiple systems and data sources, making it difficult to understand how records relate to one another. LIH provides a centralized case-oriented environment where authorized users can connect relevant records, identify relationships, construct timelines, review supporting documents, assign case activities, and prepare comprehensive reports. It is designed to provide context without hiding the original source of information.',
 
-    work: 'The module creates an authorized case workspace and connects relevant records from supported intelligence modules. It can organize information around entities such as people, organizations, vehicles, communication identifiers, locations, documents, financial records, and events.\\n\\nLIH can build relationships such as Person → Communication → Location → Vehicle → Financial Record → Company → Case. Users can examine these relationships through graphs, tables, timelines, and linked records.\\n\\nThe platform provides unified search, cross-module correlation, case notes, document management, timeline creation, task management, review workflows, dashboards, and report generation. Each record can retain source information and access history so investigators can distinguish original data from analytical conclusions.\\n\\nLIH can act as the central layer of the CR Intelligence platform, bringing individual intelligence modules together into a complete investigation workspace.',
+    work: 'The module creates an authorized case workspace and connects relevant records from supported intelligence modules. It can organize information around entities such as people, organizations, vehicles, communication identifiers, locations, documents, financial records, and events. LIH can build relationships such as Person → Communication → Location → Vehicle → Financial Record → Company → Case. Users can examine these relationships through graphs, tables, timelines, and linked records. The platform provides unified search, cross-module correlation, case notes, document management, timeline creation, task management, review workflows, dashboards, and report generation. Each record can retain source information and access history so investigators can distinguish original data from analytical conclusions. LIH can act as the central layer of the CR Intelligence platform, bringing individual intelligence modules together into a complete investigation workspace.',
 
     benefits: [
       'Provides a unified investigation workspace.',
@@ -797,12 +992,25 @@ export const AGENT_CARDS_DATA = {
     name: 'BI Intelligence',
     shortName: 'BI',
     subtitle: 'Biometric Intelligence',
+    introduction: "BI (Bank Intelligence) provides deep financial institution profile analysis, multi-bank account mapping, loan details, and credit records.",
+    mission: "To aggregate suspect banking profiles across financial institutions and uncover hidden financial networks.",
+    vision: "To integrate core banking system (CBS) feeds for automated financial risk scoring and asset recovery tracking.",
+    whyChooseUs: [
+      "Multi-bank account profile aggregation",
+      "KYC & account holder cross-verification",
+      "Loan, credit, and asset holdings mapping",
+      "Financial network link graph generation",
+      "Comprehensive financial dossier export"
+],
+    keywords: ["BI","Bank Intelligence","Banking Profile","Account Holdings","KYC Bank","Financial Graph","CBS Records"],
+    other: "Security Standards: Bank-grade encryption and security. Supports SWIFT, IFSC, and national payment network lookups.",
+
 
     overview: 'BI Intelligence is an authorized biometric-analysis and identity-verification module designed to securely manage and analyze approved biometric information. It provides controlled tools for biometric record management, quality assessment, permitted matching, verification workflows, result review, and audit tracking. The module is intended to help authorized organizations process biometric information consistently while maintaining strong security, privacy, access-control, and data-retention requirements.',
 
     purpose: 'The purpose of BI Intelligence is to improve authorized biometric verification workflows and reduce the manual effort involved in comparing and managing biometric records. It provides a structured process for receiving approved biometric information, checking quality, performing permitted matching, reviewing results, recording verification decisions, and maintaining an audit trail. Because biometric information is highly sensitive and difficult to replace once compromised, the module should use strict purpose limitation, encryption, role-based access, retention controls, and detailed auditing.',
 
-    work: 'The module securely receives authorized biometric information and performs configurable quality checks before processing. Where permitted, it can extract approved biometric characteristics and compare them against authorized reference records. Matching results can be presented as potential matches or verification outcomes for appropriate human review.\\n\\nThe system can maintain verification requests, processing history, review status, analyst comments, source information, and final authorized decisions. It can identify possible duplicate records and provide dashboards for verification activity.\\n\\nBI Intelligence can also integrate with approved identity-management workflows and case systems. All biometric operations should be logged and access should be restricted to authorized users.',
+    work: 'The module securely receives authorized biometric information and performs configurable quality checks before processing. Where permitted, it can extract approved biometric characteristics and compare them against authorized reference records. Matching results can be presented as potential matches or verification outcomes for appropriate human review. The system can maintain verification requests, processing history, review status, analyst comments, source information, and final authorized decisions. It can identify possible duplicate records and provide dashboards for verification activity. BI Intelligence can also integrate with approved identity-management workflows and case systems. All biometric operations should be logged and access should be restricted to authorized users.',
 
     benefits: [
       'Supports faster authorized identity verification.',
@@ -844,12 +1052,25 @@ export const AGENT_CARDS_DATA = {
     name: 'FRI Intelligence',
     shortName: 'FRI',
     subtitle: 'Facial Recognition Intelligence',
+    introduction: "FRI Intelligence performs AI-powered face matching, CCTV frame extraction, biometric vector comparison, and suspect identification.",
+    mission: "To match suspect photos against master criminal databases, identity archives, and surveillance video frames.",
+    vision: "To deliver real-time 3D facial landmark recognition and aging-invariant facial matching across live camera feeds.",
+    whyChooseUs: [
+      "High-accuracy AI facial embedding vector engine",
+      "Multi-face batch scanning in low-resolution photos",
+      "Aging and facial hair invariant matching algorithms",
+      "Integration with identity and criminal photo archives",
+      "Confidence score ranking with visual match comparison"
+],
+    keywords: ["FRI","Facial Recognition","Face Match","Biometric Search","CCTV Face Detection","Photo Verification","Facial Vector"],
+    other: "Biometric Standards: NIST-aligned match scoring. Implements strict biometric data privacy and authorization logging.",
+
 
     overview: 'FRI Intelligence is an authorized facial-image analysis module designed to support controlled identity-verification workflows. It provides tools for processing approved facial images, assessing image quality, detecting usable facial regions, performing permitted comparisons against authorized reference datasets, reviewing potential matches, and documenting results. The module is intended to assist human reviewers rather than independently determine identity and should operate under strict privacy, security, legal, and access-control requirements.',
 
     purpose: 'The purpose of FRI Intelligence is to improve the efficiency and consistency of authorized facial-image analysis. Large image collections can be difficult to review manually, particularly when users need to compare submitted images against approved reference records. FRI provides a structured workflow for image processing, quality assessment, authorized matching, result review, verification tracking, and reporting. The system should clearly communicate the limitations of automated facial recognition and ensure that important identity decisions remain subject to appropriate human review.',
 
-    work: 'The module securely receives approved facial images and performs image-quality checks to determine whether they are suitable for processing. It can detect facial regions, extract approved facial characteristics, and perform permitted comparisons against authorized reference datasets.\\n\\nPotential matches can be presented with supporting information for human assessment. The system can record match status, reviewer decisions, notes, image references, processing history, and audit information.\\n\\nFRI can also provide search, filtering, verification workflows, dashboards, case association, and controlled reporting. The module should maintain clear source information and protect sensitive facial data through encryption, role-based permissions, access logging, and appropriate retention policies.',
+    work: 'The module securely receives approved facial images and performs image-quality checks to determine whether they are suitable for processing. It can detect facial regions, extract approved facial characteristics, and perform permitted comparisons against authorized reference datasets. Potential matches can be presented with supporting information for human assessment. The system can record match status, reviewer decisions, notes, image references, processing history, and audit information. FRI can also provide search, filtering, verification workflows, dashboards, case association, and controlled reporting. The module should maintain clear source information and protect sensitive facial data through encryption, role-based permissions, access logging, and appropriate retention policies.',
 
     benefits: [
       'Accelerates authorized image analysis.',
@@ -891,12 +1112,25 @@ export const AGENT_CARDS_DATA = {
     name: 'LRI Intelligence',
     shortName: 'LRI',
     subtitle: 'Land Record Intelligence',
+    introduction: "LRI Intelligence processes land registry records, property deeds, survey plot numbers, ownership details, and real estate holdings.",
+    mission: "To identify benami property holdings, trace historical land ownership transfers, and map real estate assets.",
+    vision: "To integrate GIS spatial land mapping with property registry databases for automated asset discovery.",
+    whyChooseUs: [
+      "Land survey number and deed registration lookup",
+      "Property ownership cross-matching with suspect profiles",
+      "Historical property transfer timeline tracking",
+      "Benami and joint ownership network mapping",
+      "GIS plot boundary spatial visualization"
+],
+    keywords: ["LRI","Land Record Intelligence","Property Ownership","Deed Registration","Survey Number","Real Estate","Benami Property"],
+    other: "Data Sources: State revenue department registries. Features survey number fuzzy matching and land transaction history indexing.",
+
 
     overview: 'LRI Intelligence is a land and property-record analysis module designed to organize authorized land, property, registration, ownership, transaction, and supporting document information into structured property intelligence. It provides centralized property profiles, document organization, ownership timelines, transaction history, geographic information, record comparison, search, and reporting. The module helps users understand complex property records by connecting related documents and events into a single structured view.',
 
     purpose: 'The purpose of LRI Intelligence is to simplify property and land-record research by reducing the need to manually search through multiple documents, registration records, maps, ownership records, and transaction histories. It provides a centralized environment where authorized users can verify property information, review historical changes, organize documents, compare available records, and build property timelines. It is designed to support property verification, legal research, due diligence, authorized investigations, and administrative record management.',
 
-    work: 'The module imports or connects authorized land and property records and organizes them into structured property profiles. Users can search properties using available identifiers, geographic information, registration references, owner-related information where authorized, or other supported criteria.\\n\\nLRI can organize ownership-related records, registration events, transaction information, property documents, geographic references, and historical changes into chronological timelines. Users can compare records and identify discrepancies that require additional verification.\\n\\nThe module can associate multiple documents with a single property, connect related properties or entities where authorized, provide geographic visualization, and generate property intelligence reports. It can also integrate property information with other authorized case records.',
+    work: 'The module imports or connects authorized land and property records and organizes them into structured property profiles. Users can search properties using available identifiers, geographic information, registration references, owner-related information where authorized, or other supported criteria. LRI can organize ownership-related records, registration events, transaction information, property documents, geographic references, and historical changes into chronological timelines. Users can compare records and identify discrepancies that require additional verification. The module can associate multiple documents with a single property, connect related properties or entities where authorized, provide geographic visualization, and generate property intelligence reports. It can also integrate property information with other authorized case records.',
 
     benefits: [
       'Speeds up property research.',
@@ -943,12 +1177,25 @@ export const AGENT_CARDS_DATA = {
     name: 'ERI Intelligence',
     shortName: 'ERI',
     subtitle: 'Education Record Intelligence',
+    introduction: "ERI Intelligence processes utility bill records, electricity meter connections, power usage logs, and billing addresses.",
+    mission: "To verify physical addresses, detect illegal commercial operations in residential premises, and trace utility customer identities.",
+    vision: "To utilize smart meter power consumption analytics for automated premises occupancy and activity detection.",
+    whyChooseUs: [
+      "Utility consumer number & address verification",
+      "Power consumption trend & anomaly analysis",
+      "Physical address cross-matching with telecom/SDR records",
+      "Multi-connection property discovery",
+      "Utility billing audit reports"
+],
+    keywords: ["ERI","Electricity Record Intelligence","Utility Bill","Power Meter","Consumer Address","Electricity Connection","Address Verification"],
+    other: "Compatibility: Integrates with power distribution company databases. Features automated consumer address normalization.",
+
 
     overview: 'ERI Intelligence is an education-record management and analysis module designed to organize, verify, and analyze authorized academic and educational information in a centralized environment. It can manage student or candidate information, educational institutions, courses, qualifications, enrollment records, certificates, academic documents, verification requests, and verification outcomes. The module helps transform scattered academic information into structured education profiles, timelines, document collections, and verification reports. It can support document processing and comparison with authorized reference records while maintaining appropriate privacy, access, and audit controls.',
 
     purpose: 'The purpose of ERI Intelligence is to make education-record verification and management faster, more organized, and easier to review. Academic information can be distributed across certificates, marksheets, institutional records, applications, enrollment documents, and verification sources. ERI brings relevant authorized information together and provides a structured workflow for searching, comparing, reviewing, and verifying educational information. It can help organizations process large numbers of education records while maintaining consistent verification procedures, review histories, and supporting documentation.',
 
-    work: 'The module creates structured education profiles for authorized students, candidates, or subjects and associates available institutions, courses, qualifications, academic periods, certificates, and supporting documents with those profiles. Users can search records by candidate, institution, qualification, academic year, certificate reference, or verification status.\\n\\nERI can process authorized academic documents using document-processing and OCR technologies to extract available information from certificates and marksheets. Extracted information can be organized into structured fields and compared with authorized reference information.\\n\\nThe module can create academic timelines, track verification status, identify discrepancies for human review, maintain reviewer notes, and record verification history. It can associate multiple documents with a single qualification and generate structured education verification reports.\\n\\nThe system can also provide dashboards showing verification volumes, pending reviews, completed verifications, and other administrative statistics. Sensitive educational information should be protected through appropriate permissions, encryption, and audit controls.',
+    work: 'The module creates structured education profiles for authorized students, candidates, or subjects and associates available institutions, courses, qualifications, academic periods, certificates, and supporting documents with those profiles. Users can search records by candidate, institution, qualification, academic year, certificate reference, or verification status. ERI can process authorized academic documents using document-processing and OCR technologies to extract available information from certificates and marksheets. Extracted information can be organized into structured fields and compared with authorized reference information. The module can create academic timelines, track verification status, identify discrepancies for human review, maintain reviewer notes, and record verification history. It can associate multiple documents with a single qualification and generate structured education verification reports. The system can also provide dashboards showing verification volumes, pending reviews, completed verifications, and other administrative statistics. Sensitive educational information should be protected through appropriate permissions, encryption, and audit controls.',
 
     benefits: [
       'Faster education verification.',
@@ -997,12 +1244,25 @@ export const AGENT_CARDS_DATA = {
     name: 'KYCDI Intelligence',
     shortName: 'KYCDI',
     subtitle: 'KYC Document Intelligence',
+    introduction: "KYCDI Intelligence consolidates Know Your Customer documents, identity cards (Aadhaar, PAN, Voter ID, Passport), and verification records.",
+    mission: "To streamline multi-document identity verification, detect forged ID cards, and build verified individual master records.",
+    vision: "To deliver automated OCR document verification with AI fraud detection for all national identity cards.",
+    whyChooseUs: [
+      "Automated identity card OCR & field extraction",
+      "Multi-document cross-validation (Aadhaar, PAN, Voter ID)",
+      "Tamper & forgery detection algorithms",
+      "Centralized KYC profile management",
+      "Instant identity verification scores"
+],
+    keywords: ["KYCDI","KYC Data Intelligence","Identity Verification","Aadhaar","PAN Card","Voter ID","Document OCR","KYC Verification"],
+    other: "Privacy Compliance: Compliant with national data privacy frameworks. Encrypts PII data at rest and in transit.",
+
 
     overview: 'KYCDI Intelligence is a document-intelligence module designed to process authorized Know Your Customer documents and convert unstructured identity and verification documents into structured information. It can handle document classification, OCR-based extraction, field identification, document quality assessment, validation, comparison, duplicate detection, verification workflows, and reporting. The module provides a centralized environment for organizations that need to process large volumes of KYC documents efficiently and consistently.',
 
     purpose: 'The purpose of KYCDI Intelligence is to reduce the manual effort involved in reviewing and processing KYC documents. Identity and verification documents can vary significantly in format, layout, quality, and structure. KYCDI helps automatically identify document types, extract available information, organize extracted fields, and present them for verification. It supports faster onboarding and document review while allowing authorized reviewers to examine extracted information and resolve discrepancies before making decisions.',
 
-    work: 'The module receives authorized KYC documents and first determines the document type and processing requirements. OCR and document-intelligence capabilities can extract available text and identify relevant fields.\\n\\nThe system can validate document quality, check whether required fields are available, compare extracted information with authorized reference information, identify duplicate submissions, and flag inconsistencies for human review.\\n\\nKYCDI can manage verification status, document history, reviewer notes, source information, and audit trails. It can also provide dashboards showing processing volumes, verification status, document categories, and review queues.\\n\\nThe module can generate structured KYC reports and connect verified information with authorized customer or case records while maintaining appropriate security and privacy controls.',
+    work: 'The module receives authorized KYC documents and first determines the document type and processing requirements. OCR and document-intelligence capabilities can extract available text and identify relevant fields. The system can validate document quality, check whether required fields are available, compare extracted information with authorized reference information, identify duplicate submissions, and flag inconsistencies for human review. KYCDI can manage verification status, document history, reviewer notes, source information, and audit trails. It can also provide dashboards showing processing volumes, verification status, document categories, and review queues. The module can generate structured KYC reports and connect verified information with authorized customer or case records while maintaining appropriate security and privacy controls.',
 
     benefits: [
       'Accelerates KYC document processing.',
@@ -1049,12 +1309,25 @@ export const AGENT_CARDS_DATA = {
     name: 'PSRI Intelligence',
     shortName: 'PSRI',
     subtitle: 'Police Station Record Intelligence',
+    introduction: "PSRI Intelligence organizes FIR records, police station charge-sheets, criminal history registers, and incident case files into a searchable portal.",
+    mission: "To provide law enforcement officers with instant access to criminal histories, crime trends, and station-level investigation records.",
+    vision: "To establish automated crime pattern correlation across nationwide police stations and CCTNS networks.",
+    whyChooseUs: [
+      "FIR & crime record multi-attribute search engine",
+      "Criminal history profile compilation",
+      "Modus Operandi (MO) pattern matching",
+      "Inter-station crime network link graphs",
+      "Audit-ready legal documentation generator"
+],
+    keywords: ["PSRI","Police Station Record Intelligence","FIR Record","Crime History","Police Station Logs","Charge Sheet","CCTNS","Criminal Dossier"],
+    other: "Access Control: Built specifically for law enforcement personnel. Adheres to police data confidentiality and strict RBAC controls.",
+
 
     overview: 'PSRI Intelligence is a secure police-station record management and analysis module designed to organize authorized complaints, incident records, case references, reports, investigation documents, and case-status information. It provides a centralized environment where authorized personnel can search records, review case histories, create timelines, connect supporting documents, and prepare structured reports. The module is designed to improve information retrieval and case organization while maintaining strict access control and auditability.',
 
     purpose: 'The purpose of PSRI Intelligence is to reduce the difficulty of searching and reviewing police-station records that may be distributed across multiple documents, registers, files, or systems. It provides authorized personnel with a structured case-oriented workspace for finding records, connecting related information, reviewing historical activity, managing documents, and preparing reports. The module can improve case visibility and reduce repetitive manual record handling.',
 
-    work: 'The module organizes authorized police-station records into structured profiles and searchable case records. Users can search complaints, incidents, case references, reports, documents, and status information using available identifiers and filters.\\n\\nPSRI can create chronological case timelines, associate multiple documents with a case, connect related records where authorized, and maintain review notes and case observations. Users can track configured case statuses and review history.\\n\\nThe platform can provide dashboards showing case volumes, statuses, pending reviews, activity trends, and other administrative statistics. Access can be restricted based on organizational role, with detailed audit logs maintained for sensitive record access and modifications.',
+    work: 'The module organizes authorized police-station records into structured profiles and searchable case records. Users can search complaints, incidents, case references, reports, documents, and status information using available identifiers and filters. PSRI can create chronological case timelines, associate multiple documents with a case, connect related records where authorized, and maintain review notes and case observations. Users can track configured case statuses and review history. The platform can provide dashboards showing case volumes, statuses, pending reviews, activity trends, and other administrative statistics. Access can be restricted based on organizational role, with detailed audit logs maintained for sensitive record access and modifications.',
 
     benefits: [
       'Faster case searching.',
@@ -1097,12 +1370,25 @@ export const AGENT_CARDS_DATA = {
     name: 'CoRI Intelligence',
     shortName: 'CoRI',
     subtitle: 'Court Record Intelligence',
+    introduction: "CORI Intelligence indexes judicial case records, court judgments, bail orders, pending warrants, and legal proceeding histories.",
+    mission: "To aggregate judicial case records, track court hearing statuses, and surface legal precedents and suspect litigation histories.",
+    vision: "To provide AI legal analytics predicting case outcomes and tracking repeat offender court proceedings nationwide.",
+    whyChooseUs: [
+      "Judicial case number & litigant name search engine",
+      "Court order & judgment text searchability",
+      "Pending warrant and bail status tracking",
+      "Litigant litigation history timeline",
+      "Automated legal case summary generator"
+],
+    keywords: ["CORI","Court Record Intelligence","Judicial Records","Court Case","Bail Order","Legal Judgment","Warrant Status","Litigation History"],
+    other: "Integrations: Connects with e-Courts and judicial databases. Features full-text search across scanned judgment documents.",
+
 
     overview: 'CoRI Intelligence is a legal-document and court-record analysis module designed to organize authorized court records, case information, judgments, orders, filings, legal documents, and related information into a centralized searchable environment. It supports document indexing, OCR processing for scanned documents, case timelines, document relationships, search, comparison, legal research, and structured reporting. The module helps users navigate large collections of court information without relying solely on manual document review.',
 
     purpose: 'The purpose of CoRI Intelligence is to make court records and legal documents easier to search, organize, compare, and understand. Court-related information can consist of large numbers of documents produced over long periods, making it difficult to quickly locate relevant material. CoRI provides centralized indexing, document search, case organization, timeline creation, relationship mapping, and reporting capabilities for authorized legal and investigative workflows.',
 
-    work: 'The module imports or indexes authorized court records and legal documents and organizes them around cases, parties, dates, document types, orders, judgments, and other available references. OCR can make scanned documents searchable, while document processing can identify relevant metadata.\\n\\nUsers can search within documents, filter records by case or date, build chronological case timelines, connect related documents, and compare available versions or records. The system can associate documents with cases and entities and maintain source information.\\n\\nCoRI can provide dashboards showing case activity, document counts, timelines, and review status. Users can generate structured legal-record reports containing selected documents, case information, timelines, and analytical observations.',
+    work: 'The module imports or indexes authorized court records and legal documents and organizes them around cases, parties, dates, document types, orders, judgments, and other available references. OCR can make scanned documents searchable, while document processing can identify relevant metadata. Users can search within documents, filter records by case or date, build chronological case timelines, connect related documents, and compare available versions or records. The system can associate documents with cases and entities and maintain source information. CoRI can provide dashboards showing case activity, document counts, timelines, and review status. Users can generate structured legal-record reports containing selected documents, case information, timelines, and analytical observations.',
 
     benefits: [
       'Faster legal document searching.',
@@ -1148,12 +1434,25 @@ export const AGENT_CARDS_DATA = {
     name: 'PORI Intelligence',
     shortName: 'PORI',
     subtitle: 'Post Office Record Intelligence',
+    introduction: "PORI Intelligence analyzes postal dispatch registers, speed post tracking, parcel delivery records, and postal savings account profiles.",
+    mission: "To trace suspicious parcel shipments, track postal money transfers, and locate physical delivery addresses.",
+    vision: "To establish automated parcel tracking risk scoring integrated with national postal distribution hubs.",
+    whyChooseUs: [
+      "Speed post & parcel tracking number lookup",
+      "Sender/recipient address cross-verification",
+      "Postal savings account profile mapping",
+      "Multi-parcel distribution network analysis",
+      "Delivery timeline reconstruction"
+],
+    keywords: ["PORI","Post Office Record Intelligence","Postal Records","Speed Post","Parcel Tracking","Postal Address","Post Office Account"],
+    other: "Formats: Compatible with India Post and global postal data formats. Supports tracking history consolidation and sender analysis.",
+
 
     overview: 'PORI Intelligence is a postal-record analysis module designed to organize authorized post-office and postal-service information into structured searchable records. It can manage available postal references, delivery information, service types, dates, locations, tracking information, and supporting records. The module helps users review postal activity chronologically, verify records, connect relevant information, and generate structured postal intelligence reports.',
 
     purpose: 'The purpose of PORI Intelligence is to make postal records easier to search, review, organize, and analyze. Postal information can be distributed across transaction records, delivery records, tracking references, service documents, and location information. PORI provides a centralized environment where authorized users can search relevant records, create timelines, compare information, associate documents, and prepare reports.',
 
-    work: 'The module organizes authorized postal records according to available tracking or reference numbers, dates, locations, service types, delivery status, transaction information, and other supported metadata. Users can search records using multiple criteria and review the associated postal activity.\\n\\nPORI can create chronological postal timelines, associate records with authorized cases, connect supporting documents, compare available information, and maintain review history. The module can provide dashboards showing postal activity and generate structured reports for authorized workflows.',
+    work: 'The module organizes authorized postal records according to available tracking or reference numbers, dates, locations, service types, delivery status, transaction information, and other supported metadata. Users can search records using multiple criteria and review the associated postal activity. PORI can create chronological postal timelines, associate records with authorized cases, connect supporting documents, compare available information, and maintain review history. The module can provide dashboards showing postal activity and generate structured reports for authorized workflows.',
 
     benefits: [
       'Faster postal-record analysis.',
@@ -1195,12 +1494,25 @@ export const AGENT_CARDS_DATA = {
     name: 'TGRI Intelligence',
     shortName: 'TGRI',
     subtitle: 'Toll Gate Record Intelligence',
+    introduction: "TGRI Intelligence processes FASTag records, toll plaza transit logs, vehicle passage timestamps, and toll booth camera feeds.",
+    mission: "To track vehicle highway mobility, verify vehicle passage past specific toll plazas, and pinpoint travel duration between cities.",
+    vision: "To construct real-time nationwide highway vehicle tracking maps with predictive destination estimation.",
+    whyChooseUs: [
+      "FASTag transit log search & plate lookup",
+      "Toll plaza passage chronological timeline",
+      "Inter-toll travel speed & route analysis",
+      "Co-traveling vehicle detection algorithms",
+      "Toll plaza camera snapshot integration"
+],
+    keywords: ["TGRI","Toll Gate Record Intelligence","FASTag","Toll Plaza","Highway Transit","Vehicle Passage","Toll Logs","Route Tracking"],
+    other: "Data Feeds: Integrates national toll electronic data interchange feeds. Supports FASTag ID, VRN, and plaza code queries.",
+
 
     overview: 'TGRI Intelligence is a transportation and toll-record analysis module designed to organize authorized toll-gate and road-usage records into structured vehicle and travel intelligence. It can analyze available toll events, timestamps, toll locations, vehicle references, transaction information, and route sequences. The module helps users create travel timelines, compare toll activity, examine route patterns, and correlate toll events with other authorized transport and case records.',
 
     purpose: 'The purpose of TGRI Intelligence is to simplify the analysis of large toll and road-usage datasets. Toll records can contain many transactions across different locations and dates, making manual review difficult. TGRI provides a centralized environment where authorized users can search vehicle-related toll activity, create chronological travel sequences, compare records across locations, and connect relevant toll information with other permitted intelligence.',
 
-    work: 'The module imports and organizes authorized toll records according to vehicle references, timestamps, toll locations, transaction details, route information where available, and other metadata. Users can search records by vehicle, date, toll location, or time period.\\n\\nTGRI can construct chronological toll timelines and organize sequential toll events into travel patterns. It can compare activity across toll locations, analyze frequency, and correlate toll information with authorized vehicle, transport, location, or case records.\\n\\nThe module can provide route-oriented dashboards, timeline visualizations, case workspaces, and structured reports. Travel sequences should be presented as record-based observations rather than automatic proof of complete physical movement between locations.',
+    work: 'The module imports and organizes authorized toll records according to vehicle references, timestamps, toll locations, transaction details, route information where available, and other metadata. Users can search records by vehicle, date, toll location, or time period. TGRI can construct chronological toll timelines and organize sequential toll events into travel patterns. It can compare activity across toll locations, analyze frequency, and correlate toll information with authorized vehicle, transport, location, or case records. The module can provide route-oriented dashboards, timeline visualizations, case workspaces, and structured reports. Travel sequences should be presented as record-based observations rather than automatic proof of complete physical movement between locations.',
 
     benefits: [
       'Simplifies toll-record analysis.',
@@ -1244,12 +1556,25 @@ export const AGENT_CARDS_DATA = {
     name: 'GHLRI Intelligence',
     shortName: 'GHLRI',
     subtitle: 'Guest House & Lodge Record Intelligence',
+    introduction: "GHLRI Intelligence collects guest entry registers, lodge visitor logs, homestay bookings, and short-term rental occupancy records.",
+    mission: "To trace suspect movement across unorganized lodging facilities, small guest houses, and budget lodges.",
+    vision: "To establish a digital guest registration network standardizing lodge record keeping across urban and rural police jurisdictions.",
+    whyChooseUs: [
+      "Search engine for lodge & guest house registers",
+      "Suspect entry log cross-verification with ID databases",
+      "Co-occupant and group check-in analysis",
+      "Frequent visitor alerting across lodges",
+      "Digital guest register compliance reports"
+],
+    keywords: ["GHLRI","Guest House Intelligence","Lodge Records","Visitor Register","Guest Check-in","Homestay Records","Lodging Analytics"],
+    other: "Submission: Designed for digital record submission by lodge owners. Supports offline register digitizing and OCR scanning.",
+
 
     overview: 'GHLRI Intelligence is an accommodation-record analysis module designed to organize authorized guest-house, lodge, hotel, and accommodation-related records into structured information. It can manage available booking references, guest records, check-in and check-out information, accommodation locations, dates, and supporting documents. The module helps authorized users create stay timelines, search accommodation records, compare bookings, associate relevant information with cases, and generate structured accommodation intelligence reports.',
 
     purpose: 'The purpose of GHLRI Intelligence is to simplify the analysis and verification of accommodation records. Accommodation information may exist across booking systems, guest registers, invoices, check-in records, and supporting documents. GHLRI provides a centralized environment where authorized users can search these records, organize them chronologically, identify related stays, review supporting information, and prepare structured reports.',
 
-    work: 'The module organizes authorized accommodation records according to available booking references, guest identifiers, property information, check-in dates, check-out dates, room or stay references where permitted, and other available metadata. Users can search records by date, property, reference, or authorized identifier.\\n\\nGHLRI can create accommodation timelines, associate multiple documents with a stay, compare records, identify repeated accommodation records, and connect relevant information with authorized cases. The module can also provide dashboards, review workflows, audit logs, and structured reporting.',
+    work: 'The module organizes authorized accommodation records according to available booking references, guest identifiers, property information, check-in dates, check-out dates, room or stay references where permitted, and other available metadata. Users can search records by date, property, reference, or authorized identifier. GHLRI can create accommodation timelines, associate multiple documents with a stay, compare records, identify repeated accommodation records, and connect relevant information with authorized cases. The module can also provide dashboards, review workflows, audit logs, and structured reporting.',
 
     benefits: [
       'Faster accommodation-record analysis.',
@@ -1292,12 +1617,25 @@ export const AGENT_CARDS_DATA = {
     name: 'PPRI Intelligence',
     shortName: 'PPRI',
     subtitle: 'Petrol Pump Record Intelligence',
+    introduction: "PPRI Intelligence analyzes fueling transactions, petrol pump CCTV snapshots, fuel bill payments, and fleet card refueling records.",
+    mission: "To verify vehicle refueling locations, link fuel transactions with vehicle movement timelines, and inspect fuel payment records.",
+    vision: "To connect fuel station payment networks and ANPR cameras for automated vehicle fueling footprint analysis.",
+    whyChooseUs: [
+      "Fuel transaction timestamp & vehicle lookup",
+      "Fleet refueling card activity tracking",
+      "Payment method & UPI transaction matching",
+      "Location-based fuel station activity analysis",
+      "Vehicle movement timeline correlation"
+],
+    keywords: ["PPRI","Petrol Pump Record Intelligence","Fuel Transaction","Petrol Station","Refueling Logs","Fleet Card","Fuel Station CCTV"],
+    other: "Payment Logs: Supports digital payment logs (UPI, Card, Wallet) and fuel pump POS machine transaction logs.",
+
 
     overview: 'PPRI Intelligence is a fuel-transaction and vehicle-activity analysis module designed to organize authorized petrol-pump and fuel-station transaction records into structured intelligence. It can analyze available transaction dates, times, station locations, vehicle references where available, fuel types, quantities, amounts, and transaction references. The module helps users review fuel activity chronologically, compare transactions across locations, examine recurring activity, and correlate relevant fuel records with authorized vehicle and travel information.',
 
     purpose: 'The purpose of PPRI Intelligence is to simplify the analysis of fuel-station records and support authorized vehicle and travel-related investigations. Large fuel transaction datasets can be difficult to review manually, especially when records span many stations and long periods. PPRI organizes these records into searchable transactions, timelines, station views, and analytical summaries, helping users identify relevant records and understand the available transaction history.',
 
-    work: 'The module imports and normalizes authorized fuel transaction records and organizes them according to station, date, time, vehicle reference where available, fuel type, quantity, amount, and transaction reference. Users can search and filter records by vehicle, station, date, amount, or time period.\\n\\nPPRI can create chronological fuel transaction timelines, compare activity across stations, analyze recurring transactions, and associate fuel activity with authorized vehicle and transport records. Where appropriate, it can correlate information with TGRI, RTOI, LAR, and case records.\\n\\nThe module can provide dashboards showing transaction volumes, fuel categories, station activity, and timeline summaries and can generate structured reports.',
+    work: 'The module imports and normalizes authorized fuel transaction records and organizes them according to station, date, time, vehicle reference where available, fuel type, quantity, amount, and transaction reference. Users can search and filter records by vehicle, station, date, amount, or time period. PPRI can create chronological fuel transaction timelines, compare activity across stations, analyze recurring transactions, and associate fuel activity with authorized vehicle and transport records. Where appropriate, it can correlate information with TGRI, RTOI, LAR, and case records. The module can provide dashboards showing transaction volumes, fuel categories, station activity, and timeline summaries and can generate structured reports.',
 
     benefits: [
       'Simplifies fuel transaction analysis.',
@@ -1341,12 +1679,25 @@ export const AGENT_CARDS_DATA = {
     name: 'RII Intelligence',
     shortName: 'RII',
     subtitle: 'Railway Information Intelligence',
+    introduction: "RII Intelligence processes PNR reservations, train ticket bookings, railway passenger manifests, and IRCTC transaction records.",
+    mission: "To trace passenger train travel, identify co-travelers sharing PNR numbers, and reconstruct rail movement histories.",
+    vision: "To provide real-time railway reservation monitoring cross-referenced with passenger identity watchlists.",
+    whyChooseUs: [
+      "PNR number & passenger manifest lookup",
+      "Co-traveler seat allocation graph mapping",
+      "Historical train travel timeline reconstruction",
+      "Boarding & destination station frequency analysis",
+      "Integration with station CCTV surveillance"
+],
+    keywords: ["RII","Railway Information Intelligence","PNR Lookup","Train Booking","IRCTC Records","Passenger Manifest","Railway Travel"],
+    other: "Systems: Connects with authorized railway reservation systems. Preserves booking timestamps and payment transaction IDs.",
+
 
     overview: 'RII Intelligence is a railway and transportation-record analysis module designed to organize authorized railway booking, journey, station, route, and transportation information into structured intelligence. It helps users review available journey records, organize travel timelines, analyze routes, compare journeys, and connect railway information with other authorized transportation or case records. The module provides a centralized environment for railway information search, timeline analysis, document association, and reporting.',
 
     purpose: 'The purpose of RII Intelligence is to simplify the analysis of railway-related records and reduce the manual effort required to review multiple journeys, stations, routes, and dates. It provides authorized users with a structured way to search railway information, create chronological travel histories, compare routes, organize supporting records, and associate relevant railway information with authorized cases.',
 
-    work: 'The module organizes authorized railway records according to available booking references, journey dates, stations, routes, passenger-related references where permitted, train information, and other supported metadata. Users can search and filter records by date, station, route, reference, or other criteria.\\n\\nRII can construct journey timelines, organize routes, compare available journeys, and associate railway documents with relevant records. It can correlate railway information with other authorized transport or case records where appropriate.\\n\\nThe platform can provide travel dashboards, journey summaries, case workspaces, audit trails, and structured railway intelligence reports.',
+    work: 'The module organizes authorized railway records according to available booking references, journey dates, stations, routes, passenger-related references where permitted, train information, and other supported metadata. Users can search and filter records by date, station, route, reference, or other criteria. RII can construct journey timelines, organize routes, compare available journeys, and associate railway documents with relevant records. It can correlate railway information with other authorized transport or case records where appropriate. The platform can provide travel dashboards, journey summaries, case workspaces, audit trails, and structured railway intelligence reports.',
 
     benefits: [
       'Faster railway-record analysis.',
@@ -1389,12 +1740,25 @@ export const AGENT_CARDS_DATA = {
     name: 'PCRI Intelligence',
     shortName: 'PCRI',
     subtitle: 'PIN Code Record Intelligence',
+    introduction: "PCRI Intelligence provides postal index number analytics, administrative boundary mapping, demographic overlays, and spatial pin code lookup.",
+    mission: "To standardize address location data, resolve ambiguous postal addresses, and map crime activity by PIN code zone.",
+    vision: "To deliver 3D demographic and spatial analytical layers mapping pincode boundaries nationwide.",
+    whyChooseUs: [
+      "Nationwide PIN code directory & boundary lookup",
+      "Address normalization & pin code resolution",
+      "Crime density & case distribution by PIN code",
+      "Post office & jurisdiction mapping",
+      "Spatial analytics for demographic research"
+],
+    keywords: ["PCRI","PIN Code Record Intelligence","Pincode Lookup","Postal Zone","Address Resolution","Demographic Map","Spatial Analytics"],
+    other: "Database: Comprehensive national PIN code database with geographic centroids and police station jurisdiction mappings.",
+
 
     overview: 'PCRI Intelligence is a postal and geographic-reference module designed to organize PIN code information and connect postal codes with available geographic, administrative, and postal details. It provides a structured search environment for identifying corresponding post offices, areas, districts, states, and other available geographic information. The module can support address verification, geographic research, document processing, logistics analysis, and location-related intelligence workflows.',
 
     purpose: 'The purpose of PCRI Intelligence is to simplify postal-code and geographic reference searches. PIN code information is often used across addresses, KYC documents, property records, transport information, and other datasets, but inconsistent or incomplete postal information can make verification difficult. PCRI provides a standardized reference layer that helps users identify and validate available postal and geographic information.',
 
-    work: 'The module maintains and searches authorized PIN code reference information and associates each code with available postal and geographic metadata. Users can search by PIN code, post office, district, state, area, or other supported fields.\\n\\nPCRI can support address validation by comparing available postal information with submitted records. It can also provide geographic summaries and associate PIN code information with other authorized records.\\n\\nThe module can be used as a supporting reference service for other CR Intelligence modules such as KYCDI, LRI, RTOI, and OSINT, helping normalize location information across the platform.',
+    work: 'The module maintains and searches authorized PIN code reference information and associates each code with available postal and geographic metadata. Users can search by PIN code, post office, district, state, area, or other supported fields. PCRI can support address validation by comparing available postal information with submitted records. It can also provide geographic summaries and associate PIN code information with other authorized records. The module can be used as a supporting reference service for other CR Intelligence modules such as KYCDI, LRI, RTOI, and OSINT, helping normalize location information across the platform.',
 
     benefits: [
       'Faster PIN code verification.',
@@ -1437,12 +1801,24 @@ export const AGENT_CARDS_DATA = {
     name: 'CRI Intelligence',
     shortName: 'CRI',
     subtitle: 'Company Registration Intelligence',
+    introduction: "CRI Intelligence indexes MCA company registrations, director DIN numbers, financial filings, shell company indicators, and corporate structures.",
+    mission: "To uncover corporate ownership networks, trace director cross-appointments, and identify fraudulent shell companies.",
+    vision: "To provide automated corporate fraud detection mapping beneficial ownership networks across global corporate registries.",
+    whyChooseUs: [
+      "Company CIN & Director DIN lookup engine",
+      "Interactive corporate director & subsidiary network graph",
+      "Shell company risk indicator algorithms",
+      "Annual financial filing & balance sheet summary",
+      "Cross-matching corporate addresses with suspect profiles"
+],
+    keywords: ["CRI","Company Registration Intelligence","MCA Records","CIN","Director DIN","Corporate Audit","Shell Company","Business Registry"],
+    other: "Registry: Connects with Ministry of Corporate Affairs (MCA) registries. Supports DIN network graphing and balance sheet analytical views.",
 
     overview: 'CRI Intelligence is a corporate and company-record research module designed to organize authorized and publicly available company registration information into structured corporate intelligence. It can create company profiles containing available registration details, incorporation information, company status, publicly available officer or director information, filings, registered information, and other permitted corporate records. The module helps users conduct company verification, due diligence, corporate research, relationship analysis, timeline creation, and structured reporting.',
 
     purpose: 'The purpose of CRI Intelligence is to simplify company verification and corporate research by bringing relevant company-registration information into a centralized workspace. Corporate information can be distributed across public registries, filings, documents, company websites, and other sources. CRI organizes available information into company profiles and timelines and helps authorized users compare records, identify relationships, review changes, and prepare due-diligence reports.',
 
-    work: 'The module collects and organizes authorized and publicly accessible company-registration information into structured company profiles. Users can search companies using registration identifiers, company names, status, incorporation information, and other supported criteria.\\n\\nCRI can organize corporate timelines covering incorporation, status changes, filings, and other available events. It can associate publicly available officer or director information where legally appropriate and visualize relationships between companies, entities, and corporate records.\\n\\nThe module can compare information from multiple permitted sources, preserve source references, associate company information with authorized cases, and generate structured corporate intelligence reports. It should clearly distinguish verified registry information from information sourced from other public sources.',
+    work: 'The module collects and organizes authorized and publicly accessible company-registration information into structured company profiles. Users can search companies using registration identifiers, company names, status, incorporation information, and other supported criteria. CRI can organize corporate timelines covering incorporation, status changes, filings, and other available events. It can associate publicly available officer or director information where legally appropriate and visualize relationships between companies, entities, and corporate records. The module can compare information from multiple permitted sources, preserve source references, associate company information with authorized cases, and generate structured corporate intelligence reports. It should clearly distinguish verified registry information from information sourced from other public sources.',
 
     benefits: [
       'Faster company research.',
@@ -1487,12 +1863,25 @@ export const AGENT_CARDS_DATA = {
     name: 'MDRI Intelligence',
     shortName: 'MDRI',
     subtitle: 'Medical Data Record Intelligence',
+    introduction: "MDRI Intelligence organizes hospital admission records, medical store prescription logs, pharmacy transactions, and healthcare data.",
+    mission: "To locate injured suspects seeking medical care, trace controlled substance purchases, and verify hospital records.",
+    vision: "To establish a secure healthcare intelligence network alerting law enforcement of medico-legal cases (MLC) in real time.",
+    whyChooseUs: [
+      "Hospital medico-legal case (MLC) record lookup",
+      "Pharmacy prescription & controlled drug transaction search",
+      "Patient admission & emergency care timeline",
+      "Suspect identity verification against medical records",
+      "HIPAA/Data privacy compliant access logging"
+],
+    keywords: ["MDRI","Medical Data Record Intelligence","Hospital Records","MLC Register","Pharmacy Logs","Medical History","Healthcare Data"],
+    other: "Privacy Standards: Built with healthcare privacy standards. Requires explicit legal authorization for medical record retrieval.",
+
 
     overview: 'MDRI Intelligence is a secure medical-record management and analysis module designed to organize authorized healthcare and medical information into structured records. It can manage medical documents, reports, test results, prescriptions, treatment records, visit information, and other permitted healthcare information. The module provides chronological medical timelines, document classification, search, record organization, controlled access, audit logging, and reporting capabilities. Because medical information is highly sensitive, the system should be designed with strong privacy, security, encryption, access-control, and retention requirements.',
 
     purpose: 'The purpose of MDRI Intelligence is to make authorized medical records easier to organize, search, retrieve, and review while protecting sensitive healthcare information. Medical records can exist across multiple documents and systems and may be difficult to understand chronologically. MDRI creates a structured medical record environment where authorized users can organize documents, build timelines, search records, associate related information, and maintain controlled access. The module is intended for record management and authorized analysis rather than replacing qualified medical professionals or making unsupported medical conclusions.',
 
-    work: 'The module securely imports or connects authorized medical records and classifies them into structured categories such as reports, test results, prescriptions, visits, treatment records, and supporting documents. OCR and document-intelligence technologies can make scanned medical documents searchable where appropriate.\\n\\nMDRI can create chronological medical timelines, associate related documents, search records using permitted criteria, and organize information around authorized patient or case profiles. It can maintain verification and review status, source information, access history, and audit records.\\n\\nThe module can provide controlled dashboards and reports showing record completeness, document categories, timelines, and review activity. Access to medical data should be strictly role-based and limited according to applicable privacy and healthcare requirements.',
+    work: 'The module securely imports or connects authorized medical records and classifies them into structured categories such as reports, test results, prescriptions, visits, treatment records, and supporting documents. OCR and document-intelligence technologies can make scanned medical documents searchable where appropriate. MDRI can create chronological medical timelines, associate related documents, search records using permitted criteria, and organize information around authorized patient or case profiles. It can maintain verification and review status, source information, access history, and audit records. The module can provide controlled dashboards and reports showing record completeness, document categories, timelines, and review activity. Access to medical data should be strictly role-based and limited according to applicable privacy and healthcare requirements.',
 
     benefits: [
       'Faster authorized medical-record retrieval.',
@@ -1536,6 +1925,19 @@ export const AGENT_CARDS_DATA = {
     name: 'About Us',
     shortName: 'ABOUT',
     subtitle: 'CR Intelligence Platform',
+    introduction: "Nexora Platform is a next-generation AI-powered Multi-Domain Intelligence Engine bringing together 30+ domain intelligence modules under a unified interface.",
+    mission: "To empower investigators, intelligence analysts, and law enforcement agencies with cutting-edge analytical tools, automated record correlation, and actionable insights.",
+    vision: "To be the global standard in unified intelligence analysis, bridging data silos across telecommunications, cyber, financial, spatial, and governmental domains.",
+    whyChooseUs: [
+      "30+ integrated domain intelligence modules in one platform",
+      "Sub-second search across multi-gigabyte datasets",
+      "AI-driven entity correlation and network graph generation",
+      "Military-grade encryption and immutable audit trails",
+      "Role-based access control (RBAC) and data sovereignty compliance"
+],
+    keywords: ["About Us","Nexora Platform","AI Intelligence","Platform Overview","Cybercrime Intelligence","Investigation Suite","System Architecture"],
+    other: "Architecture: High-availability enterprise platform architecture. Supports cloud, hybrid, and air-gapped on-premise deployments.",
+
     overview: '',
     purpose: '',
     work: '',
@@ -1576,12 +1978,25 @@ export const AGENT_CARDS_DATA = {
     name: 'Account Settings',
     shortName: 'SETTINGS',
     subtitle: 'Account & Security Management',
+    introduction: "Account Settings provides full user profile management, security configurations, API access keys, notification preferences, and workspace controls.",
+    mission: "To offer users complete control over their analytical workspace, security parameters, and personal authorization settings.",
+    vision: "To provide seamless zero-trust identity management and personalized AI assistant preferences.",
+    whyChooseUs: [
+      "Centralized security and password controls",
+      "Two-factor authentication (2FA) enforcement",
+      "Custom notification and alert preferences",
+      "API key management and integration settings",
+      "Activity history and session log inspection"
+],
+    keywords: ["Account Settings","User Profile","Security Settings","2FA","Password Change","API Keys","Preferences","Session Logs"],
+    other: "Protocols: Supports SSO (Single Sign-On), OAuth2, SAML 2.0, and hardware token authentication protocols.",
+
 
     overview: 'Account Settings is a centralized user-management and security module that allows users to manage their profile information, authentication settings, account preferences, active sessions, notifications, security controls, and available permissions. It provides users with a single location for controlling account-related settings and gives administrators appropriate tools for managing organizational access. Because CR Intelligence may contain sensitive intelligence and investigation information, Account Settings plays an important role in maintaining secure authentication, role-based access, session management, auditability, and controlled access to platform capabilities.',
 
     purpose: 'The purpose of Account Settings is to provide users and administrators with secure and organized control over account configuration and access. Users should be able to manage their profile, password, authentication methods, notification preferences, active sessions, and other available personal settings without navigating through multiple unrelated areas of the platform. For administrators, the module can provide controlled tools for managing roles, permissions, account status, access levels, and security policies. The overall purpose is to improve account security, provide transparency around access, and ensure that users only receive the permissions required for their responsibilities.',
 
-    work: 'The module provides a centralized interface where users can view and update supported profile information, change passwords, configure multi-factor authentication, manage active sessions, review recent login activity, and control notification preferences.\\n\\nFor organizational accounts, authorized administrators can manage user roles and permissions. Permissions can determine which intelligence modules, records, reports, integrations, and administrative functions a user can access. The system can support role-based access control so that sensitive information is only available to appropriately authorized personnel.\\n\\nAccount Settings can also provide security activity logs, session termination, login-history review, API and integration controls where applicable, and account status management. Changes to important security settings can be recorded in audit logs.\\n\\nThe module can provide account-security alerts, password policies, authentication controls, permission review, and organization-level security settings. Sensitive operations should require appropriate authentication and should be fully auditable.',
+    work: 'The module provides a centralized interface where users can view and update supported profile information, change passwords, configure multi-factor authentication, manage active sessions, review recent login activity, and control notification preferences.For organizational accounts, authorized administrators can manage user roles and permissions. Permissions can determine which intelligence modules, records, reports, integrations, and administrative functions a user can access. The system can support role-based access control so that sensitive information is only available to appropriately authorized personnel. Account Settings can also provide security activity logs, session termination, login-history review, API and integration controls where applicable, and account status management. Changes to important security settings can be recorded in audit logs. The module can provide account-security alerts, password policies, authentication controls, permission review, and organization-level security settings. Sensitive operations should require appropriate authentication and should be fully auditable.',
 
     benefits: [
       'Improves account security.',
@@ -1860,7 +2275,19 @@ export function detectCardAndTab(rawQuery) {
   
   // 1. Detect sub-intent (tab) from query
   let detectedTab = null;
-  if (/\b(purpose|aim|goal|objective|why\s+use|why\s+is)\b/i.test(queryLower)) {
+  if (/\b(intro|introduction|preamble|starting|about\s+module)\b/i.test(queryLower)) {
+    detectedTab = 'introduction';
+  } else if (/\b(mission|core\s+mission|objective\s+mission)\b/i.test(queryLower)) {
+    detectedTab = 'mission';
+  } else if (/\b(vision|future\s+vision|scope\s+vision)\b/i.test(queryLower)) {
+    detectedTab = 'vision';
+  } else if (/\b(why\s+choose|why\s+choose\s+us|why\s+select|why\s+use|advantages?\s+over)\b/i.test(queryLower)) {
+    detectedTab = 'whyChooseUs';
+  } else if (/\b(keywords?|tags?|search\s+terms?|aliases?)\b/i.test(queryLower)) {
+    detectedTab = 'keywords';
+  } else if (/\b(other|other\s+details?|technical\s+specs?|compliance|formats?|specifications?)\b/i.test(queryLower)) {
+    detectedTab = 'other';
+  } else if (/\b(purpose|aim|goal|objective|why\s+is)\b/i.test(queryLower)) {
     detectedTab = 'purpose';
   } else if (/\b(work|working|how\s+does\s+it\s+work|how\s+it\s+works|process|workflow|operation)\b/i.test(queryLower)) {
     detectedTab = 'work';
@@ -1928,9 +2355,11 @@ export function detectCardAndTab(rawQuery) {
     return { card: cardByNameOrSubtitle, tab: detectedTab, cleanedQuery: normalizedCleaned, terms: words };
   }
 
-  // 6. Substring fallback match
+  const STOP_WORDS = new Set(['the', 'and', 'why', 'how', 'who', 'what', 'when', 'where', 'which', 'choose', 'use', 'us', 'me', 'it', 'its', 'this', 'that', 'from', 'with', 'for', 'about', 'tell', 'show', 'give', 'explain', 'work', 'purpose', 'benefit', 'benefits', 'feature', 'features', 'mission', 'vision', 'keywords', 'details', 'other', 'overview', 'menu', 'list', 'are', 'is', 'was', 'were', 'does', 'did', 'done', 'doing']);
+
+  // 6. Substring fallback match (excluding stop words)
   for (const word of words) {
-    if (word.length >= 3) {
+    if (word.length >= 3 && !STOP_WORDS.has(word)) {
       const match = ALL_AGENT_CARDS.find(c => 
         c.shortName.toLowerCase().includes(word) ||
         c.name.toLowerCase().includes(word) ||
@@ -1967,7 +2396,9 @@ export function filterCardsSmart(inputQuery) {
   if (!cleanedQuery && terms.length === 0) return ALL_AGENT_CARDS;
 
   return ALL_AGENT_CARDS.filter(c => {
-    const text = `${c.name} ${c.shortName} ${c.subtitle} ${c.overview} ${c.purpose}`.toLowerCase();
+    const kwStr = Array.isArray(c.keywords) ? c.keywords.join(' ') : (c.keywords || '');
+    const wcuStr = Array.isArray(c.whyChooseUs) ? c.whyChooseUs.join(' ') : (c.whyChooseUs || '');
+    const text = `${c.name} ${c.shortName} ${c.subtitle} ${c.overview} ${c.purpose} ${c.introduction} ${c.mission} ${c.vision} ${kwStr} ${wcuStr} ${c.other}`.toLowerCase();
     if (cleanedQuery && text.includes(cleanedQuery)) return true;
     if (terms.some(t => t.length >= 2 && text.includes(t))) return true;
     return false;

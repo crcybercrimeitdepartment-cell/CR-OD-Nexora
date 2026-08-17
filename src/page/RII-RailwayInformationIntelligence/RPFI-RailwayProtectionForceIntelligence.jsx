@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Railway Protection Force Intelligence";
-  const displayDesc = description || "Track RPF deployments, security alerts & criminal records.";
+  const displayDesc = description || "Track RPF deployments, security alerts & criminal records. Access centralized data on railway security operations, incident reports, and personnel assignments. Monitor active threats, review past interventions, and coordinate rapid responses to criminal activities occurring within the railway infrastructure.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

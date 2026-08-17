@@ -40,7 +40,7 @@ import TLIPage from "./SMI-SocialMediaIntelligence/TLI-TimelineIntelligence";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Social Media Intelligence";
-  const displayDesc = description || "Correlate profiles and map social graphs across platforms.";
+  const displayDesc = description || "Correlate profiles and map social graphs across platforms. Extract actionable intelligence from digital interactions, public posts, and network connections. Identify key influencers, uncover hidden affiliations, and track the digital footprint of suspects to build comprehensive behavioral profiles and monitor online activities.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

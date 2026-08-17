@@ -32,7 +32,7 @@ import TDRD7Page from './TDR-TowerDumpRecord/TDR-DEMO_7';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Tower Dump Record";
-  const displayDesc = description || "Analyze and visualize cellular tower dump records and connections.";
+  const displayDesc = description || "Analyze and visualize cellular tower dump records and connections. Pinpoint mobile device locations, track movements across cells, and identify common numbers active within specific geofences. Utilize advanced spatial analytics and dynamic filtering to isolate suspicious activity, correlate suspect movements, and map out complex network interactions seamlessly.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

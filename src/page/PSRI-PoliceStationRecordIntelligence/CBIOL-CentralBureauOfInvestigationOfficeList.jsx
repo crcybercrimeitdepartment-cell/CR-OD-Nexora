@@ -18,7 +18,7 @@ export function Header() {
             <span>Central Bureau of Investigation Office List</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Federal investigation agency records.
+            Federal investigation agency records. Dive deep into the specific metadata and data patterns of this intelligence sector. Leverage advanced analytical tools, cross-reference multiple data points, and generate comprehensive investigative reports to support ongoing law enforcement operations seamlessly.
           </p>
         </div>
       </div>

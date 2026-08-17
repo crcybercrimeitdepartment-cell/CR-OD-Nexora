@@ -22,7 +22,7 @@ import SSHPage from "./LRI-LandRecordIntelligence/SSH-SearchSocietyHistory";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Land Record Intelligence";
-  const displayDesc = description || "Verify property ownership, land revenue, and deed registrations.";
+  const displayDesc = description || "Verify property ownership, land revenue, and deed registrations. Uncover hidden assets, trace property transfer histories, and identify fraudulent land transactions. Utilize spatial mapping and archival cross-referencing to investigate money laundering, establish suspect net worth, and resolve complex real estate disputes with unparalleled accuracy.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

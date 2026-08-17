@@ -40,7 +40,7 @@ import CDRD5Page from './CDR-CallDetailRecord/CDR-DEMO_5';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Call Detail Record";
-  const displayDesc = description || "Comprehensive intelligence and analytics on call details.";
+  const displayDesc = description || "Comprehensive intelligence and analytics on call details. Dive deep into telecommunication metadata to uncover communication patterns, identify unknown contacts, and map out the timeline of interactions. Leverage advanced filters, geo-analysis, and cross-referencing capabilities to build robust investigative narratives and establish critical links between suspects.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

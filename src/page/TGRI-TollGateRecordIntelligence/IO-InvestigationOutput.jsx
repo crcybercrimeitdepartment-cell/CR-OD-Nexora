@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Investigation Output";
-  const displayDesc = description || "Generate consolidated case reports, evidence files & query results.";
+  const displayDesc = description || "Generate consolidated case reports, evidence files & query results. Compile all toll-related intelligence into structured, court-ready documentation. Streamline the investigative workflow by exporting filtered data, visual timelines, and interconnected vehicle networks for seamless collaboration and legal presentation.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

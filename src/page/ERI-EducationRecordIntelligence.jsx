@@ -23,7 +23,7 @@ import SRIPage from "./ERI-EducationRecordIntelligence/SRI-SchoolRecordIntellige
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Education Record Intelligence";
-  const displayDesc = description || "Authenticate academic degrees and university records.";
+  const displayDesc = description || "Authenticate academic degrees and university records. Verify educational credentials, track enrollment histories, and identify forged certificates across international and domestic institutions. Streamline background investigations by cross-referencing alumni databases, graduation archives, and disciplinary records to ensure complete transparency and accuracy.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

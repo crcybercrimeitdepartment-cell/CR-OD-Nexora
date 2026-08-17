@@ -52,7 +52,7 @@ import RERAIPage from "./CRI-CompanyRegistrationIntelligence/RERAI-RealEstateReg
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Company Registration Intelligence";
-  const displayDesc = description || "Audit corporate records, regulatory registrations, and business intelligence.";
+  const displayDesc = description || "Audit corporate records, regulatory registrations, and business intelligence. Trace corporate ownership structures, identify shell companies, and cross-reference board of directors data to uncover hidden affiliations. Access real-time compliance reports, financial filings, and structural hierarchies to support complex fraud investigations and corporate due diligence.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Pattern Intelligence";
-  const displayDesc = description || "Identify travel routines, recurring routes & behavioral patterns.";
+  const displayDesc = description || "Identify travel routines, recurring routes & behavioral patterns. Detect predictable movement behaviors by analyzing historical toll data over extended periods. Uncover hidden operational routines, flag deviations from normal travel, and anticipate future movements of targeted individuals or syndicates.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

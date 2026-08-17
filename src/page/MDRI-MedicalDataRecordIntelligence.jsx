@@ -18,7 +18,7 @@ export function Header() {
             <span>Medical Data Record Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analyze hospital admission logs and health registry data.
+            Analyze hospital admission logs and health registry data. Track suspect movements through medical facility visits, verify injury claims, and identify associates who may have provided medical assistance. Cross-reference pharmacy prescriptions and treatment histories to uncover hidden substance abuse or unauthorized medical interventions.
           </p>
         </div>
       </div>

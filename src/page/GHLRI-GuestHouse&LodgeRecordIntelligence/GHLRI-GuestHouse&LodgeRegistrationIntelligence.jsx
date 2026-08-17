@@ -11,7 +11,7 @@ import React from 'react';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Guest House & Lodge Registration Intelligence";
-  const displayDesc = description || "Verify lodge registrations, ownership & compliance.";
+  const displayDesc = description || "Verify lodge registrations, ownership & compliance. Audit hospitality establishments for regulatory adherence, business licenses, and management hierarchies. Identify unregistered or illicit accommodations, track ownership changes, and monitor compliance violations to support regional security and administrative enforcement efforts.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

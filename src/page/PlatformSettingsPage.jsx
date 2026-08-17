@@ -142,8 +142,8 @@ export default function PlatformSettingsPage({ onBack }) {
               <span>{t('platformSettings.title', 'Platform Settings')}</span>
             </h1>
             <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-              {t('platformSettings.subtitle', 'Configure your personal preferences and platform behavior.')}
-            </p>
+            {t('platformSettings.subtitle', 'Configure your personal preferences and platform behavior.')}. Dive deep into the specific metadata and data patterns of this intelligence sector. Leverage advanced analytical tools, cross-reference multiple data points, and generate comprehensive investigative reports to support ongoing law enforcement operations seamlessly.
+          </p>
           </div>
         </div>
       </header>

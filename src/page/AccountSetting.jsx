@@ -27,7 +27,7 @@ import AS26Page from './AccountSetting/DeleteAccount';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Account Setting";
-  const displayDesc = description || "Manage personal profile, security configuration, system permissions & account preferences.";
+  const displayDesc = description || "Manage personal profile, security configuration, system permissions & account preferences. Customize your dashboard experience, manage API access keys, and configure real-time notification alerts. Ensure optimal operational security by reviewing activity logs, updating authentication methods, and maintaining strict access control protocols tailored to your specific role.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

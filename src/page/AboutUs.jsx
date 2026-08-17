@@ -37,7 +37,7 @@ import GlobalPresencePage from './AboutUs/GlobalPresencePage';
  */
 export function Header({ title, description }) {
   const displayTitle = title || "About Us";
-  const displayDesc = description || "Learn more about Nexora platform architecture, intelligence capabilities & mission.";
+  const displayDesc = description || "Learn more about Nexora platform architecture, intelligence capabilities & mission. Discover our commitment to providing cutting-edge analytical tools for law enforcement and security agencies. Explore our advanced technological infrastructure, robust security protocols, and the visionary roadmap that drives our continuous innovation in data intelligence.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

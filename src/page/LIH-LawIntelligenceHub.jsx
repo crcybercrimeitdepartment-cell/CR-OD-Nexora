@@ -40,7 +40,7 @@ import CSIPage from "./LIH-LawIntelligenceHub/CSI-CaseStudyIntelligence";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Law Intelligence Hub";
-  const displayDesc = description || "Access centralized legal databases and judicial archives.";
+  const displayDesc = description || "Access centralized legal databases and judicial archives. Empower your investigations with instant access to penal codes, legal precedents, and procedural guidelines. Streamline case preparation by searching through historical rulings, interpreting complex legal frameworks, and ensuring all operational activities align with current legislative standards.";
 
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">

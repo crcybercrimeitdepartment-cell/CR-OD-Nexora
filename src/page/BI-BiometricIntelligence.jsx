@@ -15,7 +15,7 @@ export function Header() {
             <span>Biometric Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analyze biometric logs and identity verification systems.
+            Analyze and verify biometric profiles, fingerprint scans, and biological markers. Compare suspect biometric data against centralized national repositories to establish definitive identities. Enhance forensic analysis by cross-referencing latent prints with historical arrest records and unsolved case files for comprehensive identity resolution.
           </p>
         </div>
       </div>

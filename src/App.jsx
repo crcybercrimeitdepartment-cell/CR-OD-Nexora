@@ -70,6 +70,10 @@ export default function App() {
 
   const [globalLayoutSettings, setGlobalLayoutSettings] = useState(null);
 
+  // Module Status State
+  const [moduleStatusConfig, setModuleStatusConfig] = useState(null);
+  const [productionMsg, setProductionMsg] = useState(false);
+
   // Module Lock State
   const [moduleLockConfig, setModuleLockConfig] = useState(null);
   const [unlockedModules, setUnlockedModules] = useState([]);
@@ -83,6 +87,13 @@ export default function App() {
   });
 
   useEffect(() => {
+    const loadStatus = () => {
+      try {
+        const saved = localStorage.getItem('nexora_module_status_v1');
+        if (saved) setModuleStatusConfig(JSON.parse(saved));
+        else setModuleStatusConfig(null);
+      } catch (e) {}
+    };
     const loadLocks = () => {
       try {
         const saved = localStorage.getItem('nexora_module_lock_v1');
@@ -98,19 +109,47 @@ export default function App() {
       } catch (e) {}
     };
 
+    loadStatus();
     loadLocks();
     loadZoom();
+    window.addEventListener('storage', loadStatus);
+    window.addEventListener('moduleStatusUpdate', loadStatus);
     window.addEventListener('storage', loadLocks);
     window.addEventListener('securityUpdate', loadLocks);
     window.addEventListener('storage', loadZoom);
     window.addEventListener('zoomUpdate', loadZoom);
     return () => {
+      window.removeEventListener('storage', loadStatus);
+      window.removeEventListener('moduleStatusUpdate', loadStatus);
       window.removeEventListener('storage', loadLocks);
       window.removeEventListener('securityUpdate', loadLocks);
       window.removeEventListener('storage', loadZoom);
       window.removeEventListener('zoomUpdate', loadZoom);
     };
   }, []);
+
+  const getDisabledStatusObj = (pageId, subPageId) => {
+    if (!moduleStatusConfig?.globalManagementEnabled) return null;
+    const defTitle = moduleStatusConfig.defaultTitle || 'Currently in Production';
+    const defMsg = moduleStatusConfig.defaultMessage || 'This module is currently disabled and undergoing development. Please try again later.';
+    
+    let config = null;
+    if (subPageId && moduleStatusConfig.disabledModules?.[subPageId]) {
+      config = moduleStatusConfig.disabledModules[subPageId];
+    } else if (pageId && moduleStatusConfig.disabledModules?.[pageId]) {
+      config = moduleStatusConfig.disabledModules[pageId];
+    }
+    
+    if (config) {
+      if (typeof config === 'string') return { title: defTitle, message: config };
+      if (typeof config === 'object') return { 
+        title: config.title || defTitle, 
+        message: config.message || defMsg 
+      };
+      return { title: defTitle, message: defMsg };
+    }
+    return null;
+  };
 
   const getLockedPageId = (pageId, subPageId) => {
     if (!moduleLockConfig?.globalLockEnabled) return false;
@@ -422,6 +461,15 @@ export default function App() {
   };
 
   const handleToolClick = (tool) => {
+    const pId = tool.parentId ? tool.parentId : tool.name;
+    const sId = tool.parentId ? tool.id : null;
+    
+    const disabledObj = getDisabledStatusObj(pId, sId);
+    if (disabledObj) {
+      setProductionMsg(disabledObj);
+      return;
+    }
+
     // Save current scroll position before navigating
     scrollPositions.current[selectedPage || 'home'] = document.getElementById('main-scroll-container')?.scrollTop || 0;
     isNavigatingBack.current = false;
@@ -442,6 +490,12 @@ export default function App() {
   };
 
   const handleHeaderIconClick = (id) => {
+    const disabledObj = getDisabledStatusObj(id, null);
+    if (disabledObj) {
+      setProductionMsg(disabledObj);
+      return;
+    }
+
     scrollPositions.current[selectedPage || 'home'] = document.getElementById('main-scroll-container')?.scrollTop || 0;
     isNavigatingBack.current = false;
     setSearchQuery('');
@@ -872,6 +926,26 @@ export default function App() {
           </main>
         </div>
       </div>
+
+      {productionMsg && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center animate-fade-in border border-slate-200">
+            <div className="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-5 border border-amber-100 shadow-inner">
+              <AlertTriangle className="w-8 h-8 text-amber-500" />
+            </div>
+            <h3 className="text-xl font-black text-slate-900 mb-2 tracking-tight">{productionMsg?.title || 'Currently in Production'}</h3>
+            <p className="text-sm font-medium text-slate-500 mb-6 leading-relaxed">
+              {productionMsg?.message || 'This module is currently disabled and undergoing development. Please try again later.'}
+            </p>
+            <button 
+              onClick={() => setProductionMsg(false)}
+              className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl shadow-xs transition-colors cursor-pointer"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* GLOBAL FOOTER */}
       <GlobalFooter pageName="NEXORA INTELLIGENCE" audience="Law Enforcement & Security Agencies" />

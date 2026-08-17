@@ -27,7 +27,7 @@ import IOPage from "./TGRI-TollGateRecordIntelligence/IO-InvestigationOutput";
  */
 export function Header({ title, description }) {
   const displayTitle = title || "Toll Gate Record Intelligence";
-  const displayDesc = description || "Analyze FASTag toll logs and ANPR vehicle captures.";
+  const displayDesc = description || "Analyze FASTag toll logs and ANPR vehicle captures. Track vehicular movements across the national highway network by correlating electronic payments and visual records. Identify convoy patterns, trace suspect trajectories, and verify travel timelines to support complex logistical and criminal investigations.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">
