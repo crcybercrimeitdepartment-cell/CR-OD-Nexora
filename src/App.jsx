@@ -539,14 +539,26 @@ export default function App() {
     const getPageFromHash = (hashString) => {
       const hash = hashString.replace('#', '');
       if (!hash || hash === 'Home') return null;
-      let pageId = hash.split('/')[0];
-      if (pageId.startsWith('AboutUs-')) {
+      
+      // Handle slash format: #MODULE/subId
+      if (hash.includes('/')) {
+        return hash.split('/')[0];
+      }
+
+      // Handle specific dashed modules
+      if (hash.startsWith('AboutUs-')) {
         return 'AboutUs';
       }
-      if (pageId.startsWith('AccountSetting-')) {
+      if (hash.startsWith('AccountSetting-')) {
         return 'AccountSetting';
       }
-      return pageId;
+
+      // Handle dash format: #MODULE-subId
+      if (hash.includes('-')) {
+        return hash.split('-')[0];
+      }
+
+      return hash;
     };
 
     const handlePopState = (event) => {
@@ -568,7 +580,17 @@ export default function App() {
     // Check initial location hash on mount
     const initialPage = getPageFromHash(window.location.hash);
     const initialHash = window.location.hash.replace('#', '');
-    const initialSubPage = initialHash.split('/')[1] || null;
+    let initialSubPage = null;
+    if (initialHash.includes('/')) {
+      initialSubPage = initialHash.split('/')[1] || null;
+    } else if (initialHash.includes('-')) {
+      const parts = initialHash.split('-');
+      if (parts[0] !== 'AboutUs' && parts[0] !== 'AccountSetting') {
+        initialSubPage = parts.slice(1).join('-');
+      } else {
+        initialSubPage = parts[1] || null;
+      }
+    }
     if (!initialPage && window.location.hash !== '#Home') {
       window.history.replaceState(null, '', '#Home');
     }

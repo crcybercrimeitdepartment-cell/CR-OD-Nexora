@@ -27,18 +27,14 @@ export const SMI_TOOLS = [
 ];
 
 export const SDR_TOOLS = [
-  { parentId: 'SDR', id: 'bsnlsr', name: 'BSNL Subscriber Records', fullName: 'BSNL Subscriber Records', desc: 'Access and verify BSNL subscriber details.', icon: (p) => <Users {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
-  { parentId: 'SDR', id: 'asr', name: 'Airtel Subscriber Records', fullName: 'Airtel Subscriber Records', desc: 'Analyze Airtel subscriber registration details.', icon: (p) => <UserCheck {...p} />, color: 'text-red-600', bg: 'bg-red-100' },
-  { parentId: 'SDR', id: 'jsr', name: 'Jio Subscriber Records', fullName: 'Jio Subscriber Records', desc: 'Verify Jio subscriber identities and logs.', icon: (p) => <Smartphone {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
-  { parentId: 'SDR', id: 'visr', name: 'Vodafone Idea (Vi) Records', fullName: 'Vodafone Idea (Vi) Records', desc: 'Check Vi subscriber activity and registration.', icon: (p) => <PhoneCall {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
-  { parentId: 'SDR', id: 'imeii', name: 'IMEI Intelligence', fullName: 'IMEI Intelligence', desc: 'Track and analyze mobile device identities.', icon: (p) => <Hash {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
-  { parentId: 'SDR', id: 'sar', name: 'SDR Analysis Report', fullName: 'SDR Analysis Report', desc: 'Generate comprehensive subscriber analysis reports.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
-  { parentId: 'SDR', id: 'mnv', name: 'Mobile Number Verification', fullName: 'Mobile Number Verification', desc: 'Authenticate mobile numbers and SIM registries.', icon: (p) => <Shield {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
-  { parentId: 'SDR', id: 'rh', name: 'Report History', fullName: 'Report History', desc: 'View historical SDR analysis and verification reports.', icon: (p) => <Clock {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
-  { parentId: 'SDR', id: 'tnol', name: 'Telecom Nodal Officer List', fullName: 'Telecom Nodal Officer List', desc: 'Access contact details of telecom nodal officers.', icon: (p) => <Briefcase {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
-  { parentId: 'SDR', id: 'sdrd1', name: 'SDR DEMO 1', fullName: 'SDR DEMO 1', desc: 'Preview of upcoming subscriber intelligence features.', icon: (p) => <PlayCircle {...p} />, color: 'text-slate-600', bg: 'bg-slate-100' },
-  { parentId: 'SDR', id: 'sdrd2', name: 'SDR DEMO 2', fullName: 'SDR DEMO 2', desc: 'Preview of upcoming subscriber intelligence features.', icon: (p) => <PlayCircle {...p} />, color: 'text-slate-600', bg: 'bg-slate-100' },
-  { parentId: 'SDR', id: 'sdrd3', name: 'SDR DEMO 3', fullName: 'SDR DEMO 3', desc: 'Preview of upcoming subscriber intelligence features.', icon: (p) => <PlayCircle {...p} />, color: 'text-slate-600', bg: 'bg-slate-100' }
+  { parentId: 'SDR', id: 'bsnlsr', name: 'Search Box', fullName: 'Search Box', desc: 'Search and query subscriber records across all telecom providers.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'SDR', id: 'sar', name: 'CDR (SDR) Analysis & Report', fullName: 'CDR (SDR) Analysis & Report', desc: 'Generate comprehensive CDR and subscriber analysis reports.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'SDR', id: 'mnv', name: 'Mobile Number Verification (MNV)', fullName: 'Mobile Number Verification (MNV)', desc: 'Authenticate mobile numbers and SIM registries.', icon: (p) => <Shield {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'SDR', id: 'imeii', name: 'IMEI Intelligence (IMEII)', fullName: 'IMEI Intelligence (IMEII)', desc: 'Track and analyze mobile device identities via IMEI.', icon: (p) => <Hash {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'SDR', id: 'tnol', name: 'Cell ID Management', fullName: 'Cell ID Management', desc: 'Manage and analyze Cell IDs and telecom tower intelligence.', icon: (p) => <Network {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
+  { parentId: 'SDR', id: 'asr', name: 'SDR Subscriber Information Management', fullName: 'SDR Subscriber Information Management', desc: 'Manage and access comprehensive subscriber information records.', icon: (p) => <UserCheck {...p} />, color: 'text-red-600', bg: 'bg-red-100' },
+  { parentId: 'SDR', id: 'sdrd1', name: 'Demo', fullName: 'Demo', desc: 'Preview of upcoming subscriber intelligence features.', icon: (p) => <PlayCircle {...p} />, color: 'text-slate-600', bg: 'bg-slate-100' },
+  { parentId: 'SDR', id: 'rh', name: 'SDR Data Admin', fullName: 'SDR Data Admin', desc: 'Administer and manage SDR data records and system configuration.', icon: (p) => <Database {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
 ];
 
 export const OSINT_TOOLS = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import ToolCard from '../../components/nexora';
-import { Smartphone, Shield, CheckCircle, Cpu, RefreshCw, History } from 'lucide-react';
+import { Network, Radio, MapPin, Globe, Compass, HardDrive } from 'lucide-react';
 
 export function Header() {
   return (
@@ -8,10 +8,10 @@ export function Header() {
       <div className="flex items-center justify-center w-full relative z-20">
         <div className="flex-1 text-center flex flex-col items-center justify-center min-w-0 pt-1 sm:pt-2 md:pt-3 px-2">
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
-            <span>Mobile Number Verification</span>
+            <span>Cell ID Management</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Authenticate mobile numbers, SIM registration status, and CAF identity details across telecom registries. Leverage real-time carrier lookup and audit device binding history.
+            Manage and analyze Cell IDs, LAC records, and telecom tower intelligence across networks. Plot tower coverage radiuses and perform GIS location intelligence.
           </p>
         </div>
       </div>
@@ -19,7 +19,7 @@ export function Header() {
   );
 }
 
-export default function MNVPage({ onBack }) {
+export default function TNOLPage({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

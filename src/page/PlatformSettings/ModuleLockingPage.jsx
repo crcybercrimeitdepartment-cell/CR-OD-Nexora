@@ -119,7 +119,7 @@ export default function ModuleLockingPage({ onBack }) {
           setModalState({ ...modalState, step: 2 });
           setModalInput('');
         } else {
-          setModalError('Incorrect current default password.');
+          setModalError('Incorrect password. Use your current default or account login password.');
         }
       } else {
         if (modalInput.length < 4) {
@@ -528,7 +528,7 @@ export default function ModuleLockingPage({ onBack }) {
               <h3 className="text-lg font-bold text-slate-900 text-center mb-1">
                 {modalState.type === 'SET_DEFAULT' && modalState.step === 1 && 'Verify Login'}
                 {modalState.type === 'SET_DEFAULT' && modalState.step === 2 && 'Set Default Password'}
-                {modalState.type === 'RESET_DEFAULT' && modalState.step === 1 && 'Verify Current Default'}
+                {modalState.type === 'RESET_DEFAULT' && modalState.step === 1 && 'Verify Password'}
                 {modalState.type === 'RESET_DEFAULT' && modalState.step === 2 && 'Set New Default Password'}
                 {modalState.type === 'SET_CUSTOM' && modalState.step === 1 && 'Verify Default Password'}
                 {modalState.type === 'SET_CUSTOM' && modalState.step === 2 && 'Set Custom Password'}
@@ -540,7 +540,7 @@ export default function ModuleLockingPage({ onBack }) {
               <p className="text-xs text-slate-500 text-center mb-6">
                 {modalState.type === 'SET_DEFAULT' && modalState.step === 1 && 'Enter your account login password to continue.'}
                 {modalState.type === 'SET_DEFAULT' && modalState.step === 2 && 'Enter a new master lock password for the modules.'}
-                {modalState.type === 'RESET_DEFAULT' && modalState.step === 1 && 'Enter your current default lock password.'}
+                {modalState.type === 'RESET_DEFAULT' && modalState.step === 1 && 'Enter your current default lock password, or use your account login password to reset it.'}
                 {modalState.type === 'RESET_DEFAULT' && modalState.step === 2 && 'Enter your new default lock password.'}
                 {modalState.type === 'SET_CUSTOM' && modalState.step === 1 && 'Enter the default lock password to authorize custom password creation.'}
                 {modalState.type === 'SET_CUSTOM' && modalState.step === 2 && `Enter a unique lock password for ${modalState.targetModule}.`}

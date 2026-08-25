@@ -1,4 +1,6 @@
 import React from 'react';
+import ToolCard from '../../components/nexora';
+import { Hash, Database, Smartphone, ShieldAlert, Network, Clock } from 'lucide-react';
 
 export function Header() {
   return (
@@ -9,7 +11,7 @@ export function Header() {
             <span>IMEI Intelligence</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Analyze and view reports for IMEI Intelligence. Dive deep into the specific metadata and data patterns of this intelligence sector. Leverage advanced analytical tools, cross-reference multiple data points, and generate comprehensive investigative reports to support ongoing law enforcement operations seamlessly.
+            Track and analyze mobile device identities, TAC allocations, and serial records via IMEI. Uncover hardware profiles and verify blacklist statuses.
           </p>
         </div>
       </div>
@@ -21,6 +23,8 @@ export default function IMEIIPage({ onBack }) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+    const tools = [];
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">
@@ -36,26 +40,16 @@ export default function IMEIIPage({ onBack }) {
       )}
       <Header />
       <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
-        <main className="flex-1 pt-1 pb-4">
-          <div className="flex flex-col items-center justify-center py-12 sm:py-20 px-4 opacity-0 animate-fade-in" style={{ animation: 'fadeIn 0.5s ease-out forwards', animationDelay: '0.2s' }}>
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 to-indigo-50 rounded-full flex items-center justify-center mb-6 shadow-[0_8px_30px_rgba(37,99,235,0.12)] border border-blue-200/50">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#1e2a52] to-blue-800 mb-3 sm:mb-4 tracking-tight drop-shadow-sm text-center">
-              Coming Soon
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base text-slate-500 font-medium text-center max-w-lg leading-relaxed">
-              We are actively developing powerful new analytics tools for IMEI Intelligence. These features will be available in the next major update.
-            </p>
-            <style jsx>{`
-              @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(10px); }
-                to { opacity: 1; transform: translateY(0); }
-              }
-            `}</style>
+        <main className="flex-1 flex flex-col items-center justify-center min-h-[40vh] pt-1 pb-4">
+          <div className="w-20 h-20 bg-slate-100/50 rounded-full flex items-center justify-center mb-6 shadow-sm border border-slate-200">
+            <svg className="w-10 h-10 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-800 mb-3 tracking-tight">Coming Soon</h2>
+          <p className="text-slate-500 font-medium text-center max-w-md leading-relaxed">
+            This module is currently under development. Check back later for updates and new features.
+          </p>
         </main>
       </div>
     </div>

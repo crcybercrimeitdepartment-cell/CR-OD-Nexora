@@ -3,18 +3,14 @@ import React, { useState, useEffect } from 'react';
 import ToolCard from '../components/nexora';
 import { usePageLayout } from '../components/usePageLayout';
 
-import BSNLSRPage from "./SDR-SubscriberDetailRecord/BSNLSR-BSNLSubscriberRecords";
-import ASRPage from "./SDR-SubscriberDetailRecord/ASR-AirtelSubscriberRecords";
-import JSRPage from "./SDR-SubscriberDetailRecord/JSR-JioSubscriberRecords";
-import VISRPage from "./SDR-SubscriberDetailRecord/VISR-VodafoneIdeaSubscriberRecords";
+import BSNLSRPage from "./SDR-SubscriberDetailRecord/BSNLSR-SearchBox";
+import ASRPage from "./SDR-SubscriberDetailRecord/ASR-SDRSubscriberInformationManagement";
 import IMEIIPage from "./SDR-SubscriberDetailRecord/IMEII-IMEIIntelligence";
-import SARPage from "./SDR-SubscriberDetailRecord/SAR-SDRAnalysisReport";
+import SARPage from "./SDR-SubscriberDetailRecord/SAR-CDRSDRAnalysisReport";
 import MNVPage from "./SDR-SubscriberDetailRecord/MNV-MobileNumberVerification";
-import RHPage from "./SDR-SubscriberDetailRecord/RH-ReportHistory";
-import TNOLPage from "./SDR-SubscriberDetailRecord/TNOL-TelecomNodalOfficerList";
-import SDRDEMO_1Page from "./SDR-SubscriberDetailRecord/SDR-DEMO_1";
-import SDRDEMO_2Page from "./SDR-SubscriberDetailRecord/SDR-DEMO_2";
-import SDRDEMO_3Page from "./SDR-SubscriberDetailRecord/SDR-DEMO_3";
+import RHPage from "./SDR-SubscriberDetailRecord/RH-SDRDataAdmin";
+import TNOLPage from "./SDR-SubscriberDetailRecord/TNOL-CellIDManagement";
+import SDRDEMO_1Page from "./SDR-SubscriberDetailRecord/SDRD1-Demo";
 
 /**
  * Header Component.
@@ -69,6 +65,13 @@ export default function SDRPage({ onBack }) {
     
     if (window.history.state && window.history.state.subPage) {
       setSelectedSubPage(window.history.state.subPage);
+    } else {
+      const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('SDR-')) {
+        setSelectedSubPage(hash.replace('SDR-', ''));
+      } else if (hash.startsWith('SDR/')) {
+        setSelectedSubPage(hash.split('/')[1]);
+      }
     }
     
     return () => window.removeEventListener('popstate', handlePopState);
@@ -87,18 +90,14 @@ export default function SDRPage({ onBack }) {
     }
   };
 
-  if (selectedSubPage === 'bsnlsr') return <BSNLSRPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'asr') return <ASRPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'jsr') return <JSRPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'visr') return <VISRPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'imeii') return <IMEIIPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'sar') return <SARPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'bsnlsr') return <BSNLSRPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'mnv') return <MNVPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'rh') return <RHPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'imeii') return <IMEIIPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'tnol') return <TNOLPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'asr') return <ASRPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'sdrd1') return <SDRDEMO_1Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'sdrd2') return <SDRDEMO_2Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'sdrd3') return <SDRDEMO_3Page onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'rh') return <RHPage onBack={handleSubPageBack} />;
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">
