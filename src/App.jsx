@@ -49,7 +49,7 @@ import KYCDIPage from "./page/KYCDI-KYCDocumentIntelligence/KYCDI-KYCDocumentInt
 import PSRIPage from "./page/PSRI-PoliceStationRecordIntelligence/PSRI-PoliceStationRecordIntelligence";
 import CoRIPage from "./page/CoRI-CourtRecordIntelligence/CoRI-CourtRecordIntelligence";
 import PORIPage from "./page/PORI-PostOfficeRecordIntelligence";
-import TGRIPage from "./page/TGRI-TollGateRecordIntelligence/TGRI-TollGateRecordIntelligence";
+import TGRIPage from "./page/TGRI-TollGateRecordIntelligence/Toll Gate Record Intelligence/TollGateRecordIntelligencePage";
 import GHLRIPage from "./page/GHLRI-GuestHouse&LodgeRecordIntelligence/GHLRI-GuestHouse&LodgeRecordIntelligence";
 import PPRIPage from "./page/PPRI-PetrolPumpRecordIntelligence/PPRI-PetrolPumpRecordIntelligence";
 import RIIPage from "./page/RII-RailwayInformationIntelligence/RII-RailwayInformationIntelligence";

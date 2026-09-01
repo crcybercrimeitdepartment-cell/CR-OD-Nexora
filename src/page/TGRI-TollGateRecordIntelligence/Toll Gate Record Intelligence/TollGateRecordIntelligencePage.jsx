@@ -1,16 +1,20 @@
-import { KYC_TOOLS } from '../../data/subTools';
-import React, { useState } from 'react';
-import { Landmark, Flame, Plane, CreditCard, UserCheck, ShoppingCart, Baby, FileText } from 'lucide-react';
-import EBIPage from "./EBI-ElectricityBillIntelligence/EBI-ElectricityBillIntelligencePage";
-import LPGRIPage from "./LPGRI-LPGRecordIntelligence/LPGRI-LPGRecordIntelligencePage";
-import PIMPage from "./PIM-PassportIntelligenceModule/PIM-PassportIntelligenceModulePage";
-import PANIPage from "./PANI-PANIntelligence/PANI-PANIntelligencePage";
-import VIIPage from "./VII-VoterIDIntelligence/VII-VoterIDIntelligencePage";
-import RCIPage from "./RCI-ResidenceCertificateIntelligence/RCI-ResidenceCertificateIntelligencePage";
-import BCIPage from "./BCI-BirthCertificateIntelligence/BCI-BirthCertificateIntelligencePage";
-import CCIPage from "./CCI-CasteCertificateIntelligence/CCI-CasteCertificateIntelligencePage";
-import ToolCard from '../../components/nexora';
-import { usePageLayout } from '../../components/usePageLayout';
+import { TGRI_TOOLS } from '../../../data/subTools';
+import React, { useState, useEffect } from 'react';
+import { Car, FileText, Activity, MapPin, TrendingUp, GitMerge, Clock, Grid, AlertTriangle, Users, BarChart, FileCheck } from 'lucide-react';
+import ToolCard from '../../../components/nexora';
+import { usePageLayout } from '../../../components/usePageLayout';
+import TTIPage from "../Toll Transaction Intelligence/TollTransactionIntelligencePage";
+import VIPage from "../Vehicle Intelligence/VehicleIntelligencePage";
+import FTIPage from "../FASTag Intelligence/FASTagIntelligencePage";
+import TPIPage from "../Toll Plaza Intelligence/TollPlazaIntelligencePage";
+import MIPage from "../Movement Intelligence/MovementIntelligencePage";
+import RIPage from "../Route Intelligence/RouteIntelligencePage";
+import TLIPage from "../Timeline Intelligence/TimelineIntelligencePage";
+import PIPage from "../Pattern Intelligence/PatternIntelligencePage";
+import RKIPage from "../Risk Intelligence/RiskIntelligencePage";
+import RLIPage from "../Relationship Intelligence/RelationshipIntelligencePage";
+import AIPage from "../Analytics Intelligence/AnalyticsIntelligencePage";
+import IOPage from "../Investigation Output/InvestigationOutputPage";
 
 /**
  * Header Component.
@@ -21,16 +25,19 @@ import { usePageLayout } from '../../components/usePageLayout';
  * @param {string} [props.description] - Optional override for the description.
  * @returns {JSX.Element} The rendered header component.
  */
-export function Header() {
+export function Header({ title, description }) {
+  const displayTitle = title || "Toll Gate Record Intelligence";
+  const displayDesc = description || "Analyze FASTag toll logs and ANPR vehicle captures. Track vehicular movements across the national highway network by correlating electronic payments and visual records. Identify convoy patterns, trace suspect trajectories, and verify travel timelines to support complex logistical and criminal investigations.";
+  
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">
       <div className="flex items-center justify-center w-full relative z-20">
         <div className="flex-1 text-center flex flex-col items-center justify-center min-w-0 pt-1 sm:pt-2 md:pt-3 px-2">
           <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#1e2a52] tracking-tight leading-tight break-words pb-1">
-            <span>KYC Document Intelligence</span>
+            <span>{displayTitle}</span>
           </h1>
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base font-semibold text-slate-700 max-w-2xl mx-auto leading-relaxed">
-            Verify and authenticate Know Your Customer documents across multiple financial and telecommunication providers. Detect forged identities, trace the usage of fake IDs, and uncover systemic identity fraud rings. Cross-reference submitted documentation with national registries to ensure complete background verification and regulatory compliance.
+            {displayDesc}
           </p>
         </div>
       </div>
@@ -48,17 +55,17 @@ export function Header() {
  * @param {Function} props.onBack - Callback function triggered when the user clicks the "Back" button to return to the parent dashboard.
  * @returns {JSX.Element} The rendered page layout.
  */
-export default function KYCDIPage({ onBack }) {
-  const { dynamicGridClass, displayTools } = usePageLayout('kycdi', KYC_TOOLS);
+export default function TGRIPage({ onBack }) {
+  const { dynamicGridClass, displayTools } = usePageLayout('tgri', TGRI_TOOLS);
   const [selectedSubPage, setSelectedSubPage] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedSubPage]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handlePopState = (event) => {
-      if (event.state && event.state.page === 'KYCDI' && event.state.subPage) {
+      if (event.state && event.state.page === 'TGRI' && event.state.subPage) {
         setSelectedSubPage(event.state.subPage);
       } else {
         setSelectedSubPage(null);
@@ -66,7 +73,6 @@ export default function KYCDIPage({ onBack }) {
     };
     window.addEventListener('popstate', handlePopState);
     
-    // Check initial state in case of direct load or forward navigation
     if (window.history.state && window.history.state.subPage) {
       setSelectedSubPage(window.history.state.subPage);
     }
@@ -75,7 +81,7 @@ export default function KYCDIPage({ onBack }) {
   }, []);
 
   const handleSelectSubPage = (id) => {
-    window.history.pushState({ page: 'KYCDI', subPage: id }, '', `#KYCDI-${id}`);
+    window.history.pushState({ page: 'TGRI', subPage: id }, '', '#TGRI-' + id);
     setSelectedSubPage(id);
   };
 
@@ -87,14 +93,18 @@ export default function KYCDIPage({ onBack }) {
     }
   };
 
-  if (selectedSubPage === 'ebi') return <EBIPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'lpgri') return <LPGRIPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'pim') return <PIMPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'pani') return <PANIPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'vii') return <VIIPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'rci') return <RCIPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'bci') return <BCIPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'cci') return <CCIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'tti') return <TTIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'vi') return <VIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'fti') return <FTIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'tpi') return <TPIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'mi') return <MIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ri') return <RIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'tli') return <TLIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'pi') return <PIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'rki') return <RKIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'rli') return <RLIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ai') return <AIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'io') return <IOPage onBack={handleSubPageBack} />;
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">

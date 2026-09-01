@@ -4,10 +4,10 @@ import ToolCard from '../../components/nexora';
 import { usePageLayout } from '../../components/usePageLayout';
 
 // Import sub-components
-import PPLPage from './PPL-PetrolPumpList';
-import PPRISubPage from './PPRI-PetrolPumpRegistrationInformation';
-import RPPIPage from './RPPI-RoutePetrolPumpIntelligence';
-import PPRIDPage from './PPRID-PPRIDemo';
+import PPLPage from './PetrolPumpList/PetrolPumpListpage';
+import PPRISubPage from './PetrolPumpRegistrationInformation/PetrolPumpRegistrationInformationpage';
+import RPPIPage from './RoutePetrolPumpIntelligence/RoutePetrolPumpIntelligencepage';
+import PPRIDPage from './PPRIDemo/PPRIDemopage';
 
 /**
  * Header Component.

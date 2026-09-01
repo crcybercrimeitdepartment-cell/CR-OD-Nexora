@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import ToolCard from '../../components/nexora';
 import { usePageLayout } from '../../components/usePageLayout';
 
-import SIRPage from "./SIR-StudentInformationRecord";
-import CRICertPage from "./CRI-CertificateRecordIntelligence";
-import CRICollPage from "./CRI-CollegeRecordIntelligence";
-import URIPage from "./URI-UniversityRecordIntelligence";
-import IRIPage from "./IRI-InstituteRecordIntelligence";
-import OTRIPage from "./OTRI-OnlineTutorialRecordIntelligence";
-import HRIPage from "./HRI-HostelRecordIntelligence";
-import SRIPage from "./SRI-SchoolRecordIntelligence";
+import SIRPage from "./SIR-StudentInformationRecord/SIR-StudentInformationRecordPage";
+import CRICertPage from "./CRI-CertificateRecordIntelligence/CRI-CertificateRecordIntelligencePage";
+import CRICollPage from "./CRI-CollegeRecordIntelligence/CRI-CollegeRecordIntelligencePage";
+import URIPage from "./URI-UniversityRecordIntelligence/URI-UniversityRecordIntelligencePage";
+import IRIPage from "./IRI-InstituteRecordIntelligence/IRI-InstituteRecordIntelligencePage";
+import OTRIPage from "./OTRI-OnlineTutorialRecordIntelligence/OTRI-OnlineTutorialRecordIntelligencePage";
+import HRIPage from "./HRI-HostelRecordIntelligence/HRI-HostelRecordIntelligencePage";
+import SRIPage from "./SRI-SchoolRecordIntelligence/SRI-SchoolRecordIntelligencePage";
 
 /**
  * Header Component.

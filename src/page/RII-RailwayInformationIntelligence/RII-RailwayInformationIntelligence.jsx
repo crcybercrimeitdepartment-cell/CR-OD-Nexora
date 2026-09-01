@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { Train, FileText, UserCheck, Activity, Key, Shield, FileSignature, MapPin } from 'lucide-react';
 import ToolCard from '../../components/nexora';
 import { usePageLayout } from '../../components/usePageLayout';
-import SIIPage from "./SII-StationInformationIntelligence";
-import TIIPage from "./TII-TrainInformationIntelligence";
-import PIIPage from "./PII-PassengerInformationIntelligence";
-import TMIPage from "./TMI-TrainMovementIntelligence";
-import SMIIPage from "./SMII-StationMasterInformationIntelligence";
-import RPFIPage from "./RPFI-RailwayProtectionForceIntelligence";
-import TEIPage from "./TEI-TicketExaminerIntelligence";
-import RLCIPage from "./RLCI-RailwayLevelCrossingIntelligence";
+import SIIPage from "./StationInformationIntelligence/StationInformationIntelligencePage";
+import TIIPage from "./TrainInformationIntelligence/TrainInformationIntelligencePage";
+import PIIPage from "./PassengerInformationIntelligence/PassengerInformationIntelligencePage";
+import TMIPage from "./TrainMovementIntelligence/TrainMovementIntelligencePage";
+import SMIIPage from "./StationMasterInformationIntelligence/StationMasterInformationIntelligencePage";
+import RPFIPage from "./RailwayProtectionForceIntelligence/RailwayProtectionForceIntelligencePage";
+import TEIPage from "./TicketExaminerIntelligence/TicketExaminerIntelligencePage";
+import RLCIPage from "./RailwayLevelCrossingIntelligence/RailwayLevelCrossingIntelligencePage";
 
 /**
  * Header Component.

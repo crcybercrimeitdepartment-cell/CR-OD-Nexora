@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Users, FileCheck } from 'lucide-react';
 import ToolCard from '../../components/nexora';
 import { usePageLayout } from '../../components/usePageLayout';
-import GHIPage from "./GHI-GuestHistoryIntelligence";
-import GHLRI_SubPage from "./GHLRI-GuestHouse&LodgeRegistrationIntelligence";
-import BILPage from "./BIL-BarInformationList";
-import RILPage from "./RIL-RestaurantInformationList";
+import GHIPage from "./Guest History Intelligence/GuestHistoryIntelligencePage";
+import GHLRI_SubPage from "./Guest House & Lodge Registration Intelligence/GuestHouseAndLodgeRegistrationIntelligencePage";
+import BILPage from "./Barn Information List/BarnInformationListPage";
+import RILPage from "./Restaurant Information List/RestaurantInformationListPage";
 
 /**
  * Header Component.

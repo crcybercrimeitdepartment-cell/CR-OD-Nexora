@@ -3,26 +3,26 @@ import React, { useState, useEffect } from 'react';
 import ToolCard from '../../components/nexora';
 import { usePageLayout } from '../../components/usePageLayout';
 
-import PSLPage from "./PSL-PoliceStationList";
-import CPSLPage from "./CPSL-CyberPoliceStationList";
-import TPSLPage from "./TPSL-TrafficPoliceStationList";
-import POLPage from "./POL-PoliceOutpostList";
-import SPOLPage from "./SPOL-SuperintendentOfPoliceOfficeList";
-import CBOLPage from "./CBOL-CrimeBranchOfficeList";
-import VOLPage from "./VOL-VigilanceOfficeList";
-import EOWOLPage from "./EOWOL-EconomicOffencesWingOfficeList";
-import CBIOLPage from "./CBIOL-CentralBureauOfInvestigationOfficeList";
-import EDOLPage from "./EDOL-EnforcementDirectorateOfficeList";
-import IBOLPage from "./IBOL-IntelligenceBureauOfficeList";
-import NIAOLPage from "./NIAOL-NationalInvestigationAgencyOfficeList";
-import NCBOLPage from "./NCBOL-NarcoticsControlBureauOfficeList";
-import DRIOLPage from "./DRIOL-DirectorateOfRevenueIntelligenceOfficeList";
-import SFIOLPage from "./SFIOL-SeriousFraudInvestigationOfficeList";
-import CVCOLPage from "./CVCOL-CentralVigilanceCommissionOfficeList";
-import CFSLLPage from "./CFSLL-CentralForensicScienceLaboratoryList";
-import SFSLLPage from "./SFSLL-StateForensicScienceLaboratoryList";
-import CRIPage from "./CRI-CaseRecordIntelligence";
-import CMRIPage from "./CMRI-CriminalRecordIntelligence";
+import PSLPage from "./PSL-PoliceStationList/PSL-PoliceStationListPage";
+import CPSLPage from "./CPSL-CyberPoliceStationList/CPSL-CyberPoliceStationListPage";
+import TPSLPage from "./TPSL-TrafficPoliceStationList/TPSL-TrafficPoliceStationListPage";
+import POLPage from "./POL-PoliceOutpostList/POL-PoliceOutpostListPage";
+import SPOLPage from "./SPOL-SuperintendentOfPoliceOfficeList/SPOL-SuperintendentOfPoliceOfficeListPage";
+import CBOLPage from "./CBOL-CrimeBranchOfficeList/CBOL-CrimeBranchOfficeListPage";
+import VOLPage from "./VOL-VigilanceOfficeList/VOL-VigilanceOfficeListPage";
+import EOWOLPage from "./EOWOL-EconomicOffencesWingOfficeList/EOWOL-EconomicOffencesWingOfficeListPage";
+import CBIOLPage from "./CBIOL-CentralBureauOfInvestigationOfficeList/CBIOL-CentralBureauOfInvestigationOfficeListPage";
+import EDOLPage from "./EDOL-EnforcementDirectorateOfficeList/EDOL-EnforcementDirectorateOfficeListPage";
+import IBOLPage from "./IBOL-IntelligenceBureauOfficeList/IBOL-IntelligenceBureauOfficeListPage";
+import NIAOLPage from "./NIAOL-NationalInvestigationAgencyOfficeList/NIAOL-NationalInvestigationAgencyOfficeListPage";
+import NCBOLPage from "./NCBOL-NarcoticsControlBureauOfficeList/NCBOL-NarcoticsControlBureauOfficeListPage";
+import DRIOLPage from "./DRIOL-DirectorateOfRevenueIntelligenceOfficeList/DRIOL-DirectorateOfRevenueIntelligenceOfficeListPage";
+import SFIOLPage from "./SFIOL-SeriousFraudInvestigationOfficeList/SFIOL-SeriousFraudInvestigationOfficeListPage";
+import CVCOLPage from "./CVCOL-CentralVigilanceCommissionOfficeList/CVCOL-CentralVigilanceCommissionOfficeListPage";
+import CFSLLPage from "./CFSLL-CentralForensicScienceLaboratoryList/CFSLL-CentralForensicScienceLaboratoryListPage";
+import SFSLLPage from "./SFSLL-StateForensicScienceLaboratoryList/SFSLL-StateForensicScienceLaboratoryListPage";
+import CRIPage from "./CRI-CaseRecordIntelligence/CRI-CaseRecordIntelligencePage";
+import CMRIPage from "./CMRI-CriminalRecordIntelligence/CMRI-CriminalRecordIntelligencePage";
 
 /**
  * Header Component.
