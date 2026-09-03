@@ -416,6 +416,14 @@ export default function LoginPage({ onLoginSuccess }) {
                         <UserCircle className="w-5 h-5" />
                         New User / Register
                       </button>
+                      
+                      <button 
+                        onClick={() => onLoginSuccess()}
+                        className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-slate-100 border border-slate-200 hover:bg-slate-200 text-slate-700 rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-200 focus:ring-offset-2"
+                      >
+                        <LayoutDashboard className="w-5 h-5" />
+                        Skip Login
+                      </button>
                     </div>
                   </div>
                 )}
