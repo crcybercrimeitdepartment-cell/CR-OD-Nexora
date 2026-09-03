@@ -153,7 +153,7 @@ export default function PlatformSettingsPage({ onBack }) {
           {(() => {
             // Apply Layout Settings
             let displayCards = [...SETTINGS_CARDS];
-            let gridClass = 'grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+            let gridClass = 'grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
 
             if (layoutSettings) {
               // 1. Reorder
@@ -192,14 +192,14 @@ export default function PlatformSettingsPage({ onBack }) {
                 gridClass = 'grid-cols-1';
               } else {
                 const cols = layoutSettings.gridColumns || 4;
-                if (cols === 2) gridClass = 'grid-cols-1 sm:grid-cols-2';
-                else if (cols === 3) gridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
-                else if (cols === 4) gridClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+                if (cols === 2) gridClass = 'grid-cols-2 sm:grid-cols-2';
+                else if (cols === 3) gridClass = 'grid-cols-3 sm:grid-cols-2 lg:grid-cols-3';
+                else if (cols === 4) gridClass = 'grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
               }
             }
 
             return (
-              <div className={`grid ${gridClass} gap-2.5 sm:gap-4 md:gap-5`}>
+              <div className={`grid ${gridClass} gap-2 sm:gap-4 md:gap-5`}>
                 {displayCards.map((tool, index) => {
               const translationKeyBase = tool.id === 'lang' ? 'language-setting' :
                                          tool.id === 'theme' ? 'customise-theme' :
