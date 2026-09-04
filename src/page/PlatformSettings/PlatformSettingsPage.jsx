@@ -148,12 +148,12 @@ export default function PlatformSettingsPage({ onBack }) {
         </div>
       </header>
 
-      <div className="flex-1 flex flex-col w-full max-w-[1720px] mx-auto px-4 sm:px-6 md:px-10 py-4 overflow-x-hidden">
-        <main className="flex-1 pt-1 pb-4">
+      <div className="flex-1 flex flex-col w-full py-2 overflow-x-hidden">
+        <div className="flex-1 pb-4">
           {(() => {
             // Apply Layout Settings
             let displayCards = [...SETTINGS_CARDS];
-            let gridClass = 'grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+            let gridClass = 'grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4';
 
             if (layoutSettings) {
               // 1. Reorder
@@ -191,15 +191,16 @@ export default function PlatformSettingsPage({ onBack }) {
               if (layoutSettings.arrangement === 'List') {
                 gridClass = 'grid-cols-1';
               } else {
-                const cols = layoutSettings.gridColumns || 4;
-                if (cols === 2) gridClass = 'grid-cols-2 sm:grid-cols-2';
-                else if (cols === 3) gridClass = 'grid-cols-3 sm:grid-cols-2 lg:grid-cols-3';
-                else if (cols === 4) gridClass = 'grid-cols-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+                const cols = Number(layoutSettings.gridColumns) || 4;
+                if (cols === 1) gridClass = 'grid-cols-1';
+                else if (cols === 2) gridClass = 'grid-cols-2';
+                else if (cols === 3) gridClass = 'grid-cols-2 sm:grid-cols-3';
+                else if (cols === 4) gridClass = 'grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4';
               }
             }
 
             return (
-              <div className={`grid ${gridClass} gap-2 sm:gap-4 md:gap-5`}>
+              <div className={`grid ${gridClass} gap-3 sm:gap-4 md:gap-5`}>
                 {displayCards.map((tool, index) => {
               const translationKeyBase = tool.id === 'lang' ? 'language-setting' :
                                          tool.id === 'theme' ? 'customise-theme' :
@@ -226,13 +227,14 @@ export default function PlatformSettingsPage({ onBack }) {
                   tool={translatedTool}
                   index={index}
                   onClick={() => handleSelectSubPage(tool.id)}
+                  disableCssAnimation={true}
                 />
               );
             })}
             </div>
             );
           })()}
-        </main>
+        </div>
       </div>
     </div>
   );
