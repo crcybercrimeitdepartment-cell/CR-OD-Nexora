@@ -17,6 +17,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   PhoneCall,
+  Bot,
   UserCheck,
   User,
   Activity,
@@ -222,6 +223,8 @@ export function TDIIcon({ className = "w-8 h-8" }) { return <Radio className={cl
 export function IntelligenceModulesIcon({ className = "w-8 h-8" }) { return <Cpu className={className} />; }
 export function AboutUsIcon({ className = "w-8 h-8" }) { return <Info className={className} />; }
 export function DemoCardIcon({ className = "w-8 h-8" }) { return <Layers className={className} />; }
+export function IOAssistantIcon({ className = "w-8 h-8" }) { return <Bot className={className} />; }
+export function NexoraUpdateHistoryIcon({ className = "w-8 h-8" }) { return <History className={className} />; }
 
 
 

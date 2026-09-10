@@ -4,14 +4,17 @@ import ToolCard from '../../components/nexora';
 import { usePageLayout } from '../../components/usePageLayout';
 
 import BSNLSRPage from "./Search Box/SearchBoxPage";
-import ASRPage from "./SDR Subscriber Information Management/SDRSubscriberInformationManagementPage";
 import IMEIIPage from "./IMEI Intelligence (IMEII)/IMEIIntelligence(IMEII)Page";
 import SARPage from "./CDR (SDR) Analysis & Report/CDR(SDR)Analysis&ReportPage";
-import MNVPage from "./Mobile Number Verification (MNV)/MobileNumberVerification(MNV)Page";
-import RHPage from "./SDR Data Admin/SDRDataAdminPage";
-import TNOLPage from "./Cell ID Management/CellIDManagementPage";
-import SDRDEMO_1Page from "./Demo/DemoPage";
-
+import RHPage from "./SDR Data Input Admin/SDRDataInputAdminPage";
+import TNOLPage from "./Cell ID Management Admin/CellIDManagementAdminPage";
+import SDRDEMO_1Page from "./Subscriber current active mobile number record/SubscriberCurrentActiveMobileNumberRecordPage";
+import SMNMHPage from "./Subscriber Mobile Number MNP History/SubscriberMobileNumberMNPHistoryPage";
+import SMNDDPage from "./Subscriber Mobile Number Deactivation Details/SubscriberMobileNumberDeactivationDetailsPage";
+import CIRIPage from "./Cell ID Record Intelligence/CellIDRecordIntelligencePage";
+import SDRDEMO_2Page from "./Demo 1/DemoPage";
+import SDRDEMO_3Page from "./Demo 2/DemoPage";
+import SDRDEMO_4Page from "./Demo 3/DemoPage";
 /**
  * Header Component.
  * Renders the title and a brief description of the page's purpose.
@@ -92,12 +95,16 @@ export default function SDRPage({ onBack }) {
 
   if (selectedSubPage === 'sar') return <SARPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'bsnlsr') return <BSNLSRPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'mnv') return <MNVPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'imeii') return <IMEIIPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'tnol') return <TNOLPage onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'asr') return <ASRPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'sdrd1') return <SDRDEMO_1Page onBack={handleSubPageBack} />;
   if (selectedSubPage === 'rh') return <RHPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'smnmh') return <SMNMHPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'smndd') return <SMNDDPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'ciri') return <CIRIPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'sdrdemo2') return <SDRDEMO_2Page onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'sdrdemo3') return <SDRDEMO_3Page onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'sdrdemo4') return <SDRDEMO_4Page onBack={handleSubPageBack} />;
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">

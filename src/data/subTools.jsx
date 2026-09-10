@@ -29,12 +29,16 @@ export const SMI_TOOLS = [
 export const SDR_TOOLS = [
   { parentId: 'SDR', id: 'bsnlsr', name: 'Search Box', fullName: 'Search Box', desc: 'Search and query subscriber records across all telecom providers.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
   { parentId: 'SDR', id: 'sar', name: 'CDR (SDR) Analysis & Report', fullName: 'CDR (SDR) Analysis & Report', desc: 'Generate comprehensive CDR and subscriber analysis reports.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
-  { parentId: 'SDR', id: 'mnv', name: 'Mobile Number Verification (MNV)', fullName: 'Mobile Number Verification (MNV)', desc: 'Authenticate mobile numbers and SIM registries.', icon: (p) => <Shield {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'SDR', id: 'sdrd1', name: 'Subscriber current active mobile number record', fullName: 'Subscriber current active mobile number record', desc: 'Preview of upcoming subscriber intelligence features.', icon: (p) => <PlayCircle {...p} />, color: 'text-slate-600', bg: 'bg-slate-100' },
+  { parentId: 'SDR', id: 'smnmh', name: 'Subscriber Mobile Number MNP History', fullName: 'Subscriber Mobile Number MNP History', desc: 'Track MNP history for subscriber mobile numbers.', icon: (p) => <History {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'SDR', id: 'smndd', name: 'Subscriber Mobile Number Deactivation Details', fullName: 'Subscriber Mobile Number Deactivation Details', desc: 'View deactivation details of subscriber mobile numbers.', icon: (p) => <PhoneCall {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
   { parentId: 'SDR', id: 'imeii', name: 'IMEI Intelligence (IMEII)', fullName: 'IMEI Intelligence (IMEII)', desc: 'Track and analyze mobile device identities via IMEI.', icon: (p) => <Hash {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
-  { parentId: 'SDR', id: 'tnol', name: 'Cell ID Management', fullName: 'Cell ID Management', desc: 'Manage and analyze Cell IDs and telecom tower intelligence.', icon: (p) => <Network {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
-  { parentId: 'SDR', id: 'asr', name: 'SDR Subscriber Information Management', fullName: 'SDR Subscriber Information Management', desc: 'Manage and access comprehensive subscriber information records.', icon: (p) => <UserCheck {...p} />, color: 'text-red-600', bg: 'bg-red-100' },
-  { parentId: 'SDR', id: 'sdrd1', name: 'Demo', fullName: 'Demo', desc: 'Preview of upcoming subscriber intelligence features.', icon: (p) => <PlayCircle {...p} />, color: 'text-slate-600', bg: 'bg-slate-100' },
-  { parentId: 'SDR', id: 'rh', name: 'SDR Data Admin', fullName: 'SDR Data Admin', desc: 'Administer and manage SDR data records and system configuration.', icon: (p) => <Database {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'SDR', id: 'tnol', name: 'Cell ID Management Admin', fullName: 'Cell ID Management Admin', desc: 'Manage and analyze Cell IDs and telecom tower intelligence.', icon: (p) => <Network {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
+  { parentId: 'SDR', id: 'rh', name: 'SDR Data Input Admin', fullName: 'SDR Data Input Admin', desc: 'Administer and manage SDR data records and system configuration.', icon: (p) => <Database {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'SDR', id: 'ciri', name: 'Cell ID Record Intelligence', fullName: 'Cell ID Record Intelligence', desc: 'Analyze cell ID records and intelligence.', icon: (p) => <Network {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'SDR', id: 'sdrdemo2', name: 'Demo', fullName: 'Demo', desc: 'Demo tool for showcasing future integrations.', icon: (p) => <PlayCircle {...p} />, color: 'text-gray-500', bg: 'bg-gray-100' },
+  { parentId: 'SDR', id: 'sdrdemo3', name: 'Demo', fullName: 'Demo', desc: 'Demo tool for showcasing future integrations.', icon: (p) => <PlayCircle {...p} />, color: 'text-gray-500', bg: 'bg-gray-100' },
+  { parentId: 'SDR', id: 'sdrdemo4', name: 'Demo', fullName: 'Demo', desc: 'Demo tool for showcasing future integrations.', icon: (p) => <PlayCircle {...p} />, color: 'text-gray-500', bg: 'bg-gray-100' },
 ];
 
 export const OSINT_TOOLS = [

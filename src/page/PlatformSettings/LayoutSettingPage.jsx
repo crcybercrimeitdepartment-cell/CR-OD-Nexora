@@ -228,7 +228,7 @@ export default function LayoutSetting({ onBack }) {
       const Comp = card.icon;
       return <Comp className={sizeClass} />;
     }
-    const moduleMatch = NEXORA_MODULES.find(m => m.id === card.id || m.name === card.title || m.id === (card.id || '').toLowerCase());
+    const moduleMatch = NEXORA_MODULES.find(m => m.id === card.id || m.legacyId === card.id || m.name === card.title || m.id === (card.id || '').toLowerCase());
     if (moduleMatch && typeof moduleMatch.icon === 'function') {
       const Comp = moduleMatch.icon;
       return <Comp className={sizeClass} />;
@@ -242,7 +242,7 @@ export default function LayoutSetting({ onBack }) {
 
   // Helper to get matching background and color
   const getCardColors = (card) => {
-    const moduleMatch = NEXORA_MODULES.find(m => m.id === card.id || m.name === card.title || m.id === (card.id || '').toLowerCase());
+    const moduleMatch = NEXORA_MODULES.find(m => m.id === card.id || m.legacyId === card.id || m.name === card.title || m.id === (card.id || '').toLowerCase());
     const bg = card.bg || card.bgColor || (moduleMatch && moduleMatch.bgColor) || 'bg-blue-50';
     const color = card.color || card.iconColor || (moduleMatch && moduleMatch.iconColor) || 'text-blue-600';
     return { bg, color };

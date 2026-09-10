@@ -45,7 +45,9 @@ import {
   TDIIcon,
   IntelligenceModulesIcon,
   AboutUsIcon,
-  DemoCardIcon
+  DemoCardIcon,
+  IOAssistantIcon,
+  NexoraUpdateHistoryIcon
 } from '../components/nexora';
 
 export const NEXORA_MODULES = [
@@ -295,19 +297,21 @@ export const NEXORA_MODULES = [
   },
 
   {
-    id: 'demo-card-1',
-    name: 'Demo Card',
-    description: 'This is a placeholder demo card for future intelligence modules.',
-    icon: DemoCardIcon,
-    bgColor: 'bg-[#F1F5F9]',
-    iconColor: 'text-[#6B7280]'
+    id: 'io-assistant',
+    legacyId: 'demo-card-1',
+    name: 'IO Assistant',
+    description: 'Investigating Officer Assistant - AI-assisted investigation workflows, legal guidance, and case intelligence.',
+    icon: IOAssistantIcon,
+    bgColor: 'bg-[#EEF2FF]',
+    iconColor: 'text-[#4F46E5]'
   },
   {
-    id: 'demo-card-2',
-    name: 'Demo Card',
-    description: 'This is a placeholder demo card for future intelligence modules.',
-    icon: DemoCardIcon,
-    bgColor: 'bg-[#F3F4F6]',
-    iconColor: 'text-[#6B7280]'
+    id: 'nexora-update-history',
+    legacyId: 'demo-card-2',
+    name: 'Nexora Update History',
+    description: 'Platform Update History - Track feature releases, changelogs, system enhancements, and version updates.',
+    icon: NexoraUpdateHistoryIcon,
+    bgColor: 'bg-[#F0FDF4]',
+    iconColor: 'text-[#16A34A]'
   }
 ];

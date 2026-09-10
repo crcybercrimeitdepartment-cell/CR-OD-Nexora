@@ -5,8 +5,8 @@ import MynotepadPage from './MynotepadPage';
 import Savedatapage from './Savedatapage';
 
 export function Header({ title, description }) {
-  const displayTitle = title || "IMEI Intelligence";
-  const displayDesc = description || "Track and analyze mobile device identities, TAC allocations, and serial records via IMEI. Uncover hardware profiles and verify blacklist statuses.";
+  const displayTitle = title || "Cell ID Record Intelligence";
+  const displayDesc = description || "Analyze cell ID records and intelligence.";
   
   return (
     <header className="w-full relative pt-1 sm:pt-2 pb-2 sm:pb-3 mb-2 sm:mb-3 select-none">
@@ -24,7 +24,7 @@ export function Header({ title, description }) {
   );
 }
 
-export default function IMEIIPage({ onBack }) {
+export default function CellIDRecordIntelligencePage({ onBack }) {
   const [activePage, setActivePage] = useState('home');
 
   React.useEffect(() => {

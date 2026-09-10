@@ -470,6 +470,14 @@ export default function App() {
       return;
     }
 
+    if (tool.id === 'io-assistant' || tool.id === 'nexora-update-history' || tool.name === 'IO Assistant' || tool.name === 'Nexora Update History') {
+      setProductionMsg({
+        title: tool.name,
+        message: `${tool.name} is currently under development and will be available in the upcoming platform release.`
+      });
+      return;
+    }
+
     // Save current scroll position before navigating
     scrollPositions.current[selectedPage || 'home'] = document.getElementById('main-scroll-container')?.scrollTop || 0;
     isNavigatingBack.current = false;
