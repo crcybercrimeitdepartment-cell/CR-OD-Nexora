@@ -70,7 +70,7 @@ export async function addCameraSession(session) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction('cameraSessions', 'readwrite');
     const store = tx.objectStore('cameraSessions');
-    const req = store.add(session);
+    const req = store.put(session);
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
   });
@@ -126,7 +126,7 @@ export async function addModuleSession(session) {
   return new Promise((resolve, reject) => {
     const tx = db.transaction('moduleSessions', 'readwrite');
     const store = tx.objectStore('moduleSessions');
-    const req = store.add(session);
+    const req = store.put(session);
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
   });

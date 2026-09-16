@@ -29,8 +29,7 @@ import {
   VolumeX
 } from 'lucide-react';
 import { AGENT_CARDS_DATA, ALL_AGENT_CARDS, detectCardAndTab, filterCardsSmart } from './agentCardsData';
-import agentDesktopWatermark from '../../assets/WaterMark.png';
-import agentPhoneWatermark from '../../assets/PhoneWaterMark.png';
+import { laptopWatermark as agentDesktopWatermark, phoneWatermark as agentPhoneWatermark } from '../../CloudinaryLinks';
 
 export default function NexoraAgent({ onNavigateToModule, searchQuery, onSearchChange }) {
   const [isOpen, setIsOpen] = useState(false);

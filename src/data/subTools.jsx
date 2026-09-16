@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Coins, Users, UserCheck, MessageCircle, Share2, Camera, Hash, Briefcase, Send, MessageSquare, Smartphone, PlaySquare, Globe, Heart, PhoneCall, AtSign, FileText, Video, Train, Activity, Key, Shield, FileSignature, MapPin, Car, TrendingUp, GitMerge, Clock, Grid, AlertTriangle, BarChart, FileCheck, Book, Scale, Gavel, Landmark, FileSearch, AlertCircle, Bookmark, Scroll, Search, Folder, Database, Lock, Info, BookOpen, Flame, Plane, CreditCard, ShoppingCart, Baby, Building2, Award, Rocket, Copyright, Lightbulb, Ship, Utensils, Pill, Factory, Store, Wine, PiggyBank, Layers, Handshake, ScanLine, Wind, CheckCircle, Fuel, Home, Target, Shuffle, Filter, Scissors, Map, ClipboardList, LineChart, Calendar, UserPlus, UserMinus, UserX, Moon, History, PlayCircle, Network, SplitSquareHorizontal, ShieldAlert, MonitorPlay , Crosshair, Eye, Flag, Star, Cpu, Brain, Building, Link, ShieldCheck, LifeBuoy, Phone, CalendarCheck } from "lucide-react";
+import { Coins, Users, UserCheck, MessageCircle, Share2, Camera, Hash, Briefcase, Send, MessageSquare, Smartphone, PlaySquare, Globe, Heart, PhoneCall, AtSign, FileText, Video, Train, Activity, Key, Shield, FileSignature, MapPin, Car, TrendingUp, GitMerge, Clock, Grid, AlertTriangle, BarChart, FileCheck, Book, Scale, Gavel, Landmark, FileSearch, AlertCircle, Bookmark, Scroll, Search, Folder, Database, Lock, Info, BookOpen, Flame, Plane, CreditCard, ShoppingCart, Baby, Building2, Award, Rocket, Copyright, Lightbulb, Ship, Utensils, Pill, Factory, Store, Wine, PiggyBank, Layers, Handshake, ScanLine, Wind, CheckCircle, Fuel, Home, Target, Shuffle, Filter, Scissors, Map, ClipboardList, LineChart, Calendar, UserPlus, UserMinus, UserX, Moon, History, PlayCircle, Network, SplitSquareHorizontal, ShieldAlert, MonitorPlay, Crosshair, Eye, Flag, Star, Cpu, Brain, Building, Link, ShieldCheck, LifeBuoy, Phone, CalendarCheck, QrCode, FileSpreadsheet, FolderArchive, FileQuestion, FileCode, FileClock, FileStack, FileSymlink, FileOutput, Languages, Palette, Bell, KeyRound, Sliders, Sun, Volume2, Mic, Maximize2, Minimize2, RotateCw, RotateCcw, Columns, MoveVertical, FileCheck2 } from "lucide-react";
 
 export const SMI_TOOLS = [
 
@@ -238,34 +238,34 @@ export const PSRI_TOOLS = [
 ];
 
 export const CORI_TOOLS = [
-  { parentId: 'CoRI', id: 'sci', name: 'Supreme Court Information', fullName: 'Supreme Court Information', desc: 'Apex court records and judgments.', icon: (p) => <Scale {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
-  { parentId: 'CoRI', id: 'hci', name: 'High Court Information', fullName: 'High Court Information', desc: 'State-level high court records and updates.', icon: (p) => <Landmark {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
-  { parentId: 'CoRI', id: 'dci', name: 'District Court Information', fullName: 'District Court Information', desc: 'District-level judicial records.', icon: (p) => <Building2 {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
-  { parentId: 'CoRI', id: 'fci', name: 'Family Court Information', fullName: 'Family Court Information', desc: 'Matrimonial and family dispute records.', icon: (p) => <Users {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
-  { parentId: 'CoRI', id: 'cci', name: 'Civil Court Information', fullName: 'Civil Court Information', desc: 'Civil case and litigation records.', icon: (p) => <Briefcase {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
-  { parentId: 'CoRI', id: 'crci', name: 'Criminal Court Information', fullName: 'Criminal Court Information', desc: 'Criminal trial and conviction records.', icon: (p) => <Shield {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
-  { parentId: 'CoRI', id: 'comci', name: 'Commercial Court Information', fullName: 'Commercial Court Information', desc: 'Business and commercial disputes.', icon: (p) => <TrendingUp {...p} />, color: 'text-pink-500', bg: 'bg-pink-50' },
-  { parentId: 'CoRI', id: 'conci', name: 'Consumer Court Information', fullName: 'Consumer Court Information', desc: 'Consumer rights and grievances records.', icon: (p) => <ShoppingCart {...p} />, color: 'text-sky-500', bg: 'bg-sky-50' },
-  { parentId: 'CoRI', id: 'spci', name: 'Special Court Information', fullName: 'Special Court Information', desc: 'Special tribunals and designated court proceedings.', icon: (p) => <AlertCircle {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
-  { parentId: 'CoRI', id: 'ti', name: 'Tribunal Information', fullName: 'Tribunal Information', desc: 'Statutory tribunal records and judgments.', icon: (p) => <FileSignature {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
-  { parentId: 'CoRI', id: 'ftci', name: 'Fast Track Court Information', fullName: 'Fast Track Court Information', desc: 'Fast track proceedings and rapid judgments.', icon: (p) => <Clock {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
-  { parentId: 'CoRI', id: 'lai', name: 'Lok Adalat Information', fullName: 'Lok Adalat Information', desc: 'Alternative dispute resolution records.', icon: (p) => <Handshake {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
-  { parentId: 'CoRI', id: 'gni', name: 'Gram Nyayalaya Information', fullName: 'Gram Nyayalaya Information', desc: 'Rural court records and local governance disputes.', icon: (p) => <Home {...p} />, color: 'text-indigo-400', bg: 'bg-indigo-50' },
-  { parentId: 'CoRI', id: 'cpxi', name: 'Court Complex Information', fullName: 'Court Complex Information', desc: 'Details of integrated court complexes.', icon: (p) => <Building2 {...p} />, color: 'text-emerald-400', bg: 'bg-emerald-50' },
-  { parentId: 'CoRI', id: 'col', name: 'Collector Office List', fullName: 'Collector Office List', desc: 'District collector administrative records.', icon: (p) => <MapPin {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
-  { parentId: 'CoRI', id: 'scol', name: 'Sub', fullName: 'Sub', desc: 'Collector Office List - Sub-divisional administration records.', icon: (p) => <MapPin {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
-  { parentId: 'CoRI', id: 'tol', name: 'Tahasildar OfficeList', fullName: 'Tahasildar OfficeList', desc: 'Revenue and local administration records.', icon: (p) => <MapPin {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
-  { parentId: 'CoRI', id: 'bdol', name: 'Block Development Office List', fullName: 'Block Development Office List', desc: 'Block-level administration and funding records.', icon: (p) => <MapPin {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
-  { parentId: 'CoRI', id: 'riol', name: 'Revenue Inspector Office List', fullName: 'Revenue Inspector Office List', desc: 'Revenue inspection and land records.', icon: (p) => <Search {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
-  { parentId: 'CoRI', id: 'rcol', name: 'Revenue Circle Office List', fullName: 'Revenue Circle Office List', desc: 'Revenue circle and division management.', icon: (p) => <Target {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
-  { parentId: 'CoRI', id: 'gpol', name: 'Gram Panchayat Office List', fullName: 'Gram Panchayat Office List', desc: 'Village-level local self-government records.', icon: (p) => <MapPin {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
-  { parentId: 'CoRI', id: 'psol', name: 'Panchayat Samiti Office List', fullName: 'Panchayat Samiti Office List', desc: 'Block-level panchayat administration records.', icon: (p) => <MapPin {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
-  { parentId: 'CoRI', id: 'zpol', name: 'Zilla Parishad Office List', fullName: 'Zilla Parishad Office List', desc: 'District-level panchayat administration and development.', icon: (p) => <MapPin {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
-  { parentId: 'CoRI', id: 'mol', name: 'Municipality Office List', fullName: 'Municipality Office List', desc: 'Urban municipal body records and services.', icon: (p) => <Building2 {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
-  { parentId: 'CoRI', id: 'mcol', name: 'Municipal Corporation Office List', fullName: 'Municipal Corporation Office List', desc: 'Metropolitan municipal body records and services.', icon: (p) => <Building2 {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
-  { parentId: 'CoRI', id: 'nacol', name: 'Notified Area Council Office List', fullName: 'Notified Area Council Office List', desc: 'Transitional urban area administrative records.', icon: (p) => <Building2 {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
-  { parentId: 'CoRI', id: 'drdaol', name: 'District Rural Development Agency Office List', fullName: 'District Rural Development Agency Office List', desc: 'Rural development program monitoring.', icon: (p) => <Users {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
-  { parentId: 'CoRI', id: 'srol', name: 'Sub', fullName: 'Sub', desc: 'Registrar Office List - Property and marriage registration records.', icon: (p) => <FileSignature {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' }
+  { parentId: 'CoRI', id: 'sci', name: 'Supreme Court Information (SCI)', fullName: 'Supreme Court Information (SCI)', desc: 'Apex court records and judgments.', icon: (p) => <Scale {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'CoRI', id: 'hci', name: 'High Court Information (HCI)', fullName: 'High Court Information (HCI)', desc: 'State-level high court records and updates.', icon: (p) => <Landmark {...p} />, color: 'text-indigo-500', bg: 'bg-indigo-50' },
+  { parentId: 'CoRI', id: 'dci', name: 'District Court Information (DCI)', fullName: 'District Court Information (DCI)', desc: 'District-level judicial records.', icon: (p) => <Building2 {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'CoRI', id: 'fci', name: 'Family Court Information (FCI)', fullName: 'Family Court Information (FCI)', desc: 'Matrimonial and family dispute records.', icon: (p) => <Users {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'CoRI', id: 'cci', name: 'Civil Court Information (CCI)', fullName: 'Civil Court Information (CCI)', desc: 'Civil case and litigation records.', icon: (p) => <Briefcase {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'CoRI', id: 'crci', name: 'Criminal Court Information (CrCI)', fullName: 'Criminal Court Information (CrCI)', desc: 'Criminal trial and conviction records.', icon: (p) => <Shield {...p} />, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { parentId: 'CoRI', id: 'comci', name: 'Commercial Court Information (ComCI)', fullName: 'Commercial Court Information (ComCI)', desc: 'Business and commercial disputes.', icon: (p) => <TrendingUp {...p} />, color: 'text-pink-500', bg: 'bg-pink-50' },
+  { parentId: 'CoRI', id: 'conci', name: 'Consumer Court Information (ConCI)', fullName: 'Consumer Court Information (ConCI)', desc: 'Consumer rights and grievances records.', icon: (p) => <ShoppingCart {...p} />, color: 'text-sky-500', bg: 'bg-sky-50' },
+  { parentId: 'CoRI', id: 'spci', name: 'Special Court Information (SpCI)', fullName: 'Special Court Information (SpCI)', desc: 'Special tribunals and designated court proceedings.', icon: (p) => <AlertCircle {...p} />, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { parentId: 'CoRI', id: 'ti', name: 'Tribunal Information (TI)', fullName: 'Tribunal Information (TI)', desc: 'Statutory tribunal records and judgments.', icon: (p) => <FileSignature {...p} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { parentId: 'CoRI', id: 'ftci', name: 'Fast Track Court Information (FTCI)', fullName: 'Fast Track Court Information (FTCI)', desc: 'Fast track proceedings and rapid judgments.', icon: (p) => <Clock {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
+  { parentId: 'CoRI', id: 'lai', name: 'Lok Adalat Information (LAI)', fullName: 'Lok Adalat Information (LAI)', desc: 'Alternative dispute resolution records.', icon: (p) => <Handshake {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'CoRI', id: 'gni', name: 'Gram Nyayalaya Information (GNI)', fullName: 'Gram Nyayalaya Information (GNI)', desc: 'Rural court records and local governance disputes.', icon: (p) => <Home {...p} />, color: 'text-indigo-400', bg: 'bg-indigo-50' },
+  { parentId: 'CoRI', id: 'cpxi', name: 'Court Complex Information (CpxI)', fullName: 'Court Complex Information (CpxI)', desc: 'Details of integrated court complexes.', icon: (p) => <Building2 {...p} />, color: 'text-emerald-400', bg: 'bg-emerald-50' },
+  { parentId: 'CoRI', id: 'col', name: 'Collector Office List (COL)', fullName: 'Collector Office List (COL)', desc: 'District collector administrative records.', icon: (p) => <MapPin {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'CoRI', id: 'scol', name: 'Sub-Collector Office List (SCOL)', fullName: 'Sub-Collector Office List (SCOL)', desc: 'Sub-divisional administration records.', icon: (p) => <MapPin {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'CoRI', id: 'tol', name: 'Tahasildar Office List (TOL)', fullName: 'Tahasildar Office List (TOL)', desc: 'Revenue and local administration records.', icon: (p) => <MapPin {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'CoRI', id: 'bdol', name: 'Block Development Office List (BDOL)', fullName: 'Block Development Office List (BDOL)', desc: 'Block-level administration and funding records.', icon: (p) => <MapPin {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
+  { parentId: 'CoRI', id: 'riol', name: 'Revenue Inspector Office List (RIOL)', fullName: 'Revenue Inspector Office List (RIOL)', desc: 'Revenue inspection and land records.', icon: (p) => <Search {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
+  { parentId: 'CoRI', id: 'rcol', name: 'Revenue Circle Office List (RCOL)', fullName: 'Revenue Circle Office List (RCOL)', desc: 'Revenue circle and division management.', icon: (p) => <Target {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'CoRI', id: 'gpol', name: 'Gram Panchayat Office List (GPOL)', fullName: 'Gram Panchayat Office List (GPOL)', desc: 'Village-level local self-government records.', icon: (p) => <MapPin {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'CoRI', id: 'psol', name: 'Panchayat Samiti Office List (PSOL)', fullName: 'Panchayat Samiti Office List (PSOL)', desc: 'Block-level panchayat administration records.', icon: (p) => <MapPin {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'CoRI', id: 'zpol', name: 'Zilla Parishad Office List (ZPOL)', fullName: 'Zilla Parishad Office List (ZPOL)', desc: 'District-level panchayat administration and development.', icon: (p) => <MapPin {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'CoRI', id: 'mol', name: 'Municipality Office List (MOL)', fullName: 'Municipality Office List (MOL)', desc: 'Urban municipal body records and services.', icon: (p) => <Building2 {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'CoRI', id: 'mcol', name: 'Municipal Corporation Office List (MCOL)', fullName: 'Municipal Corporation Office List (MCOL)', desc: 'Metropolitan municipal body records and services.', icon: (p) => <Building2 {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'CoRI', id: 'nacol', name: 'Notified Area Council Office List (NACOL)', fullName: 'Notified Area Council Office List (NACOL)', desc: 'Transitional urban area administrative records.', icon: (p) => <Building2 {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
+  { parentId: 'CoRI', id: 'drdaol', name: 'District Rural Development Agency Office List (DRDAOL)', fullName: 'District Rural Development Agency Office List (DRDAOL)', desc: 'Rural development program monitoring.', icon: (p) => <Users {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
+  { parentId: 'CoRI', id: 'srol', name: 'Sub-Registrar Office List (SROL)', fullName: 'Sub-Registrar Office List (SROL)', desc: 'Property and marriage registration records.', icon: (p) => <FileSignature {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' }
 ];
 
 export const PPRI_TOOLS = [
@@ -413,10 +413,202 @@ export const ACCOUNTSETTING_TOOLS = [
   { parentId: 'AccountSetting', id: 'as26', name: 'Delete Account', fullName: 'Delete Account', desc: 'Request permanent account deletion and data wiping procedures.', icon: (p) => <UserX {...p} />, color: 'text-red-600', bg: 'bg-red-100' },
 ];
 
+
+export const CODE_INTELLIGENCE_TOOLS = [
+  { parentId: 'CodeIntelligence', id: 'mobile-number', name: 'Mobile Number Identification and Verification', fullName: 'Mobile Number Identification and Verification', desc: 'Identify telecom operator, circle, validity, and network registration for any Indian mobile number.', icon: (p) => <Phone {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'CodeIntelligence', id: 'telecom-std', name: 'Telecom and STD Code Identification and Verification', fullName: 'Telecom and STD Code Identification and Verification', desc: 'Lookup geographic region, telecom circle, and operator for landline STD area codes across India.', icon: (p) => <PhoneCall {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'CodeIntelligence', id: 'vehicle-number', name: 'Vehicle Number Identification and Verification', fullName: 'Vehicle Number Identification and Verification', desc: 'Verify vehicle registration, state, district RTO office, and vehicle class from license plate numbers.', icon: (p) => <Car {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'CodeIntelligence', id: 'pin-code', name: 'PIN Code Identification and Verification', fullName: 'PIN Code Identification and Verification', desc: 'Validate Indian Postal Index Number (PIN), locating post office, district, state, and delivery status.', icon: (p) => <MapPin {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'CodeIntelligence', id: 'country-code', name: 'Country Code and Mobile Number Identification and Verification', fullName: 'Country Code and Mobile Number Identification and Verification', desc: 'Determine country origin, international dialing code, ISO codes, and number validity worldwide.', icon: (p) => <Globe {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'CodeIntelligence', id: 'email-address', name: 'Email Address Identification and Verification', fullName: 'Email Address Identification and Verification', desc: 'Inspect email address syntax, domain MX records, disposable email detection, and mail server reachability.', icon: (p) => <AtSign {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'CodeIntelligence', id: 'ip-address', name: 'IP Address Identification and Verification', fullName: 'IP Address Identification and Verification', desc: 'Analyze IPv4/IPv6 addresses for geolocation, ISP, ASN, proxy/VPN flags, and threat intelligence scores.', icon: (p) => <Network {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
+  { parentId: 'CodeIntelligence', id: 'imei-number', name: 'IMEI Number Identification and Verification', fullName: 'IMEI Number Identification and Verification', desc: 'Verify 15-digit International Mobile Equipment Identity (IMEI) using Luhn algorithm, TAC lookup, and device model.', icon: (p) => <Smartphone {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
+  { parentId: 'CodeIntelligence', id: 'ifsc-code', name: 'IFSC Code Identification and Verification', fullName: 'IFSC Code Identification and Verification', desc: 'Lookup bank name, branch, address, contact details, and payment modes (NEFT/RTGS/IMPS) using 11-character IFSC.', icon: (p) => <Building2 {...p} />, color: 'text-cyan-600', bg: 'bg-cyan-100' },
+  { parentId: 'CodeIntelligence', id: 'bank-account', name: 'Bank Account Number Identification and Verification', fullName: 'Bank Account Number Identification and Verification', desc: 'Validate Indian bank account number structures, detect bank type, check digit verification, and account sanity.', icon: (p) => <CreditCard {...p} />, color: 'text-violet-600', bg: 'bg-violet-100' },
+  { parentId: 'CodeIntelligence', id: 'aadhaar-number', name: 'Aadhaar Number Identification and Verification', fullName: 'Aadhaar Number Identification and Verification', desc: 'Validate 12-digit UIDAI Aadhaar numbers via Verhoeff algorithm, state mapping, and format integrity checks.', icon: (p) => <ShieldCheck {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'CodeIntelligence', id: 'pan-number', name: 'PAN Number Identification and Verification', fullName: 'PAN Number Identification and Verification', desc: 'Verify 10-character Permanent Account Number format, taxpayer category, jurisdiction, and check digit.', icon: (p) => <FileText {...p} />, color: 'text-blue-700', bg: 'bg-blue-100' },
+  { parentId: 'CodeIntelligence', id: 'gstin', name: 'GSTIN Identification and Verification', fullName: 'GSTIN Identification and Verification', desc: 'Verify 15-character Goods and Services Tax Identification Number, state code, PAN linkage, and entity check digit.', icon: (p) => <FileCheck {...p} />, color: 'text-emerald-700', bg: 'bg-emerald-100' },
+  { parentId: 'CodeIntelligence', id: 'chassis-number', name: 'Vehicle Chassis Number Identification and Verification', fullName: 'Vehicle Chassis Number Identification and Verification', desc: 'Decode 17-character Vehicle Identification Number (VIN), identifying WMI manufacturer, model year, assembly plant.', icon: (p) => <Search {...p} />, color: 'text-amber-700', bg: 'bg-amber-100' },
+  { parentId: 'CodeIntelligence', id: 'engine-number', name: 'Vehicle Engine Number Identification and Verification', fullName: 'Vehicle Engine Number Identification and Verification', desc: 'Validate vehicle engine serials, identify manufacturer coding patterns, fuel type, and engine displacement data.', icon: (p) => <Cpu {...p} />, color: 'text-red-600', bg: 'bg-red-100' },
+  { parentId: 'CodeIntelligence', id: 'rto-code', name: 'RTO Code Identification and Verification', fullName: 'RTO Code Identification and Verification', desc: 'Locate Regional Transport Office by alphanumeric registration code, jurisdictional area, and state division.', icon: (p) => <CompassIconWrapper />, color: 'text-sky-700', bg: 'bg-sky-100' },
+  { parentId: 'CodeIntelligence', id: 'postal-address', name: 'Postal Address Identification and Verification', fullName: 'Postal Address Identification and Verification', desc: 'Parse, standardize, and verify Indian postal delivery addresses with locality, district, and PIN cross-referencing.', icon: (p) => <Home {...p} />, color: 'text-purple-700', bg: 'bg-purple-100' },
+  { parentId: 'CodeIntelligence', id: 'std-code', name: 'STD Code and Area Identification and Verification', fullName: 'STD Code and Area Identification and Verification', desc: 'Search and cross-reference Subscriber Trunk Dialing (STD) codes with Indian cities, towns, and district circles.', icon: (p) => <Hash {...p} />, color: 'text-teal-700', bg: 'bg-teal-100' },
+  { parentId: 'CodeIntelligence', id: 'isd-code', name: 'ISD Country Code Identification and Verification', fullName: 'ISD Country Code Identification and Verification', desc: 'Cross-reference International Subscriber Dialing (ISD) codes with world nations, continent regions, and time zones.', icon: (p) => <Globe {...p} />, color: 'text-indigo-700', bg: 'bg-indigo-100' },
+  { parentId: 'CodeIntelligence', id: 'swift-bic', name: 'Bank SWIFT/BIC Code Identification and Verification', fullName: 'Bank SWIFT/BIC Code Identification and Verification', desc: 'Lookup 8 or 11-character SWIFT/Business Identifier Codes (BIC) for international wire transfers and correspondent banks.', icon: (p) => <Landmark {...p} />, color: 'text-pink-700', bg: 'bg-pink-100' }
+];
+
+function CompassIconWrapper(p) {
+  return <MapPin {...p} />;
+}
+
+export const LEGAL_PDF_INTELLIGENCE_TOOLS = [
+  // 20 Core LPDI Sections
+  { parentId: 'LegalPDFIntelligence', id: 'organize-pdf', name: 'Organize PDF', fullName: 'Organize PDF', desc: 'Free Merge PDF, Split PDF File, Reorder & Extract PDF pages fast.', icon: (p) => <Layers {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'convert-to-pdf', name: 'Convert to PDF', fullName: 'Convert to PDF', desc: 'Online Convert Word, Excel, PPT, images, and HTML into PDF format.', icon: (p) => <FileCheck {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'convert-from-pdf', name: 'Convert from PDF', fullName: 'Convert from PDF', desc: 'Free Convert PDF Document to editable Word, Excel, PPT, or images.', icon: (p) => <FileText {...p} />, color: 'text-[#6D28D9]', bg: 'bg-[#F5F3FF]' },
+  { parentId: 'LegalPDFIntelligence', id: 'pdf-security', name: 'PDF Security', fullName: 'PDF Security', desc: 'Secure Protect PDF File with strong password encryption and unlock permissions.', icon: (p) => <ShieldCheck {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'pdf-signature', name: 'PDF Signature', fullName: 'PDF Signature', desc: 'Online Sign PDF Document with legally binding digital & e-signatures.', icon: (p) => <FileSignature {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'pdf-ai-tools', name: 'PDF AI Tools', fullName: 'PDF AI Tools', desc: 'Online Search & Chat with PDF, extract AI summaries, and analyze legal text.', icon: (p) => <Brain {...p} />, color: 'text-[#6D28D9]', bg: 'bg-[#F5F3FF]' },
+  { parentId: 'LegalPDFIntelligence', id: 'compare-redaction', name: 'Compare & Redaction', fullName: 'Compare & Redaction', desc: 'Online Redact PDF File & compare document versions side-by-side.', icon: (p) => <FileSearch {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'team-business', name: 'Team & Business', fullName: 'Team & Business', desc: 'Secure PDF Management, multi-user collaboration, and enterprise audit tools.', icon: (p) => <Users {...p} />, color: 'text-[#0284C7]', bg: 'bg-[#E0F2FE]' },
+  { parentId: 'LegalPDFIntelligence', id: 'accessibility', name: 'Accessibility', fullName: 'Accessibility', desc: 'Optimize PDF Document for screen readers, alt text, and PDF/UA accessibility.', icon: (p) => <Eye {...p} />, color: 'text-cyan-600', bg: 'bg-cyan-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'document-management', name: 'Document Management', fullName: 'Document Management', desc: 'Best PDF Management to catalog, index, tag, and organize large PDF libraries.', icon: (p) => <Folder {...p} />, color: 'text-[#059669]', bg: 'bg-[#ECFDF5]' },
+  { parentId: 'LegalPDFIntelligence', id: 'image-processing', name: 'Image Processing', fullName: 'Image Processing', desc: 'Free Compress PDF File images, optimize resolution, and crop photos in PDF.', icon: (p) => <PlaySquare {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'pdf-reader', name: 'PDF Reader', fullName: 'PDF Reader', desc: 'Online View PDF File with high-speed PDF Viewer & dark reading mode.', icon: (p) => <BookOpen {...p} />, color: 'text-[#475569]', bg: 'bg-[#F1F5F9]' },
+  { parentId: 'LegalPDFIntelligence', id: 'review-annotation', name: 'Review & Annotation', fullName: 'Review & Annotation', desc: 'Free Edit PDF Document with sticky notes, freehand drawing, & highlights.', icon: (p) => <MessageSquare {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'fingerprint-auth-signature', name: 'Fingerprint Authentication & Signature', fullName: 'Fingerprint Authentication & Signature', desc: 'Fast Sign Digital PDF with biometric fingerprint authorization & tamper protection.', icon: (p) => <Key {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'pdf-copyright-protection', name: 'PDF Copyright Protection', fullName: 'PDF Copyright Protection', desc: 'Secure Protect Digital PDF with custom watermarks, copyright text, & DRM.', icon: (p) => <Copyright {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'folder-security', name: 'Folder Security', fullName: 'Folder Security', desc: 'Secure Protect PDF File folders with strong password encryption.', icon: (p) => <Lock {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'pdf-tools', name: 'PDF Tools', fullName: 'PDF Tools', desc: 'All-in-one suite of essential utility tools for PDF management.', icon: (p) => <Sliders {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'software-about-us', name: 'Software About Us', fullName: 'Software About Us', desc: 'Learn more about our mission, platform architecture, and team.', icon: (p) => <Info {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'ai-agent', name: 'AI Agent', fullName: 'AI Agent', desc: 'Interact with our advanced AI agent to automate your PDF workflows.', icon: (p) => <Cpu {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'contact-us', name: 'Contact Us', fullName: 'Contact Us', desc: 'Get in touch with our support team for enterprise features and queries.', icon: (p) => <Phone {...p} />, color: 'text-pink-600', bg: 'bg-pink-100' },
+
+  // Key Sub-tools in Copyright Protection
+  { parentId: 'LegalPDFIntelligence', id: 'ai-content-similarity', name: 'AI Content Similarity Check', fullName: 'AI Content Similarity Check', desc: 'Scan and compare documents using neural embeddings to detect semantic duplication and copyright overlap.', icon: (p) => <Brain {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'author-verification', name: 'Author Verification', fullName: 'Author Verification', desc: 'Validate author credentials and verify cryptographic authorship metadata.', icon: (p) => <UserCheck {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'blockchain-copyright-reg', name: 'Blockchain Copyright Registration', fullName: 'Blockchain Copyright Registration', desc: 'Register document hash immutably onto public blockchain ledger for tamper-evident timestamping.', icon: (p) => <Lock {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'copyright-watermark-tool', name: 'Copyright Watermark', fullName: 'Copyright Watermark', desc: 'Apply visible and invisible forensic copyright watermarks to PDF pages.', icon: (p) => <Stamp {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'ownership-cert-tool', name: 'Ownership Certificate', fullName: 'Ownership Certificate', desc: 'Generate and verify cryptographically sealed ownership certificates for legal filings.', icon: (p) => <Award {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'duplicate-detection-tool', name: 'Duplicate Content Detection', fullName: 'Duplicate Content Detection', desc: 'Identify plagiarized, duplicate, or uncredited text across document libraries.', icon: (p) => <FileSearch {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+
+  // Key Sub-tools in PDF Reader
+  { parentId: 'LegalPDFIntelligence', id: 'full-screen-mode', name: 'Full Screen PDF Reader', fullName: 'Full Screen PDF Reader', desc: 'Immersive full-screen distraction-free reading experience for legal briefs.', icon: (p) => <Maximize2 {...p} />, color: 'text-slate-700', bg: 'bg-slate-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'night-mode-reader', name: 'Night Reading Mode', fullName: 'Night Reading Mode', desc: 'High-contrast dark mode reading theme to reduce eye strain in courtroom settings.', icon: (p) => <Moon {...p} />, color: 'text-indigo-700', bg: 'bg-indigo-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'read-aloud-tool', name: 'Read Aloud Audio TTS', fullName: 'Read Aloud Audio TTS', desc: 'Listen to PDF documents with neural natural text-to-speech audio narration.', icon: (p) => <Volume2 {...p} />, color: 'text-cyan-700', bg: 'bg-cyan-100' },
+
+  // Key Sub-tools in Image Processing
+  { parentId: 'LegalPDFIntelligence', id: 'ocr-image-extract', name: 'OCR Image Text Extractor', fullName: 'OCR Image Text Extractor', desc: 'Extract searchable machine-readable text from scanned PDF images using high-precision OCR.', icon: (p) => <ScanLine {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'LegalPDFIntelligence', id: 'compress-pdf-images', name: 'Compress PDF Images', fullName: 'Compress PDF Images', desc: 'Optimize and compress high-resolution image assets inside PDF files to reduce file footprint.', icon: (p) => <Scissors {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' }
+];
+
+export const BRI_TOOLS = [
+  { parentId: 'BRI', id: 'bri-search', name: 'Explore the Web', fullName: 'Explore the Web', desc: 'Search for banking records, financial institutions, and discover financial intelligence data.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'BRI', id: 'bri-history', name: 'Search History', fullName: 'Search History', desc: 'Review past bank intelligence searches and investigation queries.', icon: (p) => <History {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'BRI', id: 'bri-notepad', name: 'My Notepad', fullName: 'My Notepad', desc: 'Jot down case notes, account numbers, and investigation findings.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'BRI', id: 'bri-saved', name: 'Saved Data', fullName: 'Saved Data', desc: 'Access saved banking records, IFSC lookups, and account profiles.', icon: (p) => <Database {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'BRI', id: 'bri-folders', name: 'Organized Folders', fullName: 'Organized Folders', desc: 'Organize financial investigation evidence and audit records in folders.', icon: (p) => <Folder {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'BRI', id: 'bri-cloud', name: 'Cloud Backup', fullName: 'Cloud Backup', desc: 'Securely sync and backup banking intelligence records to encrypted storage.', icon: (p) => <Cloud {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'BRI', id: 'bri-trash', name: 'Recycle Bin', fullName: 'Recycle Bin', desc: 'Manage and recover deleted banking record files and notes.', icon: (p) => <Trash2 {...p} />, color: 'text-red-600', bg: 'bg-red-100' }
+];
+
+export const RTOI_TOOLS = [
+  { parentId: 'RTOI', id: 'rtoi-search', name: 'Explore the Web', fullName: 'Explore the Web', desc: 'Search vehicle registrations, owner history, and RTO vehicle logs.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'RTOI', id: 'rtoi-history', name: 'Search History', fullName: 'Search History', desc: 'Review vehicle intelligence lookup queries and historical searches.', icon: (p) => <History {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'RTOI', id: 'rtoi-notepad', name: 'My Notepad', fullName: 'My Notepad', desc: 'Record license plate numbers, suspect vehicle notes, and case details.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'RTOI', id: 'rtoi-saved', name: 'Saved Data', fullName: 'Saved Data', desc: 'Access saved vehicle ownership records and RTO verification files.', icon: (p) => <Database {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'RTOI', id: 'rtoi-folders', name: 'Organized Folders', fullName: 'Organized Folders', desc: 'Structure vehicle evidence, ANPR matches, and registration certificates.', icon: (p) => <Folder {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'RTOI', id: 'rtoi-cloud', name: 'Cloud Backup', fullName: 'Cloud Backup', desc: 'Backup vehicular intelligence logs and RTO investigation files.', icon: (p) => <Cloud {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'RTOI', id: 'rtoi-trash', name: 'Recycle Bin', fullName: 'Recycle Bin', desc: 'Recover or delete temporary RTO vehicle records.', icon: (p) => <Trash2 {...p} />, color: 'text-red-600', bg: 'bg-red-100' }
+];
+
+export const PORI_TOOLS = [
+  { parentId: 'PORI', id: 'pori-search', name: 'Explore the Web', fullName: 'Explore the Web', desc: 'Search postal deliveries, tracking numbers, and regional post office logs.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'PORI', id: 'pori-history', name: 'Search History', fullName: 'Search History', desc: 'View postal record searches and parcel tracking history.', icon: (p) => <History {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'PORI', id: 'pori-notepad', name: 'My Notepad', fullName: 'My Notepad', desc: 'Maintain consignment notes, recipient addresses, and postal trails.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'PORI', id: 'pori-saved', name: 'Saved Data', fullName: 'Saved Data', desc: 'Retrieve saved delivery receipts, PIN codes, and consignment data.', icon: (p) => <Database {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'PORI', id: 'pori-folders', name: 'Organized Folders', fullName: 'Organized Folders', desc: 'Group postal intelligence records and delivery verification files.', icon: (p) => <Folder {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'PORI', id: 'pori-cloud', name: 'Cloud Backup', fullName: 'Cloud Backup', desc: 'Synchronize postal investigation records with secure cloud storage.', icon: (p) => <Cloud {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'PORI', id: 'pori-trash', name: 'Recycle Bin', fullName: 'Recycle Bin', desc: 'Manage deleted postal records and archived parcel logs.', icon: (p) => <Trash2 {...p} />, color: 'text-red-600', bg: 'bg-red-100' }
+];
+
+export const MDRI_TOOLS = [
+  { parentId: 'MDRI', id: 'mdri-search', name: 'Explore the Web', fullName: 'Explore the Web', desc: 'Analyze hospital admission logs, patient registries, and health records.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'MDRI', id: 'mdri-history', name: 'Search History', fullName: 'Search History', desc: 'Audit past medical data queries and hospital lookup logs.', icon: (p) => <History {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'MDRI', id: 'mdri-notepad', name: 'My Notepad', fullName: 'My Notepad', desc: 'Record clinical observations, injury verifications, and pharmacy notes.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'MDRI', id: 'mdri-saved', name: 'Saved Data', fullName: 'Saved Data', desc: 'View saved hospital records, treatment logs, and medical audit data.', icon: (p) => <Database {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'MDRI', id: 'mdri-folders', name: 'Organized Folders', fullName: 'Organized Folders', desc: 'Organize medical forensic files and health registry records.', icon: (p) => <Folder {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'MDRI', id: 'mdri-cloud', name: 'Cloud Backup', fullName: 'Cloud Backup', desc: 'Secure cloud archiving for sensitive health investigation records.', icon: (p) => <Cloud {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'MDRI', id: 'mdri-trash', name: 'Recycle Bin', fullName: 'Recycle Bin', desc: 'Manage discarded medical records and temporary case files.', icon: (p) => <Trash2 {...p} />, color: 'text-red-600', bg: 'bg-red-100' }
+];
+
+export const PCRI_TOOLS = [
+  { parentId: 'PCRI', id: 'pcri-search', name: 'Explore the Web', fullName: 'Explore the Web', desc: 'Lookup Indian PIN codes, post offices, state circles, and delivery zones.', icon: (p) => <Search {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'PCRI', id: 'pcri-history', name: 'Search History', fullName: 'Search History', desc: 'Review PIN code search queries and geographic lookup history.', icon: (p) => <History {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'PCRI', id: 'pcri-notepad', name: 'My Notepad', fullName: 'My Notepad', desc: 'Save postal code observations, area coordinates, and locality notes.', icon: (p) => <FileText {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'PCRI', id: 'pcri-saved', name: 'Saved Data', fullName: 'Saved Data', desc: 'Access saved PIN code directory listings and postal boundary data.', icon: (p) => <Database {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' },
+  { parentId: 'PCRI', id: 'pcri-folders', name: 'Organized Folders', fullName: 'Organized Folders', desc: 'Categorize regional postal codes and geographic distribution folders.', icon: (p) => <Folder {...p} />, color: 'text-sky-600', bg: 'bg-sky-100' },
+  { parentId: 'PCRI', id: 'pcri-cloud', name: 'Cloud Backup', fullName: 'Cloud Backup', desc: 'Backup PIN code mapping datasets and geographic intelligence files.', icon: (p) => <Cloud {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'PCRI', id: 'pcri-trash', name: 'Recycle Bin', fullName: 'Recycle Bin', desc: 'Manage deleted postal records and archived searches.', icon: (p) => <Trash2 {...p} />, color: 'text-red-600', bg: 'bg-red-100' }
+];
+
+export const BI_TOOLS = [
+  { parentId: 'BI', id: 'capture_face', name: 'Capture Face', fullName: 'Capture Face', desc: 'Live biometric face capture using connected camera or webcam.', icon: (p) => <ScanLine {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'BI', id: 'capture_fingerprint', name: 'Capture Fingerprint', fullName: 'Capture Fingerprint', desc: 'Capture real-time fingerprint impressions using biometric optical scanner.', icon: (p) => <Fingerprint {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+  { parentId: 'BI', id: 'capture_iris', name: 'Capture Iris', fullName: 'Capture Iris', desc: 'Capture live high-resolution iris biometric scans for identity verification.', icon: (p) => <Eye {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'BI', id: 'capture_voice', name: 'Capture Voice', fullName: 'Capture Voice', desc: 'Record real-time vocal audio samples for acoustic voiceprint identification.', icon: (p) => <Mic {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'BI', id: 'upload_face', name: 'Upload Face Image', fullName: 'Upload Face Image', desc: 'Upload existing facial photograph (JPG/PNG) for biometric matching.', icon: (p) => <UploadCloud {...p} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+  { parentId: 'BI', id: 'upload_fingerprint', name: 'Upload Fingerprint', fullName: 'Upload Fingerprint', desc: 'Upload WSQ, BMP, or PNG fingerprint ridge files for AFIS comparison.', icon: (p) => <UploadCloud {...p} />, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { parentId: 'BI', id: 'upload_iris', name: 'Upload Iris Scan', fullName: 'Upload Iris Scan', desc: 'Upload infrared iris photography for biometric feature extraction.', icon: (p) => <UploadCloud {...p} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+  { parentId: 'BI', id: 'upload_voice', name: 'Upload Voice Sample', fullName: 'Upload Voice Sample', desc: 'Upload MP3 or WAV vocal recordings for spectral voice analysis.', icon: (p) => <UploadCloud {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' }
+];
+
+export const FRI_TOOLS = [
+  { parentId: 'FRI', id: 'fri-upload', name: 'Upload Image for Facial Recognition', fullName: 'Upload Image for Facial Recognition', desc: 'Upload suspect photographs to cross-reference against criminal facial database.', icon: (p) => <UploadCloud {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'FRI', id: 'fri-scan', name: 'Scan Image for Face Matching', fullName: 'Scan Image for Face Matching', desc: 'Scan document or physical photo for multi-face detection and vector analysis.', icon: (p) => <ScanLine {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'FRI', id: 'fri-capture', name: 'Live Camera Face Capture', fullName: 'Live Camera Face Capture', desc: 'Capture live video stream feed for real-time facial recognition matching.', icon: (p) => <Camera {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-100' }
+];
+
+export const PLATFORM_SETTINGS_TOOLS = [
+  { parentId: 'PlatformSettings', id: 'lang', name: 'Language Setting', fullName: 'Language Setting', desc: 'Configure platform language and regional formatting preferences.', icon: (p) => <Languages {...p} />, color: 'text-blue-600', bg: 'bg-blue-100' },
+  { parentId: 'PlatformSettings', id: 'theme', name: 'Customise Theme', fullName: 'Customise Theme', desc: 'Personalize visual appearance with dark, light, or system themes.', icon: (p) => <Palette {...p} />, color: 'text-purple-600', bg: 'bg-purple-100' },
+  { parentId: 'PlatformSettings', id: 'access', name: 'Accessibility Setting', fullName: 'Accessibility Setting', desc: 'Adjust contrast, text size, and screen reader compatibility.', icon: (p) => <Eye {...p} />, color: 'text-green-600', bg: 'bg-green-100' },
+  { parentId: 'PlatformSettings', id: 'layout', name: 'Layout Setting', fullName: 'Layout Setting', desc: 'Modify dashboard layout, arrangement mode, and grid density.', icon: (p) => <Grid {...p} />, color: 'text-orange-600', bg: 'bg-orange-100' },
+  { parentId: 'PlatformSettings', id: 'notif', name: 'Notification Setting', fullName: 'Notification Setting', desc: 'Manage email, push, and in-app system alert preferences.', icon: (p) => <Bell {...p} />, color: 'text-red-600', bg: 'bg-red-100' },
+  { parentId: 'PlatformSettings', id: 'anim', name: 'Animation Setting', fullName: 'Animation Setting', desc: 'Toggle UI animations, transitions, and motion effects.', icon: (p) => <Sparkles {...p} />, color: 'text-yellow-600', bg: 'bg-yellow-100' },
+  { parentId: 'PlatformSettings', id: 'zoom', name: 'Zoom Controls', fullName: 'Zoom Controls', desc: 'Configure default UI scaling and workspace magnification levels.', icon: (p) => <ZoomIn {...p} />, color: 'text-cyan-600', bg: 'bg-cyan-100' },
+  { parentId: 'PlatformSettings', id: 'voice', name: 'Voice Assistant', fullName: 'Voice Assistant', desc: 'Enable and configure voice commands, audio feedback, and speech recognition.', icon: (p) => <Mic {...p} />, color: 'text-indigo-600', bg: 'bg-indigo-100' },
+  { parentId: 'PlatformSettings', id: 'log', name: 'User Activity Log', fullName: 'User Activity Log', desc: 'Review your session history, logins, and system audit trail.', icon: (p) => <History {...p} />, color: 'text-teal-600', bg: 'bg-teal-100' },
+  { parentId: 'PlatformSettings', id: 'sec', name: 'Platform Security Setting', fullName: 'Platform Security Setting', desc: 'Manage active sessions, trusted devices, and security alerts.', icon: (p) => <Shield {...p} />, color: 'text-rose-600', bg: 'bg-rose-100' },
+  { parentId: 'PlatformSettings', id: 'cam', name: 'Web Camera Setting', fullName: 'Web Camera Setting', desc: 'Configure camera device permissions and video resolution.', icon: (p) => <Camera {...p} />, color: 'text-fuchsia-600', bg: 'bg-fuchsia-100' },
+  { parentId: 'PlatformSettings', id: '2fa', name: '2 Factor Authentication', fullName: '2 Factor Authentication', desc: 'Enhance account login security with OTP and 2FA verification.', icon: (p) => <KeyRound {...p} />, color: 'text-amber-600', bg: 'bg-amber-100' }
+];
+
+export const SMI_POPULAR_APPS_TOOLS = [
+  // Food Delivery Apps
+  { parentId: 'SMI', id: 'fdi-swiggy', name: 'Swiggy Intelligence', fullName: 'Swiggy Intelligence', desc: 'Track food delivery addresses, user orders, delivery locations, and contact logs on Swiggy.', icon: (p) => <Utensils {...p} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+  { parentId: 'SMI', id: 'fdi-zomato', name: 'Zomato Intelligence', fullName: 'Zomato Intelligence', desc: 'Analyze delivery accounts, food order history, restaurant reviews, and geo-locations on Zomato.', icon: (p) => <Utensils {...p} />, color: 'text-red-600', bg: 'bg-red-50' },
+  { parentId: 'SMI', id: 'fdi-ubereats', name: 'Uber Eats Intelligence', fullName: 'Uber Eats Intelligence', desc: 'Audit meal orders, delivery addresses, and payment profiles on Uber Eats.', icon: (p) => <Utensils {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  { parentId: 'SMI', id: 'fdi-dominos', name: "Domino's Intelligence", fullName: "Domino's Intelligence", desc: "Examine pizza delivery records, phone numbers, and delivery addresses on Domino's.", icon: (p) => <Utensils {...p} />, color: 'text-blue-600', bg: 'bg-blue-50' },
+  { parentId: 'SMI', id: 'fdi-kfc', name: 'KFC Intelligence', fullName: 'KFC Intelligence', desc: 'Analyze customer orders, mobile numbers, and restaurant pick-up records on KFC.', icon: (p) => <Utensils {...p} />, color: 'text-red-700', bg: 'bg-red-50' },
+  { parentId: 'SMI', id: 'fdi-mcdonalds', name: "McDonald's Intelligence", fullName: "McDonald's Intelligence", desc: "Correlate drive-thru orders, mobile app accounts, and delivery logs on McDonald's.", icon: (p) => <Utensils {...p} />, color: 'text-yellow-600', bg: 'bg-yellow-50' },
+
+  // Cab & Ride Services
+  { parentId: 'SMI', id: 'csi-ola', name: 'Ola Cabs Intelligence', fullName: 'Ola Cabs Intelligence', desc: 'Track ride bookings, driver details, pick-up/drop coordinates, and travel routes on Ola.', icon: (p) => <Car {...p} />, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  { parentId: 'SMI', id: 'csi-uber', name: 'Uber Ride Intelligence', fullName: 'Uber Ride Intelligence', desc: 'Audit trip histories, GPS trajectories, payment receipts, and rider profiles on Uber.', icon: (p) => <Car {...p} />, color: 'text-slate-900', bg: 'bg-slate-100' },
+  { parentId: 'SMI', id: 'csi-rapido', name: 'Rapido Bike Taxi Intelligence', fullName: 'Rapido Bike Taxi Intelligence', desc: 'Investigate bike taxi rides, passenger mobile numbers, and rapid movement logs on Rapido.', icon: (p) => <Car {...p} />, color: 'text-amber-500', bg: 'bg-amber-50' },
+
+  // Payments & Wallets
+  { parentId: 'SMI', id: 'pmi-paytm', name: 'Paytm Intelligence', fullName: 'Paytm Intelligence', desc: 'Analyze digital wallet transactions, merchant payments, and KYC records on Paytm.', icon: (p) => <CreditCard {...p} />, color: 'text-sky-600', bg: 'bg-sky-50' },
+  { parentId: 'SMI', id: 'pmi-phonepe', name: 'PhonePe Intelligence', fullName: 'PhonePe Intelligence', desc: 'Trace UPI transactions, VPA linkages, and bank account transfers on PhonePe.', icon: (p) => <CreditCard {...p} />, color: 'text-purple-600', bg: 'bg-purple-50' },
+  { parentId: 'SMI', id: 'pmi-gpay', name: 'Google Pay Intelligence', fullName: 'Google Pay Intelligence', desc: 'Inspect Google Pay transaction IDs, linked Gmail accounts, and payment histories.', icon: (p) => <CreditCard {...p} />, color: 'text-blue-600', bg: 'bg-blue-50' },
+
+  // Shopping & E-Commerce
+  { parentId: 'SMI', id: 'shi-amazon', name: 'Amazon Shopping Intelligence', fullName: 'Amazon Shopping Intelligence', desc: 'Track customer order histories, shipping addresses, wishlist items, and billing details on Amazon.', icon: (p) => <ShoppingCart {...p} />, color: 'text-amber-600', bg: 'bg-amber-50' },
+  { parentId: 'SMI', id: 'shi-flipkart', name: 'Flipkart Intelligence', fullName: 'Flipkart Intelligence', desc: 'Examine e-commerce purchases, delivery locations, and linked phone numbers on Flipkart.', icon: (p) => <ShoppingCart {...p} />, color: 'text-blue-600', bg: 'bg-blue-50' },
+  { parentId: 'SMI', id: 'shi-myntra', name: 'Myntra Fashion Intelligence', fullName: 'Myntra Fashion Intelligence', desc: 'Audit apparel purchases, return addresses, and customer profiles on Myntra.', icon: (p) => <ShoppingCart {...p} />, color: 'text-pink-600', bg: 'bg-pink-50' },
+
+  // Travel & Bookings
+  { parentId: 'SMI', id: 'tri-makemytrip', name: 'MakeMyTrip Intelligence', fullName: 'MakeMyTrip Intelligence', desc: 'Verify flight bookings, hotel reservations, passenger manifests, and travel dates on MMT.', icon: (p) => <Plane {...p} />, color: 'text-red-500', bg: 'bg-red-50' },
+  { parentId: 'SMI', id: 'tri-irctc', name: 'IRCTC Train Booking Intelligence', fullName: 'IRCTC Train Booking Intelligence', desc: 'Analyze train ticket PNR logs, passenger names, coach berths, and booking IDs on IRCTC.', icon: (p) => <Train {...p} />, color: 'text-blue-700', bg: 'bg-blue-50' },
+  { parentId: 'SMI', id: 'tri-booking', name: 'Booking.com Intelligence', fullName: 'Booking.com Intelligence', desc: 'Inspect global hotel check-ins, guest reservations, and accommodation histories on Booking.com.', icon: (p) => <Home {...p} />, color: 'text-blue-800', bg: 'bg-blue-50' }
+];
+
 export const ALL_SUB_TOOLS = [
   ...ABOUTUS_TOOLS,
   ...ACCOUNTSETTING_TOOLS,
+  ...CODE_INTELLIGENCE_TOOLS,
+  ...LEGAL_PDF_INTELLIGENCE_TOOLS,
+  ...BRI_TOOLS,
+  ...RTOI_TOOLS,
+  ...PORI_TOOLS,
+  ...MDRI_TOOLS,
+  ...PCRI_TOOLS,
+  ...BI_TOOLS,
+  ...FRI_TOOLS,
+  ...PLATFORM_SETTINGS_TOOLS,
   ...SMI_TOOLS,
+  ...SMI_POPULAR_APPS_TOOLS,
   ...SDR_TOOLS,
   ...OSINT_TOOLS,
   ...RII_TOOLS,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DashboardPage from './DashboardPage';
-import Explorethewebpage from './Explorethewebpage';
+import Explorethewebpage from './Explore the Webpage/Explorethewebpage';
 import MynotepadPage from './MynotepadPage';
 import Savedatapage from './Savedatapage';
 

@@ -3,7 +3,7 @@ import ToolCard from '../../../components/nexora';
 import { usePageLayout } from '../../../components/usePageLayout';
 import { Search, History, FileText, Folder } from 'lucide-react';
 
-import ExploreTheWebPage from './Explorethewebpage';
+import ExploreTheWebPage from './Explore the web/Explorethewebpage';
 import MyNotepadPage from './MynotepadPage';
 import SaveDataPage from './Savedatapage';
 
@@ -39,13 +39,16 @@ export default function SubscriberMobileNumberRecordsPage({ onBack }) {
     window.scrollTo(0, 0);
   }, []);
 
+  const [searchedValue, setSearchedValue] = useState('');
+
   const handleSubSubPageBack = () => {
     setActivePage('home');
   };
 
-  if (activePage === 'search' || activePage === 'history') return <ExploreTheWebPage activePage={activePage} setActivePage={setActivePage} onBack={handleSubSubPageBack} />;
+  if (activePage === 'search' || activePage === 'history' || activePage === 'searchResults') return <ExploreTheWebPage activePage={activePage} setActivePage={setActivePage} onBack={handleSubSubPageBack} searchedValue={searchedValue} setSearchedValue={setSearchedValue} />;
   if (activePage === 'note') return <MyNotepadPage activePage={activePage} setActivePage={setActivePage} onBack={handleSubSubPageBack} />;
   if (activePage === 'save-data') return <SaveDataPage setActivePage={setActivePage} onBack={handleSubSubPageBack} />;
+
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">

@@ -8,8 +8,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useStickyNavAnimation } from './components/useStickyNavAnimation';
 
-import laptopWatermark from './assets/WaterMark.png';
-import phoneWatermark from './assets/PhoneWaterMark.png';
+import { laptopWatermark, phoneWatermark } from './CloudinaryLinks';
 import { useActivityTracker } from './context/ActivityTrackerContext';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -54,10 +53,12 @@ import GHLRIPage from "./page/GHLRI-GuestHouse&LodgeRecordIntelligence/GHLRI-Gue
 import PPRIPage from "./page/PPRI-PetrolPumpRecordIntelligence/PPRI-PetrolPumpRecordIntelligence";
 import RIIPage from "./page/RII-RailwayInformationIntelligence/RII-RailwayInformationIntelligence";
 import PCRIPage from "./page/PCRI-PINCodeRecordIntelligence";
+import CodeIntelligenceRoutes from "./page/CodeIntelligence/CodeIntelligenceRoutes";
 import CRIPage from "./page/CRI-CompanyRegistrationIntelligence/CRI-CompanyRegistrationIntelligence";
 import MDRIPage from "./page/MDRI-MedicalDataRecordIntelligence";
 import AboutUsPage from "./page/AboutUs/AboutUs";
 import AccountSettingPage from "./page/AccountSetting/AccountSetting";
+import LegalPDFIntelligencePage from "./page/Legal PDF Intelligence/LegalPDFIntelligencePage";
 import LoginPage from "./page/LoginPage/LoginPage";
 import { motion } from 'framer-motion';
 import { VoiceProvider } from './page/PlatformSettings/VoiceAssistantPage';
@@ -436,8 +437,11 @@ export default function App() {
     if (!query) return NEXORA_MODULES;
     const terms = query.split(/\s+/).filter(Boolean);
     return NEXORA_MODULES.filter(parent => {
-      const text = `${parent.name || ''} ${parent.title || ''} ${parent.description || ''} ${parent.id || ''}`.toLowerCase();
-      return terms.every(term => text.includes(term));
+      const text = `${parent.name || ''} ${parent.title || ''} ${parent.description || ''} ${parent.id || ''} ${parent.legacyId || ''}`.toLowerCase();
+      return terms.every(term => {
+        const normalized = term === 'inteligence' ? 'intelligence' : term;
+        return text.includes(term) || text.includes(normalized);
+      });
     });
   }, [query]);
 
@@ -490,7 +494,12 @@ export default function App() {
       setActiveSubPage(tool.id);
     } else {
       // It's a main module
-      const pageId = tool.name === "Intelligence Modules" ? "IntelligenceModules" : tool.name === "About Us" ? "AboutUs" : tool.name === "Account Setting" ? "AccountSetting" : tool.name;
+      const pageId = tool.name === "Intelligence Modules" ? "IntelligenceModules" 
+        : tool.name === "About Us" ? "AboutUs" 
+        : tool.name === "Account Setting" ? "AccountSetting" 
+        : (tool.name === "Code Intelligence" || tool.name === "Code Inteligence" || tool.id === "ci" || tool.id === "pcri") ? "CodeIntelligence"
+        : (tool.name === "Legal PDF Intelligence" || tool.id === "legal-pdf-intelligence" || tool.id === "LegalPDFIntelligence") ? "LegalPDFIntelligence"
+        : tool.name;
       window.history.pushState({ page: pageId, subPage: null }, '', `#${pageId}`);
       setSelectedPage(pageId);
       setActiveSubPage(null);
@@ -508,6 +517,21 @@ export default function App() {
     isNavigatingBack.current = false;
     setSearchQuery('');
     
+    if (id === 'LegalPDFIntelligence' || id === 'legal-pdf-intelligence') {
+      window.history.pushState({ page: 'LegalPDFIntelligence', subPage: null }, '', '#LegalPDFIntelligence');
+      setSelectedPage('LegalPDFIntelligence');
+      setActiveSubPage(null);
+      return;
+    }
+
+    if (id === 'NexoraUpdateHistory' || id === 'DemoCard' || id === 'nexora-update-history') {
+      setProductionMsg({
+        title: 'Nexora Update History',
+        message: 'Nexora Update History is currently under development and will be available in the upcoming platform release.'
+      });
+      return;
+    }
+
     if (id === 'DashboardSettings') {
       window.history.pushState({ page: 'PlatformSettings', subPage: 'layout' }, '', '#PlatformSettings/layout');
       setSelectedPage('PlatformSettings');
@@ -862,8 +886,12 @@ export default function App() {
                             displayTools.sort((a, b) => {
                               const aId = a.id || a.name;
                               const bId = b.id || b.name;
-                              const aIndex = savedCardIds.indexOf(aId);
-                              const bIndex = savedCardIds.indexOf(bId);
+                              let aIndex = savedCardIds.indexOf(aId);
+                              let bIndex = savedCardIds.indexOf(bId);
+                              if (aIndex === -1 && a.legacyId) aIndex = savedCardIds.indexOf(a.legacyId);
+                              if (bIndex === -1 && b.legacyId) bIndex = savedCardIds.indexOf(b.legacyId);
+                              if (aIndex === -1 && a.id === 'legal-pdf-intelligence') aIndex = savedCardIds.indexOf('nexora-update-history');
+                              if (bIndex === -1 && b.id === 'legal-pdf-intelligence') bIndex = savedCardIds.indexOf('nexora-update-history');
                               
                               if (aIndex === -1 && bIndex === -1) return 0;
                               if (aIndex === -1) return 1;
@@ -946,12 +974,13 @@ export default function App() {
                                                             : selectedPage === "GHLRI" ? <GHLRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                               : selectedPage === "PPRI" ? <PPRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                 : selectedPage === "RII" ? <RIIPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                  : selectedPage === "PCRI" ? <PCRIPage onBack={handleBack} searchQuery={searchQuery} />
+                                                                  : (selectedPage === "CodeIntelligence" || selectedPage === "Code Intelligence" || selectedPage === "Code Inteligence" || selectedPage === "PCRI" || selectedPage === "ci" || selectedPage === "CI" || selectedPage === "pcri") ? <CodeIntelligenceRoutes onBack={handleBack} searchQuery={searchQuery} />
                                                                     : selectedPage === "CRI" ? <CRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                       : selectedPage === "MDRI" ? <MDRIPage onBack={handleBack} searchQuery={searchQuery} />
                                                                         : selectedPage === "AboutUs" ? <AboutUsPage onBack={handleBack} searchQuery={searchQuery} />
                                                                           : selectedPage === "AccountSetting" ? <AccountSettingPage onBack={handleBack} searchQuery={searchQuery} />
-                                                                            : null
+                                                                            : (selectedPage === "LegalPDFIntelligence" || selectedPage === "Legal PDF Intelligence" || selectedPage === "legal-pdf-intelligence") ? <LegalPDFIntelligencePage onBack={handleBack} searchQuery={searchQuery} />
+                                                                              : null
             }
           </main>
         </div>

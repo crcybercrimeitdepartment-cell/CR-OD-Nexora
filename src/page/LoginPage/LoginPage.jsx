@@ -25,8 +25,7 @@ import {
 } from 'lucide-react';
 import ToolCard, { Header as GlobalHeader, Footer as GlobalFooter } from '../../components/nexora';
 import { NEXORA_MODULES } from '../../data/nexora';
-import laptopWatermark from '../../assets/WaterMark.png';
-import phoneWatermark from '../../assets/PhoneWaterMark.png';
+import { laptopWatermark, phoneWatermark, nexoraLogo, cyberCrimeLogo } from '../../CloudinaryLinks';
 
 export default function LoginPage({ onLoginSuccess }) {
   const [view, setView] = useState('initial'); 
@@ -298,7 +297,7 @@ export default function LoginPage({ onLoginSuccess }) {
           <motion.div layout className="shrink-0 flex items-center justify-start">
             <motion.img 
               layout
-              src="/nexora logo.png" 
+              src={nexoraLogo} 
               alt="Nexora Logo" 
               className={`${view === 'morphing' ? 'h-16 sm:h-20 md:h-24 lg:h-28 drop-shadow-md' : 'h-10 drop-shadow-sm'} w-auto object-contain cursor-pointer hover:scale-105 transition-transform duration-200`} 
             />
@@ -357,7 +356,7 @@ export default function LoginPage({ onLoginSuccess }) {
           <motion.div layout className="shrink-0 flex items-center justify-end">
             <motion.img 
               layout
-              src="https://res.cloudinary.com/dlhmkbijh/image/upload/v1785473583/Logo_mswjel.png" 
+              src={cyberCrimeLogo} 
               alt="Partner Logo" 
               className={`${view === 'morphing' ? 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 drop-shadow-md' : 'h-10 drop-shadow-sm'} w-auto object-contain cursor-pointer hover:scale-105 transition-transform duration-200`} 
             />

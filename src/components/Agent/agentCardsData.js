@@ -1750,7 +1750,7 @@ export const AGENT_CARDS_DATA = {
       "Post office & jurisdiction mapping",
       "Spatial analytics for demographic research"
 ],
-    keywords: ["PCRI","PIN Code Record Intelligence","Pincode Lookup","Postal Zone","Address Resolution","Demographic Map","Spatial Analytics"],
+    keywords: ["Code Intelligence","Code Inteligence","CI","PCRI","PIN Code Record Intelligence","Pincode Lookup","Postal Zone","Address Resolution","Demographic Map","Spatial Analytics"],
     other: "Database: Comprehensive national PIN code database with geographic centroids and police station jurisdiction mappings.",
 
 
@@ -2058,6 +2058,9 @@ export const TYPO_MAP = {
   'rto': 'rtoi',
   'pincode': 'pcri',
   'pin': 'pcri',
+  'code intelligence': 'pcri',
+  'code inteligence': 'pcri',
+  'ci': 'pcri',
   'fastag': 'tgri',
   'toll': 'tgri',
   'irctc': 'rii',
@@ -2241,6 +2244,9 @@ export const CARD_ALIASES = {
   'pin code record': 'pcri',
   'pincode': 'pcri',
   'pcri': 'pcri',
+  'code intelligence': 'pcri',
+  'code inteligence': 'pcri',
+  'ci': 'pcri',
 
   'company registration intelligence': 'cri',
   'company registration': 'cri',

@@ -16,10 +16,7 @@ import {
   RotateCcw
 } from 'lucide-react';
 
-import chimeSound from '../../assets/sounds/chime.mp3';
-import bellSound from '../../assets/sounds/bell.mp3';
-import pingSound from '../../assets/sounds/ping.mp3';
-import subtleSound from '../../assets/sounds/subtle.mp3';
+import { chimeSound, bellSound, pingSound, subtleSound } from '../../CloudinaryLinks';
 
 const SAVED_NOTIF_KEY = 'nexora_notification_settings_v1';
 

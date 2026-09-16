@@ -2,9 +2,20 @@ import React, { createContext, useContext, useRef, useState, useEffect } from 'r
 import WebCamSetting from '../page/PlatformSettings/WebCamSetting';
 import { addModuleSession } from '../page/PlatformSettings/indexedDB';
 
-const ActivityTrackerContext = createContext(null);
+const defaultActivityTracker = {
+  cameraRef: { current: null },
+  isCameraActive: false,
+  trackLocation: () => {},
+  stopMainSession: () => {},
+  logClick: () => {}
+};
 
-export const useActivityTracker = () => useContext(ActivityTrackerContext);
+const ActivityTrackerContext = createContext(defaultActivityTracker);
+
+export const useActivityTracker = () => {
+  const context = useContext(ActivityTrackerContext);
+  return context || defaultActivityTracker;
+};
 
 export const ActivityTrackerProvider = ({ children }) => {
   const cameraRef = useRef(null);
@@ -13,26 +24,28 @@ export const ActivityTrackerProvider = ({ children }) => {
   const currentSubSessionRef = useRef(null);
 
   const stopSubSession = async () => {
-    if (!currentSubSessionRef.current) return;
     const session = currentSubSessionRef.current;
+    if (!session) return;
+    currentSubSessionRef.current = null;
+    if (!session.startTime) return;
     const stopTime = new Date().toISOString();
-    const duration = new Date(stopTime).getTime() - new Date(session.startTime).getTime();
+    const duration = Math.max(0, new Date(stopTime).getTime() - new Date(session.startTime).getTime());
     try {
       await addModuleSession({ ...session, stopTime, duration, status: 'Completed' });
     } catch (e) { console.error(e); }
-    currentSubSessionRef.current = null;
   };
 
   const stopMainSession = async () => {
-    if (!currentMainSessionRef.current) return;
-    await stopSubSession(); // Stop any active child first
     const session = currentMainSessionRef.current;
+    if (!session) return;
+    currentMainSessionRef.current = null;
+    await stopSubSession(); // Stop any active child first
+    if (!session.startTime) return;
     const stopTime = new Date().toISOString();
-    const duration = new Date(stopTime).getTime() - new Date(session.startTime).getTime();
+    const duration = Math.max(0, new Date(stopTime).getTime() - new Date(session.startTime).getTime());
     try {
       await addModuleSession({ ...session, stopTime, duration, status: 'Completed' });
     } catch (e) { console.error(e); }
-    currentMainSessionRef.current = null;
   };
 
   const trackLocation = async (pageId, subPageId = null) => {

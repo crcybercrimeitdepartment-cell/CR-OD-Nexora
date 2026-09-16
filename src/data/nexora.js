@@ -37,6 +37,7 @@ import {
   PPRIIcon,
   RIIIcon,
   PCRIIcon,
+  CodeIntelligenceIcon,
   CRIIcon,
   MIIIcon,
   MInfIIcon,
@@ -47,7 +48,8 @@ import {
   AboutUsIcon,
   DemoCardIcon,
   IOAssistantIcon,
-  NexoraUpdateHistoryIcon
+  NexoraUpdateHistoryIcon,
+  LegalPDFIntelligenceIcon
 } from '../components/nexora';
 
 export const NEXORA_MODULES = [
@@ -271,10 +273,11 @@ export const NEXORA_MODULES = [
     iconColor: 'text-[#1D4ED8]'
   },
   {
-    id: 'pcri',
-    name: 'PCRI',
-    description: 'PIN Code Record Intelligence - Map demographic and geographic intelligence by postal codes.',
-    icon: PCRIIcon,
+    id: 'ci',
+    legacyId: 'pcri',
+    name: 'Code Intelligence',
+    description: 'Code Intelligence - Analyze demographic, identity, postal codes, and communication records across 20+ verification modules.',
+    icon: CodeIntelligenceIcon,
     bgColor: 'bg-[#EFF6FF]',
     iconColor: 'text-[#3B82F6]'
   },
@@ -306,11 +309,11 @@ export const NEXORA_MODULES = [
     iconColor: 'text-[#4F46E5]'
   },
   {
-    id: 'nexora-update-history',
+    id: 'legal-pdf-intelligence',
     legacyId: 'demo-card-2',
-    name: 'Nexora Update History',
-    description: 'Platform Update History - Track feature releases, changelogs, system enhancements, and version updates.',
-    icon: NexoraUpdateHistoryIcon,
+    name: 'Legal PDF Intelligence',
+    description: 'Legal PDF Intelligence - AI-powered legal document analysis, courtroom filings, case citations, and document extraction.',
+    icon: LegalPDFIntelligenceIcon,
     bgColor: 'bg-[#F0FDF4]',
     iconColor: 'text-[#16A34A]'
   }

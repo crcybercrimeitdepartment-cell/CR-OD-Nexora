@@ -47,6 +47,7 @@ import {
   Cpu,
   Phone,
   ChevronRight,
+  Code,
   Lock,
   Zap,
   Heart,
@@ -73,10 +74,10 @@ import {
   Layers,
   LogOut
 } from 'lucide-react';
+import { nexoraLogo, cyberCrimeLogo, runningAnimation } from '../CloudinaryLinks';
 
-const cyberCrimeLogo = 'https://res.cloudinary.com/dlhmkbijh/image/upload/v1785473583/Logo_mswjel.png';
-const nexoraLogoHeader = '/nexora logo.png';
-const nexoraLogoFooter = '/nexora logo.png';
+const nexoraLogoHeader = nexoraLogo;
+const nexoraLogoFooter = nexoraLogo;
 
 
 /**
@@ -213,7 +214,8 @@ export function TGRIIcon({ className = "w-8 h-8" }) { return <Navigation classNa
 export function GHLRIIcon({ className = "w-8 h-8" }) { return <Hotel className={className} />; }
 export function PPRIIcon({ className = "w-8 h-8" }) { return <Fuel className={className} />; }
 export function RIIIcon({ className = "w-8 h-8" }) { return <Train className={className} />; }
-export function PCRIIcon({ className = "w-8 h-8" }) { return <Lock className={className} />; }
+export function PCRIIcon({ className = "w-8 h-8" }) { return <Code className={className} />; }
+export function CodeIntelligenceIcon({ className = "w-8 h-8" }) { return <Code className={className} />; }
 export function CRIIcon({ className = "w-8 h-8" }) { return <AlertTriangle className={className} />; }
 export function MIIIcon({ className = "w-8 h-8" }) { return <Shield className={className} />; }
 export function MInfIIcon({ className = "w-8 h-8" }) { return <Newspaper className={className} />; }
@@ -225,6 +227,7 @@ export function AboutUsIcon({ className = "w-8 h-8" }) { return <Info className=
 export function DemoCardIcon({ className = "w-8 h-8" }) { return <Layers className={className} />; }
 export function IOAssistantIcon({ className = "w-8 h-8" }) { return <Bot className={className} />; }
 export function NexoraUpdateHistoryIcon({ className = "w-8 h-8" }) { return <History className={className} />; }
+export function LegalPDFIntelligenceIcon({ className = "w-8 h-8" }) { return <FileText className={className} />; }
 
 
 
@@ -270,7 +273,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
         <div className={`w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-300 ${isActive ? 'scale-110 text-blue-700 dark:text-blue-400' : 'text-[#1e2a52] dark:text-slate-300 group-hover:scale-110 group-hover:text-blue-700 dark:group-hover:text-blue-400'}`}>
           <Icon className="w-3.5 h-3.5 sm:w-5 sm:h-5 md:w-5 md:h-5" strokeWidth={1.5} />
         </div>
-        <span className="text-[calc(5px*var(--text-scale,1))] sm:text-[calc(6px*var(--text-scale,1))] md:text-[calc(7.5px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-slate-300 text-center leading-[1.1] uppercase tracking-wide mt-1 relative pb-1 w-full h-[24px] md:h-[28px] flex flex-col items-center justify-start">
+        <span className="text-[calc(5px*var(--text-scale,1))] sm:text-[calc(6px*var(--text-scale,1))] md:text-[calc(7.5px*var(--text-scale,1))] font-bold text-[#1e2a52] dark:text-slate-300 text-center leading-[1.1] uppercase tracking-wide mt-1 relative pb-1 w-full min-h-[24px] md:min-h-[28px] flex flex-col items-center justify-start">
           {label}
           {/* Interactive Glow Line */}
           <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.8)] transition-all duration-300 ${isActive ? 'w-[80%]' : 'w-0 group-hover:w-[80%]'}`}></span>
@@ -350,7 +353,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
 
           {/* RIGHT ICONS (Hidden on very small screens) */}
           <div className="hidden xl:flex items-start justify-center gap-1 mx-2 2xl:mx-8">
-            <HeaderIcon id="DemoCard" Icon={Layers} label="Demo Card" />
+            <HeaderIcon id="NexoraUpdateHistory" Icon={History} label="Nexora Update History" />
             <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
             <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
             <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
@@ -375,7 +378,7 @@ export function Header({ searchQuery = "", onSearchChange = () => { }, onHeaderI
           <HeaderIcon id="DashboardSettings" Icon={LayoutDashboard} label="Dashboard Settings" />
           <HeaderIcon id="AccountSetting" Icon={User} label="Account Setting" />
           <HeaderIcon id="AboutUs" Icon={Info} label="About Us" />
-          <HeaderIcon id="DemoCard" Icon={Layers} label="Demo Card" />
+          <HeaderIcon id="NexoraUpdateHistory" Icon={History} label="Nexora Update History" />
           <HeaderIcon id="Notification" Icon={Bell} label="Notification" />
           <HeaderIcon id="Help" Icon={HelpCircle} label="Help" />
           <HeaderIcon id="LogOut" Icon={LogOut} label="Log Out" onClick={() => { sessionStorage.removeItem('isAuthenticated'); window.location.reload(); }} />
@@ -407,7 +410,7 @@ const RunningManCanvas = () => {
 
   useEffect(() => {
     const video = document.createElement('video');
-    video.src = '/running_animation.mp4';
+    video.src = runningAnimation;
     video.crossOrigin = 'anonymous';
     video.loop = true;
     video.muted = true;
