@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UploadBiometrics from './UploadBiometrics';
 import CaptureBiometrics from './CaptureBiometrics';
+import { BIOMETRIC_CAPTURE_CARDS } from '../../data/biometricIntelligenceData';
 
 /**
  * Header Component.
@@ -122,10 +123,13 @@ export default function BIPage({ onBack }) {
                   </div>
                   <hr className="border-slate-100 my-5" />
                   
-                  <div className="grid grid-cols-2 gap-4 h-full">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
                     {/* Face Card */}
-                    <div className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white">
-                      <div className="text-blue-500 mb-1 flex items-center justify-center relative w-14 h-14">
+                    <div 
+                      onClick={() => handleFeatureOpen('capture_face')}
+                      className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer"
+                    >
+                      <div className="text-blue-500 mb-1 flex items-center justify-center relative w-14 h-14 shrink-0">
                         <svg className="absolute inset-0 w-full h-full text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8v-2a2 2 0 012-2h2m10 0h2a2 2 0 012 2v2m0 10v2a2 2 0 01-2 2h-2m-10 0h-2a2 2 0 01-2-2v-2" />
                         </svg>
@@ -133,9 +137,16 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Face</span>
+                      <div className="flex-1 flex flex-col items-center">
+                        <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_face.title}
+                        </span>
+                        <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_face.description}
+                        </p>
+                      </div>
                       <button 
-                        onClick={() => handleFeatureOpen('capture_face')}
+                        onClick={(e) => { e.stopPropagation(); handleFeatureOpen('capture_face'); }}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
                           activeFeature === 'capture_face' 
                           ? 'bg-blue-50 text-blue-600 border-blue-600 shadow-sm' 
@@ -143,13 +154,16 @@ export default function BIPage({ onBack }) {
                         }`}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        Start Capture
+                        {BIOMETRIC_CAPTURE_CARDS.capture_face.actionLabel}
                       </button>
                     </div>
 
                     {/* Fingerprint Card */}
-                    <div className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white">
-                      <div className="text-emerald-500 mb-1 flex items-center justify-center relative w-14 h-14">
+                    <div 
+                      onClick={() => handleFeatureOpen('capture_fingerprint')}
+                      className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer"
+                    >
+                      <div className="text-emerald-500 mb-1 flex items-center justify-center relative w-14 h-14 shrink-0">
                         <svg className="absolute inset-0 w-full h-full text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8v-2a2 2 0 012-2h2m10 0h2a2 2 0 012 2v2m0 10v2a2 2 0 01-2 2h-2m-10 0h-2a2 2 0 01-2-2v-2" />
                         </svg>
@@ -157,9 +171,16 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Fingerprint</span>
+                      <div className="flex-1 flex flex-col items-center">
+                        <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_fingerprint.title}
+                        </span>
+                        <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_fingerprint.description}
+                        </p>
+                      </div>
                       <button 
-                        onClick={() => handleFeatureOpen('capture_fingerprint')}
+                        onClick={(e) => { e.stopPropagation(); handleFeatureOpen('capture_fingerprint'); }}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
                           activeFeature === 'capture_fingerprint' 
                           ? 'bg-emerald-50 text-emerald-600 border-emerald-600 shadow-sm' 
@@ -167,13 +188,16 @@ export default function BIPage({ onBack }) {
                         }`}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
-                        Start Capture
+                        {BIOMETRIC_CAPTURE_CARDS.capture_fingerprint.actionLabel}
                       </button>
                     </div>
 
                     {/* Iris Card */}
-                    <div className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white">
-                      <div className="text-purple-500 mb-1 flex items-center justify-center relative w-14 h-14">
+                    <div 
+                      onClick={() => handleFeatureOpen('capture_iris')}
+                      className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer"
+                    >
+                      <div className="text-purple-500 mb-1 flex items-center justify-center relative w-14 h-14 shrink-0">
                         <svg className="absolute inset-0 w-full h-full text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8v-2a2 2 0 012-2h2m10 0h2a2 2 0 012 2v2m0 10v2a2 2 0 01-2 2h-2m-10 0h-2a2 2 0 01-2-2v-2" />
                         </svg>
@@ -182,9 +206,16 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Iris</span>
+                      <div className="flex-1 flex flex-col items-center">
+                        <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_iris.title}
+                        </span>
+                        <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_iris.description}
+                        </p>
+                      </div>
                       <button 
-                        onClick={() => handleFeatureOpen('capture_iris')}
+                        onClick={(e) => { e.stopPropagation(); handleFeatureOpen('capture_iris'); }}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
                           activeFeature === 'capture_iris' 
                           ? 'bg-purple-50 text-purple-600 border-purple-600 shadow-sm' 
@@ -192,13 +223,16 @@ export default function BIPage({ onBack }) {
                         }`}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        Start Capture
+                        {BIOMETRIC_CAPTURE_CARDS.capture_iris.actionLabel}
                       </button>
                     </div>
 
                     {/* Voice Card */}
-                    <div className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white">
-                      <div className="text-orange-500 mb-1 flex items-center justify-center relative w-14 h-14">
+                    <div 
+                      onClick={() => handleFeatureOpen('capture_voice')}
+                      className="border border-slate-100 rounded-xl p-5 flex flex-col items-center text-center justify-between gap-3 shadow-sm hover:shadow-md transition-shadow bg-white cursor-pointer"
+                    >
+                      <div className="text-orange-500 mb-1 flex items-center justify-center relative w-14 h-14 shrink-0">
                         <svg className="absolute inset-0 w-full h-full text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8v-2a2 2 0 012-2h2m10 0h2a2 2 0 012 2v2m0 10v2a2 2 0 01-2 2h-2m-10 0h-2a2 2 0 01-2-2v-2" />
                         </svg>
@@ -206,9 +240,16 @@ export default function BIPage({ onBack }) {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                         </svg>
                       </div>
-                      <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">Capture Voice</span>
+                      <div className="flex-1 flex flex-col items-center">
+                        <span className="font-bold text-slate-700 text-[calc(15px*var(--text-scale,1))]">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_voice.title}
+                        </span>
+                        <p className="text-xs text-slate-500 leading-relaxed mt-1">
+                          {BIOMETRIC_CAPTURE_CARDS.capture_voice.description}
+                        </p>
+                      </div>
                       <button 
-                        onClick={() => handleFeatureOpen('capture_voice')}
+                        onClick={(e) => { e.stopPropagation(); handleFeatureOpen('capture_voice'); }}
                         className={`w-full py-2.5 px-3 mt-2 text-sm font-semibold rounded-lg border transition-colors flex justify-center items-center gap-2 ${
                           activeFeature === 'capture_voice' 
                           ? 'bg-orange-50 text-orange-600 border-orange-600 shadow-sm' 
@@ -216,7 +257,7 @@ export default function BIPage({ onBack }) {
                         }`}
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-                        Start Recording
+                        {BIOMETRIC_CAPTURE_CARDS.capture_voice.actionLabel}
                       </button>
                     </div>
                   </div>

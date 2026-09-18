@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom/client";
+import { SDR_DATA_INPUT_RECORDS } from "../../../data/sdrDataInputRecords";
 
 function GlobalStyles() {
   useEffect(() => {
@@ -150,104 +150,7 @@ const homeTransitionPositions = [
   "left-[80%] top-[82%] -translate-x-1/2 -translate-y-1/2 rotate-[7deg]",
 ];
 
-const records = [
-  {
-    slug: "customer-application-form-caf",
-    title: "Customer Application Form (CAF)",
-    short: "CAF",
-    accent: "from-sky-400 to-cyan-300",
-  },
-  {
-    slug: "ekyc-customer-verification",
-    title: "e-KYC & Customer Verification",
-    short: "KYC",
-    accent: "from-emerald-400 to-teal-300",
-  },
-  {
-    slug: "subscriber-registration-record",
-    title: "Subscriber Registration Record",
-    short: "REG",
-    accent: "from-violet-400 to-fuchsia-300",
-  },
-  {
-    slug: "sim-activation-record",
-    title: "SIM Activation Record",
-    short: "ACT",
-    accent: "from-amber-400 to-orange-300",
-  },
-  {
-    slug: "sim-deactivation-disconnection-record",
-    title: "SIM Deactivation & Disconnection Record",
-    short: "OFF",
-    accent: "from-rose-400 to-pink-300",
-  },
-  {
-    slug: "sim-reconnection-reactivation-record",
-    title: "SIM Reconnection & Reactivation Record",
-    short: "ON",
-    accent: "from-lime-400 to-green-300",
-  },
-  {
-    slug: "mobile-number-portability-mnp-record",
-    title: "Mobile Number Portability (MNP) Record",
-    short: "MNP",
-    accent: "from-indigo-400 to-blue-300",
-  },
-  {
-    slug: "subscriber-ownership-transfer-record",
-    title: "Subscriber Ownership / Transfer Record",
-    short: "OWN",
-    accent: "from-cyan-400 to-sky-300",
-  },
-  {
-    slug: "kyc-update-rekyc-record",
-    title: "KYC Update / Re-KYC Record",
-    short: "UPD",
-    accent: "from-teal-400 to-emerald-300",
-  },
-  {
-    slug: "sim-replacement-history",
-    title: "SIM Replacement History",
-    short: "REP",
-    accent: "from-pink-400 to-rose-300",
-  },
-  {
-    slug: "mobile-number-allocation-record",
-    title: "Mobile Number Allocation Record",
-    short: "NUM",
-    accent: "from-yellow-400 to-amber-300",
-  },
-  {
-    slug: "alternate-mobile-number-record",
-    title: "Alternate Mobile Number Record",
-    short: "ALT",
-    accent: "from-blue-400 to-indigo-300",
-  },
-  {
-    slug: "imei-sim-device-association-record",
-    title: "IMEI-SIM / Device Association Record",
-    short: "DEV",
-    accent: "from-purple-400 to-violet-300",
-  },
-  {
-    slug: "demo-1",
-    title: "DEMO",
-    short: "D1",
-    accent: "from-red-400 to-rose-300",
-  },
-  {
-    slug: "demo-2",
-    title: "DEMO",
-    short: "D2",
-    accent: "from-orange-400 to-amber-300",
-  },
-  {
-    slug: "demo-3",
-    title: "DEMO",
-    short: "D3",
-    accent: "from-fuchsia-400 to-pink-300",
-  },
-];
+const records = SDR_DATA_INPUT_RECORDS;
 
 
 
@@ -296,12 +199,12 @@ function RecordIcon({ short, accent }) {
   );
 }
 
-function RecordCard({ title, short, accent, index, slug, onSelect, dimmed = false }) {
+function RecordCard({ title, description, short, accent, index, slug, onSelect, dimmed = false }) {
   return (
     <button
       type="button"
       onClick={() => onSelect(slug)}
-      className={`group relative flex min-h-[116px] items-center justify-center p-2 transition duration-300 hover:-translate-y-2 ${
+      className={`group relative flex flex-col items-center justify-start p-4 sm:p-5 text-center rounded-2xl border border-white/60 bg-white/40 hover:bg-white/70 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_28px_rgba(67,111,157,0.12)] transition duration-300 hover:-translate-y-1.5 cursor-pointer w-full h-full ${
         dimmed ? "opacity-0 scale-75" : "opacity-100"
       }`}
       aria-label={title}
@@ -309,15 +212,21 @@ function RecordCard({ title, short, accent, index, slug, onSelect, dimmed = fals
       disabled={dimmed}
     >
       <div
-        className="absolute inset-x-5 bottom-3 h-10 rounded-full bg-sky-200/25 blur-2xl transition duration-300 group-hover:bg-sky-300/35"
+        className="absolute inset-x-5 bottom-3 h-10 rounded-full bg-sky-200/25 blur-2xl transition duration-300 group-hover:bg-sky-300/35 pointer-events-none"
         style={{ animationDelay: `${index * 90}ms` }}
       />
       <div
-        className="relative animate-[floatCard_5.5s_ease-in-out_infinite]"
+        className="relative mb-3 shrink-0 animate-[floatCard_5.5s_ease-in-out_infinite]"
         style={{ animationDelay: `${index * 140}ms` }}
       >
         <RecordIcon short={short} accent={accent} />
       </div>
+      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug group-hover:text-sky-900 transition-colors">
+        {title}
+      </h3>
+      <p className="mt-1.5 text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal">
+        {description}
+      </p>
     </button>
   );
 }
@@ -415,7 +324,7 @@ function HomePage({ onSelect, transitioning = false, activeSlug = null }) {
   }, [transitioning]);
 
   return (
-    <section className="relative h-[calc(100vh-3rem)] overflow-hidden">
+    <section className="relative min-h-[calc(100vh-3rem)] pb-12">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-300/18 blur-3xl" />
         <div className="absolute left-1/2 top-1/2 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/25 bg-white/6 backdrop-blur-[2px]" />
@@ -425,7 +334,7 @@ function HomePage({ onSelect, transitioning = false, activeSlug = null }) {
       </div>
 
       <div
-        className={`relative z-10 grid h-full grid-cols-2 content-center gap-y-5 transition-all duration-500 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 ${
+        className={`relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 transition-all duration-500 ${
           transitioning ? "opacity-15 scale-[0.98]" : "opacity-100"
         }`}
       >
@@ -572,9 +481,7 @@ function RecordDetailsPage({ slug, onNavigate, onGoHome }) {
               {record.title}
             </h1>
             <p className="mt-4 md:mt-6 max-w-2xl text-sm leading-7 md:text-base md:leading-8 text-slate-600 sm:text-lg">
-              Review and verify the selected subscriber record information from the side menu.
-              Click any icon on the left or right to instantly switch the active record details in
-              this center section.
+              {record.description}
             </p>
 
             <div className="mt-6 md:mt-8 grid w-full gap-3 md:gap-4 sm:grid-cols-2">
@@ -690,7 +597,7 @@ function SubscriberApp() {
   };
 
   return (
-    <main className="relative isolate min-h-screen overflow-hidden text-[#16324f]">
+    <main className="relative isolate min-h-screen overflow-x-hidden text-[#16324f]">
       <GlobalStyles />
       <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-sky-300/35 blur-3xl" />
       {recordSlug ? (
@@ -698,7 +605,7 @@ function SubscriberApp() {
           <RecordDetailsPage slug={recordSlug} onNavigate={handleNavigateRecord} onGoHome={handleGoHome} />
         </div>
       ) : (
-        <div className="mx-auto flex h-screen max-w-7xl flex-col overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-6 sm:px-6 lg:px-8">
           <HomePage
             onSelect={handleSelectRecord}
             transitioning={Boolean(transitioningSlug)}

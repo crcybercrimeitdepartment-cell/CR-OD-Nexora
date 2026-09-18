@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { BIOMETRIC_CAPTURE_CARDS } from '../../data/biometricIntelligenceData';
 
 /**
  * CaptureBiometrics Component
@@ -187,21 +188,32 @@ export default function CaptureBiometrics({ featureType }) {
     return "bg-slate-50 border border-slate-200 shadow-sm";
   };
 
+  const currentBiometric = BIOMETRIC_CAPTURE_CARDS[featureType] || {
+    title: `Capture ${featureName}`,
+    description: `Capture ${featureName.toLowerCase()} biometric information for identity verification and biometric intelligence workflows.`,
+  };
+
   return (
-    <div className="w-full p-8 bg-white rounded-3xl shadow-sm border border-slate-200 mt-2 flex flex-col items-center justify-center animate-fade-in transition-all min-h-[400px]">
+    <div className="w-full p-6 sm:p-8 bg-white rounded-3xl shadow-sm border border-slate-200 mt-2 flex flex-col items-center justify-center animate-fade-in transition-all min-h-[400px]">
       
+      {/* Detail Page Heading: Recommended Title & Description */}
+      <div className="text-center mb-6 max-w-xl">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">
+          {currentBiometric.title}
+        </h2>
+        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+          {currentBiometric.description}
+        </p>
+      </div>
+
+      <hr className="w-full border-slate-100 mb-6" />
+
       {/* State 1: Idle (Not capturing, No photo taken) */}
       {!isCapturing && !photo ? (
         <>
           <div className={`w-24 h-24 rounded-2xl flex items-center justify-center mb-6 ${getBgColor()}`}>
             {renderIcon()}
           </div>
-          <h3 className="text-2xl font-bold text-slate-800 mb-3">Capture {featureName}</h3>
-          <p className="text-slate-500 mb-8 text-center max-w-sm text-[calc(15px*var(--text-scale,1))]">
-            {isCameraType && `Use your device's camera to securely capture your ${featureName.toLowerCase()}.`}
-            {isFingerprint && "Place your finger securely on the scanner to verify your identity."}
-            {isVoice && "Use your device's microphone to record a secure voice sample."}
-          </p>
           {/* Start Capture Button */}
           <button onClick={startCapture} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-10 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-lg">
             {isCameraType ? "Open Camera" : isFingerprint ? "Start Scanner" : "Start Recording"}
