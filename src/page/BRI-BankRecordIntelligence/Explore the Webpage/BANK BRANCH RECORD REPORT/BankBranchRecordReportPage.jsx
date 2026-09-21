@@ -1,12 +1,14 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  RotateCcw, Save, Share2, Download, ArrowRight, ArrowLeft,
-  MapPin, MapPinned, Map, Hash, FileText, Globe, Flag,
+  Save, Share2, Download,
+  MapPin, Map, Hash, FileText, Globe, Flag,
   Layers, Home, TrendingUp, Shield, Users, Activity,
   Truck, Box, Clock, HeartPulse, Book, Coffee, Moon, Sun,
-  CheckCircle2, Calendar
+  Calendar
 } from 'lucide-react';
+import { SectionHeader, DataCard } from '../../../../components/report';
 
 const allFields = [
   // Basic Location Details
@@ -65,25 +67,12 @@ const allFields = [
   { id: "47", key: "last_updated", label: "Last Updated", icon: Clock },
 ];
 
-const FormField = ({ id, label, value, required, icon: Icon }) => {
-  return (
-    <div className="flex items-center bg-white/60 backdrop-blur-md border border-white/50 rounded-[10px] p-2 sm:p-2.5 shadow-[0_4px_15px_rgb(0,0,0,0.03)] hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] hover:bg-white/80 transition-all duration-300 hover:border-pink-400 w-full group overflow-hidden">
-      <div className="bg-[#e11d48] rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shrink-0 shadow-sm mr-3 group-hover:scale-105 transition-transform duration-300">
-        {Icon && <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" strokeWidth={2.2} />}
-      </div>
-      <div className="flex-1 min-w-0 flex flex-col justify-center">
-        <label className="text-[10px] sm:text-[11px] font-bold text-[#1e3a8a] uppercase tracking-wide block truncate" title={label}>
-          {label} {required && <span className="text-red-500 ml-0.5">*</span>}
-        </label>
-        <div className="w-full overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          <p className="text-[12px] sm:text-[14px] font-extrabold text-[#1e3a8a] inline-block mt-0.5" title={value || 'N/A'}>
-            {value || 'N/A'}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
+const bankSections = [
+  { number: '01', title: 'Basic Location Details', startIndex: 0, endIndex: 10 },
+  { number: '02', title: 'Postal & Coverage Details', startIndex: 10, endIndex: 25 },
+  { number: '03', title: 'Administration & Jurisdiction', startIndex: 25, endIndex: 31 },
+  { number: '04', title: 'Infrastructure & Facilities', startIndex: 31, endIndex: 47 },
+];
 
 const SkeletonField = () => {
   return (
@@ -181,14 +170,14 @@ export default function PincodeFrontend() {
               </div>
 
               {/* Right: Buttons */}
-              <div className="flex flex-row items-center justify-center sm:justify-end gap-1.5 sm:gap-3 w-full lg:w-auto pt-2 sm:pt-0 border-t border-slate-100 sm:border-0 mt-1 sm:mt-0">
-                <button className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 bg-white/70 backdrop-blur-sm text-[#e11d48] rounded-lg border border-[#e11d48] hover:bg-pink-50 transition-all text-[11px] sm:text-[13px] font-bold flex-1 sm:flex-none whitespace-nowrap">
+              <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 sm:gap-3 w-full lg:w-auto pt-2 sm:pt-0 border-t border-slate-100 sm:border-0 mt-1 sm:mt-0">
+                <button className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white text-[#e11d48] rounded-lg border border-[#e11d48] hover:bg-pink-50 active:scale-[0.98] transition-all duration-150 text-xs sm:text-sm font-bold flex-1 sm:flex-none cursor-pointer shadow-2xs">
                   <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" /> <span>Share</span>
                 </button>
-                <button className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 bg-white/70 backdrop-blur-sm text-[#e11d48] rounded-lg border border-[#e11d48] hover:bg-pink-50 transition-all text-[11px] sm:text-[13px] font-bold flex-1 sm:flex-none whitespace-nowrap">
+                <button className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white text-[#e11d48] rounded-lg border border-[#e11d48] hover:bg-pink-50 active:scale-[0.98] transition-all duration-150 text-xs sm:text-sm font-bold flex-1 sm:flex-none cursor-pointer shadow-2xs">
                   <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" /> <span>Download</span>
                 </button>
-                <button className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 bg-[#e11d48] text-white rounded-lg border border-[#e11d48] hover:bg-[#be185d] shadow-sm transition-all text-[11px] sm:text-[13px] font-bold flex-1 sm:flex-none whitespace-nowrap">
+                <button className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 bg-[#e11d48] text-white rounded-lg border border-[#e11d48] hover:bg-[#be185d] active:scale-[0.98] shadow-xs hover:shadow-sm transition-all duration-150 text-xs sm:text-sm font-bold flex-1 sm:flex-none cursor-pointer">
                   <Save className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" /> <span>Save Data</span>
                 </button>
               </div>
@@ -208,20 +197,34 @@ export default function PincodeFrontend() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 px-1"
+                className="flex flex-col gap-6 px-1"
               >
                 {isLoading ? (
-                  [...Array(allFields.length)].map((_, idx) => <SkeletonField key={idx} />)
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+                    {[...Array(allFields.length)].map((_, idx) => <SkeletonField key={idx} />)}
+                  </div>
                 ) : (
-                  allFields.map((field) => (
-                    <FormField
-                      key={field.id}
-                      id={field.id}
-                      label={field.label}
-                      value={field.value || ""}
-                      required={field.required}
-                      icon={field.icon}
-                    />
+                  bankSections.map((sec) => (
+                    <div key={sec.number} className="flex flex-col gap-3">
+                      <SectionHeader
+                        number={sec.number}
+                        title={sec.title}
+                        accentColor="rose"
+                      />
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
+                        {allFields.slice(sec.startIndex, sec.endIndex).map((field) => (
+                          <DataCard
+                            key={field.id}
+                            id={field.id}
+                            label={field.label}
+                            value={field.value || ""}
+                            required={field.required}
+                            icon={field.icon}
+                            accentColor="rose"
+                          />
+                        ))}
+                      </div>
+                    </div>
                   ))
                 )}
               </motion.div>
@@ -231,7 +234,7 @@ export default function PincodeFrontend() {
           {/* Submit Footer */}
           <div className="px-4 sm:px-6 md:px-8 py-4 sm:py-5 bg-transparent border-t border-pink-200/50 flex items-center justify-end mt-auto shrink-0 gap-3">
             <button
-              className="flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-[10px] text-[14px] font-bold bg-[#e11d48] text-white hover:bg-[#be185d] transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-[#e11d48]/50 w-full sm:w-auto sm:min-w-[160px] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-[10px] text-xs sm:text-sm font-bold bg-[#e11d48] text-white hover:bg-[#be185d] active:scale-[0.98] shadow-xs hover:shadow-sm transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#e11d48]/50 w-full sm:w-auto sm:min-w-[160px] cursor-pointer"
             >
               Submit <Save className="w-4 h-4 ml-0.5" />
             </button>

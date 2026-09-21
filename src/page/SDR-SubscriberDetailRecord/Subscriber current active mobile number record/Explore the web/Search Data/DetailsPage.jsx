@@ -1,48 +1,14 @@
 import React, { useState } from 'react';
 import { User as FiUser, CreditCard as FiCreditCard, MapPin as FiMapPin, CheckCircle as FiCheckCircle, FileText as FiFileText, ArrowLeft } from 'lucide-react';
+import { DataCard, PageNavigation, SectionHeader } from '../../../../../components/report';
 
-const globalCss = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
+const localCss = `
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-
 .animate-fadeInUp { animation: fadeInUp 0.5s ease-out forwards; }
-
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
 `;
-
-const DisplayField = ({ label, value }) => (
-  <div className="flex flex-col mb-4 p-3 rounded-xl bg-slate-50 border border-slate-200 shadow-sm relative group overflow-hidden hover:border-rose-300 hover:shadow-md transition-all duration-300">
-    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-rose-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1 z-10 transition-colors group-hover:text-rose-500">
-      {label}
-    </label>
-    <div className="text-sm font-extrabold text-slate-800 z-10 truncate" title={value || "Not provided"}>
-      {value || <span className="text-slate-300 italic font-medium">Not provided</span>}
-    </div>
-  </div>
-);
 
 const steps = [
   { label: 'Basic Info', Icon: FiUser },
@@ -51,27 +17,34 @@ const steps = [
   { label: 'Pres. Address', Icon: FiMapPin },
 ];
 
+const stepSections = [
+  { number: '01', title: 'Basic Information' },
+  { number: '02', title: 'Service & Identification' },
+  { number: '03', title: 'Permanent Address' },
+  { number: '04', title: 'Present Address' },
+];
+
 const StepIndicator = ({ current }) => (
-  <div className="flex flex-wrap items-center justify-center gap-0 mb-8 mt-4 select-none px-2">
+  <div className="flex flex-wrap items-center justify-center gap-0 mb-6 mt-3 select-none px-2">
     {steps.map(({ label, Icon }, i) => {
       const done   = i < current;
       const active = i === current;
       return (
         <React.Fragment key={i}>
           <div className="flex flex-col items-center gap-1.5 relative z-10">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm
+            <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-500 shadow-sm
               ${done   ? 'bg-rose-600 text-white' : ''}
               ${active ? 'bg-gradient-to-br from-rose-500 to-pink-600 text-white scale-110 shadow-lg shadow-rose-200 ring-4 ring-white' : ''}
               ${!done && !active ? 'bg-white text-slate-400 border-2 border-slate-200' : ''}
             `}>
-              {done ? <FiCheckCircle className="w-5 h-5" /> : <Icon className="w-5 h-5" />}
+              {done ? <FiCheckCircle className="w-4 h-4 sm:w-5 sm:h-5" /> : <Icon className="w-4 h-4 sm:w-5 sm:h-5" />}
             </div>
-            <span className={`text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 ${active ? 'text-rose-700' : done ? 'text-rose-500' : 'text-slate-400'}`}>
+            <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-wider transition-colors duration-300 ${active ? 'text-rose-700' : done ? 'text-rose-500' : 'text-slate-400'}`}>
               {label}
             </span>
           </div>
           {i < steps.length - 1 && (
-            <div className={`h-1 w-8 sm:w-16 md:w-24 -mt-5 mx-1 md:mx-2 rounded-full transition-all duration-700 ${done ? 'bg-rose-500' : 'bg-slate-200'}`} />
+            <div className={`h-1 w-5 sm:w-12 md:w-20 -mt-5 mx-0.5 sm:mx-1 md:mx-2 rounded-full transition-all duration-700 ${done ? 'bg-rose-500' : 'bg-slate-200'}`} />
           )}
         </React.Fragment>
       );
@@ -166,14 +139,11 @@ export const DetailsPage = ({ record, onBack }) => {
   const [step, setStep] = useState(0);
   const [formData] = useState(() => generateMockData(record));
 
-  const handleNext = () => setStep((s) => Math.min(s + 1, 3));
-  const handleBack = () => setStep((s) => Math.max(s - 1, 0));
-
   const currentFields = step === 0 ? page1Fields : step === 1 ? page2Fields : step === 2 ? page3Fields : page4Fields;
 
   return (
     <div className="min-h-screen relative overflow-x-hidden p-4 md:p-8 flex flex-col bg-transparent">
-      <style>{globalCss}</style>
+      <style>{localCss}</style>
       
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col">
         {/* Header */}
@@ -189,6 +159,16 @@ export const DetailsPage = ({ record, onBack }) => {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold text-slate-700 bg-white/90 border border-slate-200 hover:bg-slate-50 active:scale-[0.98] transition-all duration-150 cursor-pointer shadow-2xs"
+              >
+                <ArrowLeft className="w-3.5 h-3.5 text-slate-600" />
+                <span>Back</span>
+              </button>
+            )}
             <div className="px-4 py-2 bg-rose-50 text-rose-700 rounded-lg text-xs font-bold border border-rose-100 flex items-center gap-2 shadow-inner">
               <div className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
               Step {step + 1} of 4
@@ -202,47 +182,43 @@ export const DetailsPage = ({ record, onBack }) => {
         <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-xl shadow-slate-200/40 border border-slate-100 flex-1 animate-fadeInUp" style={{ animationDelay: '0.1s' }}>
           <div className="h-full flex flex-col">
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-6 gap-y-2 mb-8">
+            {/* Numbered Section Header for Active Step */}
+            <SectionHeader
+              number={stepSections[step].number}
+              title={stepSections[step].title}
+              accentColor="rose"
+              className="mb-4"
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-5 mb-8">
               {currentFields.map((field, idx) => (
-                <DisplayField 
+                <DataCard 
                   key={idx} 
+                  id={idx + 1}
                   label={field} 
                   value={formData[field]} 
+                  accentColor="rose"
                 />
               ))}
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
-              <button 
-                type="button" 
-                onClick={handleBack}
-                disabled={step === 0}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-sm
-                  ${step === 0 
-                    ? 'bg-slate-50 text-slate-300 cursor-not-allowed border border-transparent' 
-                    : 'bg-white text-slate-600 border border-slate-200 hover:border-rose-300 hover:text-rose-600 hover:shadow-md cursor-pointer'
-                  }`}
-              >
-                ← Back
-              </button>
+            {/* Standardized Navigation Footer */}
+            <div className="mt-auto pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <PageNavigation
+                currentPage={step + 1}
+                totalPages={4}
+                onPageChange={(p) => setStep(p - 1)}
+                accentColor="#e11d48"
+              />
 
-              {step < 3 ? (
-                <button 
-                  type="button" 
-                  onClick={handleNext}
-                  className="flex items-center gap-2 px-8 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold text-sm shadow-lg shadow-rose-200 hover:shadow-xl hover:shadow-rose-300 hover:-translate-y-0.5 transition-all cursor-pointer"
-                >
-                  Next Step →
-                </button>
-              ) : (
+              {step === 3 && (
                 <button 
                   type="button"
                   onClick={() => alert("Record Acknowledged")}
-                  className="flex items-center gap-2 px-8 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold text-sm shadow-lg shadow-emerald-200 hover:shadow-xl hover:shadow-emerald-300 hover:-translate-y-0.5 transition-all cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm active:scale-[0.98] shadow-xs hover:shadow-sm transition-all duration-150 cursor-pointer w-full sm:w-auto shrink-0"
                 >
                   <FiCheckCircle className="w-4 h-4" />
-                  Acknowledge Record
+                  <span>Acknowledge Record</span>
                 </button>
               )}
             </div>

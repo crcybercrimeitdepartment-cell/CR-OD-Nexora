@@ -63,18 +63,29 @@ export default function TGRIPage({ onBack }) {
     window.scrollTo(0, 0);
   }, [selectedSubPage]);
 
+  const getSubPageFromHash = () => {
+    const hash = window.location.hash || '';
+    if (hash.startsWith('#TGRI-')) return hash.replace('#TGRI-', '');
+    if (hash.startsWith('#TGRI/')) return hash.replace('#TGRI/', '');
+    if (hash.startsWith('#TGRI%20')) return hash.replace('#TGRI%20', '');
+    if (hash.startsWith('#TGRI ')) return hash.replace('#TGRI ', '');
+    return null;
+  };
+
   useEffect(() => {
     const handlePopState = (event) => {
       if (event.state && event.state.page === 'TGRI' && event.state.subPage) {
         setSelectedSubPage(event.state.subPage);
       } else {
-        setSelectedSubPage(null);
+        const fromHash = getSubPageFromHash();
+        setSelectedSubPage(fromHash);
       }
     };
     window.addEventListener('popstate', handlePopState);
     
-    if (window.history.state && window.history.state.subPage) {
-      setSelectedSubPage(window.history.state.subPage);
+    const initial = (window.history.state && window.history.state.subPage) || getSubPageFromHash();
+    if (initial) {
+      setSelectedSubPage(initial);
     }
     
     return () => window.removeEventListener('popstate', handlePopState);

@@ -24,11 +24,11 @@ export default function Explorethewebpage({ activePage, setActivePage }) {
   }, [history]);
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+    if (e) e.preventDefault();
+    const searchTerm = query.trim() || 'All Toll Records';
 
-    const newItem = { query: query.trim(), date: new Date().toLocaleString() };
-    const newHistory = [newItem, ...history.filter(item => item.query !== query.trim())].slice(0, 10);
+    const newItem = { query: searchTerm, date: new Date().toLocaleString() };
+    const newHistory = [newItem, ...history.filter(item => item.query !== searchTerm)].slice(0, 10);
     setHistory(newHistory);
     setQuery('');
     setShowReport(true);

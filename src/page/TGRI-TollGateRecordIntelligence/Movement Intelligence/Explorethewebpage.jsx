@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Search as SearchIcon, History, Clock, X, Trash2, ArrowRight, Home } from 'lucide-react';
+import TollPlazaRecordReportPage from '../Toll Plaza Intelligence/Explore the Webpage/TOLL PLAZA RECORD REPORT/TollPlazaRecordReportPage.jsx.jsx';
 
 export default function Explorethewebpage({ activePage, setActivePage }) {
   const [query, setQuery] = useState('');
+  const [showReport, setShowReport] = useState(false);
   const [history, setHistory] = useState(() => {
     const saved = localStorage.getItem('searchHistory');
     if (!saved) return [];
@@ -22,13 +24,14 @@ export default function Explorethewebpage({ activePage, setActivePage }) {
   }, [history]);
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    if (!query.trim()) return;
+    if (e) e.preventDefault();
+    const searchTerm = query.trim() || 'All Toll Records';
 
-    const newItem = { query: query.trim(), date: new Date().toLocaleString() };
-    const newHistory = [newItem, ...history.filter(item => item.query !== query.trim())].slice(0, 10);
+    const newItem = { query: searchTerm, date: new Date().toLocaleString() };
+    const newHistory = [newItem, ...history.filter(item => item.query !== searchTerm)].slice(0, 10);
     setHistory(newHistory);
     setQuery('');
+    setShowReport(true);
   };
 
   const clearHistory = () => {
@@ -42,8 +45,25 @@ export default function Explorethewebpage({ activePage, setActivePage }) {
 
   const handleHistoryItemClick = (item) => {
     setQuery(item.query);
-    setActivePage('search');
+    setShowReport(true);
   };
+
+  if (showReport) {
+    return (
+      <div className="relative w-full min-h-screen bg-transparent z-50">
+        <button 
+          onClick={() => setShowReport(false)}
+          className="absolute top-4 left-4 sm:top-6 sm:left-6 z-[100] flex items-center justify-center gap-2 bg-white/90 px-4 py-2 rounded-full shadow-md backdrop-blur-md border border-slate-200/90 transition-all hover:shadow-lg hover:scale-105 text-[#1e2a52] font-bold text-sm cursor-pointer"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          <span>Back</span>
+        </button>
+        <TollPlazaRecordReportPage />
+      </div>
+    );
+  }
 
   if (activePage === 'history') {
     return (

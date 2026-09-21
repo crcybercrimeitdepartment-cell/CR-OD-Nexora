@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Eye, Download, Save, ChevronLeft, ChevronRight, Loader2, SearchX, AlertCircle, RefreshCw, Search, X, Check } from 'lucide-react';
+import { Eye, Download, Save, Loader2, SearchX, AlertCircle, RefreshCw, Search, X, Check } from 'lucide-react';
 import { getSDRSearchResults } from './sdrService';
+import { PageNavigation } from '../../../../../components/report';
 
 const ResultsHeader = () => {
   return (
@@ -66,10 +67,10 @@ const ResultSummary = ({
         {/* Save All Button with Icon & Name */}
         <button
           onClick={onSaveAll}
-          className={`inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 cursor-pointer ${
+          className={`inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold shadow-sm transition-all duration-150 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-1 cursor-pointer ${
             isSavedAll
               ? 'bg-emerald-700 text-white focus:ring-emerald-600'
-              : 'bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white focus:ring-emerald-500 hover:shadow'
+              : 'bg-emerald-600 hover:bg-emerald-700 text-white focus:ring-emerald-500 hover:shadow'
           }`}
           title="Save all records"
         >
@@ -156,7 +157,7 @@ const SDRResultRow = ({ record, index, onViewInfo }) => {
       <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-500 border border-slate-300">
         {record.gender}
       </td>
-      <td className="px-4 py-3 whitespace-nowrap text-sm text-slate-600 border border-slate-300" title={record.address}>
+      <td className="px-4 py-3 text-sm text-slate-600 border border-slate-300 min-w-[200px] max-w-xs break-words whitespace-normal leading-snug" title={record.address}>
         {record.address}
       </td>
       <td className="px-4 py-3 whitespace-nowrap text-sm font-medium text-slate-900 border border-slate-300">
@@ -274,42 +275,6 @@ const ResultsTable = ({ records, onViewInfo }) => {
   );
 };
 
-const Pagination = ({ totalCount, currentPage, itemsPerPage }) => {
-  const totalPages = Math.ceil(totalCount / itemsPerPage);
-  if (totalCount <= itemsPerPage) return null;
-  const startItem = (currentPage - 1) * itemsPerPage + 1;
-  const endItem = Math.min(currentPage * itemsPerPage, totalCount);
-
-  return (
-    <div className="flex items-center justify-between px-4 py-3 mt-4 bg-white border border-slate-200 rounded-lg shadow-sm sm:px-6">
-      <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm text-slate-700">
-            Showing <span className="font-medium">{startItem}</span> to <span className="font-medium">{endItem}</span> of <span className="font-medium">{totalCount}</span> records
-          </p>
-        </div>
-        <div>
-          <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-            <button className="relative inline-flex items-center rounded-l-md px-2 py-2 text-slate-400 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed" disabled={currentPage === 1}>
-              <span className="sr-only">Previous</span>
-              <ChevronLeft className="h-4 w-4" aria-hidden="true" />
-            </button>
-            <button aria-current="page" className="relative z-10 inline-flex items-center bg-blue-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-              1
-            </button>
-            <button className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-slate-900 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-20 focus:outline-offset-0">
-              2
-            </button>
-            <button className="relative inline-flex items-center rounded-r-md px-2 py-2 text-slate-400 ring-1 ring-inset ring-slate-300 hover:bg-slate-50 focus:z-20 focus:outline-offset-0" disabled={currentPage === totalPages}>
-              <span className="sr-only">Next</span>
-              <ChevronRight className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </nav>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const LoadingState = () => (
   <div className="flex flex-col items-center justify-center py-20 px-4 bg-white border border-slate-200 rounded-lg shadow-sm min-h-[400px]">
@@ -342,7 +307,7 @@ const ErrorState = ({ onRetry }) => (
     <p className="text-sm text-slate-500 mt-2 max-w-sm text-center mb-6">
       A secure connection to the backend could not be established or the request timed out. Please try again.
     </p>
-    <button onClick={onRetry} className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+    <button onClick={onRetry} className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-150 cursor-pointer">
       <RefreshCw className="w-4 h-4 mr-2" />
       Retry Connection
     </button>
@@ -401,6 +366,20 @@ export const SDRSearchResultsPage = ({
     );
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const totalPages = Math.max(1, Math.ceil(filteredRecords.length / itemsPerPage));
+
+  // Reset to page 1 if search query changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery]);
+
+  const paginatedRecords = filteredRecords.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   const [isSavedAll, setIsSavedAll] = useState(false);
 
   const handleSaveAll = () => {
@@ -451,10 +430,22 @@ export const SDRSearchResultsPage = ({
             {filteredRecords.length > 0 ? (
               <>
                 <div className="bg-white/90 backdrop-blur-md rounded-lg shadow-sm border border-slate-200 overflow-hidden">
-                  <ResultsTable records={filteredRecords} onViewInfo={onSelectRecord} />
+                  <ResultsTable records={paginatedRecords} onViewInfo={onSelectRecord} />
                 </div>
-                {filteredRecords.length > 0 && (
-                  <Pagination totalCount={filteredRecords.length} currentPage={1} itemsPerPage={10} />
+                {filteredRecords.length > itemsPerPage && (
+                  <div className="flex flex-col sm:flex-row items-center justify-between px-4 py-3 bg-white/80 backdrop-blur-md border border-slate-200 rounded-lg shadow-sm gap-2">
+                    <div className="text-xs sm:text-sm font-medium text-slate-600">
+                      Showing <span className="font-bold text-slate-900">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-bold text-slate-900">{Math.min(currentPage * itemsPerPage, filteredRecords.length)}</span> of <span className="font-bold text-slate-900">{filteredRecords.length}</span> records
+                    </div>
+                    <div className="w-full sm:w-auto">
+                      <PageNavigation
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                        accentColor="#1e3a8a"
+                      />
+                    </div>
+                  </div>
                 )}
               </>
             ) : (
@@ -468,7 +459,7 @@ export const SDRSearchResultsPage = ({
                 </p>
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="mt-4 px-4 py-2 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors cursor-pointer"
+                  className="mt-4 px-4 py-2 text-xs font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 active:scale-[0.98] rounded-lg transition-all duration-150 cursor-pointer"
                 >
                   Clear Search Filter
                 </button>
