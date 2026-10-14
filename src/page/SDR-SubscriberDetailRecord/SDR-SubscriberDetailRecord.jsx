@@ -11,13 +11,13 @@ import TNOLPage from "./Cell ID Management Admin/CellIDManagementAdminPage";
 import SDRDEMO_1Page from "./Subscriber current active mobile number record/SubscriberCurrentActiveMobileNumberRecordPage";
 import SMNMHPage from "./Subscriber Mobile Number MNP History/SubscriberMobileNumberMNPHistoryPage";
 import SMNDDPage from "./Subscriber Mobile Number Deactivation Details/SubscriberMobileNumberDeactivationDetailsPage";
+import SOHIPage from "./SIM Ownership History Intelligence/SIMOwnershipHistoryIntelligencePage";
 import CIRIPage from "./Cell ID Record Intelligence/CellIDRecordIntelligencePage";
 import SDRDEMO_2Page from "./Demo 1/DemoPage";
 import SDRDEMO_3Page from "./Demo 2/DemoPage";
-import SDRDEMO_4Page from "./Demo 3/DemoPage";
+
 /**
  * Header Component.
- * Renders the title and a brief description of the page's purpose.
  * 
  * @param {Object} props - Component properties.
  * @param {string} [props.title] - Optional override for the title.
@@ -101,10 +101,10 @@ export default function SDRPage({ onBack }) {
   if (selectedSubPage === 'rh') return <RHPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'smnmh') return <SMNMHPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'smndd') return <SMNDDPage onBack={handleSubPageBack} />;
+  if (selectedSubPage === 'sohi') return <SOHIPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'ciri') return <CIRIPage onBack={handleSubPageBack} />;
   if (selectedSubPage === 'sdrdemo2') return <SDRDEMO_2Page onBack={handleSubPageBack} />;
   if (selectedSubPage === 'sdrdemo3') return <SDRDEMO_3Page onBack={handleSubPageBack} />;
-  if (selectedSubPage === 'sdrdemo4') return <SDRDEMO_4Page onBack={handleSubPageBack} />;
 
   return (
     <div className="flex-1 flex flex-col w-full relative pt-11 sm:pt-4">

@@ -44,6 +44,8 @@ import {
   MDRIIcon,
   TIIIcon,
   TDIIcon,
+  TelephoneDirectoryIntelligenceIcon,
+  CyberInvestigationIntelligenceIcon,
   IntelligenceModulesIcon,
   AboutUsIcon,
   DemoCardIcon,
@@ -301,8 +303,8 @@ export const NEXORA_MODULES = [
 
   {
     id: 'io-assistant',
-    legacyId: 'demo-card-1',
     name: 'IO Assistant',
+    shortName: 'IOA',
     description: 'Investigating Officer Assistant - AI-assisted investigation workflows, legal guidance, and case intelligence.',
     icon: IOAssistantIcon,
     bgColor: 'bg-[#EEF2FF]',
@@ -310,11 +312,49 @@ export const NEXORA_MODULES = [
   },
   {
     id: 'legal-pdf-intelligence',
-    legacyId: 'demo-card-2',
     name: 'Legal PDF Intelligence',
+    shortName: 'LPDFI',
     description: 'Legal PDF Intelligence - AI-powered legal document analysis, courtroom filings, case citations, and document extraction.',
     icon: LegalPDFIntelligenceIcon,
     bgColor: 'bg-[#F0FDF4]',
     iconColor: 'text-[#16A34A]'
+  },
+  {
+    id: 'cii',
+    legacyId: 'cyber-investigation-intelligence',
+    name: 'Cyber Investigation Intelligence',
+    shortName: 'CII',
+    description: 'Cyber Investigation Intelligence - Advanced digital forensics, threat analysis, incident correlation, and cybercrime investigation.',
+    icon: CyberInvestigationIntelligenceIcon,
+    bgColor: 'bg-[#EFF6FF]',
+    iconColor: 'text-[#2563EB]'
+  },
+  {
+    id: 'tdi',
+    legacyId: 'telephone-directory-intelligence',
+    name: 'Telephone Directory Intelligence',
+    shortName: 'TDI',
+    description: 'Telephone Directory Intelligence - Search public telecom directories, historical phone records, and subscriber registry archives.',
+    icon: TelephoneDirectoryIntelligenceIcon,
+    bgColor: 'bg-[#E0F7FA]',
+    iconColor: 'text-[#0891B2]'
+  },
+  {
+    id: 'demo-card-1',
+    name: 'Demo Card',
+    shortName: 'DEMO 1',
+    description: 'This is a placeholder demo card for future intelligence modules.',
+    icon: DemoCardIcon,
+    bgColor: 'bg-[#F1F5F9]',
+    iconColor: 'text-[#64748B]'
+  },
+  {
+    id: 'demo-card-2',
+    name: 'Demo Card',
+    shortName: 'DEMO 2',
+    description: 'This is a placeholder demo card for future intelligence modules.',
+    icon: DemoCardIcon,
+    bgColor: 'bg-[#F3F4F6]',
+    iconColor: 'text-[#64748B]'
   }
 ];

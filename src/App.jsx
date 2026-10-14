@@ -474,7 +474,22 @@ export default function App() {
       return;
     }
 
-    if (tool.id === 'io-assistant' || tool.id === 'nexora-update-history' || tool.name === 'IO Assistant' || tool.name === 'Nexora Update History') {
+    if (
+      tool.id === 'io-assistant' || 
+      tool.id === 'nexora-update-history' || 
+      tool.name === 'IO Assistant' || 
+      tool.name === 'Nexora Update History' ||
+      tool.id === 'cii' ||
+      tool.id === 'cyber-investigation-intelligence' ||
+      tool.name === 'Cyber Investigation Intelligence' ||
+      tool.id === 'tdi' ||
+      tool.id === 'telephone-directory-intelligence' ||
+      tool.name === 'Telephone Directory Intelligence' ||
+      tool.id === 'demo-card-1' ||
+      tool.id === 'demo-card-2' ||
+      tool.name === 'Demo Card' ||
+      tool.name?.startsWith('Demo Card')
+    ) {
       setProductionMsg({
         title: tool.name,
         message: `${tool.name} is currently under development and will be available in the upcoming platform release.`
@@ -524,10 +539,29 @@ export default function App() {
       return;
     }
 
-    if (id === 'NexoraUpdateHistory' || id === 'DemoCard' || id === 'nexora-update-history') {
+    if (
+      id === 'NexoraUpdateHistory' || 
+      id === 'DemoCard' || 
+      id === 'nexora-update-history' ||
+      id === 'cii' ||
+      id === 'cyber-investigation-intelligence' ||
+      id === 'CyberInvestigationIntelligence' ||
+      id === 'tdi' ||
+      id === 'telephone-directory-intelligence' ||
+      id === 'TelephoneDirectoryIntelligence' ||
+      id === 'demo-card-1' ||
+      id === 'demo-card-2'
+    ) {
+      const title = (id === 'cii' || id === 'cyber-investigation-intelligence' || id === 'CyberInvestigationIntelligence') 
+        ? 'Cyber Investigation Intelligence'
+        : (id === 'tdi' || id === 'telephone-directory-intelligence' || id === 'TelephoneDirectoryIntelligence')
+        ? 'Telephone Directory Intelligence'
+        : (id === 'NexoraUpdateHistory' || id === 'nexora-update-history')
+        ? 'Nexora Update History'
+        : 'Demo Card';
       setProductionMsg({
-        title: 'Nexora Update History',
-        message: 'Nexora Update History is currently under development and will be available in the upcoming platform release.'
+        title,
+        message: `${title} is currently under development and will be available in the upcoming platform release.`
       });
       return;
     }
@@ -813,7 +847,7 @@ export default function App() {
                               <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center ${tool.bgColor || 'bg-slate-100'} ${tool.iconColor || 'text-slate-600'} transition-transform group-hover:scale-110 shadow-sm border border-slate-200/50`}>
                                 {isElement ? tool.icon : typeof IconComp === 'function' ? <IconComp className="w-4 h-4 sm:w-5 sm:h-5" /> : null}
                               </div>
-                              <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
+                              <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.shortName || tool.id || tool.name.substring(0, 5)}</span>
                             </div>
                           </div>
                         </div>
@@ -833,7 +867,7 @@ export default function App() {
                               <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center ${tool.bgColor || 'bg-slate-100'} ${tool.iconColor || 'text-slate-600'} transition-transform group-hover:scale-110 shadow-sm border border-slate-200/50`}>
                                 {isElement ? tool.icon : typeof IconComp === 'function' ? <IconComp className="w-4 h-4 sm:w-5 sm:h-5" /> : null}
                               </div>
-                              <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.id || tool.name.substring(0, 5)}</span>
+                              <span className="text-[calc(9px*var(--text-scale,1))] sm:text-[calc(10px*var(--text-scale,1))] font-bold text-slate-700 uppercase tracking-wide group-hover:text-red-600">{tool.shortName || tool.id || tool.name.substring(0, 5)}</span>
                             </div>
                           </div>
                         </div>
@@ -904,7 +938,7 @@ export default function App() {
                         return (
                           <div className={`grid ${dynamicGridClass} gap-3 sm:gap-4 md:gap-5`}>
                             {displayTools.map((tool, index) => (
-                          <div className="tool-card-gsap" key={tool.name}>
+                          <div className="tool-card-gsap" key={tool.id || `${tool.name}-${index}`}>
                             <ToolCard tool={tool} index={index} onClick={handleToolClick} disableCssAnimation={true} />
                           </div>
                         ))}

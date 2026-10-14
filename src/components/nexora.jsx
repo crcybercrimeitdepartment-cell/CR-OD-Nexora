@@ -221,7 +221,10 @@ export function MIIIcon({ className = "w-8 h-8" }) { return <Shield className={c
 export function MInfIIcon({ className = "w-8 h-8" }) { return <Newspaper className={className} />; }
 export function MDRIIcon({ className = "w-8 h-8" }) { return <Stethoscope className={className} />; }
 export function TIIIcon({ className = "w-8 h-8" }) { return <Wifi className={className} />; }
-export function TDIIcon({ className = "w-8 h-8" }) { return <Radio className={className} />; }
+export function TDIIcon({ className = "w-8 h-8" }) { return <Phone className={className} />; }
+export function TelephoneDirectoryIntelligenceIcon({ className = "w-8 h-8" }) { return <Phone className={className} />; }
+export function CyberInvestigationIntelligenceIcon({ className = "w-8 h-8" }) { return <ShieldAlert className={className} />; }
+export function CIIIcon({ className = "w-8 h-8" }) { return <ShieldAlert className={className} />; }
 export function IntelligenceModulesIcon({ className = "w-8 h-8" }) { return <Cpu className={className} />; }
 export function AboutUsIcon({ className = "w-8 h-8" }) { return <Info className={className} />; }
 export function DemoCardIcon({ className = "w-8 h-8" }) { return <Layers className={className} />; }
